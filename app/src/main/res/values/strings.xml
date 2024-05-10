@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Event Organier</string>
+
+    <string name="subuh">Subuh</string>
+    <string name="magrib">Maghrib</string>
+    <string name="duhur">Dzuhur</string>
+    <string name="ashar">Ashar</string>
+    <string name="isya">Isya</string>
+
+    <string name="waktu">04 : 27</string>
+    <string name="kiblat">Qiblat</string>
+    <string name="cuaca">Cuaca</string>
+    <string name="event">Event</string>
+
+    <string name="scan_tiket">Scan E-Ticket anda</string>
+    <string name="quran_dikir">Dzikir</string>
+    <string name="in_event">Login untuk melihat event</string>
+    <string name="quran">Al Quran</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="login">Login</string>
+    <string name="keluar">Keluar</string>
+
+</resources>
