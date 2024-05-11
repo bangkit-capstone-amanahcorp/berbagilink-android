@@ -2,6 +2,8 @@ package com.example.ptamanah.view.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -30,18 +32,59 @@ class LoginActivity : AppCompatActivity() {
 
         getSupportActionBar()?.hide()
 
+        ActionLogin()
+
+    }
+
+    private fun ActionLogin() {
+
+        binding.emailEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                binding.passwordEditTextLayout.error = null
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
+        binding.passwordEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                binding.passwordEditTextLayout.error = null
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+        })
+
         binding.loginButton.setOnClickListener {
             val email = binding.emailEditText.text.toString().trim()
             val password = binding.passwordEditText.text.toString().trim()
             val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
 
             if (email.isEmpty()) {
-                binding.emailEditText.error = "Silahkan Isi Emailnya Dulu"
+                binding.emailEditTextLayout.error =
+                    "The field is required"
             } else if (!email.matches(emailPattern.toRegex())) {
-                binding.emailEditText.error = "Email Harus Valid"
+                binding.emailEditTextLayout.error =
+                    "The field is not a valid email address"
             } else if (password.isEmpty()) {
                 binding.passwordEditTextLayout.error =
-                    "Silahkan Isi Password Dulu"
+                    "The field is required"
+            } else if (password.length < 5) {
+                binding.passwordEditTextLayout.error =
+                    "The field must be at least 5 characters long"
             } else {
 
                 showLoading(true)

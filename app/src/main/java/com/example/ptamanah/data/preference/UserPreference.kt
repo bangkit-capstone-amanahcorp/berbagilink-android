@@ -18,7 +18,6 @@ class UserPreference (val dataStore: DataStore<Preferences>) {
     suspend fun saveSession(user: String) {
         dataStore.edit { preferences ->
             preferences[TOKEN_KEY] = user
-            preferences[IS_LOGIN_KEY] = true
         }
     }
 
@@ -36,6 +35,5 @@ class UserPreference (val dataStore: DataStore<Preferences>) {
 
     companion object {
         private val TOKEN_KEY = stringPreferencesKey("token")
-        private val IS_LOGIN_KEY = booleanPreferencesKey("isLogin")
     }
 }

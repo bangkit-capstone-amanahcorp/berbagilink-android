@@ -5,5 +5,14 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.PtAmanah" parent="Base.Theme.PtAmanah" />
+    <style name="HomePage" parent="Base.Theme.PtAmanah">
+        <item name="colorPrimary">@color/biru_toska</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="myEvent" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/cardview_light_background</item>
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+
 </resources>

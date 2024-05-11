@@ -1,13 +1,20 @@
 package com.example.ptamanah.view.main
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.ptamanah.R
+import com.example.ptamanah.R.id.imageTitle
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
@@ -31,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupActionBar()
+
         viewModel.getSession().observe(this) { user ->
             if (user.isNullOrEmpty()) {
                 Log.d("isiUser", user.toString())
@@ -39,15 +48,34 @@ class MainActivity : AppCompatActivity() {
                 }
             } else {
                 token = user
-                Intent(this@MainActivity, MyEvent::class.java).apply {
-                    putExtra(TOKEN, token)
-                }.also {
-                    startActivity(it)
+                binding.elevatedButton.text = "Lihat event"
+                binding.elevatedButton.setOnClickListener {
+                    Intent(this@MainActivity, MyEvent::class.java).apply {
+                        putExtra(TOKEN, token)
+                    }.also {
+                        startActivity(it)
+                    }
                 }
             }
         }
 
     }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.biru_toska)))
+
+        val customActionBar = LayoutInflater.from(this).inflate(R.layout.actionbar_main, null)
+        val actionBarParams = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT
+        )
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(customActionBar, actionBarParams)
+        val imageViewTitle = customActionBar.findViewById<ImageView>(imageTitle)
+        imageViewTitle.setImageResource(R.drawable.logo_putih)
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -56,8 +84,26 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_login -> {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                if (token.isNullOrEmpty()) {
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    AlertDialog.Builder(this).apply {
+                        setMessage("Apakah anda yakin ingin keluar?")
+                        setPositiveButton("Ok") { _, _ ->
+                            viewModel.logout()
+                            val intent = Intent(context, MainActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                            startActivity(intent)
+                            finish()
+                        }
+                        setNegativeButton("Cancel") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        create()
+                        show()
+                    }
+                }
                 true
             }
 

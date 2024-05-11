@@ -1,12 +1,18 @@
 package com.example.ptamanah.view.myEvent
 
+import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +25,7 @@ import com.example.ptamanah.R
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityMyEventBinding
+import com.example.ptamanah.view.main.MainActivity
 import kotlinx.coroutines.launch
 
 class MyEvent : AppCompatActivity() {
@@ -33,14 +40,36 @@ class MyEvent : AppCompatActivity() {
         binding = ActivityMyEventBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupActionBar()
+
         token = intent.getStringExtra(TOKEN)
         getAdapter()
         getEvent()
 
-        binding.backToHome.setOnClickListener {
-            finish()
-        }
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, androidx.cardview.R.color.cardview_light_background)))
+
+        val customActionBar = LayoutInflater.from(this).inflate(R.layout.actionbar_event, null)
+        val actionBarParams = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT
+        )
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(customActionBar, actionBarParams)
     }
 
     private fun getAdapter() {
