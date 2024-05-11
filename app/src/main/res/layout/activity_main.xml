@@ -16,7 +16,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <ImageView
                 android:id="@+id/base_rectangle"
                 android:layout_width="match_parent"
@@ -430,7 +429,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/container_frame20"
+                android:id="@+id/container_event"
                 android:layout_width="328dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
@@ -442,7 +441,7 @@
                     android:id="@+id/text_event"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-
+                    android:fontFamily="@font/ubuntu"
                     android:gravity="left|center_vertical"
                     android:includeFontPadding="false"
                     android:text="@string/event"
@@ -459,6 +458,7 @@
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:fontFamily="@font/ubuntu"
                     android:text="@string/scan_tiket"
                     android:textColor="@color/black"
                     android:textSize="16dp" />
@@ -476,14 +476,16 @@
                         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/ubuntu"
                         android:text="@string/in_event"
-                        android:textColor="@color/black"
                         android:textAlignment="viewStart"
-                        app:icon="@drawable/ic_date" />
+                        android:textColor="@color/black"
+                        app:icon="@drawable/ic_date"
+                        app:iconSize="24dp"/>
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/container_frame26"
+                    android:id="@+id/container_quran_dzikir"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="24dp"
@@ -491,14 +493,14 @@
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:textStyle="bold"
-                    android:singleLine="true"
+                    android:fontFamily="@font/ubuntu"
                     android:text="Quran &amp; Dzikir"
                     android:textColor="@color/black"
                     android:textSize="18dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="0dp"
@@ -510,17 +512,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/quran"
+                        android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
-                        app:icon="@drawable/ic_book" />
+                        app:icon="@drawable/ic_book"
+                        app:iconSize="24dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:paddingLeft="16dp"
-                    android:paddingTop="0dp"
+                    android:paddingTop="10dp"
                     android:paddingRight="16dp">
 
                     <Button
@@ -529,10 +533,38 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/quran_dikir"
+                        app:iconSize="24dp"
+                        android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:icon="@drawable/ic_mosque" />
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_frame10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="650dp"
+                android:layout_gravity="bottom|center"
+                android:gravity="center_horizontal|top"
+                android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/container_group3"
+                android:layout_width="328dp"
+                android:layout_height="120dp">
+
+                <ImageView
+                    android:id="@+id/container_mask_group"
+                    android:layout_width="328dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="0dp"
+                    android:gravity="left|top"
+                    android:orientation="vertical"
+                    android:src="@drawable/logo" />
+            </FrameLayout>
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>

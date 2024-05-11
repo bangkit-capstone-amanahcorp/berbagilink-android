@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 }
             } else {
                 token = user
-                binding.elevatedButton.text = "Lihat event"
+                binding.elevatedButton.text = "Lihat Event"
                 binding.elevatedButton.setOnClickListener {
                     Intent(this@MainActivity, MyEvent::class.java).apply {
                         putExtra(TOKEN, token)
