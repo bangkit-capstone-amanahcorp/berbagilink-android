@@ -1,6 +1,5 @@
 package com.example.ptamanah.view.myEvent
 
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
@@ -8,29 +7,28 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.bangkit.getevent.adapter.EventAdapter
-import com.bangkit.getevent.viewModel.EventViewModel
-import com.bangkit.getevent.viewModel.EventViewModelFactory
+import com.example.ptamanah.viewModel.event.EventViewModel
+import com.example.ptamanah.viewModel.factory.EventViewModelFactory
 import com.example.ptamanah.R
+import com.example.ptamanah.adapter.EventPagerAdapter
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityMyEventBinding
-import com.example.ptamanah.view.main.MainActivity
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.launch
 
 class MyEvent : AppCompatActivity() {
     private lateinit var binding: ActivityMyEventBinding
-    private var token : String? = ""
     private val viewModel: EventViewModel by viewModels {
         EventViewModelFactory(EventRepository(ApiConfig.getApiService()))
     }
@@ -42,10 +40,23 @@ class MyEvent : AppCompatActivity() {
 
         setupActionBar()
 
-        token = intent.getStringExtra(TOKEN)
+        /*token = intent.getStringExtra(TOKEN)
         getAdapter()
-        getEvent()
+        getEvent()*/
+        setViewPager()
 
+    }
+
+    private fun setViewPager() {
+        val viewPager: ViewPager2 = binding.viewPager
+        val tabs: TabLayout = binding.tabs
+        val eventPagerAdapter = EventPagerAdapter(this)
+
+        viewPager.adapter = eventPagerAdapter
+
+        TabLayoutMediator(tabs, viewPager) { tab, position ->
+            tab.text = resources.getString(TAB_TITLES[position])
+        }.attach()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -72,7 +83,7 @@ class MyEvent : AppCompatActivity() {
         supportActionBar?.setCustomView(customActionBar, actionBarParams)
     }
 
-    private fun getAdapter() {
+    /*private fun getAdapter() {
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvEvent.layoutManager = layoutManager
@@ -102,13 +113,16 @@ class MyEvent : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 
     private fun showLoading(state: Boolean) {
         binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     companion object {
-        const val TOKEN = "token"
+        private val TAB_TITLES = intArrayOf(
+            R.string.event_aktif,
+            R.string.event_selesai
+        )
     }
 }

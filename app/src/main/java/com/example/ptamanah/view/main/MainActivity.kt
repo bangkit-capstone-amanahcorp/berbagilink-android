@@ -22,7 +22,9 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityMainBinding
 import com.example.ptamanah.view.login.LoginActivity
 import com.example.ptamanah.view.myEvent.MyEvent
-import com.example.ptamanah.view.myEvent.MyEvent.Companion.TOKEN
+import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
+import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
+import com.example.ptamanah.viewModel.main.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private var token : String = ""
     private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
     private val viewModel: MainViewModel by viewModels {
-        MainViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
+        AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

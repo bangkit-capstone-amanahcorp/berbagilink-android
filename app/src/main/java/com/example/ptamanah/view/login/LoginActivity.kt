@@ -16,13 +16,15 @@ import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLoginBinding
+import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
+import com.example.ptamanah.viewModel.login.LoginViewModel
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
     private val loginViewModel: LoginViewModel by viewModels {
-        LoginViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
+        AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

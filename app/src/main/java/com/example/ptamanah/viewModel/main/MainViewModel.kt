@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.main
+package com.example.ptamanah.viewModel.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

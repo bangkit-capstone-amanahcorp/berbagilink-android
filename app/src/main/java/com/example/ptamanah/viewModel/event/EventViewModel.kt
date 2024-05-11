@@ -1,4 +1,4 @@
-package com.bangkit.getevent.viewModel
+package com.example.ptamanah.viewModel.event
 
 import android.util.Log
 import androidx.lifecycle.ViewModel

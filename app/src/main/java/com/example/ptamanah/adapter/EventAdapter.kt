@@ -1,11 +1,14 @@
 package com.bangkit.getevent.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.ptamanah.R
 import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.databinding.ListItemEventBinding
 
@@ -29,6 +32,12 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
         holder.binding.apply {
             namaTempat.text = event.namaTempat
             namaEvent.text = event.namaEvent
+
+            if (event.saleStatus == "end") {
+                namaEvent.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.disable))
+                namaTempat.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.disable))
+                imgItem.visibility = View.GONE
+            }
 
         }
 

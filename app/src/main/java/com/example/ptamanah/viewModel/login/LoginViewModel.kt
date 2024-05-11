@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.login
+package com.example.ptamanah.viewModel.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

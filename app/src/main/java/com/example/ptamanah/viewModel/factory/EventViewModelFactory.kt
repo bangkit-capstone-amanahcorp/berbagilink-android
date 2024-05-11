@@ -1,8 +1,9 @@
-package com.bangkit.getevent.viewModel
+package com.example.ptamanah.viewModel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.ptamanah.data.repository.EventRepository
+import com.example.ptamanah.viewModel.event.EventViewModel
 
 @Suppress("UNCHECKED_CAST")
 class EventViewModelFactory(

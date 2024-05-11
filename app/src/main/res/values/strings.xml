@@ -21,6 +21,8 @@
     <string name="login">Login</string>
     <string name="keluar">Keluar</string>
     <string name="event_aktif">Event Aktif</string>
+    <string name="event_selesai">Event Selesai</string>
     <string name="event_saya">Event Saya</string>
+    <string name="event_not_found">belum ada event</string>
 
 </resources>
