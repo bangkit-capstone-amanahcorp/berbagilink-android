@@ -124,7 +124,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showLoading(state: Boolean) {
-        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
+        binding.cardViewLoading.visibility = if (state) View.VISIBLE else View.GONE
+        binding.backGroundOverlay.visibility = if (state) View.VISIBLE else View.GONE
     }
 
 }
