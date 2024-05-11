@@ -91,16 +91,19 @@ class LoginActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     loginViewModel.userLogin(email, password).collect { result ->
                         result.onSuccess { credensial ->
-                            Log.d("tokennya", credensial.data?.accessToken.toString())
+                            Log.d("tokennya1", credensial.data?.accessToken.toString())
 
                             credensial.data?.accessToken?.let { token ->
                                 loginViewModel.saveAuthToken(token)
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 startActivity(intent)
-                                Log.d("tokennya", credensial.data.accessToken)
+                                Log.d("tokennya2", credensial.data.accessToken)
                                 showLoading(false)
                                 finish()
                             }
+
+                            showToast(credensial.info.toString())
+                            showLoading(false)
                         }
                         result.onFailure {
                             showToast("Login gagal")
