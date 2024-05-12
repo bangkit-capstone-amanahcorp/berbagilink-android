@@ -73,4 +73,14 @@ dependencies {
     //tabLayout
     implementation ("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
+
+    //camerax
+    val cameraxVersion = "1.3.0"
+    implementation("androidx.camera:camera-camera2:$cameraxVersion")
+    implementation("androidx.camera:camera-lifecycle:$cameraxVersion")
+    implementation("androidx.camera:camera-view:$cameraxVersion")
+
+    //mlkit
+    implementation("com.google.mlkit:barcode-scanning:17.2.0")
+    implementation("androidx.camera:camera-mlkit-vision:1.4.0-alpha02")
 }

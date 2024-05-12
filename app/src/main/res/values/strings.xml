@@ -27,4 +27,9 @@
     <string name="loading">Loading</string>
     <string name="progress_loading">Mohon tunggu sebentar ya, sedang proses</string>
 
+    <string name="Failed">Failed</string>
+    <string name="faildesc">Barcode gagal discan, coba cek ulang apakah barcode salah atau sudah usang\n</string>
+    <string name="btnRescan">Scan kembali\n</string>
+
+
 </resources>
