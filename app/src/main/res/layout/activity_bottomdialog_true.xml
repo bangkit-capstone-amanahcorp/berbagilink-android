@@ -22,25 +22,65 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvDateEvent"
+        android:id="@+id/tvDateEventStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="dd/mm/yy - dd/mm/yy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginEnd="4dp"
+        android:text="dd/mm/yy"
+        app:layout_constraintBottom_toBottomOf="@+id/strip"
+        app:layout_constraintEnd_toStartOf="@+id/strip"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleEvent" />
 
     <TextView
-        android:id="@+id/tvTimeEvent"
+        android:id="@+id/strip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="3dp"
+        android:text="-"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleEvent"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleEvent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleEvent" />
+
+    <TextView
+        android:id="@+id/tvDateEventEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="dd/mm/yy"
+        app:layout_constraintBottom_toBottomOf="@+id/strip"
+        app:layout_constraintStart_toEndOf="@+id/strip"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleEvent" />
+
+    <TextView
+        android:id="@+id/tvTimeEventStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
         android:text="Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDateEvent" />
+        app:layout_constraintBottom_toBottomOf="@+id/stripTime"
+        app:layout_constraintEnd_toStartOf="@+id/stripTime"
+        app:layout_constraintTop_toTopOf="@+id/stripTime" />
+
+    <TextView
+        android:id="@+id/stripTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleEvent"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleEvent"
+        app:layout_constraintTop_toBottomOf="@+id/strip" />
+
+    <TextView
+        android:id="@+id/tvTimeEventEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="Time"
+        app:layout_constraintBottom_toBottomOf="@+id/stripTime"
+        app:layout_constraintStart_toEndOf="@+id/stripTime"
+        app:layout_constraintTop_toTopOf="@+id/stripTime" />
+
 
     <TextView
         android:id="@+id/tvLocationEvent"
@@ -50,7 +90,7 @@
         android:text="Location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTimeEvent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTimeEventStart" />
 
     <ImageView
         android:id="@+id/imageView"

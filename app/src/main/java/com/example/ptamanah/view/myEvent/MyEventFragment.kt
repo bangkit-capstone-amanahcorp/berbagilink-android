@@ -20,8 +20,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.getevent.adapter.EventAdapter
 import com.example.ptamanah.R
 import com.example.ptamanah.data.repository.EventRepository
+import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.FragmentMyEventBinding
+import com.example.ptamanah.view.camera.CameraActivity
+import com.example.ptamanah.view.camera.CameraActivity.Companion.ID_EVENT
 import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.factory.EventViewModelFactory
 import kotlinx.coroutines.launch
@@ -123,6 +126,19 @@ class MyEventFragment : Fragment() {
                 }
             }
         }
+
+        eventAdapter.setOnItemClickCallBack(object : EventAdapter.OnItemClickCallBack {
+            override fun onItemClicked(user: DataItem) {
+                Intent(context, CameraActivity::class.java).apply {
+                    putExtra(ID_EVENT, user.id)
+                    putExtra(TOKEN, token)
+                }.also {
+                    startActivity(it)
+                }
+            }
+
+        })
+
     }
 
 

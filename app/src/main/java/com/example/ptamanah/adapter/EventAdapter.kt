@@ -15,11 +15,11 @@ import com.example.ptamanah.databinding.ListItemEventBinding
 
 class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    /*private lateinit var onItemClickCallBack: OnItemClickCallBack
+    private lateinit var onItemClickCallBack: OnItemClickCallBack
 
     fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack) {
         this.onItemClickCallBack = onItemClickCallBack
-    }*/
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -37,13 +37,16 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
                 namaEvent.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.disable))
                 namaTempat.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.disable))
                 imgItem.visibility = View.GONE
+                holder.itemView.isEnabled = false
+                holder.itemView.setOnClickListener(null)
+            } else {
+                holder.itemView.setOnClickListener {
+                    onItemClickCallBack.onItemClicked(event)
+                }
             }
 
         }
 
-        /*holder.itemView.setOnClickListener {
-            onItemClickCallBack.onItemClicked(event)
-        }*/
     }
 
     class ViewHolder(val binding: ListItemEventBinding) : RecyclerView.ViewHolder(binding.root)
@@ -66,7 +69,7 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
         }
     }
 
-    /*interface OnItemClickCallBack {
+    interface OnItemClickCallBack {
         fun onItemClicked(user: DataItem)
-    }*/
+    }
 }

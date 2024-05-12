@@ -4,29 +4,48 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.R
+import com.example.ptamanah.data.repository.ScanRepo
+import com.example.ptamanah.data.retrofit.ApiConfig
+import com.example.ptamanah.databinding.ActivityBottomdialogFalseBinding
+import com.example.ptamanah.databinding.ActivityBottomdialogTrueBinding
 import com.example.ptamanah.databinding.ActivityCameraBinding
+import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
+import com.example.ptamanah.viewModel.scan.ScanViewModel
+import com.example.ptamanah.viewModel.scan.ScanViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
+import kotlinx.coroutines.launch
 
 class CameraActivity : AppCompatActivity() {
     private lateinit var barcodeScanner: BarcodeScanner
-    private lateinit var binding: ActivityCameraBinding
+    private lateinit var bindingCamera: ActivityCameraBinding
+    private lateinit var bindingTrue: ActivityBottomdialogTrueBinding
+    private lateinit var bindingFalse: ActivityBottomdialogFalseBinding
     private lateinit var cameraController: LifecycleCameraController
+    private var token : String? = ""
+    private var id: String? = ""
+    private val viewModel: ScanViewModel by viewModels {
+        ScanViewModelFactory(ScanRepo(ApiConfig.getApiService()))
+    }
 
     private val requestPermissionLauncher =
         registerForActivityResult(
@@ -47,8 +66,8 @@ class CameraActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCameraBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        bindingCamera = ActivityCameraBinding.inflate(layoutInflater)
+        setContentView(bindingCamera.root)
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
@@ -67,6 +86,9 @@ class CameraActivity : AppCompatActivity() {
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
 
+        id = intent.getStringExtra(ID_EVENT)
+        token = intent.getStringExtra(TOKEN)
+
         val analyzer = MlKitAnalyzer(
             listOf(barcodeScanner),
             CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
@@ -81,7 +103,7 @@ class CameraActivity : AppCompatActivity() {
             analyzer
         )
         cameraController.bindToLifecycle(this)
-        binding.viewFinder.controller = cameraController
+        bindingCamera.viewFinder.controller = cameraController
     }
 
     private var firstCall = true
@@ -96,10 +118,29 @@ class CameraActivity : AppCompatActivity() {
             val barcodeResults = result?.getValue(barcodeScanner)
             if (barcodeResults != null && barcodeResults.isNotEmpty() && barcodeResults.first() != null) {
                 val barcode = barcodeResults[0]
-                tvIdBooking.text = barcode.rawValue
-                bottomSheetDialog.setContentView(bottomSheetView)
-                bottomSheetDialog.show()
                 cameraController.unbind()
+
+                Log.d("tokenCuy", token.toString())
+                Log.d("idNyo", id.toString())
+
+                lifecycleScope.launch {
+                    viewModel.scanEvent( token.toString(), id.toString(),  barcode.rawValue.toString()).collect{ result ->
+                        result.onSuccess { post->
+                            if(post.error == false) {
+                                tvIdBooking.text = barcode.rawValue
+                                bottomSheetDialog.setContentView(bottomSheetView)
+                                bottomSheetDialog.show()
+                                
+                                Log.d("berhasilCuy", post.error.toString())
+                            } else {
+                                Log.d("gagalCuy", post.error.toString())
+                            }
+                        }
+                        result.onFailure {
+                            showToast("gagal")
+                        }
+                    }
+                }
 
                 button.setOnClickListener {
                     bottomSheetDialog.dismiss()
@@ -132,6 +173,7 @@ class CameraActivity : AppCompatActivity() {
         private const val TAG = "CameraActivity"
         const val EXTRA_CAMERAX_IMAGE = "CameraX Image"
         const val CAMERAX_RESULT = 200
+        const val ID_EVENT = "id_event"
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 }
