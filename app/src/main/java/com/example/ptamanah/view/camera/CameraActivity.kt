@@ -38,8 +38,6 @@ import kotlinx.coroutines.launch
 class CameraActivity : AppCompatActivity() {
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var bindingCamera: ActivityCameraBinding
-    private lateinit var bindingTrue: ActivityBottomdialogTrueBinding
-    private lateinit var bindingFalse: ActivityBottomdialogFalseBinding
     private lateinit var cameraController: LifecycleCameraController
     private var token : String? = ""
     private var id: String? = ""
@@ -110,11 +108,6 @@ class CameraActivity : AppCompatActivity() {
 
     private fun showResult(result: MlKitAnalyzer.Result?) {
         if (firstCall) {
-            val bottomSheetDialog = BottomSheetDialog(this)
-            val bottomSheetView = layoutInflater.inflate(R.layout.activity_bottomdialog_true, null)
-            val tvIdBooking = bottomSheetView.findViewById<TextView>(R.id.tvIdBooking)
-            val button = bottomSheetView.findViewById<Button>(R.id.button)
-
             val barcodeResults = result?.getValue(barcodeScanner)
             if (barcodeResults != null && barcodeResults.isNotEmpty() && barcodeResults.first() != null) {
                 val barcode = barcodeResults[0]
@@ -127,39 +120,43 @@ class CameraActivity : AppCompatActivity() {
                     viewModel.scanEvent( token.toString(), id.toString(),  barcode.rawValue.toString()).collect{ result ->
                         result.onSuccess { post->
                             if(post.error == false) {
-                                tvIdBooking.text = barcode.rawValue
-                                bottomSheetDialog.setContentView(bottomSheetView)
-                                bindingTrue.tvTitleEvent.text = post.data?.event?.namaEvent
-                                bindingTrue.tvDateEventStart.text = post.data?.event?.tanggalStart
-                                bindingTrue.tvDateEventEnd.text = post.data?.event?.tanggalEnd
-                                bindingTrue.tvTimeEventStart.text = post.data?.event?.waktuStart
-                                bindingTrue.tvTimeEventEnd.text = post.data?.event?.waktuEnd
-                                bindingTrue.tvLocationEvent.text = post.data?.event?.namaTempat
-                                bindingTrue.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
+                                bindingCamera.cardViewResultScan.visibility = View.VISIBLE
+                                bindingCamera.cardViewFailResult.visibility = View.GONE
 
-                                bottomSheetDialog.show()
+                                bindingCamera.tvIdBooking.text = barcode.rawValue
+                                bindingCamera.tvTitleEvent.text = post.data?.event?.namaEvent
+                                bindingCamera.tvDateEventStart.text = post.data?.event?.tanggalStart
+                                bindingCamera.tvDateEventEnd.text = post.data?.event?.tanggalEnd
+                                bindingCamera.tvTimeEventStart.text = post.data?.event?.waktuStart
+                                bindingCamera.tvTimeEventEnd.text = post.data?.event?.waktuEnd
+                                bindingCamera.tvLocationEvent.text = post.data?.event?.namaTempat
+                                bindingCamera.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
 
+                                bindingCamera.button.setOnClickListener {
+                                    bindingCamera.cardViewResultScan.visibility = View.GONE
+                                    startCamera()
+                                }
                                 Log.d("berhasilCuy", post.error.toString())
                             } else {
                                 Log.d("gagalCuy", post.error.toString())
                             }
                         }
                         result.onFailure {
-                            showToast("gagal")
+                            showToast("gagalohhhh")
+                            bindingCamera.cardViewFailResult.visibility = View.VISIBLE
+
+                            bindingCamera.btnRescan.setOnClickListener {
+                                bindingCamera.cardViewFailResult.visibility = View.GONE
+                                startCamera()
                         }
                     }
                 }
-
-                button.setOnClickListener {
-                    bottomSheetDialog.dismiss()
                     firstCall = true
-                    startCamera()
                 }
                 firstCall = false
             }
         }
     }
-
 
 
     private fun hideSystemUI() {
@@ -178,7 +175,6 @@ class CameraActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
 
 
     companion object {
