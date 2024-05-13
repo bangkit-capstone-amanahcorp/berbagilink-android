@@ -129,8 +129,16 @@ class CameraActivity : AppCompatActivity() {
                             if(post.error == false) {
                                 tvIdBooking.text = barcode.rawValue
                                 bottomSheetDialog.setContentView(bottomSheetView)
+                                bindingTrue.tvTitleEvent.text = post.data?.event?.namaEvent
+                                bindingTrue.tvDateEventStart.text = post.data?.event?.tanggalStart
+                                bindingTrue.tvDateEventEnd.text = post.data?.event?.tanggalEnd
+                                bindingTrue.tvTimeEventStart.text = post.data?.event?.waktuStart
+                                bindingTrue.tvTimeEventEnd.text = post.data?.event?.waktuEnd
+                                bindingTrue.tvLocationEvent.text = post.data?.event?.namaTempat
+                                bindingTrue.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
+
                                 bottomSheetDialog.show()
-                                
+
                                 Log.d("berhasilCuy", post.error.toString())
                             } else {
                                 Log.d("gagalCuy", post.error.toString())
@@ -152,6 +160,8 @@ class CameraActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun hideSystemUI() {
         @Suppress("DEPRECATION")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -168,6 +178,8 @@ class CameraActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
+
 
     companion object {
         private const val TAG = "CameraActivity"

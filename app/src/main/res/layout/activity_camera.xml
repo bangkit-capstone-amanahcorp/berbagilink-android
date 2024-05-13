@@ -58,4 +58,180 @@
         app:layout_constraintVertical_bias="0.04000002"
         app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewResultScan"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:strokeColor="@color/biru_toska"
+        app:strokeWidth="0.5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvTitleEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical"
+                android:text="TitleEvent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDateEventStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="dd/mm/yy"
+                app:layout_constraintBottom_toBottomOf="@+id/strip"
+                app:layout_constraintEnd_toStartOf="@+id/strip"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEvent" />
+
+            <TextView
+                android:id="@+id/strip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvTitleEvent"
+                app:layout_constraintStart_toStartOf="@+id/tvTitleEvent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEvent" />
+
+            <TextView
+                android:id="@+id/tvDateEventEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="dd/mm/yy"
+                app:layout_constraintBottom_toBottomOf="@+id/strip"
+                app:layout_constraintStart_toEndOf="@+id/strip"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleEvent" />
+
+            <TextView
+                android:id="@+id/tvTimeEventStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="Time"
+                app:layout_constraintBottom_toBottomOf="@+id/stripTime"
+                app:layout_constraintEnd_toStartOf="@+id/stripTime"
+                app:layout_constraintTop_toTopOf="@+id/stripTime" />
+
+            <TextView
+                android:id="@+id/stripTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/tvTitleEvent"
+                app:layout_constraintStart_toStartOf="@+id/tvTitleEvent"
+                app:layout_constraintTop_toBottomOf="@+id/strip" />
+
+            <TextView
+                android:id="@+id/tvTimeEventEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Time"
+                app:layout_constraintBottom_toBottomOf="@+id/stripTime"
+                app:layout_constraintStart_toEndOf="@+id/stripTime"
+                app:layout_constraintTop_toTopOf="@+id/stripTime" />
+
+
+            <TextView
+                android:id="@+id/tvLocationEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTimeEventStart" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvLocationEvent"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/horizontal_line" />
+
+            <TextView
+                android:id="@+id/tvTipeTiket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TipeTiket"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Kode tiket:"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTipeTiket" />
+
+            <ImageView
+                android:id="@+id/borderidbooking"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:srcCompat="@drawable/border_bookedcode" />
+
+            <TextView
+                android:id="@+id/tvIdBooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BBDG..."
+                android:textColor="#faac18"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/borderidbooking"
+                app:layout_constraintEnd_toEndOf="@+id/borderidbooking"
+                app:layout_constraintHorizontal_bias="0.02"
+                app:layout_constraintStart_toStartOf="@+id/borderidbooking"
+                app:layout_constraintTop_toTopOf="@+id/borderidbooking" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:text="selesai"
+                android:backgroundTint="#07afc7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/borderidbooking" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
