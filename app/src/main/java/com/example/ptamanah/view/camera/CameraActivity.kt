@@ -4,12 +4,9 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -19,16 +16,12 @@ import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.ptamanah.R
 import com.example.ptamanah.data.repository.ScanRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
-import com.example.ptamanah.databinding.ActivityBottomdialogFalseBinding
-import com.example.ptamanah.databinding.ActivityBottomdialogTrueBinding
 import com.example.ptamanah.databinding.ActivityCameraBinding
 import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
 import com.example.ptamanah.viewModel.scan.ScanViewModel
 import com.example.ptamanah.viewModel.scan.ScanViewModelFactory
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
@@ -39,7 +32,7 @@ class CameraActivity : AppCompatActivity() {
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var bindingCamera: ActivityCameraBinding
     private lateinit var cameraController: LifecycleCameraController
-    private var token : String? = ""
+    private var token: String? = ""
     private var id: String? = ""
     private val viewModel: ScanViewModel by viewModels {
         ScanViewModelFactory(ScanRepo(ApiConfig.getApiService()))
@@ -50,9 +43,9 @@ class CameraActivity : AppCompatActivity() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                showToast("Permission request granted")
+                showToast("Izin diberikan")
             } else {
-                showToast("Permission request denied")
+                showToast("Beri izin untuk menggunakan kamera")
             }
         }
 
@@ -94,7 +87,6 @@ class CameraActivity : AppCompatActivity() {
         ) { result: MlKitAnalyzer.Result? ->
             showResult(result)
         }
-
         cameraController = LifecycleCameraController(baseContext)
         cameraController.setImageAnalysisAnalyzer(
             ContextCompat.getMainExecutor(this),
@@ -105,53 +97,50 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private var firstCall = true
-
     private fun showResult(result: MlKitAnalyzer.Result?) {
         if (firstCall) {
             val barcodeResults = result?.getValue(barcodeScanner)
             if (barcodeResults != null && barcodeResults.isNotEmpty() && barcodeResults.first() != null) {
                 val barcode = barcodeResults[0]
                 cameraController.unbind()
-
-                Log.d("tokenCuy", token.toString())
-                Log.d("idNyo", id.toString())
-
                 lifecycleScope.launch {
-                    viewModel.scanEvent( token.toString(), id.toString(),  barcode.rawValue.toString()).collect{ result ->
-                        result.onSuccess { post->
-                                bindingCamera.cardViewResultScan.visibility = View.VISIBLE
-                                bindingCamera.cardViewFailResult.visibility = View.GONE
+                    viewModel.scanEvent(
+                        token.toString(),
+                        id.toString(),
+                        barcode.rawValue.toString()
+                    ).collect { result ->
+                        result.onSuccess { post ->
+                            bindingCamera.cardViewResultScan.visibility = View.VISIBLE
+                            bindingCamera.cardViewFailResult.visibility = View.GONE
 
-                                bindingCamera.tvIdBooking.text = barcode.rawValue
-                                bindingCamera.tvTitleEvent.text = post.data?.event?.namaEvent
-                                bindingCamera.tvDateEventStart.text = post.data?.event?.tanggalStart
-                                bindingCamera.tvDateEventEnd.text = post.data?.event?.tanggalEnd
-                                bindingCamera.tvTimeEventStart.text = post.data?.event?.waktuStart
-                                bindingCamera.tvTimeEventEnd.text = post.data?.event?.waktuEnd
-                                bindingCamera.tvLocationEvent.text = post.data?.event?.namaTempat
-                                bindingCamera.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
+                            bindingCamera.tvIdBooking.text = barcode.rawValue
+                            bindingCamera.tvTitleEvent.text = post.data?.event?.namaEvent
+                            bindingCamera.tvDateEventStart.text = post.data?.event?.tanggalStart
+                            bindingCamera.tvDateEventEnd.text = post.data?.event?.tanggalEnd
+                            bindingCamera.tvTimeEventStart.text = post.data?.event?.waktuStart
+                            bindingCamera.tvTimeEventEnd.text = post.data?.event?.waktuEnd
+                            bindingCamera.tvLocationEvent.text = post.data?.event?.namaTempat
+                            bindingCamera.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
 
-                                bindingCamera.button.setOnClickListener {
-                                    bindingCamera.cardViewResultScan.visibility = View.GONE
-                                    startCamera()
-                                }
+                            bindingCamera.button.setOnClickListener {
+                                bindingCamera.cardViewResultScan.visibility = View.GONE
+                                startCamera()
+                            }
                         }
                         result.onFailure {
                             bindingCamera.cardViewFailResult.visibility = View.VISIBLE
-
                             bindingCamera.btnRescan.setOnClickListener {
                                 bindingCamera.cardViewFailResult.visibility = View.GONE
                                 startCamera()
+                            }
                         }
                     }
-                }
                     firstCall = true
                 }
                 firstCall = false
             }
         }
     }
-
 
     private fun hideSystemUI() {
         @Suppress("DEPRECATION")
@@ -169,7 +158,6 @@ class CameraActivity : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
 
     companion object {
         const val ID_EVENT = "id_event"

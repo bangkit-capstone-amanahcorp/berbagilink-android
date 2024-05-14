@@ -165,12 +165,12 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardViewLoading"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         app:strokeColor="@color/biru_toska"
         app:strokeWidth="0.5dp"
         android:visibility="gone"
         tools:visibility="visible"
-        app:cardCornerRadius="10dp"
+        app:shapeAppearanceOverlay="@style/TopRoundedCorner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

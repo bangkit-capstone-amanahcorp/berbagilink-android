@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -31,28 +30,21 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         getSupportActionBar()?.hide()
-
         ActionLogin()
-
     }
 
     private fun ActionLogin() {
-
         binding.emailEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 binding.passwordEditTextLayout.error = null
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
             }
 
             override fun afterTextChanged(s: Editable?) {
-
             }
-
         })
 
         binding.passwordEditText.addTextChangedListener(object : TextWatcher {
@@ -61,13 +53,10 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
             }
 
             override fun afterTextChanged(s: Editable?) {
-
             }
-
         })
 
         binding.loginButton.setOnClickListener {
@@ -88,36 +77,29 @@ class LoginActivity : AppCompatActivity() {
                 binding.passwordEditTextLayout.error =
                     "The field must be at least 5 characters long"
             } else {
-
                 showLoading(true)
                 lifecycleScope.launch {
                     loginViewModel.userLogin(email, password).collect { result ->
                         result.onSuccess { credensial ->
-                            Log.d("tokennya1", credensial.data?.accessToken.toString())
-
                             credensial.data?.accessToken?.let { token ->
                                 loginViewModel.saveAuthToken(token)
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                                 startActivity(intent)
-                                Log.d("tokennya2", credensial.data.accessToken)
                                 showLoading(false)
                                 finish()
                             }
-
                             showToast(credensial.info.toString())
                             showLoading(false)
                         }
                         result.onFailure {
                             showToast("Login gagal")
                             showLoading(false)
-                            Log.d("errorNi", result.toString())
                         }
                     }
                 }
             }
         }
     }
-
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -127,5 +109,4 @@ class LoginActivity : AppCompatActivity() {
         binding.cardViewLoading.visibility = if (state) View.VISIBLE else View.GONE
         binding.backGroundOverlay.visibility = if (state) View.VISIBLE else View.GONE
     }
-
 }
