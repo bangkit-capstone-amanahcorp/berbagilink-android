@@ -119,7 +119,6 @@ class CameraActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     viewModel.scanEvent( token.toString(), id.toString(),  barcode.rawValue.toString()).collect{ result ->
                         result.onSuccess { post->
-                            if(post.error == false) {
                                 bindingCamera.cardViewResultScan.visibility = View.VISIBLE
                                 bindingCamera.cardViewFailResult.visibility = View.GONE
 
@@ -136,13 +135,8 @@ class CameraActivity : AppCompatActivity() {
                                     bindingCamera.cardViewResultScan.visibility = View.GONE
                                     startCamera()
                                 }
-                                Log.d("berhasilCuy", post.error.toString())
-                            } else {
-                                Log.d("gagalCuy", post.error.toString())
-                            }
                         }
                         result.onFailure {
-                            showToast("gagalohhhh")
                             bindingCamera.cardViewFailResult.visibility = View.VISIBLE
 
                             bindingCamera.btnRescan.setOnClickListener {
@@ -178,9 +172,6 @@ class CameraActivity : AppCompatActivity() {
 
 
     companion object {
-        private const val TAG = "CameraActivity"
-        const val EXTRA_CAMERAX_IMAGE = "CameraX Image"
-        const val CAMERAX_RESULT = 200
         const val ID_EVENT = "id_event"
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
