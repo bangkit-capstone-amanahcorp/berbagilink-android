@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -63,7 +64,12 @@ class CameraActivity : AppCompatActivity() {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
         startCamera()
+
+        bindingCamera.backbtn.setOnClickListener {
+            finish()
+        }
     }
+
 
     public override fun onResume() {
         super.onResume()

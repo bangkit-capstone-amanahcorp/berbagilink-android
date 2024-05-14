@@ -21,6 +21,7 @@
             android:layout_height="10dp"
             android:scaleType="centerCrop"
             android:layout_margin="8dp"
+
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,7 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="@+id/nama_tempat"
             card_view:layout_constraintStart_toEndOf="@+id/img_item"
-            card_view:layout_constraintTop_toBottomOf="@+id/img_item"
+            card_view:layout_constraintTop_toTopOf="@+id/img_item"
             tools:text="nama Event" />
 
 
