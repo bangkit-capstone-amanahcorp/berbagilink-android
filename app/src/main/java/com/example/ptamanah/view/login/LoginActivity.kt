@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         getSupportActionBar()?.hide()
         ActionLogin()
+        loginTenant()
     }
 
     private fun ActionLogin() {
@@ -98,6 +99,12 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun loginTenant() {
+        binding.loginTenant.setOnClickListener {
+            startActivity(Intent(this, LoginTenantActivity::class.java))
         }
     }
 
