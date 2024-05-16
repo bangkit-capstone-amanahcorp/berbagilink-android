@@ -1,5 +1,7 @@
 package com.example.ptamanah.data.repository
 
+import android.util.Log
+import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +19,18 @@ class EventRepository(
             emit(Result.success(response))
         } catch (e: Exception) {
             emit(Result.failure(e))
+        }
+    }
+
+    suspend fun getChekinrespon(token: String): Flow<Result<ResponseDataVisitorTenant>> = flow {
+        try {
+            val bearerToken = bearerToken(token)
+            val response = apiService.getChekin(bearerToken)
+            Log.d("ResponseIniBrok", response.toString())
+            emit(Result.success(response))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+            Log.e("Error", "Failed to fetch events", e)
         }
     }
 

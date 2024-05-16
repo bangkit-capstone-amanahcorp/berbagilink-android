@@ -18,6 +18,11 @@
         android:theme="@style/HomePage"
         tools:targetApi="31">
         <activity
+            android:name=".view.eventTenant.LogCheckinTenant"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+        <activity
             android:name=".view.eventTenant.DetailEventTenant"
             android:exported="false"
             android:screenOrientation="portrait" />
@@ -29,7 +34,7 @@
             android:name=".view.login.LoginTenantActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/LoginTenant"/>
+            android:theme="@style/LoginTenant" />
         <activity
             android:name=".view.splashScreen.SplashScreenActivity"
             android:exported="true"
@@ -52,8 +57,7 @@
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".view.camera.CameraActivity"
             android:exported="false"

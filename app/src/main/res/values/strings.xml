@@ -39,6 +39,11 @@
     <string name="nama_event">Nama Event</string>
     <string name="nama_organizer">Nama Organizer</string>
     <string name="check_event">Check Event</string>
+    <string name="idcheckin">ID</string>
+    <string name="nama_pemilik">Nama Pemilik</string>
+    <string name="No_telepon">No Telepon</string>
+    <string name="tanggalcekin">Tanggal Check-in</string>
+    <string name="searchbar_hint">Cari riwayat check-in</string>
 
 
 </resources>
