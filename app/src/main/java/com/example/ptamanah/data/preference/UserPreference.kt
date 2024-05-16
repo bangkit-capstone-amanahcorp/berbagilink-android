@@ -20,9 +20,35 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
         }
     }
 
+
     fun getSession(): Flow<String?> {
         return dataStore.data.map { preferences ->
             preferences[TOKEN_KEY]
+        }
+    }
+
+    suspend fun saveSessionTenant(user: String) {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_TENANT] = user
+        }
+    }
+
+    fun getSessionTenant(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[TOKEN_TENANT]
+        }
+    }
+
+
+    suspend fun saveEmail(email: String) {
+        dataStore.edit { preferences ->
+            preferences[EMAIL] = email
+        }
+    }
+
+    fun getEmail(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[EMAIL]
         }
     }
 
@@ -34,5 +60,7 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
 
     companion object {
         private val TOKEN_KEY = stringPreferencesKey("token")
+        private val TOKEN_TENANT = stringPreferencesKey("tokenTenant")
+        private val EMAIL = stringPreferencesKey("email")
     }
 }
