@@ -4,13 +4,14 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.MenuItem
+import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -18,14 +19,16 @@ import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.ScanRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
-import com.example.ptamanah.databinding.ActivityCameraBinding
-import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
+import com.example.ptamanah.databinding.ActivityCameraTenantBinding
+import com.example.ptamanah.view.myEvent.MyEventFragment
 import com.example.ptamanah.viewModel.scan.ScanViewModel
 import com.example.ptamanah.viewModel.scan.ScanViewModelFactory
 import com.google.mlkit.vision.barcode.BarcodeScanner
@@ -33,10 +36,12 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import kotlinx.coroutines.launch
+import org.json.JSONObject
+import retrofit2.HttpException
 
-class CameraActivity : AppCompatActivity() {
+class CameraTenant : AppCompatActivity() {
     private lateinit var barcodeScanner: BarcodeScanner
-    private lateinit var bindingCamera: ActivityCameraBinding
+    private lateinit var binding: ActivityCameraTenantBinding
     private lateinit var cameraController: LifecycleCameraController
     private var token: String? = ""
     private var id: String? = ""
@@ -63,22 +68,32 @@ class CameraActivity : AppCompatActivity() {
             REQUIRED_PERMISSION
         ) == PackageManager.PERMISSION_GRANTED
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingCamera = ActivityCameraBinding.inflate(layoutInflater)
-        setContentView(bindingCamera.root)
+        binding = ActivityCameraTenantBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         if (!allPermissionsGranted()) {
             requestPermissionLauncher.launch(REQUIRED_PERMISSION)
         }
-        if (!isCameraStarted) {
-            startCamera()
+
+
+        viewModel.getTokenTenant().observe(this) {
+            token = it
+            Log.d("TOKENAWAL", token.toString())
+            if (!isCameraStarted) {
+                startCamera()
+            }
+
         }
 
-        bindingCamera.backbtn.setOnClickListener {
+
+        binding.backbtn.setOnClickListener {
             finish()
         }
-    }
 
+    }
 
     public override fun onResume() {
         super.onResume()
@@ -91,9 +106,10 @@ class CameraActivity : AppCompatActivity() {
             .build()
         barcodeScanner = BarcodeScanning.getClient(options)
 
-        id = intent.getStringExtra(ID_EVENT)
-        token = intent.getStringExtra(TOKEN)
+        id = intent.getStringExtra(ID_EVENT_TENANT)
 
+        Log.d("IDNYA", id.toString())
+        Log.d("TOKENNYA", token.toString())
         val analyzer = MlKitAnalyzer(
             listOf(barcodeScanner),
             CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
@@ -107,25 +123,28 @@ class CameraActivity : AppCompatActivity() {
             analyzer
         )
         cameraController.bindToLifecycle(this)
-        bindingCamera.viewFinder.controller = cameraController
+        binding.viewFinder.controller = cameraController
         val aniSlide: Animation =
-            AnimationUtils.loadAnimation(this@CameraActivity, R.anim.scanner_animation)
-        bindingCamera.barcodeLine.startAnimation(aniSlide)
+            AnimationUtils.loadAnimation(this@CameraTenant, R.anim.scanner_animation)
+        binding.barcodeLine.startAnimation(aniSlide)
+
         isCameraStarted = true
     }
 
+
     private var firstCall = true
     private fun showResult(result: MlKitAnalyzer.Result?) {
-        bindingCamera.barcodeLine.visibility = View.VISIBLE
+        binding.barcodeLine.visibility = View.VISIBLE
+
         if (firstCall) {
             val barcodeResults = result?.getValue(barcodeScanner)
             if (barcodeResults != null && barcodeResults.isNotEmpty() && barcodeResults.first() != null) {
                 val barcode = barcodeResults[0]
 
-                val boxLeft = bindingCamera.camerashape.left
-                val boxRight = bindingCamera.camerashape.right
-                val boxTop = bindingCamera.camerashape.top
-                val boxBottom = bindingCamera.camerashape.bottom
+                val boxLeft = binding.camerashape.left
+                val boxRight = binding.camerashape.right
+                val boxTop = binding.camerashape.top
+                val boxBottom = binding.camerashape.bottom
 
                 val barcodeBox = barcode.boundingBox ?: return
 
@@ -133,20 +152,27 @@ class CameraActivity : AppCompatActivity() {
                         && barcodeBox.top >= boxTop && barcodeBox.bottom <= boxBottom)
 
                 if (barcodeInsideBox) {
-                    bindingCamera.barcodeLine.clearAnimation()
-                    bindingCamera.barcodeLine.visibility = View.GONE
+                    binding.barcodeLine.clearAnimation()
+                    binding.barcodeLine.visibility = View.GONE
                     cameraController.unbind()
                     lifecycleScope.launch {
-                        viewModel.scanEvent(
+                        viewModel.scanTenant(
                             token.toString(),
                             id.toString(),
                             barcode.rawValue.toString()
                         ).collect { result ->
                             result.onSuccess { post ->
-                                bindingCamera.cardViewResultScan.visibility = View.VISIBLE
-                                bindingCamera.cardViewFailResult.visibility = View.GONE
+                                binding.cardViewResultScan.visibility = View.VISIBLE
+                                binding.cardViewFailResult.visibility = View.GONE
 
-                                bindingCamera.tvIdBooking.text = barcode.rawValue
+                                binding.apply {
+                                    tvIdTiketIsi.text = post.data?.ticketId.toString()
+                                    tvNamaVisitorIsi.text = post.data?.nama
+                                    tvEmailIsi.text = post.data?.email
+                                    tvNoHpIsi.text = post.data?.noTelp
+                                    tvTglIsi.text = post.data?.visitedAt
+                                }
+                               /* bindingCamera.tvIdBooking.text = barcode.rawValue
                                 bindingCamera.tvTitleEvent.text = post.data?.event?.namaEvent
                                 bindingCamera.tvDateEventStart.text = post.data?.event?.tanggalStart
                                 bindingCamera.tvDateEventEnd.text = post.data?.event?.tanggalEnd
@@ -154,16 +180,28 @@ class CameraActivity : AppCompatActivity() {
                                 bindingCamera.tvTimeEventEnd.text = post.data?.event?.waktuEnd
                                 bindingCamera.tvLocationEvent.text = post.data?.event?.namaTempat
                                 bindingCamera.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
-
-                                bindingCamera.button.setOnClickListener {
-                                    bindingCamera.cardViewResultScan.visibility = View.GONE
+*/
+                                binding.button.setOnClickListener {
+                                    binding.cardViewResultScan.visibility = View.GONE
                                     startCamera()
                                 }
                             }
-                            result.onFailure {
-                                bindingCamera.cardViewFailResult.visibility = View.VISIBLE
-                                bindingCamera.btnRescan.setOnClickListener {
-                                    bindingCamera.cardViewFailResult.visibility = View.GONE
+                            result.onFailure { exception ->
+                                val errorMessage = if (exception is HttpException) {
+                                    try {
+                                        val errorBody = exception.response()?.errorBody()?.string().toString()
+                                        JSONObject(errorBody).getString("message")
+                                    } catch (e: Exception) {
+                                        "Terjadi kesalahan"
+                                    }
+                                } else {
+                                    "Terjadi kesalahan"
+                                }
+                                
+                                binding.cardViewFailResult.visibility = View.VISIBLE
+                                binding.tvdeskripsifailed.text = errorMessage
+                                binding.btnRescan.setOnClickListener {
+                                    binding.cardViewFailResult.visibility = View.GONE
                                     startCamera()
                                 }
                             }
@@ -194,7 +232,7 @@ class CameraActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val ID_EVENT = "id_event"
+        const val ID_EVENT_TENANT = "idEvent"
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 }

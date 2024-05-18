@@ -6,6 +6,8 @@ import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
 import com.example.ptamanah.data.response.ResponseScan
+import com.example.ptamanah.data.response.ResponseScanTenant
+import com.example.ptamanah.data.response.ResponseTenantProfile
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -46,6 +48,11 @@ interface ApiService {
         @Header("Authorization") token: String
     ) : ResponseDataVisitorTenant
 
+    @GET("event-mobile/tenant/profile")
+    suspend fun tenantProfile(
+        @Header("Authorization") token: String
+    ) : ResponseTenantProfile
+
     @FormUrlEncoded
     @POST("event-mobile/check-in/{eventId}/scan/update")
     suspend fun scanEvent(
@@ -53,4 +60,12 @@ interface ApiService {
         @Path("eventId") eventId: String,
         @Field("booking_code") bookingCode: String
     ): ResponseScan
+
+    @FormUrlEncoded
+    @POST("event-mobile/tenant/event/{eventId}/scan-visitor")
+    suspend fun scanTenant(
+        @Header("Authorization") token: String,
+        @Path("eventId") eventId: String,
+        @Field("booking_code") bookingCode: String
+    ): ResponseScanTenant
 }

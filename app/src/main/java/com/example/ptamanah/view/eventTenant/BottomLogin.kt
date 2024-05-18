@@ -63,8 +63,11 @@ class BottomLogin : BottomSheetDialogFragment() {
 
                             if (credential.info == "Login berhasil") {
                                 showToast("Berhasil masuk")
-                                startActivity(Intent(context, DetailEventTenant::class.java))
+
                                 loginViewModel.saveSessionTenant(credential.data?.token.toString())
+                                val intent = Intent(context, DetailEventTenant::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                startActivity(intent)
                             } else {
                                 showToast("Silahkan cek Email/No Handphone dan password anda.")
                                 dismiss()

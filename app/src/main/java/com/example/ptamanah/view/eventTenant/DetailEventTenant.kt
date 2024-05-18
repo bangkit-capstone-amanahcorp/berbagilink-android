@@ -3,6 +3,7 @@ package com.example.ptamanah.view.eventTenant
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -15,16 +16,20 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityDetailEventTenantBinding
+import com.example.ptamanah.view.camera.CameraTenant
+import com.example.ptamanah.view.camera.CameraTenant.Companion.ID_EVENT_TENANT
 import com.example.ptamanah.view.login.LoginActivity
 import com.example.ptamanah.view.main.MainActivity
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
+import kotlinx.coroutines.launch
 
 class DetailEventTenant : AppCompatActivity() {
 
@@ -33,6 +38,7 @@ class DetailEventTenant : AppCompatActivity() {
     private val viewModel: EventTenantViewModel by viewModels {
         AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
     }
+    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +46,37 @@ class DetailEventTenant : AppCompatActivity() {
         setContentView(binding.root)
 
         setupActionBar()
+        viewModel.getSessionTenant().observe(this) {
+            token = it.toString()
+            Log.d("IsisToken", token)
+
+            getTenantProfile()
+        }
+
+    }
+
+    private fun getTenantProfile() {
+        lifecycleScope.launch {
+            viewModel.getTenantProfile(token).collect {result ->
+                result.onSuccess { data ->
+                    binding.apply {
+                        namaTenant.text = data.data?.namaPerusahaan
+                        kodeTenant.text = data.data?.kodeTenant
+                        namaEvent.text = data.data?.event?.namaEvent
+                        namaOrgani.text = data.data?.event?.namaOrganizer
+                    }
+
+                    binding.qrButton.setOnClickListener{
+                        Intent(this@DetailEventTenant, CameraTenant::class.java).apply {
+                            putExtra(ID_EVENT_TENANT, data.data?.eventId)
+                        }.also { startActivity(it) }
+                    }
+                }
+                result.onFailure {
+                    Log.e("erorGes", "hmm")
+                }
+            }
+        }
     }
 
     private fun setupActionBar() {
@@ -53,6 +90,11 @@ class DetailEventTenant : AppCompatActivity() {
         )
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(customActionBar, actionBarParams)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
