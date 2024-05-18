@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="biru_toska">#07AFC7</color>
     <color name="disable">#9C9C9C</color>
+    <color name="green_berhasil">#4DB85A</color>
+    <color name="blue_border">#75A8D5</color>
 </resources>

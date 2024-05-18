@@ -29,7 +29,7 @@
 
     <string name="Failed">Failed</string>
     <string name="faildesc">Barcode gagal discan, coba cek ulang apakah barcode salah atau sudah usang\n</string>
-    <string name="btnRescan">Scan kembali\n</string>
+    <string name="btnRescan">Scan kembali</string>
     <string name="login_sebagai_tenant">Login sebagai Tenant</string>
     <string name="check_email_text">Check email untuk mendapatkan list event</string>
     <string name="email">Email</string>
@@ -45,6 +45,12 @@
     <string name="tanggalcekin">Tanggal Check-in</string>
     <string name="searchbar_hint">Cari riwayat check-in</string>
     <string name="btn_lihat_detail">Lihat Detail</string>
+    <string name="failed_scan_tenant">Tiket Tidak Ditemukan</string>
+    <string name="gagal_scan">Barcode gagal discan</string>
+    <string name="id_tiket">ID Tiket</string>
+    <string name="nama_visitor">Nama Visitor</string>
+    <string name="berhasil_terdaftar">Berhasil terdaftar!</string>
+    <string name="selesai">Selesai</string>
 
 
 </resources>

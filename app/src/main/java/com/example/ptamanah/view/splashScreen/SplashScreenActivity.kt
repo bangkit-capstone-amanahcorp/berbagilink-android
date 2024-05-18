@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,17 +39,17 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             viewModelTenant.getSessionTenant().observe(this) { tenantSession ->
                 if (tenantSession != null) {
+                    Log.d("tenantSes", tenantSession.toString())
                     startActivity(Intent(this, DetailEventTenant::class.java))
                 }
             }
 
             viewModelCashier.getSession().observe(this) { cashierSession ->
                 if (cashierSession != null) {
+                    Log.d("casSes", cashierSession.toString())
                     startActivity(Intent(this, MainActivity::class.java))
                 }
             }
-
-            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }, 2000)
     }
