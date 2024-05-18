@@ -44,6 +44,7 @@
     <string name="No_telepon">No Telepon</string>
     <string name="tanggalcekin">Tanggal Check-in</string>
     <string name="searchbar_hint">Cari riwayat check-in</string>
+    <string name="btn_lihat_detail">Lihat Detail</string>
 
 
 </resources>
