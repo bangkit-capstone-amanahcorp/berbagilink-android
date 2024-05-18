@@ -5,6 +5,7 @@ import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
+import com.example.ptamanah.data.response.ResponseTenantProfile
 import com.example.ptamanah.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -58,6 +59,21 @@ class AuthRepo(
 
     suspend fun saveAuthTenant(token: String) {
         userPreference.saveSessionTenant(token)
+    }
+
+    suspend fun getTenantProfile(token: String): Flow<Result<ResponseTenantProfile>> = flow {
+        try {
+            val bearerToken = bearerToken(token)
+            val response = apiService.tenantProfile(bearerToken)
+            Log.d("TokenCuy", response.toString())
+            emit(Result.success(response))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
+
+    private fun bearerToken(token: String): String {
+        return "Bearer $token"
     }
 
     fun getSessionTenant(): Flow<String?> = userPreference.getSessionTenant()

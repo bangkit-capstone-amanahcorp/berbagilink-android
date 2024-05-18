@@ -15,6 +15,7 @@ import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLoginBinding
+import com.example.ptamanah.view.eventTenant.DetailEventTenant
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.login.LoginViewModel
 import kotlinx.coroutines.launch
@@ -85,6 +86,7 @@ class LoginActivity : AppCompatActivity() {
                             credensial.data?.accessToken?.let { token ->
                                 loginViewModel.saveAuthToken(token)
                                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                                 showLoading(false)
                                 finish()

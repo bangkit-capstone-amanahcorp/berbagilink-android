@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.camera.CameraTenant">
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000" />
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/camerashape"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/scan_tiket"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewFinder"
+        app:srcCompat="@drawable/camera_aim" />
+
+    <View
+        android:id="@+id/barcode_line"
+        android:layout_width="250dp"
+        android:layout_height="3dp"
+        android:visibility="gone"
+        android:background="@color/biru_toska"
+        app:layout_constraintStart_toStartOf="@+id/camerashape"
+        app:layout_constraintTop_toTopOf="@+id/camerashape" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/camerashape"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icon" />
+
+    <ImageView
+        android:id="@+id/backbtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04000002"
+        app:srcCompat="@drawable/baseline_arrow_back_ios_24" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewResultScan"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        app:strokeColor="@color/biru_toska"
+        app:shapeAppearanceOverlay="@style/TopRoundedCorner"
+        app:strokeWidth="0.5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvBerhasildaftar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical"
+                android:text="@string/berhasil_terdaftar"
+                android:textColor="@color/green_berhasil"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/tvIdTiket"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvIdTiket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/id_tiket"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/borderIdTiket"
+                app:layout_constraintStart_toStartOf="@+id/tvBerhasildaftar" />
+
+            <ImageView
+                android:id="@+id/borderIdTiket"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNamaVisitor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvIdTiket"
+                app:srcCompat="@drawable/border_success_scan" />
+
+            <TextView
+                android:id="@+id/tvIdTiketIsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/borderIdTiket"
+                app:layout_constraintEnd_toEndOf="@+id/borderIdTiket"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="@+id/borderIdTiket"
+                app:layout_constraintTop_toTopOf="@+id/borderIdTiket"
+                tools:text="kode" />
+
+            <TextView
+                android:id="@+id/tvNamaVisitor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/nama_visitor"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/borderNameVisitor"
+                app:layout_constraintStart_toStartOf="@+id/borderIdTiket" />
+
+            <ImageView
+                android:id="@+id/borderNameVisitor"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvNamaVisitor"
+                app:srcCompat="@drawable/border_success_scan" />
+
+            <TextView
+                android:id="@+id/tvNamaVisitorIsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/borderNameVisitor"
+                app:layout_constraintEnd_toEndOf="@+id/borderNameVisitor"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="@+id/borderNameVisitor"
+                app:layout_constraintTop_toTopOf="@+id/borderNameVisitor"
+                tools:text="kode" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Email Visitor"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/borderEmailVisitor"
+                app:layout_constraintStart_toStartOf="@+id/borderNameVisitor" />
+
+            <ImageView
+                android:id="@+id/borderEmailVisitor"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNoHp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvEmail"
+                app:srcCompat="@drawable/border_success_scan" />
+
+            <TextView
+                android:id="@+id/tvEmailIsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/borderEmailVisitor"
+                app:layout_constraintEnd_toEndOf="@+id/borderEmailVisitor"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="@+id/borderEmailVisitor"
+                app:layout_constraintTop_toTopOf="@+id/borderEmailVisitor"
+                tools:text="kode" />
+
+            <TextView
+                android:id="@+id/tvNoHp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Nomor Telepon Visitor"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/borderNoHp"
+                app:layout_constraintStart_toStartOf="@+id/borderEmailVisitor" />
+
+            <ImageView
+                android:id="@+id/borderNoHp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvTgl"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvNoHp"
+                app:srcCompat="@drawable/border_success_scan" />
+
+            <TextView
+                android:id="@+id/tvNoHpIsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/borderNoHp"
+                app:layout_constraintEnd_toEndOf="@+id/borderNoHp"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="@+id/borderNoHp"
+                app:layout_constraintTop_toTopOf="@+id/borderNoHp"
+                tools:text="kode" />
+
+            <TextView
+                android:id="@+id/tvTgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="Tanggal CheckIn"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/borderTgl"
+                app:layout_constraintStart_toStartOf="@+id/borderNoHp" />
+
+            <ImageView
+                android:id="@+id/borderTgl"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvTgl"
+                app:srcCompat="@drawable/border_success_scan" />
+
+            <TextView
+                android:id="@+id/tvTglIsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/borderTgl"
+                app:layout_constraintEnd_toEndOf="@+id/borderTgl"
+                app:layout_constraintHorizontal_bias="0.045"
+                app:layout_constraintStart_toStartOf="@+id/borderTgl"
+                app:layout_constraintTop_toTopOf="@+id/borderTgl"
+                tools:text="kode" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:text="@string/selesai"
+                android:backgroundTint="@color/biru_toska"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardViewFailResult"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:shapeAppearanceOverlay="@style/TopRoundedCorner"
+        app:strokeColor="@color/biru_toska"
+        app:strokeWidth="0.5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/iconfailed"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.050000012"
+                app:srcCompat="@drawable/baseline_cancel_24" />
+
+            <TextView
+                android:id="@+id/tvFailed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/gagal_scan"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iconfailed" />
+
+            <TextView
+                android:id="@+id/tvdeskripsifailed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/failed_scan_tenant"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFailed" />
+
+            <Button
+                android:id="@+id/btnRescan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btnRescan"
+                android:backgroundTint="@color/biru_toska"
+                android:layout_marginBottom="8dp"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvdeskripsifailed"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
