@@ -51,6 +51,12 @@
     <string name="nama_visitor">Nama Visitor</string>
     <string name="berhasil_terdaftar">Berhasil terdaftar!</string>
     <string name="selesai">Selesai</string>
+    <string name="total_pengunjung">Total Pengunjung</string>
+    <string name="J_0">0</string>
+    <string name="detail_tenant">Detail Tenant</string>
+    <string name="nama_tenant">Nama Tenant</string>
+    <string name="kode_tenant">Kode Tenant</string>
+    <string name="detail_event">Detail Event</string>
 
 
 </resources>

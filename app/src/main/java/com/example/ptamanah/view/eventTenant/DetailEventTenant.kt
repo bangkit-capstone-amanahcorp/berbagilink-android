@@ -64,12 +64,17 @@ class DetailEventTenant : AppCompatActivity() {
                         kodeTenant.text = data.data?.kodeTenant
                         namaEvent.text = data.data?.event?.namaEvent
                         namaOrgani.text = data.data?.event?.namaOrganizer
-                    }
+                        jumlahPengunjung.text = data.data?.totalTenantVisitors.toString()
 
-                    binding.qrButton.setOnClickListener{
-                        Intent(this@DetailEventTenant, CameraTenant::class.java).apply {
-                            putExtra(ID_EVENT_TENANT, data.data?.eventId)
-                        }.also { startActivity(it) }
+                    }
+                    binding.btnQr.setOnClickListener {
+                        val intent = Intent(this@DetailEventTenant, CameraTenant::class.java)
+                        intent.putExtra(ID_EVENT_TENANT, data.data?.eventId)
+                        startActivity(intent)
+                    }
+                    binding.btnLihatDetail.setOnClickListener {
+                        val intent = Intent(this@DetailEventTenant, LogCheckinTenant::class.java)
+                        startActivity(intent)
                     }
                 }
                 result.onFailure {
@@ -79,18 +84,20 @@ class DetailEventTenant : AppCompatActivity() {
         }
     }
 
-    private fun setupActionBar() {
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.biru_toska)))
+private fun setupActionBar() {
+    supportActionBar?.apply {
+        setDisplayShowTitleEnabled(false)
+        setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this@DetailEventTenant, R.color.biru_toska)))
 
-        val customActionBar = LayoutInflater.from(this).inflate(R.layout.actionbar_main, null)
+        val customActionBar = LayoutInflater.from(this@DetailEventTenant).inflate(R.layout.actionbar_main, null)
         val actionBarParams = ActionBar.LayoutParams(
             ActionBar.LayoutParams.MATCH_PARENT,
             ActionBar.LayoutParams.MATCH_PARENT
         )
-        supportActionBar?.setDisplayShowCustomEnabled(true)
-        supportActionBar?.setCustomView(customActionBar, actionBarParams)
+        setDisplayShowCustomEnabled(true)
+        setCustomView(customActionBar, actionBarParams)
     }
+}
 
     override fun onBackPressed() {
         super.onBackPressed()
