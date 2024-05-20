@@ -28,27 +28,24 @@ class LogCheckinTenant : AppCompatActivity() {
             searchView
                 .editText
                 .setOnEditorActionListener { _, _, _ ->
-                    searchBar.setText(searchView.text)
+                    val query = searchView.text.toString()
+                    searchBar.setText(query)
                     searchView.hide()
+                    checkinViewModel.searchUser(query)
                     false
                 }
         }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val layoutManager = LinearLayoutManager(this)
         binding.rvReview.layoutManager = layoutManager
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
         binding.rvReview.addItemDecoration(itemDecoration)
 
-        // Observe Checkin Data
-        checkinViewModel.checkinData.observe(this) { result ->
-            result.onSuccess { response ->
-                setUserList(response.datacheckin.data)
-            }.onFailure { error ->
-                Log.e("MainActivity", "Error fetching checkin data", error)
-            }
+        checkinViewModel.filteredCheckinData.observe(this) { result ->
+            setUserList(result)
         }
 
-        // Fetch checkin data
         val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NsYmtsaW5rLmJlcmJhZ2kubGluay9hcGkvZXZlbnQtbW9iaWxlL3RlbmFudC9sb2dpbiIsImlhdCI6MTcxNTc0MzIzNCwiZXhwIjoxNzE4MzcxMjM0LCJuYmYiOjE3MTU3NDMyMzQsImp0aSI6ImxudzQ5UEo0VHZwOThUSkYiLCJzdWIiOjgxLCJwcnYiOiJhOTE0ZTk1MTFmOTIyNDRlNGQ0MTRiZGY0MmUyNDE3MmQ1ZWZhOTc4In0.y_Nphy1gn1jzpKIE8NF9Nm8LRKFETjdFEdM2UWLRpDI"
         checkinViewModel.getAllCheckins(token)
     }

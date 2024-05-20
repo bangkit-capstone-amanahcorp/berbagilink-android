@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ptamanah.data.repository.EventRepository
+import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import kotlinx.coroutines.launch
 
@@ -12,18 +13,23 @@ class LogcheckinTenantViewModel (private val eventRepository: EventRepository) :
         private val _checkinData = MutableLiveData<Result<ResponseDataVisitorTenant>>()
         val checkinData: LiveData<Result<ResponseDataVisitorTenant>> = _checkinData
 
-        fun getAllCheckins(token: String) {
+        private val _filteredCheckinData = MutableLiveData<List<DataItemtenant>>()
+        val filteredCheckinData: LiveData<List<DataItemtenant>> = _filteredCheckinData
+
+    fun getAllCheckins(token: String) {
             viewModelScope.launch {
                 eventRepository.getChekinrespon(token).collect { result ->
                     _checkinData.value = result
+                    _filteredCheckinData.value = result.getOrNull()?.datacheckin?.data ?: emptyList()
                 }
             }
         }
 
-        fun searchuser(query : String){
-            viewModelScope.launch { {
-
-            } }
-        }
-
+    //searchlogic
+    fun searchUser(query: String) {
+        val searchResult = _checkinData.value?.getOrNull()?.datacheckin?.data?.filter {
+            it.nama.contains(query, ignoreCase = true)
+        } ?: emptyList()
+        _filteredCheckinData.value = searchResult
     }
+}
