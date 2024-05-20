@@ -2,15 +2,18 @@ package com.example.ptamanah.view.eventTenant
 
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ptamanah.R
 import com.example.ptamanah.adapter.CheckinAdapter
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLogCheckinTenantBinding
+import com.example.ptamanah.view.camera.CameraTenant
 import com.example.ptamanah.viewModel.checkin.LogcheckinTenantViewModel
 import com.example.ptamanah.viewModel.factory.CheckinViewModelFactory
 
@@ -46,9 +49,19 @@ class LogCheckinTenant : AppCompatActivity() {
             setUserList(result)
         }
 
-        val token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NsYmtsaW5rLmJlcmJhZ2kubGluay9hcGkvZXZlbnQtbW9iaWxlL3RlbmFudC9sb2dpbiIsImlhdCI6MTcxNTc0MzIzNCwiZXhwIjoxNzE4MzcxMjM0LCJuYmYiOjE3MTU3NDMyMzQsImp0aSI6ImxudzQ5UEo0VHZwOThUSkYiLCJzdWIiOjgxLCJwcnYiOiJhOTE0ZTk1MTFmOTIyNDRlNGQ0MTRiZGY0MmUyNDE3MmQ1ZWZhOTc4In0.y_Nphy1gn1jzpKIE8NF9Nm8LRKFETjdFEdM2UWLRpDI"
+        val token = intent.getStringExtra(TOKEN_ID).toString()
         checkinViewModel.getAllCheckins(token)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun setUserList(data : List<DataItemtenant>) {
         val adapter = CheckinAdapter(data)
         binding.rvReview.adapter = adapter
@@ -56,5 +69,8 @@ class LogCheckinTenant : AppCompatActivity() {
     private fun getCheckinRepo(): EventRepository {
         val apiService = ApiConfig.getApiService()
         return EventRepository(apiService)
+    }
+    companion object{
+        const val TOKEN_ID = "TOKEN"
     }
 }

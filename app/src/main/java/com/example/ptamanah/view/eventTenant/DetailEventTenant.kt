@@ -25,6 +25,7 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityDetailEventTenantBinding
 import com.example.ptamanah.view.camera.CameraTenant
 import com.example.ptamanah.view.camera.CameraTenant.Companion.ID_EVENT_TENANT
+import com.example.ptamanah.view.eventTenant.LogCheckinTenant.Companion.TOKEN_ID
 import com.example.ptamanah.view.login.LoginActivity
 import com.example.ptamanah.view.main.MainActivity
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
@@ -74,6 +75,7 @@ class DetailEventTenant : AppCompatActivity() {
                     }
                     binding.btnLihatDetail.setOnClickListener {
                         val intent = Intent(this@DetailEventTenant, LogCheckinTenant::class.java)
+                        intent.putExtra(TOKEN_ID,token)
                         startActivity(intent)
                     }
                 }
