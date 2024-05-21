@@ -195,10 +195,11 @@
 
         <TextView
             android:id="@+id/total"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
+            android:layout_marginTop="10dp"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -209,6 +210,8 @@
             android:id="@+id/btn_refresh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_gravity="end"
             android:contentDescription="tombol refresh"
             app:iconSize ="26dp"
             app:icon="@drawable/ic_refresh" />
@@ -247,16 +250,38 @@
             android:minHeight="0dp"
             android:text="@string/btn_lihat_detail" />
 
+
+    <LinearLayout
+        android:id="@+id/con_qr"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@drawable/con_circle"
+        app:layout_constraintStart_toStartOf="@+id/con_qr"
+        app:layout_constraintTop_toBottomOf="@+id/con_qr"
+        app:layout_goneMarginTop="10dp">
+
         <Button
             android:id="@+id/btn_qr"
             style="?attr/materialIconButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:contentDescription="tombol scan"
             app:icon="@drawable/ic_qr_code"
             app:iconSize="70dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scan QR Code"
+            android:layout_gravity="center"
+            android:textColor="#083444"
+            android:textSize="12sp" />
 
+    </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

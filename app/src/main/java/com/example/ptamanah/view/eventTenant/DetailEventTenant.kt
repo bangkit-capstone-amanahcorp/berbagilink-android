@@ -52,6 +52,7 @@ class DetailEventTenant : AppCompatActivity() {
             Log.d("IsisToken", token)
 
             getTenantProfile()
+            refresh()
         }
 
     }
@@ -83,6 +84,11 @@ class DetailEventTenant : AppCompatActivity() {
                     Log.e("erorGes", "hmm")
                 }
             }
+        }
+    }
+    private fun refresh() {
+        binding.btnRefresh.setOnClickListener {
+            getTenantProfile()
         }
     }
 
