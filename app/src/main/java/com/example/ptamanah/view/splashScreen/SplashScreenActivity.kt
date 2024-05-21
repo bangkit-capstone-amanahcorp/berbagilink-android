@@ -5,11 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
@@ -37,22 +34,33 @@ class SplashScreenActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler(Looper.getMainLooper()).postDelayed({
+            var sessionHandled = false
+
             viewModelTenant.getSessionTenant().observe(this) { tenantSession ->
                 if (tenantSession != null) {
                     Log.d("tenantSes", tenantSession.toString())
                     startActivity(Intent(this, DetailEventTenant::class.java))
+                    sessionHandled = true
                 }
             }
 
             viewModelCashier.getSession().observe(this) { cashierSession ->
                 if (cashierSession != null) {
                     Log.d("casSes", cashierSession.toString())
-                    startActivity(Intent(this, MainActivity::class.java))
+                    if (!sessionHandled) {
+                        startActivity(Intent(this, MainActivity::class.java))
+                    }
+                    sessionHandled = true
                 }
             }
-            startActivity(Intent(this, MainActivity::class.java))
 
-            finish()
+            Handler(Looper.getMainLooper()).postDelayed({
+                if (!sessionHandled) {
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+                finish()
+            }, 500)
+
         }, 2000)
     }
 }
