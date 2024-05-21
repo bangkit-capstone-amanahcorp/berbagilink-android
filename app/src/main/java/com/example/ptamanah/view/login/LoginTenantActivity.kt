@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -72,14 +73,29 @@ class LoginTenantActivity : AppCompatActivity() {
                             }
                             showLoading(false)
                         }
+                        result.onFailure {
+                            showToast("Silahkan periksa internet anda terlebih dahulu")
+                            showLoading(false)
+                        }
                     }
                 }
             }
         }
     }
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
     private fun showLoading(state: Boolean) {
         binding.backGroundOverlay.visibility = if (state) View.VISIBLE else View.GONE
         binding.cardViewLoading.visibility = if (state) View.VISIBLE else View.GONE
+        setButtonsEnabled(!state)
+    }
+
+    private fun setButtonsEnabled(enabled: Boolean) {
+        binding.emailEditText.isEnabled = enabled
+        binding.btnCheckEmail.isEnabled = enabled
+        binding.backLoginTenant.isEnabled = enabled
     }
 }

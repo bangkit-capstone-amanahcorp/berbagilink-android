@@ -117,5 +117,13 @@ class LoginActivity : AppCompatActivity() {
     private fun showLoading(state: Boolean) {
         binding.cardViewLoading.visibility = if (state) View.VISIBLE else View.GONE
         binding.backGroundOverlay.visibility = if (state) View.VISIBLE else View.GONE
+        setButtonsEnabled(!state)
+    }
+
+    private fun setButtonsEnabled(enabled: Boolean) {
+        binding.emailEditText.isEnabled = enabled
+        binding.passwordEditTextLayout.isEnabled = enabled
+        binding.loginButton.isEnabled = enabled
+        binding.loginTenant.isEnabled = enabled
     }
 }
