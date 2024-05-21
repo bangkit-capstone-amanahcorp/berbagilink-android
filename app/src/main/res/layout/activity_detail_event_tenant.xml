@@ -271,6 +271,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:contentDescription="tombol scan"
+            app:iconTint="@color/white"
             app:icon="@drawable/ic_qr_code"
             app:iconSize="70dp" />
         <TextView
@@ -278,7 +279,7 @@
             android:layout_height="wrap_content"
             android:text="Scan QR Code"
             android:layout_gravity="center"
-            android:textColor="#083444"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
     </LinearLayout>
