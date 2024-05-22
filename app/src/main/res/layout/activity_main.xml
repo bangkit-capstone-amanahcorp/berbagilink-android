@@ -68,7 +68,7 @@
                         android:gravity="center"
                         android:text="@string/kiblat"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <FrameLayout
@@ -105,7 +105,7 @@
                             android:singleLine="true"
                             android:text="@string/subuh"
                             android:textColor="#FF303030"
-                            android:textSize="14dp" />
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/waktu_now"
@@ -132,7 +132,7 @@
                             android:singleLine="true"
                             android:text="@string/waktu"
                             android:textColor="#FFFAAC18"
-                            android:textSize="12dp" />
+                            android:textSize="14dp" />
 
                     </LinearLayout>
                 </FrameLayout>
@@ -176,7 +176,7 @@
                         android:singleLine="true"
                         android:text="@string/cuaca"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -206,7 +206,7 @@
                         android:singleLine="true"
                         android:text="@string/subuh"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waktu_subuh"
@@ -219,7 +219,7 @@
                         android:singleLine="true"
                         android:text="04 : 27"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,8 +238,8 @@
                         android:maxLines="1"
                         android:singleLine="true"
                         android:text="@string/duhur"
-                        android:textColor="#FFFFFFFF"
-                        android:textSize="12dp" />
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waktu_dzuhur"
@@ -252,7 +252,7 @@
                         android:singleLine="true"
                         android:text="@string/waktu"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -272,7 +272,7 @@
                         android:singleLine="true"
                         android:text="Ashar"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waktu_ashar"
@@ -285,7 +285,7 @@
                         android:singleLine="true"
                         android:text="@string/waktu"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -305,7 +305,7 @@
                         android:singleLine="true"
                         android:text="@string/magrib"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waktu_magrib"
@@ -318,7 +318,7 @@
                         android:singleLine="true"
                         android:text="@string/waktu"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -338,7 +338,7 @@
                         android:singleLine="true"
                         android:text="@string/isya"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/waktu_isya"
@@ -351,13 +351,13 @@
                         android:singleLine="true"
                         android:text="@string/waktu"
                         android:textColor="@color/white"
-                        android:textSize="14dp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/container_frame17"
-                android:layout_width="312dp"
+                android:layout_width="342dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="270dp"
@@ -372,8 +372,8 @@
 
                 <ImageView
                     android:id="@+id/image_location_filled"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_location" />
 
@@ -388,29 +388,15 @@
                     android:maxLines="2"
                     android:text="Kecamatan Mergangsan"
                     android:textColor="#FF303030"
-                    android:textSize="12dp" />
+                    android:textSize="14sp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="36dp"
-                    android:layout_weight="1" />
 
-                <ImageView
-                    android:id="@+id/image_rectangle5"
-                    android:layout_width="1dp"
-                    android:layout_height="40dp"
-                    android:scaleType="centerInside" />
-                <!--            android:background="@drawable/image_rectangle5"/>-->
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1" />
 
                 <ImageView
                     android:id="@+id/image_calendar_fill"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="50dp"
                     android:scaleType="centerInside"
                     android:src="@drawable/ic_date_silver" />
 
@@ -425,12 +411,12 @@
                     android:maxLines="2"
                     android:text="02 Nov 2024\n25 Syaw 1445H"
                     android:textColor="#FF303030"
-                    android:textSize="12dp" />
+                    android:textSize="14sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/container_event"
-                android:layout_width="328dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
                 android:layout_marginTop="366dp"
@@ -441,6 +427,7 @@
                     android:id="@+id/text_event"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
                     android:fontFamily="@font/ubuntu"
                     android:gravity="left|center_vertical"
                     android:includeFontPadding="false"
@@ -454,6 +441,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="2dp"
+                    android:layout_marginStart="20dp"
                     android:gravity="left|center_vertical"
                     android:includeFontPadding="false"
                     android:maxLines="1"
@@ -465,8 +453,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="0dp"
                     android:paddingRight="16dp">
@@ -475,12 +465,13 @@
                         android:id="@+id/elevatedButton"
                         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:fontFamily="@font/ubuntu"
                         android:text="@string/in_event"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:icon="@drawable/ic_date"
+                        app:backgroundTint="@color/white"
                         app:iconSize="24dp"/>
                 </LinearLayout>
 
@@ -489,6 +480,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="24dp"
+                    android:layout_marginStart="20dp"
                     android:gravity="left|center_vertical"
                     android:includeFontPadding="false"
                     android:maxLines="1"
@@ -500,8 +492,10 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="60dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:paddingLeft="16dp"
                     android:paddingTop="0dp"
                     android:paddingRight="16dp">
@@ -510,33 +504,37 @@
                         android:id="@+id/btnQuran"
                         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="@string/quran"
                         android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
+                        app:backgroundTint="@color/white"
                         app:icon="@drawable/ic_book"
                         app:iconSize="24dp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="60dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:paddingLeft="16dp"
-                    android:paddingTop="10dp"
+                    android:paddingTop="0dp"
                     android:paddingRight="16dp">
 
                     <Button
                         android:id="@+id/btnDzikir"
                         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="@string/quran_dikir"
                         app:iconSize="24dp"
                         android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
+                        app:backgroundTint="@color/white"
                         app:icon="@drawable/ic_mosque" />
                 </LinearLayout>
             </LinearLayout>
