@@ -470,6 +470,7 @@
                         android:text="@string/in_event"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:icon="@drawable/ic_date"
                         app:backgroundTint="@color/white"
                         app:iconSize="24dp"/>
@@ -509,6 +510,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:backgroundTint="@color/white"
                         app:icon="@drawable/ic_book"
                         app:iconSize="24dp" />
@@ -534,6 +536,7 @@
                         android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:backgroundTint="@color/white"
                         app:icon="@drawable/ic_mosque" />
                 </LinearLayout>
