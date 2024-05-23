@@ -5,6 +5,7 @@ import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
+import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
 import com.example.ptamanah.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
@@ -82,4 +83,13 @@ class AuthRepo(
         userPreference.logout()
     }
 
+    suspend fun logoutTenant(token: String): Flow<Result<ResponseLogoutTenant>> = flow {
+        try {
+            val bearerToken = bearerToken(token)
+            val response = apiService.logoutTenant(bearerToken)
+            emit(Result.success(response))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
 }

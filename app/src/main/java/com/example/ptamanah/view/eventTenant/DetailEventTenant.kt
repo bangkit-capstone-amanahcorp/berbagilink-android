@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
@@ -55,6 +56,21 @@ class DetailEventTenant : AppCompatActivity() {
             refresh()
         }
 
+    }
+
+    private fun logoutApi() {
+        val currentToken = token
+        lifecycleScope.launch {
+            viewModel.logoutTenant(currentToken).collect { result ->
+                Log.d("TokenLogout", currentToken)
+                result.onSuccess {
+                    Toast.makeText(this@DetailEventTenant, "Berhasil logout", Toast.LENGTH_SHORT).show()
+                }
+                result.onFailure {
+                    Toast.makeText(this@DetailEventTenant, "Gagal keluar", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun getTenantProfile() {
@@ -123,6 +139,7 @@ private fun setupActionBar() {
                     AlertDialog.Builder(this).apply {
                         setMessage("Apakah anda yakin ingin keluar?")
                         setPositiveButton("Ok") { _, _ ->
+                            logoutApi()
                             viewModel.logout()
                             val intent = Intent(context, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

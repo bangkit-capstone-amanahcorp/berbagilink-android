@@ -69,7 +69,7 @@ class BottomLogin : BottomSheetDialogFragment() {
                                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                             } else {
-                                showToast("Silahkan cek Email/No Handphone dan password anda.")
+                                showToast("Silahkan periksa password anda kembali")
                                 dismiss()
                             }
 

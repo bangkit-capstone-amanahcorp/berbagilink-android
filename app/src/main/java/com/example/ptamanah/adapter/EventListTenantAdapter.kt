@@ -26,7 +26,7 @@ class EventListTenantAdapter() : ListAdapter<DataCheckEmail, EventListTenantAdap
             namaEvent.text = event.namaEvent
             namaOrganizer.text = event.namaOrganizer
             Glide.with(holder.itemView.context)
-                .load("https://developer.android.com/static/images/studio/write/imageview-sample-data-2x.png")
+                .load("https://images.unsplash.com/photo-1607681063652-220f394ba3d8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
                 .into(imgItem)
             //load fotonya masih dummy pke yang ada di internet
 

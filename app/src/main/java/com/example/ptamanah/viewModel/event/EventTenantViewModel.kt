@@ -6,6 +6,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.repository.EventRepository
+import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -20,6 +21,10 @@ class EventTenantViewModel(
     fun getSessionTenant(): LiveData<String?>
     {
         return authRepo.getSessionTenant().asLiveData()
+    }
+
+    suspend fun logoutTenant(token: String): Flow<Result<ResponseLogoutTenant>> {
+        return authRepo.logoutTenant(token)
     }
 
     fun logout() {

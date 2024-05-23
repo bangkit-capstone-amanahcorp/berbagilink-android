@@ -5,6 +5,7 @@ import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
+import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
@@ -36,6 +37,11 @@ interface ApiService {
         @Field("password") password: String,
         @Field("event_id") eventId: String,
     ): ResponseLoginEventTenant
+
+    @POST("event-mobile/tenant/logout")
+    suspend fun logoutTenant(
+        @Header("Authorization") token: String
+    ) : ResponseLogoutTenant
 
 
     @GET("event-mobile/event?paginate=false")
