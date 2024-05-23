@@ -119,6 +119,8 @@ class CameraActivity : AppCompatActivity() {
         bindingCamera.barcodeLine.visibility = View.VISIBLE
         if (firstCall) {
             val barcodeResults = result?.getValue(barcodeScanner)
+            val slideUpAnimation = AnimationUtils.loadAnimation(this@CameraActivity, R.anim.slide_up)
+
             if (barcodeResults != null && barcodeResults.isNotEmpty() && barcodeResults.first() != null) {
                 val barcode = barcodeResults[0]
 
@@ -145,6 +147,7 @@ class CameraActivity : AppCompatActivity() {
                             result.onSuccess { post ->
                                 bindingCamera.cardViewResultScan.visibility = View.VISIBLE
                                 bindingCamera.cardViewFailResult.visibility = View.GONE
+                                bindingCamera.cardViewResultScan.startAnimation(slideUpAnimation)
 
                                 bindingCamera.tvIdBooking.text = barcode.rawValue
                                 bindingCamera.tvTitleEvent.text = post.data?.event?.namaEvent
@@ -156,13 +159,16 @@ class CameraActivity : AppCompatActivity() {
                                 bindingCamera.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
 
                                 bindingCamera.button.setOnClickListener {
+                                    bindingCamera.cardViewResultScan.clearAnimation()
                                     bindingCamera.cardViewResultScan.visibility = View.GONE
                                     startCamera()
                                 }
                             }
                             result.onFailure {
                                 bindingCamera.cardViewFailResult.visibility = View.VISIBLE
+                                bindingCamera.cardViewFailResult.startAnimation(slideUpAnimation)
                                 bindingCamera.btnRescan.setOnClickListener {
+                                    bindingCamera.cardViewFailResult.clearAnimation()
                                     bindingCamera.cardViewFailResult.visibility = View.GONE
                                     startCamera()
                                 }

@@ -108,8 +108,6 @@ class CameraTenant : AppCompatActivity() {
 
         id = intent.getStringExtra(ID_EVENT_TENANT)
 
-        Log.d("IDNYA", id.toString())
-        Log.d("TOKENNYA", token.toString())
         val analyzer = MlKitAnalyzer(
             listOf(barcodeScanner),
             CameraController.COORDINATE_SYSTEM_VIEW_REFERENCED,
@@ -138,6 +136,8 @@ class CameraTenant : AppCompatActivity() {
 
         if (firstCall) {
             val barcodeResults = result?.getValue(barcodeScanner)
+            val slideUpAnimation = AnimationUtils.loadAnimation(this@CameraTenant, R.anim.slide_up)
+
             if (barcodeResults != null && barcodeResults.isNotEmpty() && barcodeResults.first() != null) {
                 val barcode = barcodeResults[0]
 
@@ -164,7 +164,7 @@ class CameraTenant : AppCompatActivity() {
                             result.onSuccess { post ->
                                 binding.cardViewResultScan.visibility = View.VISIBLE
                                 binding.cardViewFailResult.visibility = View.GONE
-
+                                binding.cardViewResultScan.startAnimation(slideUpAnimation)
                                 binding.apply {
                                     tvIdTiketIsi.text = post.data?.ticketId.toString()
                                     tvNamaVisitorIsi.text = post.data?.nama
@@ -172,16 +172,8 @@ class CameraTenant : AppCompatActivity() {
                                     tvNoHpIsi.text = post.data?.noTelp
                                     tvTglIsi.text = post.data?.visitedAt
                                 }
-                               /* bindingCamera.tvIdBooking.text = barcode.rawValue
-                                bindingCamera.tvTitleEvent.text = post.data?.event?.namaEvent
-                                bindingCamera.tvDateEventStart.text = post.data?.event?.tanggalStart
-                                bindingCamera.tvDateEventEnd.text = post.data?.event?.tanggalEnd
-                                bindingCamera.tvTimeEventStart.text = post.data?.event?.waktuStart
-                                bindingCamera.tvTimeEventEnd.text = post.data?.event?.waktuEnd
-                                bindingCamera.tvLocationEvent.text = post.data?.event?.namaTempat
-                                bindingCamera.tvTipeTiket.text = post.data?.eventTicket?.namaTiket
-*/
                                 binding.button.setOnClickListener {
+                                    binding.cardViewResultScan.clearAnimation()
                                     binding.cardViewResultScan.visibility = View.GONE
                                     startCamera()
                                 }
@@ -199,8 +191,10 @@ class CameraTenant : AppCompatActivity() {
                                 }
                                 
                                 binding.cardViewFailResult.visibility = View.VISIBLE
+                                binding.cardViewFailResult.startAnimation(slideUpAnimation)
                                 binding.tvdeskripsifailed.text = errorMessage
                                 binding.btnRescan.setOnClickListener {
+                                    binding.cardViewFailResult.clearAnimation()
                                     binding.cardViewFailResult.visibility = View.GONE
                                     startCamera()
                                 }
