@@ -10,7 +10,7 @@ import com.example.ptamanah.view.myEvent.MyEventFragment
 class EventPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     override fun getItemCount(): Int {
-        return 2
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {

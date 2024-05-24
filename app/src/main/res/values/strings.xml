@@ -57,6 +57,8 @@
     <string name="nama_tenant">Nama Tenant</string>
     <string name="kode_tenant">Kode Tenant</string>
     <string name="detail_event">Detail Event</string>
+    <string name="semua">Semua</string>
+    <string name="on_going">On-Going</string>
 
 
 </resources>

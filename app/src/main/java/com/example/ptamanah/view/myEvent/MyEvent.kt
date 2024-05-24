@@ -27,13 +27,63 @@ class MyEvent : AppCompatActivity() {
 
     private fun setViewPager() {
         val viewPager: ViewPager2 = binding.viewPager
-        val tabs: TabLayout = binding.tabs
         val eventPagerAdapter = EventPagerAdapter(this)
 
         viewPager.adapter = eventPagerAdapter
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
+
+        val buttonSemua = binding.buttonSemua
+        val buttonOngoing = binding.buttonOnGoing
+        val buttonEnd = binding.buttonSelesai
+
+        buttonSemua.setOnClickListener {
+            viewPager.currentItem = 0
+        }
+
+        buttonOngoing.setOnClickListener {
+            viewPager.currentItem = 1
+        }
+
+        buttonEnd.setOnClickListener {
+            viewPager.currentItem = 2
+        }
+
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                updateButton(position)
+            }
+        })
+
+        updateButton(viewPager.currentItem)
+    }
+
+    private fun updateButton(selectedPosition: Int) {
+        val unselectedBackground = ContextCompat.getDrawable(this, R.drawable.btn_unselected)
+        val selectedBackground = ContextCompat.getDrawable(this, R.drawable.btn_selected)
+        val unselectedText = ContextCompat.getColor(this, R.color.disable)
+        val selectedText = ContextCompat.getColor(this, R.color.biru_toska)
+
+        binding.buttonSemua.background = unselectedBackground
+        binding.buttonSemua.setTextColor(unselectedText)
+        binding.buttonOnGoing.background = unselectedBackground
+        binding.buttonOnGoing.setTextColor(unselectedText)
+        binding.buttonSelesai.background = unselectedBackground
+        binding.buttonSelesai.setTextColor(unselectedText)
+
+        when (selectedPosition) {
+            0 -> {
+                binding.buttonSemua.background = selectedBackground
+                binding.buttonSemua.setTextColor(selectedText)
+            }
+            1 -> {
+                binding.buttonOnGoing.background = selectedBackground
+                binding.buttonOnGoing.setTextColor(selectedText)
+            }
+            2 -> {
+                binding.buttonSelesai.background = selectedBackground
+                binding.buttonSelesai.setTextColor(selectedText)
+            }
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -64,12 +114,5 @@ class MyEvent : AppCompatActivity() {
         )
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(customActionBar, actionBarParams)
-    }
-
-    companion object {
-        private val TAB_TITLES = intArrayOf(
-            R.string.event_aktif,
-            R.string.event_selesai
-        )
     }
 }

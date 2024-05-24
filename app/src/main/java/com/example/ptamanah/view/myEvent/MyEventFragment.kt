@@ -45,11 +45,54 @@ class MyEventFragment : Fragment() {
             position = it.getInt(ARG_POSITION)
             token = requireActivity().intent.getStringExtra(TOKEN)
             if (position == 1) {
+                showAllEvent()
+            } else if (position == 2) {
                 showActiveEvent()
             } else {
                 showDoneEvent()
             }
         }
+    }
+
+    private fun showAllEvent() {
+        linearLayoutManager = LinearLayoutManager(activity)
+        binding.rvEvent.layoutManager = linearLayoutManager
+        val eventAdapter = EventAdapter()
+        binding.rvEvent.adapter = eventAdapter
+
+        lifecycleScope.launch {
+            eventViewModel.getAllEvent(token.toString()).collect { result ->
+                result.onSuccess { response ->
+                    binding.apply {
+                        val sortedResponse = response.data?.sortedBy { it.saleStatus}
+                        eventAdapter.submitList(sortedResponse)
+                        if (sortedResponse.isNullOrEmpty()) {
+                            binding.tvStatus.visibility = View.VISIBLE
+                        }
+                    }
+                    showLoading(false)
+                }
+                result.onFailure {
+                    showLoading(false)
+                    Toast.makeText(
+                        context,
+                        "Silahkan periksa internet anda terlebih dahulu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+
+        eventAdapter.setOnItemClickCallBack(object : EventAdapter.OnItemClickCallBack {
+            override fun onItemClicked(user: DataItem) {
+                Intent(context, CameraActivity::class.java).apply {
+                    putExtra(ID_EVENT, user.id)
+                    putExtra(TOKEN, token)
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
     }
 
     private fun showDoneEvent() {

@@ -31,25 +31,26 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
         holder.binding.apply {
             namaTempat.text = event.namaTempat
             namaEvent.text = event.namaEvent
+            alamat.text = event.alamat
 
             if (event.saleStatus == "end") {
-                namaEvent.setTextColor(
+                statusIV.setImageResource(R.drawable.status_border_end)
+                scnaBtn.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.disable)
+                scnaBtn.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+                scnaBtn.isEnabled = false
+                tvStatus.text = "Selesai"
+                tvStatus.setTextColor(
                     ContextCompat.getColor(
                         holder.itemView.context,
                         R.color.disable
                     )
                 )
-                namaTempat.setTextColor(
-                    ContextCompat.getColor(
-                        holder.itemView.context,
-                        R.color.disable
-                    )
-                )
-                imgItem.visibility = View.GONE
                 holder.itemView.isEnabled = false
                 holder.itemView.setOnClickListener(null)
             } else {
-                holder.itemView.setOnClickListener {
+                scnaBtn.setBackgroundResource(R.drawable.btn_biru)
+                tvStatus.text = "On-Going"
+                scnaBtn.setOnClickListener {
                     onItemClickCallBack.onItemClicked(event)
                 }
             }
