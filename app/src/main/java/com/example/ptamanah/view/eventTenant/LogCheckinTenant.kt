@@ -1,10 +1,15 @@
 package com.example.ptamanah.view.eventTenant
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
@@ -26,27 +31,31 @@ class LogCheckinTenant : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLogCheckinTenantBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        with(binding) {
-            searchView.setupWithSearchBar(searchBar)
-            searchView
-                .editText
-                .setOnEditorActionListener { _, _, _ ->
-                    val query = searchView.text.toString()
-                    searchBar.setText(query)
-                    searchView.hide()
-                    checkinViewModel.searchUser(query)
-                    false
-                }
-        }
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        setupActionBar()
+
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvReview.layoutManager = layoutManager
-        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
-        binding.rvReview.addItemDecoration(itemDecoration)
+        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let {
+                    checkinViewModel.searchUser(it)
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    checkinViewModel.searchUser(it)
+                }
+                return false
+            }
+        })
 
         checkinViewModel.filteredCheckinData.observe(this) { result ->
             setUserList(result)
+            binding.NotfoundTv.isVisible = result.isEmpty()
         }
 
         val token = intent.getStringExtra(TOKEN_ID).toString()
@@ -69,6 +78,27 @@ class LogCheckinTenant : AppCompatActivity() {
     private fun getCheckinRepo(): EventRepository {
         val apiService = ApiConfig.getApiService()
         return EventRepository(apiService)
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    androidx.cardview.R.color.cardview_light_background
+                )
+            )
+        )
+        val customActionBar = LayoutInflater.from(this).inflate(R.layout.actionbar_list_log_checkin_tenant, null)
+        val actionBarParams = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT
+        )
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(customActionBar, actionBarParams)
+
     }
     companion object{
         const val TOKEN_ID = "TOKEN"

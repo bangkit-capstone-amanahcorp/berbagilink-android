@@ -59,6 +59,8 @@
     <string name="detail_event">Detail Event</string>
     <string name="semua">Semua</string>
     <string name="on_going">On-Going</string>
+    <string name="Not_found">Data tidak ditemukan</string>
+    <string name="list_logchekin_tenant">Daftar Log Check In</string>
 
 
 </resources>
