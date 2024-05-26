@@ -40,12 +40,13 @@
             android:name=".view.login.LoginTenantActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/LoginTenant"
+            android:theme="@style/StatusBarWhite"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
             android:name=".view.splashScreen.SplashScreenActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarCremAC">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,12 +57,12 @@
             android:name=".view.myEvent.MyEvent"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/myEvent" />
+            android:theme="@style/StatusBarWhiteAC" />
         <activity
             android:name=".view.login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/LoginActivity"/>
+            android:theme="@style/StatusBarCremAC"/>
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true"
