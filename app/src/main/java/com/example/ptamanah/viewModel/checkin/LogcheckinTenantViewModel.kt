@@ -16,14 +16,15 @@ class LogcheckinTenantViewModel (private val eventRepository: EventRepository) :
         private val _filteredCheckinData = MutableLiveData<List<DataItemtenant>>()
         val filteredCheckinData: LiveData<List<DataItemtenant>> = _filteredCheckinData
 
-    fun getAllCheckins(token: String) {
-            viewModelScope.launch {
-                eventRepository.getChekinrespon(token).collect { result ->
-                    _checkinData.value = result
-                    _filteredCheckinData.value = result.getOrNull()?.datacheckin?.data ?: emptyList()
-                }
+    fun getAllCheckins(token: String, eventId: String) {
+        viewModelScope.launch {
+            eventRepository.getChekinrespon(token, eventId).collect { result ->
+                _checkinData.value = result
+                _filteredCheckinData.value = result.getOrNull()?.datacheckin?.data ?: emptyList()
             }
         }
+    }
+
 
     //searchlogic
     fun searchUser(query: String) {

@@ -92,9 +92,11 @@ class DetailEventTenant : AppCompatActivity() {
                     }
                     binding.btnLihatDetail.setOnClickListener {
                         val intent = Intent(this@DetailEventTenant, LogCheckinTenant::class.java)
-                        intent.putExtra(TOKEN_ID,token)
+                        intent.putExtra(TOKEN_ID, token)
+                        intent.putExtra(ID_EVENT_TENANT, data.data?.eventId)
                         startActivity(intent)
                     }
+
                 }
                 result.onFailure {
                     Log.e("erorGes", "hmm")

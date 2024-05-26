@@ -15,6 +15,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @FormUrlEncoded
@@ -49,10 +50,15 @@ interface ApiService {
         @Header("Authorization") token: String
     ): ResponseListEvent
 
-    @GET("event-mobile/tenant/all-visitor?search=&limit=10&page=1&sort=desc&event_id=f2415eed-55f3-47d0-ab7a-988585b37dc1")
+    @GET("event-mobile/tenant/all-visitor")
     suspend fun getChekin(
-        @Header("Authorization") token: String
-    ) : ResponseDataVisitorTenant
+        @Header("Authorization") token: String,
+        @Query("search") search: String = "",
+        @Query("limit") limit: Int = 10,
+        @Query("page") page: Int = 1,
+        @Query("sort") sort: String = "desc",
+        @Query("event_id") eventId: String
+    ): ResponseDataVisitorTenant
 
     @GET("event-mobile/tenant/profile")
     suspend fun tenantProfile(

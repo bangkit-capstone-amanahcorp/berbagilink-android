@@ -27,13 +27,13 @@ class LogCheckinTenant : AppCompatActivity() {
     private val checkinViewModel: LogcheckinTenantViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogCheckinTenantBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupActionBar()
-
 
         val layoutManager = LinearLayoutManager(this)
         binding.rvReview.layoutManager = layoutManager
@@ -59,8 +59,10 @@ class LogCheckinTenant : AppCompatActivity() {
         }
 
         val token = intent.getStringExtra(TOKEN_ID).toString()
-        checkinViewModel.getAllCheckins(token)
+        val eventId = intent.getStringExtra(ID_EVENT_TENANT).toString()
+        checkinViewModel.getAllCheckins(token, eventId)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
@@ -71,10 +73,11 @@ class LogCheckinTenant : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUserList(data : List<DataItemtenant>) {
+    private fun setUserList(data: List<DataItemtenant>) {
         val adapter = CheckinAdapter(data)
         binding.rvReview.adapter = adapter
     }
+
     private fun getCheckinRepo(): EventRepository {
         val apiService = ApiConfig.getApiService()
         return EventRepository(apiService)
@@ -98,9 +101,10 @@ class LogCheckinTenant : AppCompatActivity() {
         )
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(customActionBar, actionBarParams)
-
     }
-    companion object{
+
+    companion object {
         const val TOKEN_ID = "TOKEN"
+        const val ID_EVENT_TENANT = "idEvent"
     }
 }
