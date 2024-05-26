@@ -1,6 +1,10 @@
 package com.example.ptamanah.view.eventTenant
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -44,7 +48,7 @@ class BottomLogin : BottomSheetDialogFragment() {
 
         eventId = arguments?.getString(EVENT_ID).toString()
 
-        loginViewModel.getEmail().observe(this@BottomLogin) {user ->
+        loginViewModel.getEmail().observe(this@BottomLogin) { user ->
             email = user.toString()
         }
 
@@ -57,33 +61,56 @@ class BottomLogin : BottomSheetDialogFragment() {
                 binding.passwordEditTextLayout.error =
                     "The field is required"
             } else {
-                lifecycleScope.launch {
-                    loginViewModel.loginTenant(email, password, eventId).collect{ result ->
-                        result.onSuccess { credential ->
+                if (isInternetAvailable(requireContext())) {
+                    lifecycleScope.launch {
+                        loginViewModel.loginTenant(email, password, eventId).collect { result ->
+                            result.onSuccess { credential ->
 
-                            if (credential.info == "Login berhasil") {
-                                showToast("Berhasil masuk")
+                                if (credential.info == "Login berhasil") {
+                                    showToast("Berhasil masuk")
 
-                                loginViewModel.saveSessionTenant(credential.data?.token.toString())
-                                val intent = Intent(context, DetailEventTenant::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                                startActivity(intent)
-                            } else {
-                                showToast("Silahkan periksa password anda kembali")
+                                    loginViewModel.saveSessionTenant(credential.data?.token.toString())
+                                    val intent = Intent(context, DetailEventTenant::class.java)
+                                    intent.flags =
+                                        Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    startActivity(intent)
+                                } else {
+                                    showToast("Silahkan periksa password anda kembali")
+                                    dismiss()
+                                }
+
+                            }
+                            result.onFailure {
+                                showToast("Akun Anda Sudah Melewati Masa Aktif")
                                 dismiss()
                             }
-
-                        }
-                        result.onFailure {
-                            showToast("Silahkan periksa internet anda terlebih dahulu.")
-                            dismiss()
                         }
                     }
+                } else {
+                    showToast("Silahkan periksa internet anda terlebih dahulu")
+                    dismiss()
                 }
             }
         }
     }
 
+    private fun isInternetAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+                else -> false
+            }
+        } else {
+            val networkInfo = connectivityManager.activeNetworkInfo ?: return false
+            return networkInfo.isConnected
+        }
+    }
 
 
     private fun showToast(message: String) {
