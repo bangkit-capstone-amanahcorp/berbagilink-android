@@ -13,6 +13,22 @@
     <style name="LoginTenant" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/biru_toska</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="StatusBarWhiteAC" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/biru_toska</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="android:statusBarColor">@color/white</item>
+    </style>
+
+    <style name="LoginActivity" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/biru_toska</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="fontFamily">@font/ubuntu</item>
+        <item name="android:statusBarColor">#FBF5FC</item>
     </style>
 
     <style name="myEvent" parent="Theme.Material3.Light">
