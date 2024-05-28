@@ -83,6 +83,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
+            android:hint="Masukkan Username"
+            android:paddingStart="40dp"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -117,6 +119,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
+            android:paddingStart="40dp"
+            android:hint="Masukkan Password"
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

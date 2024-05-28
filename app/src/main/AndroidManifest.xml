@@ -6,7 +6,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -19,14 +19,17 @@
         android:theme="@style/HomePage"
         tools:targetApi="31">
         <activity
+            android:name=".view.myEvent.LogCheckinCashier"
+            android:exported="false" />
+        <activity
             android:name=".view.camera.CameraTenant"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.eventTenant.LogCheckinTenant"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/StatusBarWhiteAC"/>
+            android:theme="@style/StatusBarWhiteAC" />
         <activity
             android:name=".view.eventTenant.DetailEventTenant"
             android:exported="false"
@@ -35,7 +38,7 @@
             android:name=".view.eventTenant.ListEventTenant"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/StatusBarWhiteAC"/>
+            android:theme="@style/StatusBarWhiteAC" />
         <activity
             android:name=".view.login.LoginTenantActivity"
             android:exported="false"
@@ -62,7 +65,7 @@
             android:name=".view.login.LoginActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/StatusBarCremAC"/>
+            android:theme="@style/StatusBarCremAC" />
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true"
