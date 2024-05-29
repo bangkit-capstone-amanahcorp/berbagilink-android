@@ -7,16 +7,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
@@ -27,8 +23,7 @@ import com.example.ptamanah.databinding.ActivityDetailEventTenantBinding
 import com.example.ptamanah.view.camera.CameraTenant
 import com.example.ptamanah.view.camera.CameraTenant.Companion.ID_EVENT_TENANT
 import com.example.ptamanah.view.eventTenant.LogCheckinTenant.Companion.TOKEN_ID
-import com.example.ptamanah.view.login.LoginActivity
-import com.example.ptamanah.view.main.MainActivity
+import com.example.ptamanah.view.main.HomePageCashier
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import kotlinx.coroutines.launch
@@ -143,7 +138,7 @@ private fun setupActionBar() {
                         setPositiveButton("Ok") { _, _ ->
                             logoutApi()
                             viewModel.logout()
-                            val intent = Intent(context, MainActivity::class.java)
+                            val intent = Intent(context, HomePageCashier::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                             finish()

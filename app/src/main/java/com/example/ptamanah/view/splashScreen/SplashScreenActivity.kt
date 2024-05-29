@@ -14,7 +14,7 @@ import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.view.eventTenant.DetailEventTenant
 import com.example.ptamanah.view.main.HomePageAdmin
-import com.example.ptamanah.view.main.MainActivity
+import com.example.ptamanah.view.main.HomePageCashier
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.main.MainViewModel
@@ -53,7 +53,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 if (cashierSession != null) {
                     Log.d("casSes", cashierSession.toString())
                     if (!sessionHandled) {
-                        startActivity(Intent(this, MainActivity::class.java))
+                        startActivity(Intent(this, HomePageCashier::class.java))
                     }
                     sessionHandled = true
                 }
@@ -71,7 +71,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
             Handler(Looper.getMainLooper()).postDelayed({
                 if (!sessionHandled) {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, HomePageCashier::class.java))
                 }
                 finish()
             }, 500)

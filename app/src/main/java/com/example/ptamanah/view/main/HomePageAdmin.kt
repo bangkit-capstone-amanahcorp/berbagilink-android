@@ -5,24 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityHomePageAdminBinding
-import com.example.ptamanah.databinding.ActivityMainBinding
-import com.example.ptamanah.view.login.LoginActivity
-import com.example.ptamanah.view.myEvent.MyEvent
-import com.example.ptamanah.view.myEvent.MyEventFragment
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
-import com.example.ptamanah.viewModel.main.MainViewModel
 import com.example.ptamanah.viewModel.mainadmin.HomePageAdminViewModel
 
 class HomePageAdmin : AppCompatActivity() {
@@ -61,7 +53,7 @@ class HomePageAdmin : AppCompatActivity() {
                         setMessage("Apakah anda yakin ingin keluar?")
                         setPositiveButton("Ok") { _, _ ->
                             viewModel.logout()
-                            val intent = Intent(context, MainActivity::class.java)
+                            val intent = Intent(context, HomePageCashier::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                             finish()

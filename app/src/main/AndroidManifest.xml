@@ -70,7 +70,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarCremAC" />
         <activity
-            android:name=".view.main.MainActivity"
+            android:name=".view.main.HomePageCashier"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

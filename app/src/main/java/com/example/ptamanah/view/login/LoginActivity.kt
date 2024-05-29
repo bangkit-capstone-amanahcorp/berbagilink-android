@@ -9,13 +9,12 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.ptamanah.view.main.MainActivity
+import com.example.ptamanah.view.main.HomePageCashier
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLoginBinding
-import com.example.ptamanah.view.eventTenant.DetailEventTenant
 import com.example.ptamanah.view.main.HomePageAdmin
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.login.LoginViewModel
@@ -99,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
                                 credensial.data.accessToken?.let { token ->
                                     loginViewModel.saveAuthToken(token)
                                     val intent =
-                                        Intent(this@LoginActivity, MainActivity::class.java)
+                                        Intent(this@LoginActivity, HomePageCashier::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                     startActivity(intent)

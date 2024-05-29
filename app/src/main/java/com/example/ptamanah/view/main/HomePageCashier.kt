@@ -26,7 +26,7 @@ import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.main.MainViewModel
 
-class MainActivity : AppCompatActivity() {
+class HomePageCashier : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var token : String = ""
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 token = user
                 binding.elevatedButton.text = "Lihat Event"
                 binding.elevatedButton.setOnClickListener {
-                    Intent(this@MainActivity, MyEvent::class.java).apply {
+                    Intent(this@HomePageCashier, MyEvent::class.java).apply {
                         putExtra(TOKEN, token)
                     }.also {
                         startActivity(it)
@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                         setMessage("Apakah anda yakin ingin keluar?")
                         setPositiveButton("Ok") { _, _ ->
                             viewModel.logout()
-                            val intent = Intent(context, MainActivity::class.java)
+                            val intent = Intent(context, HomePageCashier::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                             startActivity(intent)
                             finish()
