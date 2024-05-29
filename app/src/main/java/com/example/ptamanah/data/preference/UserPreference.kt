@@ -20,6 +20,18 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
         }
     }
 
+    suspend fun saveSessionAdmin(user: String) {
+        dataStore.edit { preferences ->
+            preferences[TOKEN_ADMIN] = user
+        }
+    }
+
+    fun getSessionAdmin(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[TOKEN_ADMIN]
+        }
+    }
+
 
     fun getSession(): Flow<String?> {
         return dataStore.data.map { preferences ->
@@ -61,6 +73,7 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
     companion object {
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val TOKEN_TENANT = stringPreferencesKey("tokenTenant")
+        private val TOKEN_ADMIN= stringPreferencesKey("tokenAdmin")
         private val EMAIL = stringPreferencesKey("email")
     }
 }

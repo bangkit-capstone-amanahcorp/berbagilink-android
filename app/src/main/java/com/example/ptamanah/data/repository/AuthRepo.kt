@@ -49,6 +49,12 @@ class AuthRepo(
         userPreference.saveSession(token)
     }
 
+    suspend fun saveAuthAdmin(token: String) {
+        userPreference.saveSessionAdmin(token)
+    }
+
+    fun getAuthTokenAdmin(): Flow<String?> = userPreference.getSessionAdmin()
+
     fun getAuthToken(): Flow<String?> = userPreference.getSession()
 
 

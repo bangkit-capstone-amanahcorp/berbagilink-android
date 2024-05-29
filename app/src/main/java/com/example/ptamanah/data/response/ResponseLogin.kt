@@ -29,7 +29,10 @@ data class User(
 	val username: String? = null,
 
 	@field:SerializedName("alamat")
-	val alamat: Any? = null
+	val alamat: Any? = null,
+
+	@field:SerializedName("role")
+	val role: String? = null
 )
 
 data class Data(

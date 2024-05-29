@@ -7,6 +7,7 @@ import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.login.LoginViewModel
 import com.example.ptamanah.viewModel.main.MainViewModel
+import com.example.ptamanah.viewModel.mainadmin.HomePageAdminViewModel
 
 class AuthViewModelFactory(private val authRepo: AuthRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -19,7 +20,10 @@ class AuthViewModelFactory(private val authRepo: AuthRepo) : ViewModelProvider.F
             }
             modelClass.isAssignableFrom(EventTenantViewModel::class.java) -> {
                 EventTenantViewModel(authRepo) as T
-            }else -> throw IllegalArgumentException("Unknown ViewModel class")
+            }
+            modelClass.isAssignableFrom(HomePageAdminViewModel::class.java) -> {
+                HomePageAdminViewModel(authRepo) as T
+            } else-> throw IllegalArgumentException("Unknown ViewModel class")
         }
     }
 }

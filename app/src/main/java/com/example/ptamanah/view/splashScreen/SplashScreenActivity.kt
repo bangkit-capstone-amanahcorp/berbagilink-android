@@ -13,10 +13,12 @@ import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.view.eventTenant.DetailEventTenant
+import com.example.ptamanah.view.main.HomePageAdmin
 import com.example.ptamanah.view.main.MainActivity
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.main.MainViewModel
+import com.example.ptamanah.viewModel.mainadmin.HomePageAdminViewModel
 
 class SplashScreenActivity : AppCompatActivity() {
 
@@ -25,6 +27,9 @@ class SplashScreenActivity : AppCompatActivity() {
         AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
     }
     private val viewModelTenant: EventTenantViewModel by viewModels {
+        AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
+    }
+    private val viewModelAdmin: HomePageAdminViewModel by viewModels {
         AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
     }
 
@@ -49,6 +54,16 @@ class SplashScreenActivity : AppCompatActivity() {
                     Log.d("casSes", cashierSession.toString())
                     if (!sessionHandled) {
                         startActivity(Intent(this, MainActivity::class.java))
+                    }
+                    sessionHandled = true
+                }
+            }
+
+            viewModelAdmin.getSession().observe(this) { adminSession ->
+                if (adminSession != null) {
+                    Log.d("adminSes", adminSession.toString())
+                    if (!sessionHandled) {
+                        startActivity(Intent(this, HomePageAdmin::class.java))
                     }
                     sessionHandled = true
                 }
