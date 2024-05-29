@@ -1,13 +1,18 @@
 package com.example.ptamanah.view.main
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
@@ -30,6 +35,8 @@ class HomePageAdmin : AppCompatActivity() {
         binding = ActivityHomePageAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupActionBar()
+
         viewModel.getSession().observe(this) { user ->
             if (user.isNullOrEmpty()) {
                 Log.d("isiUser", user.toString())
@@ -39,6 +46,21 @@ class HomePageAdmin : AppCompatActivity() {
                 Log.d("isiUserToken", token)
             }
         }
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.biru_toska)))
+
+        val customActionBar = LayoutInflater.from(this).inflate(R.layout.actionbar_main, null)
+        val actionBarParams = ActionBar.LayoutParams(
+            ActionBar.LayoutParams.MATCH_PARENT,
+            ActionBar.LayoutParams.MATCH_PARENT
+        )
+        supportActionBar?.setDisplayShowCustomEnabled(true)
+        supportActionBar?.setCustomView(customActionBar, actionBarParams)
+        val imageViewTitle = customActionBar.findViewById<ImageView>(R.id.imageTitle)
+        imageViewTitle.setImageResource(R.drawable.logo_putih)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

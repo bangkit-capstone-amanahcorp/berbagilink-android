@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,554 @@
     android:layout_height="match_parent"
     tools:context=".view.main.HomePageAdmin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/base_rectangle"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@drawable/base_rectangle"
+                android:scaleType="centerInside" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="46dp"
+                android:gravity="left|center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/frame_compas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+                        <ImageView
+                            android:id="@+id/base_circle"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/ic_circle_20"
+                            android:scaleType="centerInside" />
+
+                        <ImageView
+                            android:id="@+id/Qiblat"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_compas" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/text_Qiblat"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:text="@string/kiblat"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/container_group1"
+                    android:layout_width="148dp"
+                    android:layout_height="148dp"
+                    android:layout_marginLeft="24dp">
+
+                    <ImageView
+                        android:id="@+id/base_waktu"
+                        android:layout_width="match_parent"
+                        android:layout_height="148dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_circle" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="37dp"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginRight="37dp"
+                        android:layout_marginBottom="36dp"
+                        android:gravity="center_horizontal|top"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/text_subuh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:gravity="left|center_vertical"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/subuh"
+                            android:textColor="#FF303030"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/waktu_now"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginBottom="-5dp"
+                            android:gravity="left|center_vertical"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/waktu"
+                            android:textColor="#FF303030"
+                            android:textSize="24dp" />
+
+                        <TextView
+                            android:id="@+id/waktu_ke_shalat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="8dp"
+                            android:gravity="left|center_vertical"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@string/waktu"
+                            android:textColor="#FFFAAC18"
+                            android:textSize="14dp" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/ic_circle_20"
+                            android:scaleType="centerInside" />
+
+                        <ImageView
+                            android:id="@+id/cloud"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ic_cloud" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/text_cuaca"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/cuaca"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_frame4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="204dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_subuh1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/subuh"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/waktu_subuh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="04 : 27"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_dzhuhur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/duhur"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/waktu_dzuhur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/waktu"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_ashar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="Ashar"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/waktu_ashar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/waktu"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_maghrib"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/magrib"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/waktu_magrib"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/waktu"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal|top"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/isya"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/isya"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/waktu_isya"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:gravity="left|center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@string/waktu"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_frame17"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="270dp"
+                android:background="@drawable/baseline_rectangle_white"
+                android:clipToPadding="false"
+                android:gravity="left|center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp"
+                android:paddingTop="10dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/image_location_filled"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/text_kecamatan_mergangsan"
+                    android:layout_width="96dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:lineHeight="18dp"
+                    android:maxLines="2"
+                    android:text="Kecamatan Mergangsan"
+                    android:textColor="#FF303030"
+                    android:textSize="14sp" />
+
+
+
+                <ImageView
+                    android:id="@+id/image_calendar_fill"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginLeft="50dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_date" />
+
+                <TextView
+                    android:id="@+id/text_calendar_date"
+                    android:layout_width="108dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:lineHeight="18dp"
+                    android:maxLines="2"
+                    android:text="02 Nov 2024\n25 Syaw 1445H"
+                    android:textColor="#FF303030"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="366dp"
+                android:gravity="left|top"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_event"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:fontFamily="@font/ubuntu"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:text="@string/event"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="16dp">
+
+                    <Button
+                        android:id="@+id/elevatedButton"
+                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="@string/events"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+                        app:icon="@drawable/star_calendar"
+                        app:iconTint= "@color/black"
+                        app:backgroundTint="@color/white"
+                        app:iconSize="24dp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/container_quran_dzikir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="left|center_vertical"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/ubuntu"
+                    android:text="Quran &amp; Dzikir"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="16dp">
+
+                    <Button
+                        android:id="@+id/btnQuran"
+                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/quran"
+                        android:fontFamily="@font/ubuntu"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+                        app:backgroundTint="@color/white"
+                        app:icon="@drawable/ic_book"
+                        app:iconTint="@color/black"
+                        app:iconSize="24dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="16dp">
+
+                    <Button
+                        android:id="@+id/btnDzikir"
+                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/quran_dikir"
+                        app:iconSize="24dp"
+                        android:fontFamily="@font/ubuntu"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+                        app:backgroundTint="@color/white"
+                        app:icon="@drawable/ic_mosque"
+                        app:iconTint="@color/black" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_frame10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="650dp"
+                android:layout_gravity="bottom|center"
+                android:gravity="center_horizontal|top"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/container_group3"
+                    android:layout_width="328dp"
+                    android:layout_height="120dp">
+
+                    <ImageView
+                        android:id="@+id/container_mask_group"
+                        android:layout_width="328dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="0dp"
+                        android:gravity="left|top"
+                        android:orientation="vertical"
+                        android:src="@drawable/logo" />
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>
