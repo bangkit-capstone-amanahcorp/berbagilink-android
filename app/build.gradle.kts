@@ -15,7 +15,7 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "API_BASE_URL", "\"https://clbklink.berbagi.link/api/\"")
+        buildConfigField("String", "API_BASE_URL", "\"https://berbagi.link/api/\"")
     }
 
     buildTypes {
