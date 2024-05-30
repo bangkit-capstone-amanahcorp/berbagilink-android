@@ -19,6 +19,9 @@
         android:theme="@style/HomePage"
         tools:targetApi="31">
         <activity
+            android:name=".view.admin.events.ListEventsAdmin"
+            android:exported="false" />
+        <activity
             android:name=".view.main.HomePageAdmin"
             android:exported="false" />
         <activity

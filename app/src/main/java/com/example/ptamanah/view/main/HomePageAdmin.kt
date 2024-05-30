@@ -19,12 +19,14 @@ import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityHomePageAdminBinding
+import com.example.ptamanah.view.admin.events.ListEventsAdmin
+import com.example.ptamanah.view.admin.events.ListEventsAdmin.Companion.TOKEN
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.mainadmin.HomePageAdminViewModel
 
 class HomePageAdmin : AppCompatActivity() {
     private lateinit var binding: ActivityHomePageAdminBinding
-    private var token : String = ""
+    private var token: String = ""
     private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
     private val viewModel: HomePageAdminViewModel by viewModels {
         AuthViewModelFactory(AuthRepo(ApiConfig.getApiService(), userPreference))
@@ -38,19 +40,25 @@ class HomePageAdmin : AppCompatActivity() {
         setupActionBar()
 
         viewModel.getSession().observe(this) { user ->
-            if (user.isNullOrEmpty()) {
-                Log.d("isiUser", user.toString())
-
-            } else {
-                token = user
-                Log.d("isiUserToken", token)
+            token = user.toString()
+            binding.elevatedButton.setOnClickListener {
+                val intent = Intent(this, ListEventsAdmin::class.java)
+                intent.putExtra(TOKEN, token)
+                startActivity(intent)
             }
         }
     }
 
     private fun setupActionBar() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this, R.color.biru_toska)))
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.biru_toska
+                )
+            )
+        )
 
         val customActionBar = LayoutInflater.from(this).inflate(R.layout.actionbar_main, null)
         val actionBarParams = ActionBar.LayoutParams(
@@ -71,23 +79,25 @@ class HomePageAdmin : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_login -> {
-                    AlertDialog.Builder(this).apply {
-                        setMessage("Apakah anda yakin ingin keluar?")
-                        setPositiveButton("Ok") { _, _ ->
-                            viewModel.logout()
-                            val intent = Intent(context, HomePageCashier::class.java)
-                            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
-                            startActivity(intent)
-                            finish()
-                        }
-                        setNegativeButton("Cancel") { dialog, _ ->
-                            dialog.dismiss()
-                        }
-                        create()
-                        show()
+                AlertDialog.Builder(this).apply {
+                    setMessage("Apakah anda yakin ingin keluar?")
+                    setPositiveButton("Ok") { _, _ ->
+                        viewModel.logout()
+                        val intent = Intent(context, HomePageCashier::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        finish()
+                    }
+                    setNegativeButton("Cancel") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    create()
+                    show()
                 }
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

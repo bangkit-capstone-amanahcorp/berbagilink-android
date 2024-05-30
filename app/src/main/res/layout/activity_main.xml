@@ -398,7 +398,7 @@
                     android:layout_height="22dp"
                     android:layout_marginLeft="50dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_date_silver" />
+                    android:src="@drawable/ic_date" />
 
                 <TextView
                     android:id="@+id/text_calendar_date"
@@ -471,7 +471,8 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:icon="@drawable/ic_date"
+                        app:iconTint="@color/black"
+                        app:icon="@drawable/ic_events"
                         app:backgroundTint="@color/white"
                         app:iconSize="24dp"/>
                 </LinearLayout>
@@ -512,7 +513,8 @@
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:backgroundTint="@color/white"
-                        app:icon="@drawable/ic_book"
+                        app:iconTint="@color/black"
+                        app:icon="@drawable/ic_quran"
                         app:iconSize="24dp" />
                 </LinearLayout>
 
@@ -538,7 +540,8 @@
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:backgroundTint="@color/white"
-                        app:icon="@drawable/ic_mosque" />
+                        app:icon="@drawable/ic_dua"
+                        app:iconTint="@color/black" />
                 </LinearLayout>
             </LinearLayout>
 
