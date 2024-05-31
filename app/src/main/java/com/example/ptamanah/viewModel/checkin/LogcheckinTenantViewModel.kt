@@ -1,36 +1,22 @@
 package com.example.ptamanah.viewModel.checkin
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.ptamanah.data.repository.EventRepository
+import androidx.lifecycle.*
+import androidx.paging.*
+import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.response.DataItemtenant
-import com.example.ptamanah.data.response.ResponseDataVisitorTenant
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.*
 
-class LogcheckinTenantViewModel (private val eventRepository: EventRepository) : ViewModel() {
-        private val _checkinData = MutableLiveData<Result<ResponseDataVisitorTenant>>()
-        val checkinData: LiveData<Result<ResponseDataVisitorTenant>> = _checkinData
+class LogcheckinTenantViewModel(private val checkinRepository: CheckinRepository) : ViewModel() {
 
-        private val _filteredCheckinData = MutableLiveData<List<DataItemtenant>>()
-        val filteredCheckinData: LiveData<List<DataItemtenant>> = _filteredCheckinData
+    private val _searchQuery = MutableStateFlow<String?>(null)
 
-    fun getAllCheckins(token: String, eventId: String) {
-        viewModelScope.launch {
-            eventRepository.getChekinrespon(token, eventId).collect { result ->
-                _checkinData.value = result
-                _filteredCheckinData.value = result.getOrNull()?.datacheckin?.data ?: emptyList()
-            }
-        }
+    fun getCheckins(token: String, eventId: String): LiveData<PagingData<DataItemtenant>> {
+        return _searchQuery.flatMapLatest { query ->
+            checkinRepository.getCheckinStream(token, eventId, query)
+        }.cachedIn(viewModelScope).asLiveData()
     }
 
-
-    //searchlogic
-    fun searchUser(query: String) {
-        val searchResult = _checkinData.value?.getOrNull()?.datacheckin?.data?.filter {
-            it.nama.contains(query, ignoreCase = true)
-        } ?: emptyList()
-        _filteredCheckinData.value = searchResult
+    fun searchUser(query: String?) {
+        _searchQuery.value = query
     }
 }

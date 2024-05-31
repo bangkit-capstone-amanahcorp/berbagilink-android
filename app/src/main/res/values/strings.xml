@@ -62,6 +62,8 @@
     <string name="Not_found">Data tidak ditemukan</string>
     <string name="list_logchekin_tenant">Daftar Log Check In</string>
     <string name="events">Events</string>
-
+    <string name="kode_booking">Kode Booking</string>
+    <string name="nama_tiket">Nama Tiket</string>
+    <string name="retry">Coba Lagi</string>
 
 </resources>

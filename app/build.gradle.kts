@@ -71,6 +71,9 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
+    //pagging 3
+    implementation ("androidx.paging:paging-runtime-ktx:3.1.1")
+
     //tabLayout
     implementation ("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.viewpager2:viewpager2:1.0.0")

@@ -2,6 +2,7 @@ package com.example.ptamanah.view.myEvent
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -83,11 +84,23 @@ class MyEventFragment : Fragment() {
             }
         }
 
-        eventAdapter.setOnItemClickCallBack(object : EventAdapter.OnItemClickCallBack {
-            override fun onItemClicked(user: DataItem) {
+        eventAdapter.setOnScanClickCallBack(object : EventAdapter.OnScanClickCallBack {
+            override fun onScanClicked(user: DataItem) {
                 Intent(context, CameraActivity::class.java).apply {
                     putExtra(ID_EVENT, user.id)
                     putExtra(TOKEN, token)
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
+
+        eventAdapter.setOnDaftarClickCallBack(object : EventAdapter.OnDaftarClickCallBack {
+            override fun onDaftarClicked(user: DataItem) {
+                Intent(context, LogCheckinCashier::class.java).apply {
+                    putExtra(ID_EVENT, user.id)
+                    putExtra(TOKEN, token)
+                    Log.d("tesss2", "Navigating to LogCheckinCashier with eventId: ${user.id}")
                 }.also {
                     startActivity(it)
                 }
@@ -154,11 +167,23 @@ class MyEventFragment : Fragment() {
             }
         }
 
-        eventAdapter.setOnItemClickCallBack(object : EventAdapter.OnItemClickCallBack {
-            override fun onItemClicked(user: DataItem) {
+        eventAdapter.setOnScanClickCallBack(object : EventAdapter.OnScanClickCallBack {
+            override fun onScanClicked(user: DataItem) {
                 Intent(context, CameraActivity::class.java).apply {
                     putExtra(ID_EVENT, user.id)
                     putExtra(TOKEN, token)
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
+
+        eventAdapter.setOnDaftarClickCallBack(object : EventAdapter.OnDaftarClickCallBack {
+            override fun onDaftarClicked(user: DataItem) {
+                Intent(context, LogCheckinCashier::class.java).apply {
+                    putExtra(ID_EVENT, user.id)
+                    putExtra(TOKEN, token)
+                    Log.d("tesss2", "Navigating to LogCheckinCashier with eventId: ${user.id}")
                 }.also {
                     startActivity(it)
                 }

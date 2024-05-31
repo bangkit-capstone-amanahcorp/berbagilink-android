@@ -85,13 +85,13 @@
             android:layout_marginTop="30dp"
             android:text="@string/No_telepon"
             android:textSize="12sp"
-            card_view:layout_constraintEnd_toStartOf="@+id/kodebook_chekin_tv"
+            card_view:layout_constraintEnd_toStartOf="@+id/notelp_chekin_tv"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="@id/NamaPemilikiTv" />
 
         <TextView
-            android:id="@+id/kodebook_chekin_tv"
+            android:id="@+id/notelp_chekin_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -108,7 +108,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/email"
             android:textSize="12sp"
-            card_view:layout_constraintEnd_toStartOf="@+id/kodebook_chekin_tv"
+            card_view:layout_constraintEnd_toStartOf="@+id/notelp_chekin_tv"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="@id/KodeBookingTv" />
@@ -122,7 +122,7 @@
             android:textStyle="bold"
             android:text="Tiket Premium"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="@id/kodebook_chekin_tv" />
+            card_view:layout_constraintTop_toTopOf="@id/notelp_chekin_tv" />
 
         <TextView
             android:id="@+id/tanggalcekinTv"
@@ -131,7 +131,7 @@
             android:layout_marginTop="30dp"
             android:text="@string/tanggalcekin"
             android:textSize="12sp"
-            card_view:layout_constraintEnd_toStartOf="@+id/kodebook_chekin_tv"
+            card_view:layout_constraintEnd_toStartOf="@+id/notelp_chekin_tv"
             card_view:layout_constraintHorizontal_bias="0.0"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="@id/NamatiketTv" />

@@ -1,6 +1,7 @@
 package com.example.ptamanah.data.retrofit
 
 import com.example.ptamanah.data.response.ResponseCheckEmail
+import com.example.ptamanah.data.response.ResponseCheckinCashier
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.response.ResponseLogin
@@ -50,15 +51,24 @@ interface ApiService {
         @Header("Authorization") token: String
     ): ResponseListEvent
 
+    //Checkin Tenant
     @GET("event-mobile/tenant/all-visitor")
     suspend fun getChekin(
         @Header("Authorization") token: String,
-        @Query("search") search: String = "",
-        @Query("limit") limit: Int = 10,
-        @Query("page") page: Int = 1,
-        @Query("sort") sort: String = "desc",
+        @Query("search") search: String? = "",
+        @Query("limit") limit: Int,
+        @Query("page") page: Int,
+        @Query("sort") sort: String? = "desc",
         @Query("event_id") eventId: String
     ): ResponseDataVisitorTenant
+    //Checkin Cashier
+    @GET("event-mobile/check-in/report/log/{eventId}")
+    suspend fun getCheckinCashier(
+        @Header("Authorization") token: String,
+        @Path("eventId") eventId: String,
+        @Query("page") page: Int,
+        @Query("search") search: String? = ""
+    ): ResponseCheckinCashier
 
     @GET("event-mobile/tenant/profile")
     suspend fun tenantProfile(

@@ -1,7 +1,6 @@
 package com.bangkit.getevent.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
@@ -11,13 +10,17 @@ import com.example.ptamanah.R
 import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.databinding.ListItemEventBinding
 
-
 class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBACK) {
 
-    private lateinit var onItemClickCallBack: OnItemClickCallBack
+    private lateinit var onDaftarClickCallBack: OnDaftarClickCallBack
+    private lateinit var onScanClickCallBack: OnScanClickCallBack
 
-    fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack) {
-        this.onItemClickCallBack = onItemClickCallBack
+    fun setOnDaftarClickCallBack(onDaftarClickCallBack: OnDaftarClickCallBack) {
+        this.onDaftarClickCallBack = onDaftarClickCallBack
+    }
+
+    fun setOnScanClickCallBack(onScanClickCallBack: OnScanClickCallBack) {
+        this.onScanClickCallBack = onScanClickCallBack
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,8 +39,11 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
             if (event.saleStatus == "end") {
                 statusIV.setImageResource(R.drawable.status_border_end)
                 scnaBtn.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.disable)
+                daftarBtn.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.disable)
                 scnaBtn.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+                daftarBtn.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
                 scnaBtn.isEnabled = false
+                daftarBtn.isEnabled = false
                 tvStatus.text = "Selesai"
                 tvStatus.setTextColor(
                     ContextCompat.getColor(
@@ -51,10 +57,12 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
                 scnaBtn.setBackgroundResource(R.drawable.btn_biru)
                 tvStatus.text = "On-Going"
                 scnaBtn.setOnClickListener {
-                    onItemClickCallBack.onItemClicked(event)
+                    onScanClickCallBack.onScanClicked(event)
+                }
+                daftarBtn.setOnClickListener {
+                    onDaftarClickCallBack.onDaftarClicked(event)
                 }
             }
-
         }
     }
 
@@ -62,23 +70,21 @@ class EventAdapter : ListAdapter<DataItem, EventAdapter.ViewHolder>(DIFF_CALLBAC
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataItem>() {
-            override fun areItemsTheSame(
-                oldItem: DataItem,
-                newItem: DataItem
-            ): Boolean {
+            override fun areItemsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(
-                oldItem: DataItem,
-                newItem: DataItem
-            ): Boolean {
+            override fun areContentsTheSame(oldItem: DataItem, newItem: DataItem): Boolean {
                 return oldItem == newItem
             }
         }
     }
 
-    interface OnItemClickCallBack {
-        fun onItemClicked(user: DataItem)
+    interface OnDaftarClickCallBack {
+        fun onDaftarClicked(user: DataItem)
+    }
+
+    interface OnScanClickCallBack {
+        fun onScanClicked(user: DataItem)
     }
 }

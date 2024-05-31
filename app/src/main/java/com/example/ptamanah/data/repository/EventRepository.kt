@@ -22,20 +22,6 @@ class EventRepository(
         }
     }
 
-    suspend fun getChekinrespon(token: String, eventId: String): Flow<Result<ResponseDataVisitorTenant>> = flow {
-        try {
-            val bearerToken = bearerToken(token)
-            val response = apiService.getChekin(bearerToken, eventId = eventId)
-            Log.d("ResponseIniBrok", response.toString())
-            emit(Result.success(response))
-        } catch (e: Exception) {
-            emit(Result.failure(e))
-            Log.e("Error", "Failed to fetch events", e)
-        }
-    }
-
-
-
     private fun bearerToken(token: String): String {
         return "Bearer $token"
     }

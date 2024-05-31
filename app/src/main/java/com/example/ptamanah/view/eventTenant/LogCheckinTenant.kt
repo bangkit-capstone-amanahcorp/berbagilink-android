@@ -2,7 +2,6 @@ package com.example.ptamanah.view.eventTenant
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import androidx.activity.viewModels
@@ -10,23 +9,28 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
-import com.example.ptamanah.adapter.CheckinAdapter
-import com.example.ptamanah.data.repository.EventRepository
+import com.example.ptamanah.adapter.CheckinAdapterTenant
+import com.example.ptamanah.adapter.LoadingStateAdapter
+import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLogCheckinTenantBinding
-import com.example.ptamanah.view.camera.CameraTenant
 import com.example.ptamanah.viewModel.checkin.LogcheckinTenantViewModel
 import com.example.ptamanah.viewModel.factory.CheckinViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class LogCheckinTenant : AppCompatActivity() {
     private lateinit var binding: ActivityLogCheckinTenantBinding
     private val checkinViewModel: LogcheckinTenantViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
+    private val checkinAdapter = CheckinAdapterTenant()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,33 +38,16 @@ class LogCheckinTenant : AppCompatActivity() {
         setContentView(binding.root)
 
         setupActionBar()
-
-        val layoutManager = LinearLayoutManager(this)
-        binding.rvReview.layoutManager = layoutManager
-        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    checkinViewModel.searchUser(it)
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                newText?.let {
-                    checkinViewModel.searchUser(it)
-                }
-                return false
-            }
-        })
-
-        checkinViewModel.filteredCheckinData.observe(this) { result ->
-            setUserList(result)
-            binding.NotfoundTv.isVisible = result.isEmpty()
-        }
+        setupRecyclerView()
+        setupSearchView()
 
         val token = intent.getStringExtra(TOKEN_ID).toString()
         val eventId = intent.getStringExtra(ID_EVENT_TENANT).toString()
-        checkinViewModel.getAllCheckins(token, eventId)
+
+        // Observe the LiveData from ViewModel
+        checkinViewModel.getCheckins(token, eventId).observe(this) { pagingData ->
+            handleSearchResults(pagingData)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -73,14 +60,43 @@ class LogCheckinTenant : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUserList(data: List<DataItemtenant>) {
-        val adapter = CheckinAdapter(data)
-        binding.rvReview.adapter = adapter
+    private fun setupRecyclerView() {
+        binding.rvReview.layoutManager = LinearLayoutManager(this)
+        binding.rvReview.adapter = checkinAdapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                checkinAdapter.retry()
+            }
+        )
+        binding.rvReview.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
     }
 
-    private fun getCheckinRepo(): EventRepository {
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                checkinViewModel.searchUser(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                checkinViewModel.searchUser(newText)
+                return false
+            }
+        })
+    }
+
+    private fun handleSearchResults(pagingData: PagingData<DataItemtenant>) {
+        lifecycleScope.launch {
+            checkinAdapter.submitData(pagingData)
+            checkinAdapter.loadStateFlow.collectLatest { loadStates ->
+                val isListEmpty = checkinAdapter.itemCount == 0
+                binding.NotfoundTv.isVisible = isListEmpty
+            }
+        }
+    }
+
+    private fun getCheckinRepo(): CheckinRepository {
         val apiService = ApiConfig.getApiService()
-        return EventRepository(apiService)
+        return CheckinRepository(apiService)
     }
 
     private fun setupActionBar() {
