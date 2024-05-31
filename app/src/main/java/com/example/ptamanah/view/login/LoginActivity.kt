@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     loginViewModel.userLogin(email, password).collect { result ->
                         result.onSuccess { credensial ->
-                            if (credensial.data?.user?.role == "user_super_administrator") {
+                            /*if (credensial.data?.user?.role == "user_super_administrator") {
                                 credensial.data.accessToken?.let { token ->
                                     loginViewModel.saveAuthAdmin(token)
                                     val intent = Intent(this@LoginActivity, HomePageAdmin::class.java)
@@ -94,8 +94,8 @@ class LoginActivity : AppCompatActivity() {
                                     finish()
                                 }
 
-                            } else if (credensial.data?.user?.role == "cashier") {
-                                credensial.data.accessToken?.let { token ->
+                            } else if (credensial.data?.user?.role == "cashier") {*/
+                                credensial.data?.accessToken?.let { token ->
                                     loginViewModel.saveAuthToken(token)
                                     val intent =
                                         Intent(this@LoginActivity, HomePageCashier::class.java)
@@ -105,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
                                     showLoading(false)
                                     finish()
                                 }
-                            }
+                            //}
 
                             showToast(credensial.info.toString())
                             showLoading(false)
