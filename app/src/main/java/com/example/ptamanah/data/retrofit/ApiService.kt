@@ -1,5 +1,6 @@
 package com.example.ptamanah.data.retrofit
 
+import com.example.ptamanah.data.response.AdminEventLogCheckResponse
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseCheckinCashier
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
@@ -90,4 +91,14 @@ interface ApiService {
         @Path("eventId") eventId: String,
         @Field("booking_code") bookingCode: String
     ): ResponseScanTenant
+
+    @FormUrlEncoded
+    @GET("event-mobile/check-in/{eventId}")
+    suspend fun getEventAdmin(
+    @Header("Authorization") token: String,
+    @Path("eventId") eventId: String,
+    @Field("status") status: String,
+    @Field("search") search: String? = "",
+    @Field("page") page: Int
+    ): AdminEventLogCheckResponse
 }

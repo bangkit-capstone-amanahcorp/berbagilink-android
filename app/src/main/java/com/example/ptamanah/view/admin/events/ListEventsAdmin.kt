@@ -98,6 +98,7 @@ class ListEventsAdmin : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
     private fun setupActionBar() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setBackgroundDrawable(

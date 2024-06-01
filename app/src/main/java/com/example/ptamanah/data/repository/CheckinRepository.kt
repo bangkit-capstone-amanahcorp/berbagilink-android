@@ -5,7 +5,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.example.ptamanah.data.pagingsource.CheckinChasierPagingSource
 import com.example.ptamanah.data.pagingsource.CheckinPagingSource
+import com.example.ptamanah.data.pagingsource.EventAdminLogPagingSource
 import com.example.ptamanah.data.response.DataItemCashier
+import com.example.ptamanah.data.response.DataItemLog
 import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.retrofit.ApiService
@@ -31,6 +33,16 @@ class CheckinRepository(
                 enablePlaceholders = false
             ),
             pagingSourceFactory = { CheckinChasierPagingSource(apiService, token, eventId, search) }
+        ).flow
+    }
+
+    fun getCheckinLogAdmin(token: String, eventId: String, search: String?, status: String): Flow<PagingData<DataItemLog>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 5,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { EventAdminLogPagingSource (apiService, token, eventId, search, status) }
         ).flow
     }
 }

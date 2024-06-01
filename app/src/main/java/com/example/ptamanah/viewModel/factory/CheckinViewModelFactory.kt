@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.repository.EventRepository
+import com.example.ptamanah.viewModel.checkin.EventAdminViewModel
 import com.example.ptamanah.viewModel.checkin.LogcheckinCashierViewModel
 import com.example.ptamanah.viewModel.checkin.LogcheckinTenantViewModel
 
@@ -15,6 +16,9 @@ class CheckinViewModelFactory(private val checkinRepository: CheckinRepository) 
                 LogcheckinTenantViewModel(checkinRepository) as T
             }
             modelClass.isAssignableFrom(LogcheckinCashierViewModel::class.java) -> {
+                LogcheckinCashierViewModel(checkinRepository) as T
+            }
+            modelClass.isAssignableFrom(EventAdminViewModel::class.java) -> {
                 LogcheckinCashierViewModel(checkinRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class")

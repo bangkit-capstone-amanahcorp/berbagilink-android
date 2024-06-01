@@ -21,5 +21,4 @@ class EventPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(acti
         return fragment
     }
 
-
 }

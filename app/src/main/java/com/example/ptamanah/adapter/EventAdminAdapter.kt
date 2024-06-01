@@ -14,9 +14,13 @@ import com.example.ptamanah.databinding.ListEventsAdminBinding
 class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallBack: OnItemClickCallBack
+    private lateinit var onDaftarClickCallBack: OnDaftarClickCallBack
 
     fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack) {
         this.onItemClickCallBack = onItemClickCallBack
+    }
+    fun setOnDaftarClickCallBack(onDaftarClickCallBack:OnDaftarClickCallBack) {
+        this.onDaftarClickCallBack = onDaftarClickCallBack
     }
 
     override fun onCreateViewHolder(
@@ -54,6 +58,9 @@ class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DI
                 scnaBtn.setOnClickListener {
                     onItemClickCallBack.onItemClicked(event)
                 }
+                daftarBtn.setOnClickListener {
+                    onDaftarClickCallBack.onDaftarClicked(event)
+                }
             }
         }
     }
@@ -80,5 +87,8 @@ class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DI
 
     interface OnItemClickCallBack {
         fun onItemClicked(user: DataItem)
+    }
+    interface OnDaftarClickCallBack {
+        fun onDaftarClicked(user: DataItem)
     }
 }

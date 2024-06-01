@@ -2,6 +2,7 @@ package com.example.ptamanah.view.admin.events
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,9 @@ import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.FragmentListEventsAdminBinding
 import com.example.ptamanah.databinding.FragmentMyEventBinding
+import com.example.ptamanah.view.admin.logcheck.EventAdmin
 import com.example.ptamanah.view.camera.CameraActivity
+import com.example.ptamanah.view.myEvent.LogCheckinCashier
 import com.example.ptamanah.view.myEvent.MyEventFragment
 import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.factory.EventViewModelFactory
@@ -162,6 +165,17 @@ class ListEventsAdminFragment : Fragment() {
                 Intent(context, CameraActivity::class.java).apply {
                     putExtra(CameraActivity.ID_EVENT, user.id)
                     putExtra(MyEventFragment.TOKEN, token)
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
+        eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
+            override fun onDaftarClicked(user: DataItem) {
+                Intent(context, EventAdmin::class.java).apply {
+                    putExtra(CameraActivity.ID_EVENT, user.id)
+                    putExtra(MyEventFragment.TOKEN, token)
+                    Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
                 }.also {
                     startActivity(it)
                 }
