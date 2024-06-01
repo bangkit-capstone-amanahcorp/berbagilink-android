@@ -1,9 +1,11 @@
 package com.example.ptamanah.adapter
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.ptamanah.view.admin.events.ListEventsAdminFragment
 import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 
 class EventPagerAdminLogAdapter(fragmentManager: FragmentManager,lifesycle: Lifecycle) :
@@ -13,16 +15,10 @@ class EventPagerAdminLogAdapter(fragmentManager: FragmentManager,lifesycle: Life
     }
 
     override fun createFragment(position: Int): Fragment {
-        return when(position){
-            0 ->{
-                EventAdminFragment()
-            }
-            1 ->{
-                EventAdminBayarFragment()
-            }
-            else ->{
-                EventAdminManualFragment()
-            }
+        val fragment = EventAdminFragment()
+        fragment.arguments = Bundle().apply {
+            putInt(EventAdminFragment.ARG_POSITION, position + 1)
         }
+        return fragment
     }
 }
