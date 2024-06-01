@@ -49,15 +49,22 @@
          />
 
     <Button
-        android:id="@+id/check_event_button"
+        android:id="@+id/btnFilter"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:text="Semua Status"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/biru_toska"
-        android:text="@string/check_event"
-        android:textColor="@color/white" />
+        android:layout_marginTop="5dp"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+        app:backgroundTint="@color/white"
+        app:iconTint="@color/black"
+        app:icon="@drawable/ic_arrow_down"
+        app:iconGravity="end"
+        app:iconSize="24dp" />
 
     <TextView
         android:id="@+id/nama_tenant"
@@ -67,9 +74,8 @@
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginTop="12dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textColor="#083444"
+        android:padding="8dp"
+        android:textColor="#000000"
         android:textSize="20sp"
         tools:text="25 mei - 30 desember 2022" />
 
@@ -77,6 +83,6 @@
         android:id="@+id/pagerAdmin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginTop="4dp" />
 
 </LinearLayout>

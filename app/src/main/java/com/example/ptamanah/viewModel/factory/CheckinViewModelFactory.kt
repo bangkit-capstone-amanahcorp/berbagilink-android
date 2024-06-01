@@ -19,7 +19,7 @@ class CheckinViewModelFactory(private val checkinRepository: CheckinRepository) 
                 LogcheckinCashierViewModel(checkinRepository) as T
             }
             modelClass.isAssignableFrom(EventAdminViewModel::class.java) -> {
-                LogcheckinCashierViewModel(checkinRepository) as T
+                EventAdminViewModel(checkinRepository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class")
         }

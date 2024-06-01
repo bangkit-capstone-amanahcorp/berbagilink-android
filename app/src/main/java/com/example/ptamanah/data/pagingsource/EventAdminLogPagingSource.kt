@@ -2,41 +2,44 @@ package com.example.ptamanah.data.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.ptamanah.data.response.DataItemLog
-import com.example.ptamanah.data.response.DataItemtenant
+import com.example.ptamanah.data.response.DataItemAdmin
 import com.example.ptamanah.data.retrofit.ApiService
 
 class EventAdminLogPagingSource(
     private val apiService: ApiService,
     private val token: String,
     private val eventId: String,
-    private val search: String?,
-    private val status: String
-) : PagingSource<Int, DataItemLog>() {
+    private val keywordValue: String?,
+    private val status: String,
+    private val isManual: Int
+) : PagingSource<Int, DataItemAdmin>() {
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
     }
 
-    override fun getRefreshKey(state: PagingState<Int, DataItemLog>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, DataItemAdmin>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataItemLog> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataItemAdmin> {
         val page = params.key ?: INITIAL_PAGE_INDEX
         return try {
             val response = apiService.getEventAdmin(
                 token = "Bearer $token",
-                search = search ?: "",
+                keywordValue = keywordValue ?: "",
+                isManual = isManual,
                 page = page,
                 eventId = eventId,
-                status = status
+                status = status,
+                startDate = "",
+                endDate = ""
 
             )
-            val data = response.dataCheckinLogAdmin.dataAd.data
+            val data = response.dataLog.data
 
             LoadResult.Page(
                 data = data,

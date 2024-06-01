@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ptamanah.R
 import com.example.ptamanah.data.response.DataItem
-import com.example.ptamanah.data.response.DataItemLog
+import com.example.ptamanah.data.response.DataItemAdmin
 import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.databinding.ListEventsAdminBinding
 import com.example.ptamanah.databinding.ListItemEventAdminBinding
 import com.example.ptamanah.databinding.ListLogcheckinTenantBinding
 
-class EventAdminLogAdapter : PagingDataAdapter <DataItemLog, EventAdminLogAdapter.MyViewHolder>(DIFF_CALLBACK) {
+class EventAdminLogAdapter : PagingDataAdapter <DataItemAdmin, EventAdminLogAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -34,7 +34,7 @@ class EventAdminLogAdapter : PagingDataAdapter <DataItemLog, EventAdminLogAdapte
 
     class MyViewHolder(private val binding: ListItemEventAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: DataItemLog) {
+        fun bind(data: DataItemAdmin) {
             binding.nomor.text = data.invoice
             binding.namaPemilikIsi.text = data.nama
             binding.namaTiketIsi.text = data.namaTiket
@@ -44,19 +44,22 @@ class EventAdminLogAdapter : PagingDataAdapter <DataItemLog, EventAdminLogAdapte
             binding.KodeBookingIsi.text = data.bookingCode
             binding.namaPemilikIsi2.text = data.nama
             binding.emailIsi.text = data.email
+            binding.noHpIsi.text = data.handphone
+            binding.waktuCheckIsi.text = data.checkinTime.toString()
             binding.jenisTiketIsi.text = data.namaTiket
+            binding.kuotaIsi.text = data.kuota.toString()
             binding.statusIsi.text = data.status
 
         }
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataItemLog>() {
-            override fun areItemsTheSame(oldItem: DataItemLog, newItem: DataItemLog): Boolean {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<DataItemAdmin>() {
+            override fun areItemsTheSame(oldItem: DataItemAdmin, newItem: DataItemAdmin): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: DataItemLog, newItem: DataItemLog): Boolean {
+            override fun areContentsTheSame(oldItem: DataItemAdmin, newItem: DataItemAdmin): Boolean {
                 return oldItem == newItem
             }
         }

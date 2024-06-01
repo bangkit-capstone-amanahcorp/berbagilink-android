@@ -1,9 +1,9 @@
 package com.example.ptamanah.data.retrofit
 
-import com.example.ptamanah.data.response.AdminEventLogCheckResponse
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseCheckinCashier
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
+import com.example.ptamanah.data.response.ResponseEventAdminLog
 import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
@@ -98,7 +98,10 @@ interface ApiService {
     @Header("Authorization") token: String,
     @Path("eventId") eventId: String,
     @Field("status") status: String,
-    @Field("search") search: String? = "",
+    @Path("start_date") startDate: String,
+    @Field("end_date") endDate: String,
+    @Field("keyword_value") keywordValue: String? = "",
+    @Field("is_manual") isManual: Int,
     @Field("page") page: Int
-    ): AdminEventLogCheckResponse
+    ): ResponseEventAdminLog
 }

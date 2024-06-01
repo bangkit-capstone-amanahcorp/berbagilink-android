@@ -67,7 +67,6 @@
                 android:id="@+id/expandLayout3Teks"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible"
                 android:layout_margin="8dp">
 
                 <TextView
@@ -139,7 +138,7 @@
                 android:id="@+id/expandLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility=""
                 android:layout_margin="8dp">
 
                 <TextView

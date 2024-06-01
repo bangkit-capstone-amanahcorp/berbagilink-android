@@ -22,6 +22,8 @@ class CheckinAdapterTenant :
         if (data != null) {
             Log.d("adapterrrrsss", "Binding data at position $position: $data")
             holder.bind(data)
+        }else{
+            Log.d("adatidaksih", "No data found at position $position")
         }
     }
 

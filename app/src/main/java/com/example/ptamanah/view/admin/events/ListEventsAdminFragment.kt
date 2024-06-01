@@ -99,6 +99,17 @@ class ListEventsAdminFragment : Fragment() {
                 }
             }
         })
+        eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
+            override fun onDaftarClicked(user: DataItem) {
+                Intent(context, EventAdmin::class.java).apply {
+                    putExtra(CameraActivity.ID_EVENT, user.id)
+                    putExtra(MyEventFragment.TOKEN, token)
+                    Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
     }
 
     private fun showDoneEvent() {
@@ -129,6 +140,17 @@ class ListEventsAdminFragment : Fragment() {
                 }
             }
         }
+        eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
+            override fun onDaftarClicked(user: DataItem) {
+                Intent(context, EventAdmin::class.java).apply {
+                    putExtra(CameraActivity.ID_EVENT, user.id)
+                    putExtra(MyEventFragment.TOKEN, token)
+                    Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
     }
 
     private fun showActiveEvent() {

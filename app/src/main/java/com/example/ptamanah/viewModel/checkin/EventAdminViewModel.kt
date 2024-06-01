@@ -7,9 +7,8 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.ptamanah.data.repository.CheckinRepository
-import com.example.ptamanah.data.response.DataItemLog
-import com.example.ptamanah.data.response.DataItemtenant
-import kotlinx.coroutines.flow.Flow
+import com.example.ptamanah.data.response.DataItemAdmin
+
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 
@@ -17,9 +16,11 @@ class EventAdminViewModel (private val checkinRepository: CheckinRepository) : V
 
     private val _searchQuery = MutableStateFlow<String?>(null)
 
-    fun getCheckinLogAdmin(token: String, eventId: String, search: String?, status: String): Flow<PagingData<DataItemLog>> {
-        return checkinRepository.getCheckinLogAdmin(token, eventId, search, status)
-            .cachedIn(viewModelScope)
+
+    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual: Int): LiveData<PagingData<DataItemAdmin>> {
+        return _searchQuery.flatMapLatest { query ->
+            checkinRepository.getCheckinLogAdmin(token, eventId, keywordValue, status, isManual)
+        }.cachedIn(viewModelScope).asLiveData()
     }
 
     fun searchUser(query: String?) {
