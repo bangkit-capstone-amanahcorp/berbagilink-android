@@ -19,30 +19,18 @@ class EventAdmin : AppCompatActivity() {
         binding = ActivityEventAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = EventPagerAdminLogAdapter(supportFragmentManager,lifecycle)
-        binding.pagerAdmin.adapter = adapter
-        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-                if (tab != null) {
-                    binding.pagerAdmin.currentItem = tab.position
+        adapter = EventPagerAdminLogAdapter(supportFragmentManager, lifecycle)
+        with(binding) {
+            binding.pagerAdmin.adapter = adapter
+
+            TabLayoutMediator(tabLayout, pagerAdmin) { tab, position ->
+                when (position) {
+                    0 -> tab.text = "Semua"
+                    1 -> tab.text = "Berbayar"
+                    2 -> tab.text = "Manual"
                 }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                TODO("Not yet implemented")
-            }
-        })
-        binding.pagerAdmin.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position))
-            }
-        })
+            }.attach()
+        }
     }
 }
 
