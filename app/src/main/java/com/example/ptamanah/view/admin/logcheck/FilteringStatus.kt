@@ -40,10 +40,10 @@ class FilteringStatus : BottomSheetDialogFragment() {
         binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
             val selectedStatus = when (checkedId) {
                 R.id.smua -> ""
-                R.id.check -> "check-in"
-                R.id.uncheck -> "uncheck"
-                R.id.returnCheck -> "return"
-                R.id.failed -> "failed"
+                R.id.check -> "Checked-In"
+                R.id.uncheck -> "Unchecked"
+                R.id.returnCheck -> "Returned"
+                R.id.failed -> "Failed"
                 else -> null
             }
 

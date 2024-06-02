@@ -39,11 +39,13 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
             }
         }.attach()
 
+        setupSearchView()
     }
 
     override fun onFilterSelected(status: String) {
         val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
         if (currentFragment is EventAdminFragment) {
+            currentFragment.setCurrentStatus(status)
             currentFragment.filteringEventsByStatus(status)
         }
         if (status == "") {
@@ -52,6 +54,24 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
             binding.btnFilter.text = status
         }
     }
+    private fun setupSearchView() {
+        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { performSearch(it) }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { performSearch(it) }
+                return false
+            }
+        })
+    }
+
+    private fun performSearch(query: String) {
+        val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
+        if (currentFragment is EventAdminFragment) {
+            currentFragment.performSearch(query)
+        }
+    }
 }
-
-

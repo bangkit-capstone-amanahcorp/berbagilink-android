@@ -11,6 +11,7 @@ import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
+import com.example.ptamanah.data.response.ResponseUpdateCheckIn
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -92,6 +93,7 @@ interface ApiService {
         @Field("booking_code") bookingCode: String
     ): ResponseScanTenant
 
+
     @GET("event-mobile/check-in/{eventId}")
     suspend fun getEventAdmin(
     @Header("Authorization") token: String,
@@ -102,10 +104,12 @@ interface ApiService {
     @Query("keyword_value") keywordValue: String? = "",
     @Query("status") status: String,
     @Query("is_manual") isManual: Int? = null,
-    /*@Field("status") status: String,
-    @Path("start_date") startDate: String,
-    @Field("end_date") endDate: String,
-    @Field("keyword_value") keywordValue: String? = "",
-    @Field("is_manual") isManual: Int,*/
     ): ResponseEventAdminLog
+
+    @POST("event-mobile/check-in/update/{id}")
+    suspend fun updateCheckin(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+    ):ResponseUpdateCheckIn
+
 }

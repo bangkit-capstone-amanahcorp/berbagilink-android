@@ -25,6 +25,8 @@ class EventAdminFragment : Fragment() {
     private var position: Int? = null
     private var token: String? = ""
     private var event_id: String? = ""
+    private var currentStatus: String = ""
+    private var currentManual: Int? = null
     private val eventAdminViewModel: EventAdminViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
@@ -70,16 +72,19 @@ class EventAdminFragment : Fragment() {
 
     private fun showBerbayarEvent() {
         setupRecyclerView()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", 0)
+        setCurrentManual(1)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter())
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
     }
 
+
     private fun showManualEvent() {
         setupRecyclerView()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", 1)
+        setCurrentManual(0)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter())
             .observe(viewLifecycleOwner) { pagingData ->
                     eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -111,6 +116,30 @@ class EventAdminFragment : Fragment() {
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
+    }
+
+    fun performSearch(query: String, ) {
+        val currentStatus = getCurrentStatusFilter()
+        val isManual = getCurrentManualFilter()
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual)
+            .observe(viewLifecycleOwner) { pagingData ->
+                eventAdapter.submitData(lifecycle, pagingData)
+                observeLoadState()
+            }
+    }
+    fun setCurrentStatus(status: String) {
+        currentStatus = status
+    }
+    private fun getCurrentStatusFilter(): String {
+        return currentStatus
+    }
+
+    fun setCurrentManual(isManual: Int?) {
+        currentManual = isManual
+    }
+
+    private fun getCurrentManualFilter(): Int? {
+        return currentManual
     }
 
     companion object {

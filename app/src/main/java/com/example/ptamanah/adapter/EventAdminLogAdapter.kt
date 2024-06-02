@@ -42,7 +42,7 @@ class EventAdminLogAdapter(
             binding.waktuCheckIsi.text = data.checkinTime.toString()
             binding.jenisTiketIsi.text = data.namaTiket
             binding.kuotaIsi.text = data.kuota.toString()
-            binding.statusIsi.text = data.status
+            binding.statusIsi2.text = data.status
 
             binding.previewBtn.setOnClickListener {
                 val context = itemView.context
