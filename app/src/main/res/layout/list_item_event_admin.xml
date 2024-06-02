@@ -138,7 +138,7 @@
                 android:id="@+id/expandLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility=""
+                android:visibility="visible"
                 android:layout_margin="8dp">
 
                 <TextView
@@ -351,7 +351,7 @@
 
 
                 <Button
-                    android:id="@+id/daftarBtn"
+                    android:id="@+id/previewBtn"
                     style="?attr/materialButtonOutlinedStyle"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -376,10 +376,10 @@
                     android:layout_marginEnd="5dp"
                     android:backgroundTint="@color/oren"
                     android:text="Un Check"
-                    app:layout_constraintBottom_toBottomOf="@+id/daftarBtn"
+                    app:layout_constraintBottom_toBottomOf="@+id/previewBtn"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/daftarBtn"
-                    app:layout_constraintTop_toTopOf="@+id/daftarBtn"
+                    app:layout_constraintStart_toEndOf="@+id/previewBtn"
+                    app:layout_constraintTop_toTopOf="@+id/previewBtn"
                     app:layout_constraintVertical_bias="1.0"
                     app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large" />
 

@@ -86,6 +86,7 @@ class LoginActivity : AppCompatActivity() {
                             if (credensial.data?.user?.role == "user_super_administrator") {
                                 credensial.data.accessToken?.let { token ->
                                     loginViewModel.saveAuthAdmin(token)
+                                    loginViewModel.saveUsername(credensial.data.user.username.toString())
                                     val intent = Intent(this@LoginActivity, HomePageAdmin::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK

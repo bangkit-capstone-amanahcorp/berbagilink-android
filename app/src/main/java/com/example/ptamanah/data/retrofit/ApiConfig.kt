@@ -3,6 +3,7 @@ package com.example.ptamanah.data.retrofit
 import com.example.ptamanah.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,8 +16,10 @@ class ApiConfig {
                     .build()
                 chain.proceed(requestHeaders)
             }
+            val loggingInterceptor =
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val client = OkHttpClient.Builder()
-                .addInterceptor(authInterceptor)
+                .addInterceptor(loggingInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
                 .baseUrl(BuildConfig.API_BASE_URL)

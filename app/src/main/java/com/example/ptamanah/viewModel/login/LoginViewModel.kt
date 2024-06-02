@@ -32,6 +32,12 @@ class LoginViewModel(
         }
     }
 
+    fun saveUsername(username: String) {
+        viewModelScope.launch {
+            authRepo.saveUsername(username)
+        }
+    }
+
     fun saveSessionTenant(token: String) {
         viewModelScope.launch {
             authRepo.saveAuthTenant(token)

@@ -20,6 +20,7 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.FragmentListEventsAdminBinding
 import com.example.ptamanah.databinding.FragmentMyEventBinding
 import com.example.ptamanah.view.admin.logcheck.EventAdmin
+import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 import com.example.ptamanah.view.camera.CameraActivity
 import com.example.ptamanah.view.myEvent.LogCheckinCashier
 import com.example.ptamanah.view.myEvent.MyEventFragment
@@ -102,7 +103,7 @@ class ListEventsAdminFragment : Fragment() {
         eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
             override fun onDaftarClicked(user: DataItem) {
                 Intent(context, EventAdmin::class.java).apply {
-                    putExtra(CameraActivity.ID_EVENT, user.id)
+                    putExtra(EventAdminFragment.EVENT_ID, user.id)
                     putExtra(MyEventFragment.TOKEN, token)
                     Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
                 }.also {
@@ -143,7 +144,7 @@ class ListEventsAdminFragment : Fragment() {
         eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
             override fun onDaftarClicked(user: DataItem) {
                 Intent(context, EventAdmin::class.java).apply {
-                    putExtra(CameraActivity.ID_EVENT, user.id)
+                    putExtra(EventAdminFragment.EVENT_ID, user.id)
                     putExtra(MyEventFragment.TOKEN, token)
                     Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
                 }.also {
@@ -195,7 +196,7 @@ class ListEventsAdminFragment : Fragment() {
         eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
             override fun onDaftarClicked(user: DataItem) {
                 Intent(context, EventAdmin::class.java).apply {
-                    putExtra(CameraActivity.ID_EVENT, user.id)
+                    putExtra(EventAdminFragment.EVENT_ID, user.id)
                     putExtra(MyEventFragment.TOKEN, token)
                     Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
                 }.also {

@@ -3,93 +3,88 @@ package com.example.ptamanah.data.response
 import com.google.gson.annotations.SerializedName
 
 data class ResponseEventAdminLog(
-	@field:SerializedName("code")
-	val dataLog: DataLog,
 
 	@field:SerializedName("data")
-	val data: Data,
+	val data: DataLog? = null,
 
 	@field:SerializedName("error")
-	val error: Boolean
-
-
+	val error: Boolean? = null
 )
 
 data class DataItemAdmin(
 
 	@field:SerializedName("booking_code")
-	val bookingCode: String,
+	val bookingCode: String? = null,
 
 	@field:SerializedName("checkin_time")
-	val checkinTime: Any,
+	val checkinTime: String? = null,
 
 	@field:SerializedName("handphone")
-	val handphone: String,
+	val handphone: String? = null,
 
 	@field:SerializedName("nama")
-	val nama: String,
+	val nama: String? = null,
 
 	@field:SerializedName("nama_tiket")
-	val namaTiket: String,
+	val namaTiket: String? = null,
 
 	@field:SerializedName("kuota")
-	val kuota: Int,
+	val kuota: Int? = null,
 
 	@field:SerializedName("id")
-	val id: String,
+	val id: String? = null,
 
 	@field:SerializedName("invoice")
-	val invoice: String,
+	val invoice: String? = null,
 
 	@field:SerializedName("manual")
-	val manual: Int,
+	val manual: Int? = null,
 
 	@field:SerializedName("email")
-	val email: String,
+	val email: String? = null,
 
 	@field:SerializedName("slug")
-	val slug: String,
+	val slug: String? = null,
 
 	@field:SerializedName("status")
-	val status: String
+	val status: String? = null
 )
 
 data class DataLog(
 
 	@field:SerializedName("first_page_url")
-	val firstPageUrl: String,
+	val firstPageUrl: String? = null,
 
 	@field:SerializedName("path")
-	val path: String,
+	val path: String? = null,
 
 	@field:SerializedName("per_page")
-	val perPage: Int,
+	val perPage: Int? = null,
 
 	@field:SerializedName("total")
-	val total: Int,
+	val total: Int? = null,
 
 	@field:SerializedName("data")
-	val data: List<DataItemAdmin>,
+	val data: List<DataItemAdmin?>? = null,
 
 	@field:SerializedName("last_page")
-	val lastPage: Int,
+	val lastPage: Int? = null,
 
 	@field:SerializedName("last_page_url")
-	val lastPageUrl: String,
+	val lastPageUrl: String? = null,
 
 	@field:SerializedName("next_page_url")
-	val nextPageUrl: Any,
+	val nextPageUrl: Any? = null,
 
 	@field:SerializedName("from")
-	val from: Int,
+	val from: Int? = null,
 
 	@field:SerializedName("to")
-	val to: Int,
+	val to: Int? = null,
 
 	@field:SerializedName("prev_page_url")
-	val prevPageUrl: Any,
+	val prevPageUrl: Any? = null,
 
 	@field:SerializedName("current_page")
-	val currentPage: Int
+	val currentPage: Int? = null
 )
-

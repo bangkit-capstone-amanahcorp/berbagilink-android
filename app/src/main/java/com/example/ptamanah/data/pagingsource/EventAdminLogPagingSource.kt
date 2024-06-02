@@ -1,5 +1,6 @@
 package com.example.ptamanah.data.pagingsource
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.ptamanah.data.response.DataItemAdmin
@@ -11,7 +12,7 @@ class EventAdminLogPagingSource(
     private val eventId: String,
     private val keywordValue: String?,
     private val status: String,
-    private val isManual: Int
+    private val isManual: Int?
 ) : PagingSource<Int, DataItemAdmin>() {
 
     private companion object {
@@ -30,17 +31,18 @@ class EventAdminLogPagingSource(
         return try {
             val response = apiService.getEventAdmin(
                 token = "Bearer $token",
-                keywordValue = keywordValue ?: "",
-                isManual = isManual,
-                page = page,
                 eventId = eventId,
-                status = status,
+                page = page,
                 startDate = "",
-                endDate = ""
-
+                endDate = "",
+                keywordValue = keywordValue ?: "",
+                status = status,
+                isManual = isManual
             )
-            val data = response.dataLog.data
+            Log.d("Response22", response.toString())
+            val data = response.data?.data?.filterNotNull() ?: emptyList()
 
+            Log.d("Data22", data.toString())
             LoadResult.Page(
                 data = data,
                 prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1,

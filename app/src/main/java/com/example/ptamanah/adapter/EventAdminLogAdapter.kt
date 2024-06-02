@@ -1,39 +1,33 @@
-package com.example.ptamanah.adapter
-
-import android.util.Log
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ptamanah.R
-import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.data.response.DataItemAdmin
-import com.example.ptamanah.data.response.DataItemtenant
-import com.example.ptamanah.databinding.ListEventsAdminBinding
 import com.example.ptamanah.databinding.ListItemEventAdminBinding
-import com.example.ptamanah.databinding.ListLogcheckinTenantBinding
 
-class EventAdminLogAdapter : PagingDataAdapter <DataItemAdmin, EventAdminLogAdapter.MyViewHolder>(DIFF_CALLBACK) {
-
+class EventAdminLogAdapter(
+    private val username: String
+) : PagingDataAdapter<DataItemAdmin, EventAdminLogAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val binding = ListItemEventAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ListItemEventAdminBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = getItem(position)
         if (data != null) {
-            Log.d("adapterrrrsss", "Binding data at position $position: $data")
             holder.bind(data)
         }
     }
 
-    class MyViewHolder(private val binding: ListItemEventAdminBinding) :
+    inner class MyViewHolder(private val binding: ListItemEventAdminBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(data: DataItemAdmin) {
             binding.nomor.text = data.invoice
             binding.namaPemilikIsi.text = data.nama
@@ -50,6 +44,14 @@ class EventAdminLogAdapter : PagingDataAdapter <DataItemAdmin, EventAdminLogAdap
             binding.kuotaIsi.text = data.kuota.toString()
             binding.statusIsi.text = data.status
 
+            binding.previewBtn.setOnClickListener {
+                val context = itemView.context
+                val intent = Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://berbagi.link/$username/event/tickets/${data.slug}/${data.bookingCode}")
+                )
+                context.startActivity(intent)
+            }
         }
     }
 
@@ -59,7 +61,10 @@ class EventAdminLogAdapter : PagingDataAdapter <DataItemAdmin, EventAdminLogAdap
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: DataItemAdmin, newItem: DataItemAdmin): Boolean {
+            override fun areContentsTheSame(
+                oldItem: DataItemAdmin,
+                newItem: DataItemAdmin
+            ): Boolean {
                 return oldItem == newItem
             }
         }

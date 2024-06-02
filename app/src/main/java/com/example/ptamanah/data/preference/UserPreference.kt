@@ -26,6 +26,18 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
         }
     }
 
+    suspend fun saveUsername(user: String) {
+        dataStore.edit { preferences ->
+            preferences[USERNAME] = user
+        }
+    }
+
+    fun getUsername(): Flow<String?> {
+        return dataStore.data.map { preferences ->
+            preferences[USERNAME]
+        }
+    }
+
     fun getSessionAdmin(): Flow<String?> {
         return dataStore.data.map { preferences ->
             preferences[TOKEN_ADMIN]
@@ -75,5 +87,6 @@ class UserPreference(private val dataStore: DataStore<Preferences>) {
         private val TOKEN_TENANT = stringPreferencesKey("tokenTenant")
         private val TOKEN_ADMIN= stringPreferencesKey("tokenAdmin")
         private val EMAIL = stringPreferencesKey("email")
+        private val USERNAME = stringPreferencesKey("username")
     }
 }

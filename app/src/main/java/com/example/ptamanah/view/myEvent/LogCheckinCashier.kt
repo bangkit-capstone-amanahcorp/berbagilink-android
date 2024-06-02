@@ -21,6 +21,8 @@ import com.example.ptamanah.R
 import com.example.ptamanah.adapter.CheckinAdapterChasier
 import com.example.ptamanah.adapter.CheckinAdapterTenant
 import com.example.ptamanah.adapter.LoadingStateAdapter
+import com.example.ptamanah.data.preference.UserPreference
+import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.response.DataItemCashier
@@ -40,6 +42,8 @@ class LogCheckinCashier : AppCompatActivity() {
         CheckinViewModelFactory(getCheckinRepo())
     }
     private val checkinAdapter = CheckinAdapterChasier()
+    private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLogCheckinCashierBinding.inflate(layoutInflater)
@@ -113,7 +117,7 @@ class LogCheckinCashier : AppCompatActivity() {
 
     private fun getCheckinRepo(): CheckinRepository {
         val apiService = ApiConfig.getApiService()
-        return CheckinRepository(apiService)
+        return CheckinRepository(apiService, userPreference)
     }
 
     private fun setupActionBar() {

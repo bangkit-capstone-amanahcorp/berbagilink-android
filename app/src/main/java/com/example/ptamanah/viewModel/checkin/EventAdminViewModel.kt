@@ -16,11 +16,12 @@ class EventAdminViewModel (private val checkinRepository: CheckinRepository) : V
 
     private val _searchQuery = MutableStateFlow<String?>(null)
 
+    fun getUsername() : LiveData<String?> {
+        return checkinRepository.getUsername().asLiveData()
+    }
 
-    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual: Int): LiveData<PagingData<DataItemAdmin>> {
-        return _searchQuery.flatMapLatest { query ->
-            checkinRepository.getCheckinLogAdmin(token, eventId, keywordValue, status, isManual)
-        }.cachedIn(viewModelScope).asLiveData()
+    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual: Int?): LiveData<PagingData<DataItemAdmin>> {
+        return checkinRepository.getCheckinLogAdmin(token, eventId, keywordValue, status, isManual).cachedIn(viewModelScope)
     }
 
     fun searchUser(query: String?) {

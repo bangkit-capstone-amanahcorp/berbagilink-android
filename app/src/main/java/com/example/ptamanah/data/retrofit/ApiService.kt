@@ -92,16 +92,20 @@ interface ApiService {
         @Field("booking_code") bookingCode: String
     ): ResponseScanTenant
 
-    @FormUrlEncoded
     @GET("event-mobile/check-in/{eventId}")
     suspend fun getEventAdmin(
     @Header("Authorization") token: String,
     @Path("eventId") eventId: String,
-    @Field("status") status: String,
+    @Query("page") page: Int,
+    @Query("start_date") startDate: String,
+    @Query( "end_date") endDate: String,
+    @Query("keyword_value") keywordValue: String? = "",
+    @Query("status") status: String,
+    @Query("is_manual") isManual: Int? = null,
+    /*@Field("status") status: String,
     @Path("start_date") startDate: String,
     @Field("end_date") endDate: String,
     @Field("keyword_value") keywordValue: String? = "",
-    @Field("is_manual") isManual: Int,
-    @Field("page") page: Int
+    @Field("is_manual") isManual: Int,*/
     ): ResponseEventAdminLog
 }

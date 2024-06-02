@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
 import com.example.ptamanah.adapter.CheckinAdapterTenant
 import com.example.ptamanah.adapter.LoadingStateAdapter
+import com.example.ptamanah.data.preference.UserPreference
+import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.retrofit.ApiConfig
@@ -30,6 +32,7 @@ class LogCheckinTenant : AppCompatActivity() {
     private val checkinViewModel: LogcheckinTenantViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
+    private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
     private val checkinAdapter = CheckinAdapterTenant()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,7 +99,7 @@ class LogCheckinTenant : AppCompatActivity() {
 
     private fun getCheckinRepo(): CheckinRepository {
         val apiService = ApiConfig.getApiService()
-        return CheckinRepository(apiService)
+        return CheckinRepository(apiService, userPreference)
     }
 
     private fun setupActionBar() {
