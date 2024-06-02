@@ -43,7 +43,7 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     }
 
     override fun onFilterSelected(status: String) {
-        val currentFragment = supportFragmentManager.findFragmentByTag(binding.pagerAdmin.currentItem.toString())
+        val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
         if (currentFragment is EventAdminFragment) {
             currentFragment.setCurrentStatus(status)
             currentFragment.filteringEventsByStatus(status)
