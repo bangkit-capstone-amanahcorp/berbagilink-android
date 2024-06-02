@@ -32,7 +32,7 @@ data class DataItemAdmin(
 	val kuota: Int? = null,
 
 	@field:SerializedName("id")
-	val id: String? = null,
+	val id: String,
 
 	@field:SerializedName("invoice")
 	val invoice: String? = null,
@@ -47,7 +47,7 @@ data class DataItemAdmin(
 	val slug: String? = null,
 
 	@field:SerializedName("status")
-	val status: String? = null
+	var status: String
 )
 
 data class DataLog(

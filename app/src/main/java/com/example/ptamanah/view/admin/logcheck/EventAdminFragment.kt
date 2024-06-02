@@ -31,7 +31,7 @@ class EventAdminFragment : Fragment() {
         CheckinViewModelFactory(getCheckinRepo())
     }
     private val userPreference: UserPreference by lazy { UserPreference(requireContext().dataStore) }
-    private val eventAdapter by lazy { EventAdminLogAdapter("dummy_bangkit") }
+    private val eventAdapter by lazy { EventAdminLogAdapter("dummy_bangkit", apiService = ApiConfig.getApiService(), token = token.toString()) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +57,6 @@ class EventAdminFragment : Fragment() {
                 }
             } ?: Log.e(TAG, "Token is null")
         }
-
 
     }
 
