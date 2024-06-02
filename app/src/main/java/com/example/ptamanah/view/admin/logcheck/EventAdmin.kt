@@ -43,13 +43,13 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     }
 
     override fun onFilterSelected(status: String) {
-        val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
+        val currentFragment = supportFragmentManager.findFragmentByTag(binding.pagerAdmin.currentItem.toString())
         if (currentFragment is EventAdminFragment) {
             currentFragment.setCurrentStatus(status)
             currentFragment.filteringEventsByStatus(status)
         }
         if (status == "") {
-            binding.btnFilter.text = "Semua"
+            binding.btnFilter.text = "Semua Status"
         } else {
             binding.btnFilter.text = status
         }
