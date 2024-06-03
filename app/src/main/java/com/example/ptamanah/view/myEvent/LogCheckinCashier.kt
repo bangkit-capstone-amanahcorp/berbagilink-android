@@ -5,33 +5,24 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
 import com.example.ptamanah.adapter.CheckinAdapterChasier
-import com.example.ptamanah.adapter.CheckinAdapterTenant
 import com.example.ptamanah.adapter.LoadingStateAdapter
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.CheckinRepository
-import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.response.DataItemCashier
-import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLogCheckinCashierBinding
-import com.example.ptamanah.databinding.ActivityLogCheckinTenantBinding
 import com.example.ptamanah.viewModel.checkin.LogcheckinCashierViewModel
-import com.example.ptamanah.viewModel.checkin.LogcheckinTenantViewModel
 import com.example.ptamanah.viewModel.factory.CheckinViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -49,8 +40,6 @@ class LogCheckinCashier : AppCompatActivity() {
         binding = ActivityLogCheckinCashierBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setContentView(binding.root)
-
         setupActionBar()
         setupRecyclerView()
         setupSearchView()
@@ -58,12 +47,12 @@ class LogCheckinCashier : AppCompatActivity() {
         val token = intent.getStringExtra(TOKEN).toString()
         val eventId = intent.getStringExtra(ID_EVENT).toString()
 
-        Log.d("masok", "Received token: $token")
-        Log.d("masok", "Received eventId: $eventId")
+        lifecycleScope.launch {
+            checkinViewModel.getCheckinscashier(token, eventId).collectLatest { pagingData ->
+                handleSearchResults()
+                checkinAdapter.submitData(pagingData)
 
-        // Observe the LiveData from ViewModel
-        checkinViewModel.getCheckinscashier(token, eventId).observe(this) { pagingData ->
-            handleSearchResults(pagingData)
+            }
         }
     }
 
@@ -101,16 +90,13 @@ class LogCheckinCashier : AppCompatActivity() {
         })
     }
 
-    private fun handleSearchResults(pagingData: PagingData<DataItemCashier>) {
-        lifecycleScope.launch {
-            checkinAdapter.submitData(pagingData)
-            checkinAdapter.loadStateFlow.collectLatest { loadStates ->
-                val isListEmpty = checkinAdapter.itemCount == 0
-                binding.NotfoundTv.isVisible = isListEmpty
-                Log.d("logkasiractv", "Adapter item count: ${checkinAdapter.itemCount}")
-                if (isListEmpty) {
-                    Log.d("knapaLogCheckinCashier", "No data found")
-                }
+    private fun handleSearchResults() {
+        checkinAdapter.addLoadStateListener { loadState ->
+            val isListEmpty = checkinAdapter.itemCount == 0
+            if (!isListEmpty) {
+                binding.NotfoundTv.visibility = View.GONE
+            } else {
+                binding.NotfoundTv.visibility = View.VISIBLE
             }
         }
     }
