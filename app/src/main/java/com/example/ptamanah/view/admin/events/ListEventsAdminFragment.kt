@@ -19,6 +19,7 @@ import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.FragmentListEventsAdminBinding
 import com.example.ptamanah.databinding.FragmentMyEventBinding
+import com.example.ptamanah.view.admin.detailEvent.DetailEventActivity
 import com.example.ptamanah.view.admin.logcheck.EventAdmin
 import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 import com.example.ptamanah.view.camera.CameraActivity
@@ -33,7 +34,7 @@ class ListEventsAdminFragment : Fragment() {
     private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var binding: FragmentListEventsAdminBinding
     private var position: Int? = null
-    private var token: String? =""
+    private var token: String? = ""
     private val eventViewModel: EventViewModel by viewModels {
         EventViewModelFactory(EventRepository(ApiConfig.getApiService()))
     }
@@ -71,7 +72,7 @@ class ListEventsAdminFragment : Fragment() {
             eventViewModel.getAllEvent(token.toString()).collect { result ->
                 result.onSuccess { response ->
                     binding.apply {
-                        val sortedResponse = response.data?.sortedBy { it.saleStatus}
+                        val sortedResponse = response.data?.sortedBy { it.saleStatus }
                         eventAdapter.submitList(sortedResponse)
                         if (sortedResponse.isNullOrEmpty()) {
                             binding.tvStatus.visibility = View.VISIBLE
@@ -92,20 +93,9 @@ class ListEventsAdminFragment : Fragment() {
 
         eventAdapter.setOnItemClickCallBack(object : EventAdminAdapter.OnItemClickCallBack {
             override fun onItemClicked(user: DataItem) {
-                Intent(context, CameraActivity::class.java).apply {
-                    putExtra(CameraActivity.ID_EVENT, user.id)
-                    putExtra(MyEventFragment.TOKEN, token)
-                }.also {
-                    startActivity(it)
-                }
-            }
-        })
-        eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
-            override fun onDaftarClicked(user: DataItem) {
-                Intent(context, EventAdmin::class.java).apply {
-                    putExtra(EventAdminFragment.EVENT_ID, user.id)
-                    putExtra(MyEventFragment.TOKEN, token)
-                    Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
+                Intent(context, DetailEventActivity::class.java).apply {
+                    putExtra(DetailEventActivity.TOKENDETAIL, token)
+                    putExtra(DetailEventActivity.ID_EVENT, user.id)
                 }.also {
                     startActivity(it)
                 }
@@ -141,12 +131,12 @@ class ListEventsAdminFragment : Fragment() {
                 }
             }
         }
-        eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
-            override fun onDaftarClicked(user: DataItem) {
-                Intent(context, EventAdmin::class.java).apply {
-                    putExtra(EventAdminFragment.EVENT_ID, user.id)
-                    putExtra(MyEventFragment.TOKEN, token)
-                    Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
+
+        eventAdapter.setOnItemClickCallBack(object : EventAdminAdapter.OnItemClickCallBack {
+            override fun onItemClicked(user: DataItem) {
+                Intent(context, DetailEventActivity::class.java).apply {
+                    putExtra(DetailEventActivity.TOKENDETAIL, token)
+                    putExtra(DetailEventActivity.ID_EVENT, user.id)
                 }.also {
                     startActivity(it)
                 }
@@ -185,20 +175,9 @@ class ListEventsAdminFragment : Fragment() {
 
         eventAdapter.setOnItemClickCallBack(object : EventAdminAdapter.OnItemClickCallBack {
             override fun onItemClicked(user: DataItem) {
-                Intent(context, CameraActivity::class.java).apply {
-                    putExtra(CameraActivity.ID_EVENT, user.id)
-                    putExtra(MyEventFragment.TOKEN, token)
-                }.also {
-                    startActivity(it)
-                }
-            }
-        })
-        eventAdapter.setOnDaftarClickCallBack(object : EventAdminAdapter.OnDaftarClickCallBack {
-            override fun onDaftarClicked(user: DataItem) {
-                Intent(context, EventAdmin::class.java).apply {
-                    putExtra(EventAdminFragment.EVENT_ID, user.id)
-                    putExtra(MyEventFragment.TOKEN, token)
-                    Log.d("tesss2", "Navigating to Event Admin with eventId: ${user.id}")
+                Intent(context, DetailEventActivity::class.java).apply {
+                    putExtra(DetailEventActivity.TOKENDETAIL, token)
+                    putExtra(DetailEventActivity.ID_EVENT, user.id)
                 }.also {
                     startActivity(it)
                 }
@@ -206,12 +185,12 @@ class ListEventsAdminFragment : Fragment() {
         })
     }
 
-    private fun showLoading(state: Boolean) {
-        binding.pbLoading.visibility = if (state) View.VISIBLE else View.GONE
-    }
+private fun showLoading(state: Boolean) {
+    binding.pbLoading.visibility = if (state) View.VISIBLE else View.GONE
+}
 
-    companion object {
-        const val ARG_POSITION = "position"
-        const val TOKEN = "token"
-    }
+companion object {
+    const val ARG_POSITION = "position"
+    const val TOKEN = "token"
+}
 }

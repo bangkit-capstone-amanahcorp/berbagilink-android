@@ -1,7 +1,11 @@
 package com.example.ptamanah.view.admin.logcheck
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.R
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ptamanah.adapter.EventPagerAdminAdapter
 import com.example.ptamanah.adapter.EventPagerAdminLogAdapter
@@ -13,12 +17,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener {
 
     private lateinit var binding: ActivityEventAdminBinding
-    private lateinit var adapter: EventPagerAdminLogAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setupActionBar()
 
         binding.btnFilter.setOnClickListener {
             val bottomShet = FilteringStatus()
@@ -73,5 +78,28 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
         if (currentFragment is EventAdminFragment) {
             currentFragment.performSearch(query)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.cardview_light_background
+                )
+            )
+        )
+        supportActionBar?.title = "Daftar Log Check In"
     }
 }

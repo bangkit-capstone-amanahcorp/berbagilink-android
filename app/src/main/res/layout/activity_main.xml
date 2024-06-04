@@ -471,10 +471,10 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:iconTint="@color/black"
-                        app:icon="@drawable/ic_events"
+                        android:drawableLeft="@drawable/ic_events"
+                        android:drawableRight="@drawable/ic_arrow"
                         app:backgroundTint="@color/white"
-                        app:iconSize="24dp"/>
+                        app:iconSize="24dp" />
                 </LinearLayout>
 
                 <TextView
@@ -513,8 +513,8 @@
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:backgroundTint="@color/white"
-                        app:iconTint="@color/black"
-                        app:icon="@drawable/ic_quran"
+                        android:drawableLeft="@drawable/ic_quran"
+                        android:drawableRight="@drawable/ic_arrow"
                         app:iconSize="24dp" />
                 </LinearLayout>
 
@@ -540,8 +540,8 @@
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:backgroundTint="@color/white"
-                        app:icon="@drawable/ic_dua"
-                        app:iconTint="@color/black" />
+                        android:drawableLeft="@drawable/ic_dua"
+                        android:drawableRight="@drawable/ic_arrow"/>
                 </LinearLayout>
             </LinearLayout>
 

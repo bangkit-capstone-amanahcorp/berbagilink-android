@@ -22,7 +22,7 @@ import com.example.ptamanah.databinding.ActivityHomePageAdminBinding
 import com.example.ptamanah.view.admin.events.ListEventsAdmin
 import com.example.ptamanah.view.admin.events.ListEventsAdmin.Companion.TOKEN
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
-import com.example.ptamanah.viewModel.mainadmin.HomePageAdminViewModel
+import com.example.ptamanah.viewModel.admin.mainadmin.HomePageAdminViewModel
 
 class HomePageAdmin : AppCompatActivity() {
     private lateinit var binding: ActivityHomePageAdminBinding
