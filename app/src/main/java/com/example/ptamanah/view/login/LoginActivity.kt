@@ -96,7 +96,7 @@ class LoginActivity : AppCompatActivity() {
                                 }
 
                             } else if (credensial.data?.user?.role == "cashier") {
-                                credensial.data?.accessToken?.let { token ->
+                                credensial.data.accessToken?.let { token ->
                                     loginViewModel.saveAuthToken(token)
                                     val intent =
                                         Intent(this@LoginActivity, HomePageCashier::class.java)

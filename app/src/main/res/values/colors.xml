@@ -8,4 +8,11 @@
     <color name="blue_border">#75A8D5</color>
     <color name="biru_tua_text">#083444</color>
     <color name="oren">#FDAC28</color>
+    <color name="green_checkin">#52B57C</color>
+    <color name="border_checkin">#2952B57C</color>
+    <color name="border_oren">#29FDAC28</color>
+    <color name="returned">#303030</color>
+    <color name="border_returned">#29303030</color>
+    <color name="failed">#C7071E</color>
+    <color name="border_failed">#29C7071E</color>
 </resources>

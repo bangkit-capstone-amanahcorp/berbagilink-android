@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
@@ -20,42 +21,55 @@ import com.example.ptamanah.viewModel.factory.CheckinViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class EventAdminFragment : Fragment() {
+class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     private lateinit var binding: FragmentEventAdminBinding
     private var position: Int? = null
     private var token: String? = ""
     private var event_id: String? = ""
+    private var username: String? = ""
     private var currentStatus: String = ""
     private var currentManual: Int? = null
     private val eventAdminViewModel: EventAdminViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
     private val userPreference: UserPreference by lazy { UserPreference(requireContext().dataStore) }
-    private val eventAdapter by lazy { EventAdminLogAdapter("dummy_bangkit", apiService = ApiConfig.getApiService(), token = token.toString()) }
+    private val eventAdapter by lazy {
+        EventAdminLogAdapter(
+            username.toString(),
+            apiService = ApiConfig.getApiService(),
+            token = token.toString(),
+            this
+        )
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentEventAdminBinding.inflate(inflater, container, false)
+        binding.tvEmpty.visibility = View.GONE
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.let {
-            position = it.getInt(ARG_POSITION)
-            token = requireActivity().intent.getStringExtra(TOKEN)
-            event_id = requireActivity().intent.getStringExtra(EVENT_ID)
-            Log.d(TAG, "onViewCreated: $position & $token & $event_id")
+        eventAdminViewModel.getUsername().observe(viewLifecycleOwner) {
+            username = it.toString()
 
-            token?.let {
-                when (position) {
-                    1 -> showAllEvent()
-                    2 -> showBerbayarEvent()
-                    else -> showManualEvent()
-                }
-            } ?: Log.e(TAG, "Token is null")
+            arguments?.let {
+                position = it.getInt(ARG_POSITION)
+                token = requireActivity().intent.getStringExtra(TOKEN)
+                event_id = requireActivity().intent.getStringExtra(EVENT_ID)
+                Log.d(TAG, "onViewCreated: $position & $token & $event_id")
+
+                token?.let {
+                    when (position) {
+                        1 -> showAllEvent()
+                        2 -> showBerbayarEvent()
+                        else -> showManualEvent()
+                    }
+                } ?: Log.e(TAG, "Token is null")
+            }
         }
 
     }
@@ -72,7 +86,13 @@ class EventAdminFragment : Fragment() {
     private fun showBerbayarEvent() {
         setupRecyclerView()
         setCurrentManual(1)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter())
+        eventAdminViewModel.getCheckinLogAdmin(
+            token.toString(),
+            event_id.toString(),
+            "",
+            "",
+            getCurrentManualFilter()
+        )
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -83,11 +103,17 @@ class EventAdminFragment : Fragment() {
     private fun showManualEvent() {
         setupRecyclerView()
         setCurrentManual(0)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter())
+        eventAdminViewModel.getCheckinLogAdmin(
+            token.toString(),
+            event_id.toString(),
+            "",
+            "",
+            getCurrentManualFilter()
+        )
             .observe(viewLifecycleOwner) { pagingData ->
-                    eventAdapter.submitData(lifecycle, pagingData)
+                eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
-                }
+            }
     }
 
     private fun setupRecyclerView() {
@@ -102,33 +128,50 @@ class EventAdminFragment : Fragment() {
 
     private fun observeLoadState() {
         lifecycleScope.launch {
-            eventAdapter.loadStateFlow.collectLatest { loadStates ->
-                val isListEmpty = eventAdapter.itemCount == 0
+            eventAdapter.loadStateFlow.collectLatest {
+                val isLoading = it.refresh is LoadState.Loading
+                showLoading(isLoading)
+
+                val isListEmpty = it.refresh is LoadState.NotLoading && eventAdapter.itemCount == 0
                 binding.tvEmpty.visibility = if (isListEmpty) View.VISIBLE else View.GONE
             }
         }
     }
 
     fun filteringEventsByStatus(status: String) {
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", status, null)
+        eventAdminViewModel.getCheckinLogAdmin(
+            token.toString(),
+            event_id.toString(),
+            "",
+            status,
+            null
+        )
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
     }
 
-    fun performSearch(query: String, ) {
+    fun performSearch(query: String) {
         val currentStatus = getCurrentStatusFilter()
         val isManual = getCurrentManualFilter()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual)
+        eventAdminViewModel.getCheckinLogAdmin(
+            token.toString(),
+            event_id.toString(),
+            query,
+            currentStatus,
+            isManual
+        )
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
     }
+
     fun setCurrentStatus(status: String) {
         currentStatus = status
     }
+
     private fun getCurrentStatusFilter(): String {
         return currentStatus
     }
@@ -141,10 +184,28 @@ class EventAdminFragment : Fragment() {
         return currentManual
     }
 
+    private fun showLoading(state: Boolean) {
+        binding.pbLoading.visibility = if (state) View.VISIBLE else View.GONE
+    }
+
+
+    override fun onCheckInSuccess() {
+        loadData()
+    }
+
+    private fun loadData() {
+        when (position) {
+            1 -> showAllEvent()
+            2 -> showBerbayarEvent()
+            else -> showManualEvent()
+        }
+    }
+
     companion object {
         private const val TAG = "EventAdminFragment"
         const val ARG_POSITION = "position"
         const val TOKEN = "token"
         const val EVENT_ID = "event_id"
     }
+
 }

@@ -20,6 +20,8 @@ class EventAdminViewModel (private val checkinRepository: CheckinRepository) : V
         return checkinRepository.getUsername().asLiveData()
     }
 
+
+
     fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual: Int?): LiveData<PagingData<DataItemAdmin>> {
         return checkinRepository.getCheckinLogAdmin(token, eventId, keywordValue, status, isManual).cachedIn(viewModelScope)
     }

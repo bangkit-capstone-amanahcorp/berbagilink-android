@@ -50,6 +50,6 @@ class CheckinRepository(
         ).liveData
     }
 
-    fun getUsername(): Flow<String?> = userPreference.getSessionAdmin()
+    fun getUsername(): Flow<String?> = userPreference.getUsername()
 
 }
