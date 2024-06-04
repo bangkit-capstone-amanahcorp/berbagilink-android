@@ -41,7 +41,7 @@ class HomePageAdmin : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             token = user.toString()
-            binding.elevatedButton.setOnClickListener {
+            binding.eventsButton.setOnClickListener {
                 val intent = Intent(this, ListEventsAdmin::class.java)
                 intent.putExtra(TOKEN, token)
                 startActivity(intent)

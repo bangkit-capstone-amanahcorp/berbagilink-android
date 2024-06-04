@@ -447,19 +447,71 @@
                     android:paddingRight="16dp">
 
                     <Button
-                        android:id="@+id/elevatedButton"
+                        android:id="@+id/eventsButton"
                         style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/ubuntu"
                         android:text="@string/events"
+                        android:drawableLeft="@drawable/ic_events"
+                        android:drawableRight="@drawable/ic_arrow"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:icon="@drawable/ic_events"
                         app:iconTint= "@color/black"
-                        app:backgroundTint="@color/white"
-                        app:iconSize="24dp"/>
+                        app:backgroundTint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="16dp">
+
+                    <Button
+                        android:id="@+id/ManageButton"
+                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="@string/manage_user"
+                        android:drawableLeft="@drawable/manage_user"
+                        android:drawableRight="@drawable/ic_arrow"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+                        app:iconTint= "@color/black"
+                        app:backgroundTint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="16dp">
+
+                    <Button
+                        android:id="@+id/TransaksiButton"
+                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/ubuntu"
+                        android:text="@string/transaksi_event"
+                        android:drawableLeft="@drawable/transaksi_rill"
+                        android:drawableRight="@drawable/ic_arrow"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/black"
+                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
+                        app:iconTint= "@color/black"
+                        app:backgroundTint="@color/white" />
                 </LinearLayout>
 
                 <TextView
@@ -531,31 +583,32 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/container_frame10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="650dp"
-                android:layout_gravity="bottom|center"
-                android:gravity="center_horizontal|top"
-                android:orientation="vertical">
 
-                <FrameLayout
-                    android:id="@+id/container_group3"
-                    android:layout_width="328dp"
-                    android:layout_height="120dp">
-
-                    <ImageView
-                        android:id="@+id/container_mask_group"
-                        android:layout_width="328dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|center_horizontal"
-                        android:layout_marginTop="0dp"
-                        android:gravity="left|top"
-                        android:orientation="vertical"
-                        android:src="@drawable/logo" />
-                </FrameLayout>
-            </LinearLayout>
         </FrameLayout>
+        <LinearLayout
+            android:id="@+id/container_frame10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="bottom|center"
+            android:gravity="center_horizontal|top"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/container_group3"
+                android:layout_width="328dp"
+                android:layout_height="120dp">
+
+                <ImageView
+                    android:id="@+id/container_mask_group"
+                    android:layout_width="328dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:layout_marginTop="0dp"
+                    android:gravity="left|top"
+                    android:orientation="vertical"
+                    android:src="@drawable/logo" />
+            </FrameLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

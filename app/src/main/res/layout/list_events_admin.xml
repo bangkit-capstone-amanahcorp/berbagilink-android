@@ -82,46 +82,20 @@
             card_view:layout_constraintTop_toBottomOf="@+id/nama_tempat"
             tools:text="Alamat" />
 
-        <Button
-            android:id="@+id/daftarBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_checkin"
-            android:text="Daftar Check-In"
-            android:textColor="@color/biru_toska"
-            android:layout_marginTop="16dp"
-            android:textStyle="bold"
-            card_view:layout_constraintEnd_toStartOf="@+id/scnaBtn"
-            card_view:layout_constraintStart_toStartOf="@+id/imageView2"
-            card_view:layout_constraintTop_toBottomOf="@+id/alamat" />
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/scnaBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            card_view:iconGravity="textStart"
             android:background="@drawable/btn_biru"
             android:text="Scan Tiket"
             android:textStyle="bold"
-            android:layout_marginStart="8dp"
             app:icon="@drawable/ic_scan"
-            card_view:layout_constraintBottom_toBottomOf="@+id/daftarBtn"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toEndOf="@+id/daftarBtn"
-            card_view:layout_constraintTop_toTopOf="@+id/daftarBtn" />
-
-        <Button
-            android:id="@+id/ManageBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:backgroundTint="@null"
-            android:background="@drawable/btn_manage_user"
-            android:text="Manage User"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/daftarBtn" />
+            card_view:layout_constraintStart_toStartOf="@+id/imageView2"
+            card_view:layout_constraintTop_toBottomOf="@+id/alamat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

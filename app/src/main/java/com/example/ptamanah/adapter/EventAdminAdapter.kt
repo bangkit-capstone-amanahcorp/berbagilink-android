@@ -58,9 +58,9 @@ class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DI
                 scnaBtn.setOnClickListener {
                     onItemClickCallBack.onItemClicked(event)
                 }
-                daftarBtn.setOnClickListener {
+                /*daftarBtn.setOnClickListener {
                     onDaftarClickCallBack.onDaftarClicked(event)
-                }
+                }*/
             }
         }
     }
