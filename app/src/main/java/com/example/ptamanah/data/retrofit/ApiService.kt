@@ -112,7 +112,6 @@ interface ApiService {
     @Query("keyword_value") keywordValue: String? = "",
     @Query("status") status: String,
     @Query("is_manual") isManual: Int? = null,
-    @Query("checkin_time")checkinTime : String? = ""
     ): ResponseEventAdminLog
 
     @POST("event-mobile/check-in/update/{id}")

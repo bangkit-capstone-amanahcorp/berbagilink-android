@@ -15,6 +15,9 @@ import com.example.ptamanah.view.eventTenant.BottomLogin
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,14 +28,16 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     private lateinit var adapter: EventPagerAdminLogAdapter
     private var dateStart: String? = null
     private var dateEnd: String? = null
-    private var checkinTime: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.btnDateRange.setOnClickListener{
             showDateRangePicker()
+
         }
 
         setupActionBar()
@@ -93,6 +98,14 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     }
 
     private fun showDateRangePicker() {
+        runBlocking(Dispatchers.IO) {
+            launch {
+                showDateRangePickerAsync()
+            }
+        }
+    }
+
+    private  fun showDateRangePickerAsync() {
         val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
             .setTitleText("Select Date Range")
             .build()
@@ -108,14 +121,11 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
             dateEnd = endDate
 
             binding.btnDateRange.text = "$startDate - $endDate"
-            this.dateStart = startDate
-            this.dateEnd = endDate
 
-            // Trigger data fetch with the selected date range
             val currentFragment =
                 supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
             if (currentFragment is EventAdminFragment) {
-                currentFragment.performSearch(query = "", startDate, endDate, checkinTime)
+                currentFragment.setDateRange( startDate,endDate)
             }
         }
     }

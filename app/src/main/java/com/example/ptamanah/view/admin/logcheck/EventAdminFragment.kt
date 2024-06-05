@@ -31,7 +31,6 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     private var currentManual: Int? = null
     private var dateStart: String? = null
     private var dateEnd: String? = null
-    private var checkinTime: String? = null
     private val eventAdminViewModel: EventAdminViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
@@ -79,8 +78,13 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
 
     private fun showAllEvent() {
         setupRecyclerView()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", null, dateStart, dateEnd,checkinTime)
+        Log.d(TAG, "dateStart: $dateStart")
+        Log.d(TAG, "dateEnd: $dateEnd")
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", null, dateStart, dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
+
+                Log.d(TAG, "dateStart2: $dateStart")
+                Log.d(TAG, "dateEnd2: $dateEnd")
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
@@ -88,19 +92,22 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
 
     private fun showBerbayarEvent() {
         setupRecyclerView()
+        Log.d(TAG, "dateStart: $dateStart")
+        Log.d(TAG, "dateEnd: $dateEnd")
         setCurrentManual(1)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd,checkinTime)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
     }
 
-
     private fun showManualEvent() {
         setupRecyclerView()
+        Log.d(TAG, "dateStart: $dateStart")
+        Log.d(TAG, "dateEnd: $dateEnd")
         setCurrentManual(0)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd,checkinTime)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -130,17 +137,19 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     }
 
     fun filteringEventsByStatus(status: String) {
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", status, null,dateStart,dateEnd,checkinTime)
+        Log.d(TAG, "filteringEventsByStatus: $status")
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", status, null, dateStart, dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
     }
 
-    fun performSearch(query: String,startDate: String? = dateStart, endDate: String? = dateEnd, checkinTime: String? = this.checkinTime) {
+    fun performSearch(query: String, startDate: String? = dateStart, endDate: String? = dateEnd) {
         val currentStatus = getCurrentStatusFilter()
         val isManual = getCurrentManualFilter()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual, startDate, endDate,checkinTime)
+        Log.d(TAG, "performSearch: $query, status: $currentStatus, isManual: $isManual, startDate: $startDate, endDate: $endDate")
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual, startDate, endDate)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -167,6 +176,11 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
         binding.pbLoading.visibility = if (state) View.VISIBLE else View.GONE
     }
 
+    fun setDateRange(startDate: String?, endDate: String?) {
+        dateStart = startDate
+        dateEnd = endDate
+        loadData()
+    }
 
     override fun onCheckInSuccess() {
         loadData()
@@ -186,10 +200,13 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
         const val TOKEN = "token"
         const val EVENT_ID = "event_id"
     }
-    fun newInstance(position: Int): EventAdminFragment {
+
+    fun newInstance(position: Int,dateStart: String?, dateEnd: String?): EventAdminFragment {
         val fragment = EventAdminFragment()
         val args = Bundle()
         args.putInt(ARG_POSITION, position)
+        args.putString("dateStart", dateStart)
+        args.putString("dateEnd", dateEnd)
         fragment.arguments = args
         return fragment
     }
