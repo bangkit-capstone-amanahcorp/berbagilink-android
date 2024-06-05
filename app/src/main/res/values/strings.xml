@@ -76,4 +76,9 @@
     <string name="alamat">Alamat</string>
     <string name="deskripsi">Deskripsi</string>
 
+    <string name="searchbar_hint_basic">Cari</string>
+    <string name="TambahkanUser">Tambahkan User Baru</string>
+    <string name="Delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="tanggal_daftar">Tanggal daftar</string>
 </resources>
