@@ -21,6 +21,7 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityHomePageAdminBinding
 import com.example.ptamanah.view.admin.events.ListEventsAdmin
 import com.example.ptamanah.view.admin.events.ListEventsAdmin.Companion.TOKEN
+import com.example.ptamanah.view.admin.manageuser.ManageUserAdminActivity
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.admin.mainadmin.HomePageAdminViewModel
 
@@ -43,6 +44,11 @@ class HomePageAdmin : AppCompatActivity() {
             token = user.toString()
             binding.eventsButton.setOnClickListener {
                 val intent = Intent(this, ListEventsAdmin::class.java)
+                intent.putExtra(TOKEN, token)
+                startActivity(intent)
+            }
+            binding.ManageButton.setOnClickListener {
+                val intent = Intent(this, ManageUserAdminActivity::class.java)
                 intent.putExtra(TOKEN, token)
                 startActivity(intent)
             }

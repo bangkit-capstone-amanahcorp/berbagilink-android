@@ -15,4 +15,7 @@
     <color name="border_returned">#29303030</color>
     <color name="failed">#C7071E</color>
     <color name="border_failed">#29C7071E</color>
+    <color name="ungu">#A559BF</color>
+    <color name="hijau_muda">#52B57C</color>
+    <color name="abu_terang">#CCCCCC</color>
 </resources>

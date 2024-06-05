@@ -10,10 +10,13 @@ import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
 import com.example.ptamanah.data.response.ResponseLogoutTenant
+import com.example.ptamanah.data.response.ResponseManagementUser
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
 import com.example.ptamanah.data.response.ResponseUpdateCheckIn
+import com.example.ptamanah.data.response.Responsedelete
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -121,4 +124,14 @@ interface ApiService {
         @Path("id") id: String,
     ):ResponseUpdateCheckIn
 
+    @GET("berbagi_link/user_management")
+    suspend fun getManageUser(
+        @Header("Authorization") token: String
+    ): ResponseManagementUser
+
+    @DELETE("berbagi_link/user_management/delete/{id}")
+    suspend fun deleteUser(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int
+    ): Responsedelete
 }
