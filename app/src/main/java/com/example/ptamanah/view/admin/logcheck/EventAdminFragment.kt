@@ -27,6 +27,8 @@ class EventAdminFragment : Fragment() {
     private var event_id: String? = ""
     private var currentStatus: String = ""
     private var currentManual: Int? = null
+    private var dateStart: String? = null
+    private var dateEnd: String? = null
     private val eventAdminViewModel: EventAdminViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
@@ -62,7 +64,7 @@ class EventAdminFragment : Fragment() {
 
     private fun showAllEvent() {
         setupRecyclerView()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", null)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", null, dateStart, dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -72,7 +74,7 @@ class EventAdminFragment : Fragment() {
     private fun showBerbayarEvent() {
         setupRecyclerView()
         setCurrentManual(1)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter())
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -83,7 +85,7 @@ class EventAdminFragment : Fragment() {
     private fun showManualEvent() {
         setupRecyclerView()
         setCurrentManual(0)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter())
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                     eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -110,17 +112,17 @@ class EventAdminFragment : Fragment() {
     }
 
     fun filteringEventsByStatus(status: String) {
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", status, null)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", status, null,dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
     }
 
-    fun performSearch(query: String, ) {
+    fun performSearch(query: String,startDate: String? = dateStart, endDate: String? = dateEnd ) {
         val currentStatus = getCurrentStatusFilter()
         val isManual = getCurrentManualFilter()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual)
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual,startDate,endDate)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -146,5 +148,12 @@ class EventAdminFragment : Fragment() {
         const val ARG_POSITION = "position"
         const val TOKEN = "token"
         const val EVENT_ID = "event_id"
+    }
+    fun newInstance(position: Int): EventAdminFragment {
+        val fragment = EventAdminFragment()
+        val args = Bundle()
+        args.putInt(ARG_POSITION, position)
+        fragment.arguments = args
+        return fragment
     }
 }

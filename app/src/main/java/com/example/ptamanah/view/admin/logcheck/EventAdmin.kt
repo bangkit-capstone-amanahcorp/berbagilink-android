@@ -7,18 +7,27 @@ import com.example.ptamanah.adapter.EventPagerAdminAdapter
 import com.example.ptamanah.adapter.EventPagerAdminLogAdapter
 import com.example.ptamanah.databinding.ActivityEventAdminBinding
 import com.example.ptamanah.view.eventTenant.BottomLogin
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener {
 
     private lateinit var binding: ActivityEventAdminBinding
     private lateinit var adapter: EventPagerAdminLogAdapter
+    private var dateStart: String? = null
+    private var dateEnd: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEventAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.btnDateRange.setOnClickListener{
+            showDateRangePicker()
+        }
 
         binding.btnFilter.setOnClickListener {
             val bottomShet = FilteringStatus()
@@ -72,6 +81,31 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
         val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
         if (currentFragment is EventAdminFragment) {
             currentFragment.performSearch(query)
+        }
+    }
+
+    private fun showDateRangePicker() {
+        val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
+            .setTitleText("Select Date Range")
+            .build()
+
+        dateRangePicker.show(supportFragmentManager, "date_range_picker")
+
+        dateRangePicker.addOnPositiveButtonClickListener { selection ->
+            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val startDate = dateFormat.format(Date(selection.first ?: 0))
+            val endDate = dateFormat.format(Date(selection.second ?: 0))
+
+            dateStart = startDate
+            dateEnd = endDate
+
+            binding.btnDateRange.text = "$startDate - $endDate"
+
+            // Trigger data fetch with the selected date range
+            val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
+            if (currentFragment is EventAdminFragment) {
+                currentFragment.performSearch(query = "", startDate, endDate)
+            }
         }
     }
 }

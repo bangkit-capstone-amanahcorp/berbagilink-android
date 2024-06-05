@@ -12,7 +12,9 @@ class EventAdminLogPagingSource(
     private val eventId: String,
     private val keywordValue: String?,
     private val status: String,
-    private val isManual: Int?
+    private val isManual: Int?,
+    private val startDate: String?,
+    private val endDate: String?
 ) : PagingSource<Int, DataItemAdmin>() {
 
     private companion object {
@@ -33,8 +35,8 @@ class EventAdminLogPagingSource(
                 token = "Bearer $token",
                 eventId = eventId,
                 page = page,
-                startDate = "",
-                endDate = "",
+                startDate = startDate?:"",
+                endDate = endDate?:"",
                 keywordValue = keywordValue ?: "",
                 status = status,
                 isManual = isManual

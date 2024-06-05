@@ -40,13 +40,13 @@ class CheckinRepository(
         ).flow
     }
 
-    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual:Int?): LiveData<PagingData<DataItemAdmin>> {
+    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual:Int?,startDate: String?, endDate: String?): LiveData<PagingData<DataItemAdmin>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 20,
+                pageSize = 10,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { EventAdminLogPagingSource (apiService, token, eventId, keywordValue, status, isManual) }
+            pagingSourceFactory = { EventAdminLogPagingSource (apiService, token, eventId, keywordValue, status, isManual, startDate, endDate) }
         ).liveData
     }
 
