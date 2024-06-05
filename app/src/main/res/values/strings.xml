@@ -69,5 +69,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="manage_user">Manage User</string>
     <string name="transaksi_event">Transaksi Event</string>
+    <string name="oleh">Oleh :</string>
+    <string name="jenis_event">Jenis Event</string>
+    <string name="tanggal_dan_waktu">Tanggal dan waktu</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="alamat">Alamat</string>
+    <string name="deskripsi">Deskripsi</string>
 
 </resources>

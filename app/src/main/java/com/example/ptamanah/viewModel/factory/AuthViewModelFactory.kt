@@ -7,7 +7,7 @@ import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.login.LoginViewModel
 import com.example.ptamanah.viewModel.main.MainViewModel
-import com.example.ptamanah.viewModel.mainadmin.HomePageAdminViewModel
+import com.example.ptamanah.viewModel.admin.mainadmin.HomePageAdminViewModel
 
 class AuthViewModelFactory(private val authRepo: AuthRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

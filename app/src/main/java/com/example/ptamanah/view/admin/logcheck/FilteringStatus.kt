@@ -21,6 +21,7 @@ class FilteringStatus : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentFilteringStatusBinding
     private var listener: OnFilterSelectedListener? = null
+    private var selectedStatus: String? = null
 
     fun setOnFilterSelectedListener(listener: OnFilterSelectedListener) {
         this.listener = listener
@@ -37,8 +38,8 @@ class FilteringStatus : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
-            val selectedStatus = when (checkedId) {
+        binding.radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            selectedStatus = when (checkedId) {
                 R.id.smua -> ""
                 R.id.check -> "check-In"
                 R.id.uncheck -> "uncheck"
@@ -46,20 +47,15 @@ class FilteringStatus : BottomSheetDialogFragment() {
                 R.id.failed -> "failed"
                 else -> null
             }
+        }
 
-            val toastText = when (checkedId) {
-                R.id.smua -> "Semua"
-                else -> selectedStatus
-            }
+        binding.resetBtn.setOnClickListener {
+            selectedStatus =""
+            listener?.onFilterSelected(selectedStatus ?: "")
+            dismiss()
+        }
 
-            toastText?.let {
-                Toast.makeText(
-                    requireContext(),
-                    "Selected Status: $it",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-
+        binding.okeBtn.setOnClickListener {
             selectedStatus?.let {
                 listener?.onFilterSelected(it)
             }

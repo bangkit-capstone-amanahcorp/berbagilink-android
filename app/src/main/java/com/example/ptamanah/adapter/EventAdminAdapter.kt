@@ -40,9 +40,9 @@ class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DI
 
             if (event.saleStatus == "end") {
                 statusIV.setImageResource(R.drawable.status_border_end)
-                scnaBtn.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.disable)
+                /*scnaBtn.backgroundTintList = ContextCompat.getColorStateList(holder.itemView.context, R.color.disable)
                 scnaBtn.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-                scnaBtn.isEnabled = false
+                scnaBtn.isEnabled = false*/
                 tvStatus.text = "Selesai"
                 tvStatus.setTextColor(
                     ContextCompat.getColor(
@@ -50,14 +50,18 @@ class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DI
                         R.color.disable
                     )
                 )
-                holder.itemView.isEnabled = false
-                holder.itemView.setOnClickListener(null)
-            } else {
-                scnaBtn.setBackgroundResource(R.drawable.btn_biru)
-                tvStatus.text = "On-Going"
-                scnaBtn.setOnClickListener {
+                DetailBtn.setOnClickListener {
                     onItemClickCallBack.onItemClicked(event)
                 }
+            } else {
+                //scnaBtn.setBackgroundResource(R.drawable.btn_biru)
+                tvStatus.text = "On-Going"
+                DetailBtn.setOnClickListener {
+                    onItemClickCallBack.onItemClicked(event)
+                }
+                /*scnaBtn.setOnClickListener {
+                    onItemClickCallBack.onItemClicked(event)
+                }*/
                 /*daftarBtn.setOnClickListener {
                     onDaftarClickCallBack.onDaftarClicked(event)
                 }*/

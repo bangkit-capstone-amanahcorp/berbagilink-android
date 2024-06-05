@@ -82,19 +82,18 @@
             card_view:layout_constraintTop_toBottomOf="@+id/nama_tempat"
             tools:text="Alamat" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/scnaBtn"
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/DetailBtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:gravity="center"
-            card_view:iconGravity="textStart"
+            app:backgroundTint="@null"
             android:background="@drawable/btn_biru"
-            android:text="Scan Tiket"
+            android:text="@string/detail_event"
             android:textStyle="bold"
-            app:icon="@drawable/ic_scan"
+            android:textColor="@color/white"
             card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="@+id/imageView2"
+            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/alamat" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

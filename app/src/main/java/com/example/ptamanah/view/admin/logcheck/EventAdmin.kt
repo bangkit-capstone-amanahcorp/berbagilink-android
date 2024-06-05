@@ -1,7 +1,12 @@
 package com.example.ptamanah.view.admin.logcheck
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.R
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ptamanah.adapter.EventPagerAdminAdapter
 import com.example.ptamanah.adapter.EventPagerAdminLogAdapter
@@ -20,6 +25,7 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     private lateinit var adapter: EventPagerAdminLogAdapter
     private var dateStart: String? = null
     private var dateEnd: String? = null
+    private var checkinTime: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +34,8 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
         binding.btnDateRange.setOnClickListener{
             showDateRangePicker()
         }
+
+        setupActionBar()
 
         binding.btnFilter.setOnClickListener {
             val bottomShet = FilteringStatus()
@@ -100,12 +108,38 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
             dateEnd = endDate
 
             binding.btnDateRange.text = "$startDate - $endDate"
+            this.dateStart = startDate
+            this.dateEnd = endDate
 
             // Trigger data fetch with the selected date range
-            val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
+            val currentFragment =
+                supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
             if (currentFragment is EventAdminFragment) {
-                currentFragment.performSearch(query = "", startDate, endDate)
+                currentFragment.performSearch(query = "", startDate, endDate, checkinTime)
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    R.color.cardview_light_background
+                )
+            )
+        )
+        supportActionBar?.title = "Daftar Log Check In"
     }
 }

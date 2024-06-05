@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".view.admin.logcheck.EventAdminFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/tv_status"
         android:layout_width="wrap_content"
@@ -21,16 +20,25 @@
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        tools:listitem="@layout/list_item_event_admin"/>
+        tools:listitem="@layout/list_item_event_admin" />
 
     <TextView
         android:id="@+id/tvEmpty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="Tidak Ada Data"
         android:textSize="32sp"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
+        android:indeterminateTint="@color/biru_toska"
+        android:paddingTop="25dp" />
 
 
 </FrameLayout>

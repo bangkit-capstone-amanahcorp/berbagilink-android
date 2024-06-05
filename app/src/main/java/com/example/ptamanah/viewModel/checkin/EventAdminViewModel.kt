@@ -20,8 +20,8 @@ class EventAdminViewModel (private val checkinRepository: CheckinRepository) : V
         return checkinRepository.getUsername().asLiveData()
     }
 
-    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual: Int?, startDate: String?, endDate: String?): LiveData<PagingData<DataItemAdmin>> {
-        return checkinRepository.getCheckinLogAdmin(token, eventId, keywordValue, status, isManual, startDate, endDate).cachedIn(viewModelScope)
+    fun getCheckinLogAdmin(token: String, eventId: String, keywordValue: String?, status: String, isManual: Int?, startDate: String?, endDate: String?,checkingTime: String?): LiveData<PagingData<DataItemAdmin>> {
+        return checkinRepository.getCheckinLogAdmin(token, eventId, keywordValue, status, isManual, startDate, endDate, checkingTime).cachedIn(viewModelScope)
     }
 
     fun searchUser(query: String?) {

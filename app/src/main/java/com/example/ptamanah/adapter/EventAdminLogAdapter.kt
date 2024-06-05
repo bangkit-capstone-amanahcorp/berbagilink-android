@@ -15,6 +15,7 @@ import com.example.ptamanah.R
 import com.example.ptamanah.data.response.DataItemAdmin
 import com.example.ptamanah.data.retrofit.ApiService
 import com.example.ptamanah.databinding.ListItemEventAdminBinding
+import com.example.ptamanah.view.admin.logcheck.OnCheckInSuccessListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,7 +23,8 @@ import kotlinx.coroutines.withContext
 class EventAdminLogAdapter(
     private val username: String,
     private val apiService: ApiService,
-    private val token: String
+    private val token: String,
+    private val listener: OnCheckInSuccessListener
 ) : PagingDataAdapter<DataItemAdmin, EventAdminLogAdapter.MyViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -45,9 +47,7 @@ class EventAdminLogAdapter(
             binding.nomor.text = data.invoice
             binding.namaPemilikIsi.text = data.nama
             binding.namaTiketIsi.text = data.namaTiket
-            binding.statusIsi.text = data.status
-
-
+            binding.tvStatusAwal.text = data.status
             binding.KodeBookingIsi.text = data.bookingCode
             binding.namaPemilikIsi2.text = data.nama
             binding.emailIsi.text = data.email
@@ -55,7 +55,30 @@ class EventAdminLogAdapter(
             binding.waktuCheckIsi.text = data.checkinTime.toString()
             binding.jenisTiketIsi.text = data.namaTiket
             binding.kuotaIsi.text = data.kuota.toString()
-            binding.statusIsi2.text = data.status
+            binding.tvStatus.text = data.status
+
+            if (data.status == "check-in") {
+                binding.statusIVAwal.setImageResource(R.drawable.status_checkin)
+                binding.tvStatusAwal.setTextColor(ContextCompat.getColor(itemView.context, R.color.green_checkin))
+                binding.statusIV.setImageResource(R.drawable.status_checkin)
+                binding.tvStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.green_checkin))
+            }
+            else if (data.status == "uncheck") {
+                binding.statusIVAwal.setImageResource(R.drawable.status_uncheckin)
+                binding.statusIV.setImageResource(R.drawable.status_uncheckin)
+                binding.tvStatusAwal.setTextColor(ContextCompat.getColor(itemView.context, R.color.oren))
+                binding.tvStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.oren))
+            } else if (data.status == "returned") {
+                binding.statusIVAwal.setImageResource(R.drawable.status_returned)
+                binding.statusIV.setImageResource(R.drawable.status_returned)
+                binding.tvStatusAwal.setTextColor(ContextCompat.getColor(itemView.context, R.color.returned))
+                binding.tvStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.returned))
+            } else{
+                binding.statusIVAwal.setImageResource(R.drawable.status_failed)
+                binding.statusIV.setImageResource(R.drawable.status_failed)
+                binding.tvStatusAwal.setTextColor(ContextCompat.getColor(itemView.context, R.color.failed))
+                binding.tvStatus.setTextColor(ContextCompat.getColor(itemView.context, R.color.failed))
+            }
 
             binding.previewBtn.setOnClickListener {
                 val context = itemView.context
@@ -65,6 +88,7 @@ class EventAdminLogAdapter(
                 )
                 context.startActivity(intent)
             }
+
             var isExpanded = false
             binding.btnExpand.setOnClickListener {
                 isExpanded = !isExpanded
@@ -79,27 +103,28 @@ class EventAdminLogAdapter(
                 }
             }
 
+            if (data.status == "check-in") {
+                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.green_checkin)
+                binding.btnCheck.text = "Check-in"
+            } else {
+                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.oren)
+            }
             binding.btnCheck.setOnClickListener {
-                // Use a coroutine to make the network call
                 (itemView.context as? FragmentActivity)?.lifecycleScope?.launch {
                     try {
-                        // Log data.id
-                        Log.d("todssss", "Data id: ${data.id}")
-                        Log.d("todssss", "Token: $token")
+                        binding.progressBar.visibility = View.VISIBLE
                         val tokenRill = "Bearer $token"
-
                         val response = withContext(Dispatchers.IO) {
-                            apiService.updateCheckin( tokenRill, data.id ?: "")
+                            apiService.updateCheckin( tokenRill, data.id)
                         }
                         if (response.error == false) {
+                            listener.onCheckInSuccess()
                             Toast.makeText(itemView.context, "Check-in updated successfully", Toast.LENGTH_SHORT).show()
-                            // Update the item with new data
                         } else {
-                            Log.e("jjj", "Error updating check-in")
                             Toast.makeText(itemView.context, response.message ?: "Failed to update check-in", Toast.LENGTH_SHORT).show()
                         }
+                        binding.progressBar.visibility = View.GONE
                     } catch (e: Exception) {
-                        Log.e("aaa", "Error updating check-in", e)
                         Toast.makeText(itemView.context, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
                 }

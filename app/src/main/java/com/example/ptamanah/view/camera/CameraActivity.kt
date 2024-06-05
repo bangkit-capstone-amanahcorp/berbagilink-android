@@ -25,7 +25,6 @@ import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.ScanRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityCameraBinding
-import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
 import com.example.ptamanah.viewModel.scan.ScanViewModel
 import com.example.ptamanah.viewModel.scan.ScanViewModelFactory
 import com.google.mlkit.vision.barcode.BarcodeScanner
@@ -201,6 +200,7 @@ class CameraActivity : AppCompatActivity() {
 
     companion object {
         const val ID_EVENT = "id_event"
+        const val TOKEN = "token"
         private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 }

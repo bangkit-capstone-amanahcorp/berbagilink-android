@@ -120,7 +120,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/namaTiketTv" />
 
+                <ImageView
+                    android:id="@+id/statusIVAwal"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/status_border"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/namaTiketIsi" />
+
                 <TextView
+                    android:id="@+id/tvStatusAwal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#F8A725"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/statusIVAwal"
+                    app:layout_constraintEnd_toEndOf="@+id/statusIVAwal"
+                    app:layout_constraintStart_toStartOf="@+id/statusIVAwal"
+                    app:layout_constraintTop_toTopOf="@+id/statusIVAwal"
+                    tools:text="On-Going" />
+
+                <!--<TextView
                     android:id="@+id/statusIsi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -130,7 +152,7 @@
                     android:text="Valid"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/namaTiketIsi" />
-
+-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -339,17 +361,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/statusBlastTv" />
 
+                <ImageView
+                    android:id="@+id/statusIV"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/status_border"
+                    app:layout_constraintBottom_toTopOf="@+id/btnCheck"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/statusBlastIsi" />
+
                 <TextView
-                    android:id="@+id/statusIsi2"
+                    android:id="@+id/tvStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:textSize="12sp"
+                    android:textColor="#F8A725"
                     android:textStyle="bold"
-                    android:text="valid"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/statusBlastIsi" />
-
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/statusIV"
+                    app:layout_constraintEnd_toEndOf="@+id/statusIV"
+                    app:layout_constraintStart_toStartOf="@+id/statusIV"
+                    app:layout_constraintTop_toTopOf="@+id/statusIV"
+                    tools:text="On-Going" />
 
                 <Button
                     android:id="@+id/previewBtn"
@@ -384,20 +418,21 @@
                     app:layout_constraintVertical_bias="1.0"
                     app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large" />
 
-<!--                <ProgressBar-->
-<!--                    android:id="@+id/progressBar"-->
-<!--                    style="?android:attr/progressBarStyle"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="parent"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    tools:visibility="visible" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:indeterminateTint="@color/biru_toska"
+            tools:visibility="visible" />
 
     </com.google.android.material.card.MaterialCardView>
 

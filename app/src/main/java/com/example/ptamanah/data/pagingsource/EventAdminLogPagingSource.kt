@@ -14,7 +14,8 @@ class EventAdminLogPagingSource(
     private val status: String,
     private val isManual: Int?,
     private val startDate: String?,
-    private val endDate: String?
+    private val endDate: String?,
+    private val checkingTime: String?
 ) : PagingSource<Int, DataItemAdmin>() {
 
     private companion object {
@@ -39,7 +40,8 @@ class EventAdminLogPagingSource(
                 endDate = endDate?:"",
                 keywordValue = keywordValue ?: "",
                 status = status,
-                isManual = isManual
+                isManual = isManual,
+                checkinTime = checkingTime
             )
             Log.d("Response22", response.toString())
             val data = response.data?.data?.filterNotNull() ?: emptyList()

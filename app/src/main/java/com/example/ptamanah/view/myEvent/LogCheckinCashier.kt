@@ -11,6 +11,7 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
@@ -49,12 +50,12 @@ class LogCheckinCashier : AppCompatActivity() {
 
         lifecycleScope.launch {
             checkinViewModel.getCheckinscashier(token, eventId).collectLatest { pagingData ->
-                handleSearchResults()
+                observeLoadState()
                 checkinAdapter.submitData(pagingData)
-
             }
         }
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -90,15 +91,21 @@ class LogCheckinCashier : AppCompatActivity() {
         })
     }
 
-    private fun handleSearchResults() {
-        checkinAdapter.addLoadStateListener { loadState ->
-            val isListEmpty = checkinAdapter.itemCount == 0
-            if (!isListEmpty) {
-                binding.NotfoundTv.visibility = View.GONE
-            } else {
-                binding.NotfoundTv.visibility = View.VISIBLE
+
+    private fun observeLoadState() {
+        lifecycleScope.launch {
+            checkinAdapter.loadStateFlow.collectLatest {
+                val isLoading = it.refresh is LoadState.Loading
+                showLoading(isLoading)
+
+                val isListEmpty = it.refresh is LoadState.NotLoading && checkinAdapter.itemCount == 0
+                binding.NotfoundTv.visibility = if (isListEmpty) View.VISIBLE else View.GONE
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun getCheckinRepo(): CheckinRepository {

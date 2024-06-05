@@ -100,7 +100,6 @@ class MyEventFragment : Fragment() {
                 Intent(context, LogCheckinCashier::class.java).apply {
                     putExtra(ID_EVENT, user.id)
                     putExtra(TOKEN, token)
-                    Log.d("tesss2", "Navigating to LogCheckinCashier with eventId: ${user.id}")
                 }.also {
                     startActivity(it)
                 }
@@ -136,6 +135,17 @@ class MyEventFragment : Fragment() {
                 }
             }
         }
+
+        eventAdapter.setOnDaftarClickCallBack(object : EventAdapter.OnDaftarClickCallBack {
+            override fun onDaftarClicked(user: DataItem) {
+                Intent(context, LogCheckinCashier::class.java).apply {
+                    putExtra(ID_EVENT, user.id)
+                    putExtra(TOKEN, token)
+                }.also {
+                    startActivity(it)
+                }
+            }
+        })
     }
 
     private fun showActiveEvent() {
@@ -183,7 +193,6 @@ class MyEventFragment : Fragment() {
                 Intent(context, LogCheckinCashier::class.java).apply {
                     putExtra(ID_EVENT, user.id)
                     putExtra(TOKEN, token)
-                    Log.d("tesss2", "Navigating to LogCheckinCashier with eventId: ${user.id}")
                 }.also {
                     startActivity(it)
                 }

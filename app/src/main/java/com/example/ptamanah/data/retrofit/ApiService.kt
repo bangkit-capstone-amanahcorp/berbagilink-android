@@ -1,8 +1,10 @@
 package com.example.ptamanah.data.retrofit
 
+import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseCheckinCashier
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
+import com.example.ptamanah.data.response.ResponseDetailEvents
 import com.example.ptamanah.data.response.ResponseEventAdminLog
 import com.example.ptamanah.data.response.ResponseListEvent
 import com.example.ptamanah.data.response.ResponseLogin
@@ -52,6 +54,12 @@ interface ApiService {
     suspend fun getEvents(
         @Header("Authorization") token: String
     ): ResponseListEvent
+
+    @GET("event-mobile/event/{eventId}")
+    suspend fun eventDetail(
+        @Header("Authorization") token: String,
+        @Path("eventId") eventId: String
+    ): ResponseDetailEvents
 
     //Checkin Tenant
     @GET("event-mobile/tenant/all-visitor")
@@ -104,6 +112,7 @@ interface ApiService {
     @Query("keyword_value") keywordValue: String? = "",
     @Query("status") status: String,
     @Query("is_manual") isManual: Int? = null,
+    @Query("checkin_time")checkinTime : String? = ""
     ): ResponseEventAdminLog
 
     @POST("event-mobile/check-in/update/{id}")
