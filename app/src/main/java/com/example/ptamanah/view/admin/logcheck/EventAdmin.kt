@@ -113,7 +113,7 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
         dateRangePicker.show(supportFragmentManager, "date_range_picker")
 
         dateRangePicker.addOnPositiveButtonClickListener { selection ->
-            val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             val startDate = dateFormat.format(Date(selection.first ?: 0))
             val endDate = dateFormat.format(Date(selection.second ?: 0))
 
