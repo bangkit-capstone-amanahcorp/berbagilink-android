@@ -90,4 +90,14 @@
     <string name="error_email">Email tidak valid</string>
 
 
+    <string name="general">General</string>
+    <string name="nama">Nama</string>
+    <string name="role">Role</string>
+    <string name="kasir">Kasir</string>
+    <string name="simpan_data">Simpan</string>
+    <string name="admin">Admin</string>
+    <string name="tenant">Tenant</string>
+    <string name="pilih_role">Pilih Role</string>
+    <string name="wajib_ic">*</string>
+    <string name="text_info_pass">Harus terdiri dari huruf kapital, huruf kecil, dan angka</string>
 </resources>

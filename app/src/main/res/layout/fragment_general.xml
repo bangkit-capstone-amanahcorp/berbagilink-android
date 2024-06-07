@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.admin.manageuser.editUser.fragmentEdit.GeneralFragment">
+
+    <TextView
+        android:id="@+id/namaTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/nama"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bintang1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/namaTv"
+        app:layout_constraintStart_toEndOf="@+id/namaTv"
+        app:layout_constraintTop_toTopOf="@+id/namaTv" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/namaEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:shapeAppearanceOverlay="@style/RoundedCornerAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/namaTv"
+        app:layout_constraintTop_toBottomOf="@+id/namaTv">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/namaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Masukkan Nama"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/emailTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/namaEditTextLayout" />
+
+
+    <TextView
+        android:id="@+id/bintang2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/emailTv"
+        app:layout_constraintStart_toEndOf="@+id/emailTv"
+        app:layout_constraintTop_toTopOf="@+id/emailTv" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailEditTextLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:shapeAppearanceOverlay="@style/RoundedCornerAll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/emailTv"
+        app:layout_constraintTop_toBottomOf="@+id/emailTv">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Masukkan Email"
+            android:inputType="textEmailAddress"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/roleTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/role"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/emailEditTextLayout" />
+
+    <TextView
+        android:id="@+id/bintang3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/roleTv"
+        app:layout_constraintStart_toEndOf="@+id/roleTv"
+        app:layout_constraintTop_toTopOf="@+id/roleTv" />
+
+    <Button
+        android:id="@+id/roleBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:drawableTint="@color/biru_toska"
+        android:text="@string/pilih_role"
+        android:textAlignment="textStart"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/rectangle_radius"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/roleTv"
+        app:layout_constraintTop_toBottomOf="@+id/roleTv" />
+
+    <TextView
+        android:id="@+id/roleErrorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        tools:visibility="visible"
+        tools:text="Pilih role terlebih dahulu"
+        app:layout_constraintStart_toStartOf="@+id/roleBtn"
+        app:layout_constraintTop_toBottomOf="@+id/roleBtn" />
+
+
+    <Button
+        android:id="@+id/simpanData"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/simpan_data"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/btn_biru"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
