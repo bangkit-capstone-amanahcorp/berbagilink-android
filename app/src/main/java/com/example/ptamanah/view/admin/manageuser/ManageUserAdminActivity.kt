@@ -1,8 +1,10 @@
 package com.example.ptamanah.view.admin.manageuser
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -21,6 +23,11 @@ import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.data.response.DataItemManagementUser
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityManageUserAdminBinding
+import com.example.ptamanah.view.admin.detailEvent.DetailEventActivity
+import com.example.ptamanah.view.admin.manageuser.editUser.EditUserActivity
+import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.GeneralFragment
+import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.GeneralFragment.Companion.EMAIL
+import com.example.ptamanah.view.main.HomePageAdmin
 import com.example.ptamanah.viewModel.factory.ManagementUserViewModelFactory
 import com.example.ptamanah.viewModel.managementuser.ManagementUserViewModel
 import kotlinx.coroutines.launch
@@ -53,7 +60,13 @@ class ManageUserAdminActivity : AppCompatActivity() {
 
         managementUserAdapter.setOnEditClickCallBack(object : ManagementUserAdapter.OnEditClickCallBack {
             override fun onEditClicked(user: DataItemManagementUser) {
-                Toast.makeText(this@ManageUserAdminActivity, "Edit clicked for ${user.name}", Toast.LENGTH_SHORT).show()
+                Intent(this@ManageUserAdminActivity, EditUserActivity::class.java).apply {
+                    putExtra(GeneralFragment.TOKEN, token)
+                    putExtra(GeneralFragment.ID, user.id)
+                    putExtra(EMAIL, user.email)
+                }.also {
+                    startActivity(it)
+                }
             }
         })
 
@@ -106,11 +119,25 @@ class ManageUserAdminActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                finish()
+                navigateToHomePage()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        navigateToHomePage()
+        super.onBackPressed()
+    }
+
+    private fun navigateToHomePage() {
+        Intent(this, HomePageAdmin::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }.also {
+            startActivity(it)
+        }
+        finish()
     }
 
     private fun setupRecyclerView() {

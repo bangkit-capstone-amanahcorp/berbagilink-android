@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.data.response.DataItemManagementUser
+import com.example.ptamanah.data.response.ResponseChangePassword
 import com.example.ptamanah.data.response.ResponseManagementUser
+import com.example.ptamanah.data.response.ResponseUpdateUser
 import com.example.ptamanah.data.response.Responsedelete
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -36,5 +38,13 @@ class ManagementUserViewModel (private val managementUserRepository: ManagementU
     }
     suspend fun deleteUser(token: String, id: Int): Flow<Result<Responsedelete>> {
         return managementUserRepository.deleteUser(token, id)
+    }
+
+    suspend fun updateUser(token: String, id: Int, name: String, email: String, role: String): Flow<Result<ResponseUpdateUser>> {
+        return managementUserRepository.updateUser(token, id, name, email, role)
+    }
+
+    suspend fun changePassword(token: String, id: Int, password: String, confirmPassword: String): Flow<Result<ResponseChangePassword>> {
+        return managementUserRepository.changePassword(token, id, password, confirmPassword)
     }
 }

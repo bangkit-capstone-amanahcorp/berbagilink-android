@@ -1,6 +1,7 @@
 package com.example.ptamanah.data.retrofit
 
 import com.example.ptamanah.data.response.DataItem
+import com.example.ptamanah.data.response.ResponseChangePassword
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseCheckinCashier
 import com.example.ptamanah.data.response.ResponseDataVisitorTenant
@@ -15,6 +16,7 @@ import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
 import com.example.ptamanah.data.response.ResponseUpdateCheckIn
+import com.example.ptamanah.data.response.ResponseUpdateUser
 import com.example.ptamanah.data.response.Responsedelete
 import retrofit2.http.DELETE
 import retrofit2.http.Field
@@ -134,4 +136,23 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): Responsedelete
+
+    @FormUrlEncoded
+    @POST("berbagi_link/user_management/update/{id}")
+    suspend fun updateUser(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("role") role: String
+    ) : ResponseUpdateUser
+
+    @FormUrlEncoded
+    @POST("berbagi_link/user_management/change_password/{id}")
+    suspend fun changePassword(
+        @Header("Authorization") token: String,
+        @Path("id") id: Int,
+        @Field("password") password: String,
+        @Field("password_confirmation") password_confirmation: String
+    ) : ResponseChangePassword
 }
