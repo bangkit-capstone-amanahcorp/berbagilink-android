@@ -35,7 +35,7 @@ class ManagementUserRepository(
         }
     }
 
-    suspend fun deleteUser(token: String, id: Int): Flow<Result<Responsedelete>> = flow{
+    suspend fun deleteUser(token: String, id: Int): Flow<Result<Responsedelete>> = flow {
         try {
             val bearerToken = bearerToken(token)
             val response = apiService.deleteUser(bearerToken, id)
@@ -46,40 +46,63 @@ class ManagementUserRepository(
         }
     }
 
-    suspend fun addUser(token: String, name: String, password: String,passwordConfirmation: String, email: String,role: String): Flow<Result<ResponseManagementUserAdd>> = flow {
+    suspend fun addUser(
+        token: String,
+        name: String,
+        password: String,
+        confirmPassword: String,
+        email: String,
+        role: String
+    ): Flow<Result<ResponseManagementUserAdd>> = flow {
         try {
             val bearerToken = bearerToken(token)
-            val response = apiService.addUser(bearerToken, name, password,passwordConfirmation,email,role)
-            Log.d("afaahasilnya", response.toString())
+            Log.d("hihhi", "$bearerToken")
+            val response =
+                apiService.addUser(bearerToken, name, password, confirmPassword, email, role)
+            Log.d("hasiladdd", response.toString())
             emit(Result.success(response))
         } catch (e: Exception) {
             emit(Result.failure(e))
-            Log.e("Error", "Failed to fetch add", e)
-    suspend fun updateUser(token: String, id: Int, nama: String, email:String, role: String): Flow<Result<ResponseUpdateUser>> = flow {
-        try {
-            val bearerToken = bearerToken(token)
-            val response = apiService.updateUser(bearerToken, id, nama, email, role)
-            emit(Result.success(response))
-        } catch (e: Exception) {
-            emit(Result.failure(e))
+            Log.e("yimak", "Failed to fetch add", e)
         }
     }
 
-    suspend fun changePassword(token: String, id: Int, password: String, confirmPassword: String): Flow<Result<ResponseChangePassword>> = flow {
-        try {
-            val bearerToken = bearerToken(token)
-            Log.d("afaahasilnya22", id.toString())
-            val response = apiService.changePassword(bearerToken, id, password, confirmPassword)
-            Log.d("afaahasilnya223", response.toString())
-            emit(Result.success(response))
-        } catch (e: Exception) {
-            Log.d("afaahasilnya224", e.toString())
-            emit(Result.failure(e))
+        suspend fun updateUser(
+            token: String,
+            id: Int,
+            nama: String,
+            email: String,
+            role: String
+        ): Flow<Result<ResponseUpdateUser>> = flow {
+            try {
+                val bearerToken = bearerToken(token)
+                val response = apiService.updateUser(bearerToken, id, nama, email, role)
+                emit(Result.success(response))
+            } catch (e: Exception) {
+                emit(Result.failure(e))
+            }
+        }
+
+        suspend fun changePassword(
+            token: String,
+            id: Int,
+            password: String,
+            confirmPassword: String
+        ): Flow<Result<ResponseChangePassword>> = flow {
+            try {
+                val bearerToken = bearerToken(token)
+                Log.d("afaahasilnya22", id.toString())
+                val response = apiService.changePassword(bearerToken, id, password, confirmPassword)
+                Log.d("afaahasilnya223", response.toString())
+                emit(Result.success(response))
+            } catch (e: Exception) {
+                Log.d("afaahasilnya224", e.toString())
+                emit(Result.failure(e))
+            }
         }
     }
-}
 
 
-private fun bearerToken(token: String): String {
-    return "Bearer $token"
-}
+    private fun bearerToken(token: String): String {
+        return "Bearer $token"
+    }

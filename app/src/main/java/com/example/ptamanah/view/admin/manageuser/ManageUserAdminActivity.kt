@@ -69,6 +69,13 @@ class ManageUserAdminActivity : AppCompatActivity() {
                 }
             }
         })
+        binding.TambahuserBtn.setOnClickListener {
+            Intent(this@ManageUserAdminActivity, ManageUserAdminAddActivity::class.java).apply {
+                putExtra(ManageUserAdminAddActivity.TOKEN, token)
+            }.also {
+                startActivity(it)
+            }
+        }
 
         lifecycleScope.launch {
             showLoading(true)

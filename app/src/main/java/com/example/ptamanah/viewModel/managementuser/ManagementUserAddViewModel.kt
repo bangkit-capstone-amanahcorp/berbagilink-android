@@ -6,18 +6,28 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.data.response.ResponseManagementUserAdd
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 class ManagementUserAddViewModel (private val repository: ManagementUserRepository): ViewModel() {
 
-    private val _addResult = MutableLiveData<Result<ResponseManagementUserAdd>>()
-    val addResult: LiveData<Result<ResponseManagementUserAdd>> get() = _addResult
+    private val _addResult = MutableStateFlow<Result<ResponseManagementUserAdd>?>(null)
+    val addResult: StateFlow<Result<ResponseManagementUserAdd>?> = _addResult
 
-    fun addManagementUser(token: String,name: String, password: String,passwordConfirmation: String, email: String,role: String) {
-        viewModelScope.launch {
-            repository.addUser(token,name, password,passwordConfirmation, email,role).collect {result ->
-                _addResult.value = result
-            }
+    fun addManagementUser(
+        token: String,
+        name: String,
+        email: String,
+        password: String,
+        passwordConfirmation: String,
+        role: String
+    ): Flow<Result<ResponseManagementUserAdd>> = flow {
+        repository.addUser(token, name, password, passwordConfirmation, email, role).collect {
+            _addResult.value = it
+            emit(it)
         }
     }
 }

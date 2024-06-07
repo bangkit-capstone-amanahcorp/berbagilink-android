@@ -143,7 +143,7 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Field("name") name: String,
         @Field("password") password: String,
-        @Field("password_confirmation") passwordConfirmation: String,
+        @Field("password_confirmation") password_confirmation: String,
         @Field("email") email: String,
         @Field("role") role: String,
     ):ResponseManagementUserAdd
