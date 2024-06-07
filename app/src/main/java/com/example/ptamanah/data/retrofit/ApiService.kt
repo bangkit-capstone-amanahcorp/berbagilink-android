@@ -11,6 +11,7 @@ import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
 import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseManagementUser
+import com.example.ptamanah.data.response.ResponseManagementUserAdd
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
@@ -133,4 +134,15 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: Int
     ): Responsedelete
+
+    @FormUrlEncoded
+    @POST("berbagi_link/user_management/store")
+    suspend fun addUser(
+        @Header("Authorization") token: String,
+        @Field("name") name: String,
+        @Field("password") password: String,
+        @Field("password_confirmation") passwordConfirmation: String,
+        @Field("email") email: String,
+        @Field("role") role: String,
+    ):ResponseManagementUserAdd
 }

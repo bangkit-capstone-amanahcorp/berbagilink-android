@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.viewModel.event.EventViewModel
+import com.example.ptamanah.viewModel.managementuser.ManagementUserAddViewModel
 import com.example.ptamanah.viewModel.managementuser.ManagementUserViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -13,7 +14,11 @@ class ManagementUserViewModelFactory(private val managementUserRepository: Manag
         return when {
             modelClass.isAssignableFrom(ManagementUserViewModel::class.java) -> {
                 ManagementUserViewModel(managementUserRepository) as T
-            } else -> throw IllegalArgumentException("Unknown ViewModel Class")
+            }
+            modelClass.isAssignableFrom(ManagementUserAddViewModel::class.java) -> {
+                ManagementUserAddViewModel(managementUserRepository) as T
+
+            }else -> throw IllegalArgumentException("Unknown ViewModel Class")
         }
     }
 }

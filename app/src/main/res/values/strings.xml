@@ -81,4 +81,13 @@
     <string name="Delete">Delete</string>
     <string name="edit">Edit</string>
     <string name="tanggal_daftar">Tanggal daftar</string>
+
+    <string name="error_password_8">Password harus terdiri dari minimal 8 karakter</string>
+    <string name="error_password_requirements">Password harus terdiri dari huruf kapital, huruf kecil, dan angka</string>
+    <string name="password_meets_criteria">Password telah memenuhi kriteria</string>
+    <string name="error_password_mismatch">Password tidak sesuai</string>
+    <string name="password_matches">Password cocok</string>
+    <string name="error_email">Email tidak valid</string>
+
+
 </resources>
