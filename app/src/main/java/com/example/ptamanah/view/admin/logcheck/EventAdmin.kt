@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.R
 import androidx.core.content.ContextCompat
@@ -35,9 +36,10 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
         binding = ActivityEventAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnDateRange.setOnClickListener{
+        binding.btnDateRange.setOnClickListener {
+            binding.btnDateRange.isEnabled = false
+            binding.progressBar.visibility = View.VISIBLE
             showDateRangePicker()
-
         }
 
         setupActionBar()
@@ -65,7 +67,8 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     }
 
     override fun onFilterSelected(status: String) {
-        val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
+        val currentFragment =
+            supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
         if (currentFragment is EventAdminFragment) {
             currentFragment.setCurrentStatus(status)
             currentFragment.filteringEventsByStatus(status)
@@ -76,8 +79,10 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
             binding.btnFilter.text = status
         }
     }
+
     private fun setupSearchView() {
-        binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object :
+            android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let { performSearch(it) }
                 return false
@@ -91,7 +96,8 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
     }
 
     private fun performSearch(query: String) {
-        val currentFragment = supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
+        val currentFragment =
+            supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
         if (currentFragment is EventAdminFragment) {
             currentFragment.performSearch(query)
         }
@@ -105,7 +111,7 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
         }
     }
 
-    private  fun showDateRangePickerAsync() {
+    private fun showDateRangePickerAsync() {
         val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
             .setTitleText("Select Date Range")
             .build()
@@ -125,9 +131,23 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
             val currentFragment =
                 supportFragmentManager.findFragmentByTag("f" + binding.pagerAdmin.currentItem)
             if (currentFragment is EventAdminFragment) {
-                currentFragment.setDateRange( startDate,endDate)
+                currentFragment.setDateRange(startDate, endDate)
             }
+
+            binding.btnDateRange.isEnabled = true
+            binding.progressBar.visibility = View.GONE
         }
+
+        dateRangePicker.addOnDismissListener {
+            binding.btnDateRange.isEnabled = true
+            binding.progressBar.visibility = View.GONE
+        }
+
+        dateRangePicker.addOnCancelListener {
+            binding.btnDateRange.isEnabled = true
+            binding.progressBar.visibility = View.GONE
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
