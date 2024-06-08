@@ -1,9 +1,11 @@
 package com.example.ptamanah.view.admin.manageuser
 
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
@@ -12,6 +14,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -43,6 +46,7 @@ class ManageUserAdminAddActivity : AppCompatActivity(),RoleFragment.RoleSelected
 
         setupView()
         setupAction()
+        setupActionBar()
 
 
         binding.btnRole.setOnClickListener{
@@ -81,6 +85,9 @@ class ManageUserAdminAddActivity : AppCompatActivity(),RoleFragment.RoleSelected
                 return@setOnClickListener
             } else if (binding.edRegisterPassword.error != null || binding.edRegisterConfirmPassword.error != null) {
                 Toast.makeText(this, "Periksa kembali password yang dimasukkan", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            } else if (role.isNullOrEmpty()) {
+                Toast.makeText(this, "Harap pilih role Terlebih Dahulu", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                 lifecycleScope.launch {
@@ -146,8 +153,27 @@ class ManageUserAdminAddActivity : AppCompatActivity(),RoleFragment.RoleSelected
         }
     }
 
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) android.view.View.VISIBLE else android.view.View.GONE
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    androidx.cardview.R.color.cardview_light_background
+                )
+            )
+        )
+        supportActionBar?.title = "Tambahkan User"
     }
     companion object {
         const val TOKEN = "token"

@@ -33,6 +33,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/bintang1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_name"
+        app:layout_constraintStart_toEndOf="@+id/tv_name"
+        app:layout_constraintTop_toTopOf="@+id/tv_name" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_register_name"
         android:layout_width="0dp"
@@ -69,6 +80,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_register_name" />
 
+    <TextView
+        android:id="@+id/bintang2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_email"
+        app:layout_constraintStart_toEndOf="@+id/tv_email"
+        app:layout_constraintTop_toTopOf="@+id/tv_email" />
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_register_email"
         android:layout_width="0dp"
@@ -102,24 +125,33 @@
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_register_email" />
+
+    <TextView
+        android:id="@+id/bintang3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_role"
+        app:layout_constraintStart_toEndOf="@+id/tv_role"
+        app:layout_constraintTop_toTopOf="@+id/tv_role" />
+
     <Button
         android:id="@+id/btnRole"
-        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Pilih Role"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="5dp"
-        android:textAlignment="viewStart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:drawableTint="@color/biru_toska"
+        android:text="@string/pilih_role"
+        android:textAlignment="textStart"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/rectangle_radius"
         android:textColor="@color/black"
-        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-        app:backgroundTint="@color/white"
-        app:iconTint="@color/black"
-        app:icon="@drawable/ic_arrow_down"
-        app:iconGravity="end"
-        app:iconSize="24dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_role"
         app:layout_constraintTop_toBottomOf="@+id/tv_role"/>
 
     <TextView
@@ -135,16 +167,35 @@
         app:layout_constraintTop_toBottomOf="@+id/btnRole" />
 
     <TextView
+        android:id="@+id/bintang4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_password"
+        app:layout_constraintStart_toEndOf="@+id/tv_password"
+        app:layout_constraintTop_toTopOf="@+id/tv_password" />
+
+    <ImageView
+        android:id="@+id/infoIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_info"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_password"
+        app:layout_constraintTop_toBottomOf="@+id/tv_password" />
+
+    <TextView
         android:id="@+id/hintPw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="4dp"
         android:text="Harus Terdiri dari huruf kapital,kecil, angka"
         android:textColor="@color/disable"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_password" />
+        app:layout_constraintBottom_toBottomOf="@+id/infoIV"
+        app:layout_constraintStart_toEndOf="@+id/infoIV"
+        app:layout_constraintTop_toTopOf="@+id/infoIV" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_register_password"
@@ -181,6 +232,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/til_register_password" />
 
+    <TextView
+        android:id="@+id/bintang5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wajib_ic"
+        android:textColor="@color/failed"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_password_confirm"
+        app:layout_constraintStart_toEndOf="@+id/tv_password_confirm"
+        app:layout_constraintTop_toTopOf="@+id/tv_password_confirm" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_register_confiem_password"
         android:layout_width="0dp"
@@ -215,10 +277,12 @@
         android:layout_marginTop="28dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
         android:textStyle="bold"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_register_confiem_password" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
