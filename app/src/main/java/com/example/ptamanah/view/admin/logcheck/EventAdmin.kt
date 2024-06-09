@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.R
 import androidx.core.content.ContextCompat
+import androidx.core.util.Pair
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ptamanah.adapter.EventPagerAdminAdapter
 import com.example.ptamanah.adapter.EventPagerAdminLogAdapter
@@ -113,7 +114,14 @@ class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener
 
     private fun showDateRangePickerAsync() {
         val dateRangePicker = MaterialDatePicker.Builder.dateRangePicker()
+            .setTheme(com.example.ptamanah.R.style.ThemeMaterialCalendar)
             .setTitleText("Select Date Range")
+            .setSelection(
+                Pair(
+                    MaterialDatePicker.thisMonthInUtcMilliseconds(),
+                    MaterialDatePicker.todayInUtcMilliseconds()
+                )
+            )
             .build()
 
         dateRangePicker.show(supportFragmentManager, "date_range_picker")
