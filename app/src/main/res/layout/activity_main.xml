@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.main.HomePageCashier">
@@ -473,7 +474,8 @@
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         android:drawableLeft="@drawable/ic_events"
                         android:drawableRight="@drawable/ic_arrow"
-                        app:backgroundTint="@color/white"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/rectangle_radius"
                         app:iconSize="24dp" />
                 </LinearLayout>
 
@@ -512,7 +514,8 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:backgroundTint="@color/white"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/rectangle_radius"
                         android:drawableLeft="@drawable/ic_quran"
                         android:drawableRight="@drawable/ic_arrow"
                         app:iconSize="24dp" />
@@ -539,7 +542,9 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:backgroundTint="@color/white"
+                        app:backgroundTint="@null"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rectangle_radius"
                         android:drawableLeft="@drawable/ic_dua"
                         android:drawableRight="@drawable/ic_arrow"/>
                 </LinearLayout>

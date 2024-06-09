@@ -96,10 +96,13 @@ class EventAdminLogAdapter(
                     binding.expandLayout.visibility = View.VISIBLE
                     binding.expandLayout3Teks.visibility = View.GONE
                     binding.btnExpand.background = ContextCompat.getDrawable(itemView.context, R.drawable.ic_arrow_down)
+                    binding.card.setStrokeColor(ContextCompat.getColor(itemView.context, R.color.biru_toska))
+
                 } else {
                     binding.expandLayout.visibility = View.GONE
                     binding.expandLayout3Teks.visibility = View.VISIBLE
                     binding.btnExpand.background = ContextCompat.getDrawable(itemView.context, R.drawable.ic_arrow_up)
+                    binding.card.setStrokeColor(ContextCompat.getColor(itemView.context, R.color.disable))
                 }
             }
 
@@ -126,6 +129,7 @@ class EventAdminLogAdapter(
                         binding.progressBar.visibility = View.GONE
                     } catch (e: Exception) {
                         Toast.makeText(itemView.context, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                        binding.progressBar.visibility = View.GONE
                     }
                 }
             }

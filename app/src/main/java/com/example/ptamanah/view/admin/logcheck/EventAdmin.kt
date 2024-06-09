@@ -27,7 +27,6 @@ import java.util.Locale
 class EventAdmin : AppCompatActivity(), FilteringStatus.OnFilterSelectedListener {
 
     private lateinit var binding: ActivityEventAdminBinding
-    private lateinit var adapter: EventPagerAdminLogAdapter
     private var dateStart: String? = null
     private var dateEnd: String? = null
 

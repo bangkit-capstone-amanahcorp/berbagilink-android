@@ -5,11 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".view.admin.events.ListEventsAdmin">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
         <LinearLayout
             android:id="@+id/tabs"
@@ -24,6 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:backgroundTint="@null"
+                android:layout_marginStart="4dp"
                 android:background="@drawable/btn_selected"
                 android:textColor="@color/biru_toska"
                 android:text="@string/semua" />

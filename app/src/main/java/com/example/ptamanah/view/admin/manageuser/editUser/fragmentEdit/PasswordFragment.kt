@@ -86,8 +86,10 @@ class PasswordFragment : Fragment() {
                     managementUserViewModel.changePassword(token.toString(), id, passBaru, konfirmasiPass).collect { result ->
                         result.onSuccess {
                             Toast.makeText(requireContext(), "Password berhasil diubah", Toast.LENGTH_SHORT).show()
-                            val intent = Intent(requireContext(), ManageUserAdminActivity::class.java)
-                            intent.putExtra(ManageUserAdminActivity.TOKEN, token)
+                            val intent = Intent(requireContext(), ManageUserAdminActivity::class.java).apply {
+                                putExtra(ManageUserAdminActivity.TOKEN, token)
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            }
                             requireActivity().startActivity(intent)
                             requireActivity().finish()
                         }

@@ -86,20 +86,20 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
 
             if (nama.isEmpty()) {
                 binding.namaEditTextLayout.error =
-                    "The field is required"
+                    "Nama harus diisi"
             } else if (email.isEmpty()) {
                 binding.emailEditTextLayout.error =
-                    "The field is required"
+                    "Email harus diisi"
             } else if (!email.matches(emailPattern.toRegex())) {
                 binding.emailEditTextLayout.error =
-                    "The field is not a valid email address"
+                    "Email tidak valid"
             } else if (email == this.email){
                 binding.emailEditTextLayout.error =
-                    "The email address already exists"
+                    "Alamat email sudah ada"
             } else if (status == null) {
                 binding.roleErrorTextView.text = "Pilih Role terlebih dahulu"
                 binding.roleErrorTextView.visibility = View.VISIBLE
-                binding.roleBtn.error = "The field is required"
+                binding.roleBtn.error = "Role harus dipilih"
             } else {
                 lifecycleScope.launch {
                     Log.d("statusNyaa", status.toString())
@@ -121,6 +121,7 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
                                 ManageUserAdminActivity::class.java
                             ).apply {
                                 putExtra(ManageUserAdminActivity.TOKEN, token)
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                             }
                             requireActivity().startActivity(intent)
                             requireActivity().finish()
@@ -158,6 +159,14 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val email = s.toString().trim()
+                val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
+                if (email.matches(emailPattern.toRegex())) {
+                    binding.emailEditTextLayout.error = null
+                } else {
+                    binding.emailEditTextLayout.error = "Email tidak valid"
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -182,7 +191,6 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
         return when (binding.roleBtn.text.toString()) {
             "Kasir" -> "cashier"
             "Tenant" -> "user_editor"
-            "Admin" -> "admin"
             else -> ""
         }
     }

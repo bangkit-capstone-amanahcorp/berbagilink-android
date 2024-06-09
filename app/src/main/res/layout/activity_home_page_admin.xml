@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".view.main.HomePageAdmin">
 
     <LinearLayout
@@ -453,13 +454,13 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/ubuntu"
                         android:text="@string/events"
+                        android:background="@drawable/rectangle_radius"
                         android:drawableLeft="@drawable/ic_events"
                         android:drawableRight="@drawable/ic_arrow"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
-                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:iconTint= "@color/black"
-                        app:backgroundTint="@color/white" />
+                        app:backgroundTint="@null" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -478,14 +479,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/ubuntu"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rectangle_radius"
                         android:text="@string/manage_user"
                         android:drawableLeft="@drawable/manage_user"
                         android:drawableRight="@drawable/ic_arrow"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
-                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:iconTint= "@color/black"
-                        app:backgroundTint="@color/white" />
+                        app:backgroundTint="@null" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -504,6 +506,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/ubuntu"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rectangle_radius"
                         android:text="@string/transaksi_event"
                         android:drawableLeft="@drawable/transaksi_rill"
                         android:drawableRight="@drawable/ic_arrow"
@@ -511,7 +515,7 @@
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
                         app:iconTint= "@color/black"
-                        app:backgroundTint="@color/white" />
+                        app:backgroundTint="@null" />
                 </LinearLayout>
 
                 <TextView
@@ -549,7 +553,8 @@
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:backgroundTint="@color/white"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/rectangle_radius"
                         app:icon="@drawable/ic_quran"
                         app:iconTint="@color/black"
                         app:iconSize="24dp" />
@@ -573,11 +578,13 @@
                         android:layout_height="match_parent"
                         android:text="@string/quran_dikir"
                         app:iconSize="24dp"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/ubuntu"
                         android:textAlignment="viewStart"
                         android:textColor="@color/black"
                         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:backgroundTint="@color/white"
+                        app:backgroundTint="@null"
+                        android:background="@drawable/rectangle_radius"
                         app:icon="@drawable/ic_dua"
                         app:iconTint="@color/black"/>
                 </LinearLayout>

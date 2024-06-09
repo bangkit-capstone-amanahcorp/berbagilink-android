@@ -126,7 +126,7 @@ class ManageUserAdminActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
-                navigateToHomePage()
+                finish()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -134,17 +134,8 @@ class ManageUserAdminActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        navigateToHomePage()
-        super.onBackPressed()
-    }
-
-    private fun navigateToHomePage() {
-        Intent(this, HomePageAdmin::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }.also {
-            startActivity(it)
-        }
         finish()
+        super.onBackPressed()
     }
 
     private fun setupRecyclerView() {

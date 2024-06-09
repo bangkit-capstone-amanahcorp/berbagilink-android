@@ -79,6 +79,7 @@ class ManagementUserRepository(
                 val response = apiService.updateUser(bearerToken, id, nama, email, role)
                 emit(Result.success(response))
             } catch (e: Exception) {
+                Log.d("afaahasilnya22", e.toString())
                 emit(Result.failure(e))
             }
         }

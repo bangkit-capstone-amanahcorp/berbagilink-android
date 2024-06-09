@@ -40,16 +40,6 @@
             android:textAlignment="center"/>
 
         <RadioButton
-            android:id="@+id/admin"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="@string/admin"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            android:checked="false" />
-
-        <RadioButton
             android:id="@+id/tenant"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

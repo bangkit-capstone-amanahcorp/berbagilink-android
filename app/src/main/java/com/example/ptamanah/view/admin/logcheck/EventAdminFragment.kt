@@ -200,14 +200,4 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
         const val TOKEN = "token"
         const val EVENT_ID = "event_id"
     }
-
-    fun newInstance(position: Int,dateStart: String?, dateEnd: String?): EventAdminFragment {
-        val fragment = EventAdminFragment()
-        val args = Bundle()
-        args.putInt(ARG_POSITION, position)
-        args.putString("dateStart", dateStart)
-        args.putString("dateEnd", dateEnd)
-        fragment.arguments = args
-        return fragment
-    }
 }

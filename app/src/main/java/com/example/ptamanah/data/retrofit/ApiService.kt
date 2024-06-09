@@ -147,6 +147,7 @@ interface ApiService {
         @Field("email") email: String,
         @Field("role") role: String,
     ):ResponseManagementUserAdd
+    @FormUrlEncoded
     @POST("berbagi_link/user_management/update/{id}")
     suspend fun updateUser(
         @Header("Authorization") token: String,

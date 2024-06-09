@@ -100,4 +100,5 @@
     <string name="pilih_role">Pilih Role</string>
     <string name="wajib_ic">*</string>
     <string name="text_info_pass">Harus terdiri dari huruf kapital, huruf kecil, dan angka</string>
+    <string name="cari">Cari</string>
 </resources>

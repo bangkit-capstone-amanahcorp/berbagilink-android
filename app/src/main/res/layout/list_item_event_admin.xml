@@ -10,7 +10,8 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:strokeColor="@color/biru_tua_text"
+        app:strokeColor="#c6c6c6"
+        android:backgroundTint="@color/white"
         android:layout_margin="4dp">
 
         <LinearLayout

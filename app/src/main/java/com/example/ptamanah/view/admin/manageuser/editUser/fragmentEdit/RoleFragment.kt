@@ -34,7 +34,6 @@ class RoleFragment : BottomSheetDialogFragment() {
         binding.radioGroup.setOnCheckedChangeListener{_, roleId ->
             selectedStatus = when (roleId) {
                 R.id.kasir -> "cashier"
-                R.id.admin -> "admin" // admin masih belum tau valuenya
                 R.id.tenant -> "user_editor"
                 else -> null
             }
