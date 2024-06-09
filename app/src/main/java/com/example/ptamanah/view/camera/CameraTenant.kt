@@ -11,7 +11,6 @@ import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +18,6 @@ import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.CameraController
 import androidx.camera.view.LifecycleCameraController
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.R
 import com.example.ptamanah.data.preference.UserPreference
@@ -28,7 +25,6 @@ import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.ScanRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityCameraTenantBinding
-import com.example.ptamanah.view.myEvent.MyEventFragment
 import com.example.ptamanah.viewModel.scan.ScanViewModel
 import com.example.ptamanah.viewModel.scan.ScanViewModelFactory
 import com.google.mlkit.vision.barcode.BarcodeScanner

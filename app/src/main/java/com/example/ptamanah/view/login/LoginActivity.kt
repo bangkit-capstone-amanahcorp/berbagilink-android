@@ -18,6 +18,7 @@ import com.example.ptamanah.databinding.ActivityLoginBinding
 import com.example.ptamanah.view.main.HomePageAdmin
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.login.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -90,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                                     val intent = Intent(this@LoginActivity, HomePageAdmin::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    showToast(credensial.info.toString())
                                     startActivity(intent)
                                     showLoading(false)
                                     finish()
@@ -102,17 +104,20 @@ class LoginActivity : AppCompatActivity() {
                                         Intent(this@LoginActivity, HomePageCashier::class.java)
                                     intent.flags =
                                         Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                    showToast(credensial.info.toString())
                                     startActivity(intent)
                                     showLoading(false)
                                     finish()
                                 }
+                            } else {
+
+                                Snackbar.make(this@LoginActivity, binding.root, credensial.info.toString(), Snackbar.LENGTH_LONG).show()
                             }
 
-                            showToast(credensial.info.toString())
                             showLoading(false)
                         }
                         result.onFailure {
-                            showToast("Login gagal")
+                            Snackbar.make(this@LoginActivity, binding.root, "Login Gagal", Snackbar.LENGTH_LONG).show()
                             showLoading(false)
                         }
                     }

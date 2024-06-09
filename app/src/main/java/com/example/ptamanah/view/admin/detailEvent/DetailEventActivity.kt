@@ -3,17 +3,12 @@ package com.example.ptamanah.view.admin.detailEvent
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.ptamanah.R
@@ -23,9 +18,8 @@ import com.example.ptamanah.databinding.ActivityDetailEventBinding
 import com.example.ptamanah.view.admin.logcheck.EventAdmin
 import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 import com.example.ptamanah.view.camera.CameraActivity
-import com.example.ptamanah.view.myEvent.MyEventFragment
+import com.example.ptamanah.view.myEventCashier.MyEventFragment
 import com.example.ptamanah.viewModel.admin.detailEvents.DetailEventsViewModel
-import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.factory.EventViewModelFactory
 import kotlinx.coroutines.launch
 

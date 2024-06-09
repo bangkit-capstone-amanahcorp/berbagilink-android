@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.myEvent
+package com.example.ptamanah.view.myEventCashier
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -11,8 +11,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.ptamanah.R
 import com.example.ptamanah.adapter.EventPagerAdapter
 import com.example.ptamanah.databinding.ActivityMyEventBinding
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 
 class MyEvent : AppCompatActivity() {
     private lateinit var binding: ActivityMyEventBinding

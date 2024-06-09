@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.myEvent.MyEvent">
+    android:background="@color/white"
+    tools:context=".view.myEventCashier.MyEvent">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
+        android:background="@color/white"
         app:layout_scrollFlags="scroll|enterAlways">
 
         <Button

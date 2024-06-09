@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.GeneralFragment
 import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.PasswordFragment
-import com.example.ptamanah.view.myEvent.MyEventFragment
 
 class EditUserPagerAdapter(activity: AppCompatActivity, private val token: String, private val idnya: Int) :
     FragmentStateAdapter(activity) {

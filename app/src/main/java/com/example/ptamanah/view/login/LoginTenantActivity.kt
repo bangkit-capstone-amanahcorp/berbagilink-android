@@ -19,6 +19,7 @@ import com.example.ptamanah.view.eventTenant.ListEventTenant
 import com.example.ptamanah.view.eventTenant.ListEventTenant.Companion.EMAIL
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.login.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class LoginTenantActivity : AppCompatActivity() {
@@ -74,17 +75,13 @@ class LoginTenantActivity : AppCompatActivity() {
                             showLoading(false)
                         }
                         result.onFailure {
-                            showToast("Silahkan periksa internet anda terlebih dahulu")
+                            Snackbar.make(this@LoginTenantActivity, binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                             showLoading(false)
                         }
                     }
                 }
             }
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showLoading(state: Boolean) {

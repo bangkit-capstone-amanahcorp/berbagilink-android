@@ -21,8 +21,8 @@ import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityMainBinding
 import com.example.ptamanah.view.login.LoginActivity
-import com.example.ptamanah.view.myEvent.MyEvent
-import com.example.ptamanah.view.myEvent.MyEventFragment.Companion.TOKEN
+import com.example.ptamanah.view.myEventCashier.MyEvent
+import com.example.ptamanah.view.myEventCashier.MyEventFragment.Companion.TOKEN
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.main.MainViewModel
 

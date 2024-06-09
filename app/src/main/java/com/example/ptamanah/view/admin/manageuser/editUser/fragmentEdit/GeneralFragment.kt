@@ -96,7 +96,7 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
             } else if (email == this.email){
                 binding.emailEditTextLayout.error =
                     "Alamat email sudah ada"
-            } else if (status == null) {
+            } else if (status.isNullOrEmpty()) {
                 binding.roleErrorTextView.text = "Pilih Role terlebih dahulu"
                 binding.roleErrorTextView.visibility = View.VISIBLE
                 binding.roleBtn.error = "Role harus dipilih"

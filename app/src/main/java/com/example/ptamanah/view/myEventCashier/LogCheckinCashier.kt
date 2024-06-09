@@ -1,8 +1,7 @@
-package com.example.ptamanah.view.myEvent
+package com.example.ptamanah.view.myEventCashier
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -20,7 +19,6 @@ import com.example.ptamanah.adapter.LoadingStateAdapter
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.CheckinRepository
-import com.example.ptamanah.data.response.DataItemCashier
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityLogCheckinCashierBinding
 import com.example.ptamanah.viewModel.checkin.LogcheckinCashierViewModel
