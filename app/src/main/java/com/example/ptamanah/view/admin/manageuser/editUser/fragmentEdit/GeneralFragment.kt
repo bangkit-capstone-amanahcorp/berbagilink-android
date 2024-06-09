@@ -190,7 +190,7 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
     private fun getCurrentRole(): String {
         return when (binding.roleBtn.text.toString()) {
             "Kasir" -> "cashier"
-            "Tenant" -> "user_editor"
+            "Editor" -> "user_editor"
             else -> ""
         }
     }
@@ -199,7 +199,7 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
         if (status == "cashier") {
             binding.roleBtn.text = "Kasir"
         } else if (status == "user_editor") {
-            binding.roleBtn.text = "Tenant"
+            binding.roleBtn.text = "Editor"
         }
     }
 

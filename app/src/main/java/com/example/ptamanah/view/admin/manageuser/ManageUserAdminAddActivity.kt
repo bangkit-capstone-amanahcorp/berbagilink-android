@@ -264,13 +264,13 @@ class ManageUserAdminAddActivity : AppCompatActivity(),RoleFragment.RoleSelected
         if (status == "cashier") {
             binding.btnRole.text = "Kasir"
         } else if (status == "user_editor") {
-            binding.btnRole.text = "Tenant"
+            binding.btnRole.text = "Editor"
         }
     }
     private fun getCurrentRole(): String {
         return when (binding.btnRole.text.toString()) {
             "Kasir" -> "cashier"
-            "Tenant" -> "user_editor"
+            "Editor" -> "user_editor"
             else -> ""
         }
     }
