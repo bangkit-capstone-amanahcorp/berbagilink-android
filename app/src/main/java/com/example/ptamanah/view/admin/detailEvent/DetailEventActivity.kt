@@ -51,7 +51,7 @@ class DetailEventActivity : AppCompatActivity() {
                 result.onSuccess { response ->
                     response.data?.let {
                         Glide.with(this@DetailEventActivity)
-                            .load("https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg")
+                            .load(it.imageCoverUrlFull)
                             .into(binding.LogoEvent)
                         Glide.with(this@DetailEventActivity)
                             .load("https://static.vecteezy.com/system/resources/thumbnails/028/626/672/small_2x/hd-image-ai-generative-free-photo.jpeg")

@@ -5,34 +5,13 @@ import com.google.gson.annotations.SerializedName
 data class ResponseDetailEvents(
 
 	@field:SerializedName("data")
-	val data: DataDetailEvent? = null,
+	val data: DataDetailEvents? = null,
 
 	@field:SerializedName("error")
 	val error: Boolean? = null
 )
 
-data class Category(
-
-	@field:SerializedName("nama")
-	val nama: String? = null,
-
-	@field:SerializedName("color")
-	val color: String? = null,
-
-	@field:SerializedName("updated_at")
-	val updatedAt: String? = null,
-
-	@field:SerializedName("user_id")
-	val userId: Int? = null,
-
-	@field:SerializedName("created_at")
-	val createdAt: String? = null,
-
-	@field:SerializedName("id")
-	val id: Int? = null
-)
-
-data class DataDetailEvent(
+data class DataDetailEvents(
 
 	@field:SerializedName("waktu_schedule_start")
 	val waktuScheduleStart: String? = null,
@@ -116,13 +95,19 @@ data class DataDetailEvent(
 	val activeCatatan: Int? = null,
 
 	@field:SerializedName("youtube_url")
-	val youtubeUrl: String? = null,
+	val youtubeUrl: Any? = null,
+
+	@field:SerializedName("image_cover_url_full")
+	val imageCoverUrlFull: String? = null,
 
 	@field:SerializedName("tickets")
 	val tickets: List<TicketsItem?>? = null,
 
 	@field:SerializedName("only_once_per_email")
 	val onlyOncePerEmail: Int? = null,
+
+	@field:SerializedName("hotline")
+	val hotline: Any? = null,
 
 	@field:SerializedName("description")
 	val description: String? = null,
@@ -152,13 +137,13 @@ data class DataDetailEvent(
 	val categoryId: Int? = null,
 
 	@field:SerializedName("map_link")
-	val mapLink: String? = null,
+	val mapLink: Any? = null,
 
 	@field:SerializedName("waktu_end")
 	val waktuEnd: String? = null,
 
 	@field:SerializedName("cat")
-	val cat: Category? = null,
+	val cat: CatDetailEvents? = null,
 
 	@field:SerializedName("custom_expired_date")
 	val customExpiredDate: String? = null,
@@ -198,6 +183,27 @@ data class DataDetailEvent(
 
 	@field:SerializedName("category")
 	val category: String? = null
+)
+
+data class CatDetailEvents(
+
+	@field:SerializedName("nama")
+	val nama: String? = null,
+
+	@field:SerializedName("color")
+	val color: String? = null,
+
+	@field:SerializedName("updated_at")
+	val updatedAt: String? = null,
+
+	@field:SerializedName("user_id")
+	val userId: Int? = null,
+
+	@field:SerializedName("created_at")
+	val createdAt: String? = null,
+
+	@field:SerializedName("id")
+	val id: Int? = null
 )
 
 data class TicketsItem(
