@@ -8,345 +8,416 @@
     android:background="@color/white"
     tools:context=".view.admin.detailEvent.DetailEventActivity">
 
-    <ImageView
-        android:id="@+id/LogoEvent"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-    <ImageView
-        android:id="@+id/statusIV"
-        android:layout_width="80dp"
-        android:layout_height="30dp"
-        android:src="@drawable/status_border"
-        android:layout_marginStart="24dp"
-        app:layout_constraintStart_toEndOf="@+id/LogoEvent"
-        app:layout_constraintTop_toTopOf="@+id/LogoEvent" />
-
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#F8A725"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/statusIV"
-        app:layout_constraintEnd_toEndOf="@+id/statusIV"
-        app:layout_constraintStart_toStartOf="@+id/statusIV"
-        app:layout_constraintTop_toTopOf="@+id/statusIV"
-        tools:text="On-Going" />
-
-    <TextView
-        android:id="@+id/NamaEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/statusIV"
-        app:layout_constraintTop_toBottomOf="@+id/statusIV"
-        tools:text="Halal Fair Jakarta" />
-
-    <TextView
-        android:id="@+id/OlehTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/oleh"
-        android:textColor="@color/disable"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@+id/NamaEvent"
-        app:layout_constraintTop_toBottomOf="@+id/NamaEvent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/LogoOrganizer"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/OlehTv"
-        app:layout_constraintStart_toStartOf="@+id/OlehTv"
-        app:layout_constraintTop_toBottomOf="@+id/OlehTv"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/NamaOrganizer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/LogoOrganizer"
-        app:layout_constraintStart_toEndOf="@+id/LogoOrganizer"
-        app:layout_constraintTop_toTopOf="@+id/LogoOrganizer"
-        tools:text="Halal Fair Series" />
-
-    <View
-        android:id="@+id/line1"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:background="@color/disable"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/frame1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/NamaOrganizer"/>
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/JenisEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/jenis_event"
-        android:textColor="@color/disable"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/line1"
-        app:layout_constraintTop_toBottomOf="@+id/line1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/consLay1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/LogoEvent"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/LogoJenisEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_events"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/JenisEvent"
-        app:layout_constraintTop_toBottomOf="@+id/JenisEvent"
-        app:tint="@color/disable" />
+            <ImageView
+                android:id="@+id/statusIV"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:src="@drawable/status_border"
+                android:layout_marginStart="24dp"
+                app:layout_constraintStart_toEndOf="@+id/LogoEvent"
+                app:layout_constraintTop_toTopOf="@+id/LogoEvent" />
 
-    <TextView
-        android:id="@+id/TextJenisEvent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LogoJenisEvent"
-        app:layout_constraintStart_toEndOf="@+id/LogoJenisEvent"
-        app:layout_constraintTop_toTopOf="@+id/LogoJenisEvent"
-        tools:text="Pameran and Seminar" />
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F8A725"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/statusIV"
+                app:layout_constraintEnd_toEndOf="@+id/statusIV"
+                app:layout_constraintStart_toStartOf="@+id/statusIV"
+                app:layout_constraintTop_toTopOf="@+id/statusIV"
+                tools:text="On-Going" />
+
+            <TextView
+                android:id="@+id/NamaEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/statusIV"
+                app:layout_constraintTop_toBottomOf="@+id/statusIV"
+                tools:text="Halal Fair Jakarta" />
+
+            <TextView
+                android:id="@+id/OlehTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/oleh"
+                android:textColor="@color/disable"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/NamaEvent"
+                app:layout_constraintTop_toBottomOf="@+id/NamaEvent" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/LogoOrganizer"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/OlehTv"
+                app:layout_constraintStart_toStartOf="@+id/OlehTv"
+                app:layout_constraintTop_toBottomOf="@+id/OlehTv"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/NamaOrganizer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/LogoOrganizer"
+                app:layout_constraintStart_toEndOf="@+id/LogoOrganizer"
+                app:layout_constraintTop_toTopOf="@+id/LogoOrganizer"
+                tools:text="Halal Fair Series" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/lihatStat"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:icon="@drawable/ic_stat"
+                app:iconGravity="textStart"
+                app:iconTint="@color/biru_toska"
+                android:background="@drawable/btn_checkin"
+                android:text="Lihat Statistik"
+                android:textColor="@color/biru_toska"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/daftarTrans"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/LogoOrganizer" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/daftarTrans"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_checkin"
+                android:textColor="@color/biru_toska"
+                app:iconTint="@color/biru_toska"
+                android:text="Daftar Transaksi"
+                app:icon="@drawable/ic_daftar"
+                app:iconGravity="textStart"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/lihatStat"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/lihatStat"
+                app:layout_constraintTop_toTopOf="@+id/lihatStat" />
 
 
-    <View
-        android:id="@+id/line2"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:background="@color/disable"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextJenisEvent"/>
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="@color/disable"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/lihatStat"/>
+
+            <TextView
+                android:id="@+id/JenisEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/jenis_event"
+                android:textColor="@color/disable"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/line1"
+                app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+            <ImageView
+                android:id="@+id/LogoJenisEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_events"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/JenisEvent"
+                app:layout_constraintTop_toBottomOf="@+id/JenisEvent"
+                app:tint="@color/disable" />
+
+            <TextView
+                android:id="@+id/TextJenisEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LogoJenisEvent"
+                app:layout_constraintStart_toEndOf="@+id/LogoJenisEvent"
+                app:layout_constraintTop_toTopOf="@+id/LogoJenisEvent"
+                tools:text="Pameran and Seminar" />
 
 
-    <TextView
-        android:id="@+id/TanggalAndWaktu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tanggal_dan_waktu"
-        android:textColor="@color/disable"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/line2"
-        app:layout_constraintTop_toBottomOf="@+id/line2" />
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="@color/disable"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextJenisEvent"/>
 
-    <ImageView
-        android:id="@+id/LogoTanggal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_calendar"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/TanggalAndWaktu"
-        app:layout_constraintTop_toBottomOf="@+id/TanggalAndWaktu"
-        app:tint="@color/disable" />
 
-    <TextView
-        android:id="@+id/TextTanggal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LogoTanggal"
-        app:layout_constraintStart_toEndOf="@+id/LogoTanggal"
-        app:layout_constraintTop_toTopOf="@+id/LogoTanggal"
-        tools:text="4 - 6 Agustus 2023" />
+            <TextView
+                android:id="@+id/TanggalAndWaktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tanggal_dan_waktu"
+                android:textColor="@color/disable"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/line2"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
 
-    <ImageView
-        android:id="@+id/LogoWaktu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_clock"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/LogoTanggal"
-        app:layout_constraintTop_toBottomOf="@+id/LogoTanggal"
-        app:tint="@color/disable" />
+            <ImageView
+                android:id="@+id/LogoTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_calendar"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/TanggalAndWaktu"
+                app:layout_constraintTop_toBottomOf="@+id/TanggalAndWaktu"
+                app:tint="@color/disable" />
 
-    <TextView
-        android:id="@+id/TextWaktu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LogoWaktu"
-        app:layout_constraintStart_toEndOf="@+id/LogoWaktu"
-        app:layout_constraintTop_toTopOf="@+id/LogoWaktu"
-        tools:text="08:00 - 17:00 WIB" />
+            <TextView
+                android:id="@+id/TextTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LogoTanggal"
+                app:layout_constraintStart_toEndOf="@+id/LogoTanggal"
+                app:layout_constraintTop_toTopOf="@+id/LogoTanggal"
+                tools:text="4 - 6 Agustus 2023" />
 
-    <View
-        android:id="@+id/line3"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:background="@color/disable"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextWaktu"/>
+            <ImageView
+                android:id="@+id/LogoWaktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_clock"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/LogoTanggal"
+                app:layout_constraintTop_toBottomOf="@+id/LogoTanggal"
+                app:tint="@color/disable" />
 
-    <TextView
-        android:id="@+id/Lokasi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lokasi"
-        android:textColor="@color/disable"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/line3"
-        app:layout_constraintTop_toBottomOf="@+id/line3" />
+            <TextView
+                android:id="@+id/TextWaktu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LogoWaktu"
+                app:layout_constraintStart_toEndOf="@+id/LogoWaktu"
+                app:layout_constraintTop_toTopOf="@+id/LogoWaktu"
+                tools:text="08:00 - 17:00 WIB" />
 
-    <ImageView
-        android:id="@+id/LogoLokasi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/Lokasi"
-        app:layout_constraintTop_toBottomOf="@+id/Lokasi"
-        app:tint="@color/disable" />
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="@color/disable"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextWaktu"/>
 
-    <TextView
-        android:id="@+id/TextLokasi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LogoLokasi"
-        app:layout_constraintStart_toEndOf="@+id/LogoLokasi"
-        app:layout_constraintTop_toTopOf="@+id/LogoLokasi"
-        tools:text="Istora Senayan GBK" />
+            <TextView
+                android:id="@+id/Lokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lokasi"
+                android:textColor="@color/disable"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/line3"
+                app:layout_constraintTop_toBottomOf="@+id/line3" />
 
-    <View
-        android:id="@+id/line4"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:background="@color/disable"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextLokasi"/>
+            <ImageView
+                android:id="@+id/LogoLokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/Lokasi"
+                app:layout_constraintTop_toBottomOf="@+id/Lokasi"
+                app:tint="@color/disable" />
 
-    <TextView
-        android:id="@+id/Alamat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/alamat"
-        android:textColor="@color/disable"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/line4"
-        app:layout_constraintTop_toBottomOf="@+id/line4" />
+            <TextView
+                android:id="@+id/TextLokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LogoLokasi"
+                app:layout_constraintStart_toEndOf="@+id/LogoLokasi"
+                app:layout_constraintTop_toTopOf="@+id/LogoLokasi"
+                tools:text="Istora Senayan GBK" />
 
-    <ImageView
-        android:id="@+id/LogoAlamat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_location"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/Alamat"
-        app:layout_constraintTop_toBottomOf="@+id/Alamat"
-        app:tint="@color/disable" />
+            <View
+                android:id="@+id/line4"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="@color/disable"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextLokasi"/>
 
-    <TextView
-        android:id="@+id/TextAlamat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/LogoAlamat"
-        app:layout_constraintStart_toEndOf="@+id/LogoAlamat"
-        app:layout_constraintTop_toTopOf="@+id/LogoAlamat"
-        tools:text="Jalan Pamungkas" />
-    
-    <View
-        android:id="@+id/line5"
-        android:layout_width="match_parent"
-        android:layout_height="1.5dp"
-        android:background="@color/disable"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TextAlamat"/>
+            <TextView
+                android:id="@+id/Alamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alamat"
+                android:textColor="@color/disable"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/line4"
+                app:layout_constraintTop_toBottomOf="@+id/line4" />
 
-    <TextView
-        android:id="@+id/Deskripsi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/deskripsi"
-        android:textColor="@color/disable"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/line5"
-        app:layout_constraintTop_toBottomOf="@+id/line5" />
+            <ImageView
+                android:id="@+id/LogoAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_location"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/Alamat"
+                app:layout_constraintTop_toBottomOf="@+id/Alamat"
+                app:tint="@color/disable" />
 
-    <TextView
-        android:id="@+id/TextDeskripsi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/Deskripsi"
-        app:layout_constraintTop_toBottomOf="@+id/Deskripsi"
-        tools:text="Jalan Pamungkas" />
+            <TextView
+                android:id="@+id/TextAlamat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LogoAlamat"
+                app:layout_constraintStart_toEndOf="@+id/LogoAlamat"
+                app:layout_constraintTop_toTopOf="@+id/LogoAlamat"
+                tools:text="Jalan Pamungkas" />
 
-    <View
+            <View
+                android:id="@+id/line5"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="@color/disable"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextAlamat"/>
+
+            <TextView
+                android:id="@+id/Deskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deskripsi"
+                android:textColor="@color/disable"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/line5"
+                app:layout_constraintTop_toBottomOf="@+id/line5" />
+
+            <TextView
+                android:id="@+id/TextDeskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/Deskripsi"
+                app:layout_constraintTop_toBottomOf="@+id/Deskripsi"
+                tools:text="Jalan Pamungkas" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/frame1"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:elevation="4dp"
+        android:layout_height="100dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextDeskripsi"/>
+        app:layout_constraintTop_toBottomOf="@+id/scrollView">
 
-    <Button
-        android:id="@+id/daftarBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_checkin"
-        android:text="Daftar Check-In"
-        android:textColor="@color/biru_toska"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/frame1"
-        app:layout_constraintEnd_toStartOf="@+id/scnaBtn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/frame1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/scnaBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_biru"
-            android:text="Scan Tiket"
-            android:textStyle="bold"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/daftarBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/daftarBtn"
-            app:layout_constraintTop_toTopOf="@+id/daftarBtn" />
+            <Button
+                android:id="@+id/daftarBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_daftar"
+                android:text="Daftar Check-In"
+                android:textColor="@color/biru_toska"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/scnaBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/scnaBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_biru"
+                android:text="Scan Tiket"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_scan"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="@+id/daftarBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/daftarBtn"
+                app:layout_constraintTop_toTopOf="@+id/daftarBtn" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 
     <ProgressBar

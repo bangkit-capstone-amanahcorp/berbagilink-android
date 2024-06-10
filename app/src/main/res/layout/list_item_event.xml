@@ -94,12 +94,16 @@
             card_view:layout_constraintStart_toStartOf="@+id/imageView2"
             card_view:layout_constraintTop_toBottomOf="@+id/alamat" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/scnaBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:background="@drawable/btn_biru"
             android:text="Scan Tiket"
+            card_view:icon="@drawable/ic_scan"
+            card_view:iconGravity="textStart"
+            card_view:iconPadding="10dp"
             android:textStyle="bold"
             android:layout_marginStart="8dp"
             card_view:layout_constraintBottom_toBottomOf="@+id/daftarBtn"
