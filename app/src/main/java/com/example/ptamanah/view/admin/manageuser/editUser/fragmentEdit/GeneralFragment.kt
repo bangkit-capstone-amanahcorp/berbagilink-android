@@ -93,7 +93,7 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
             } else if (!email.matches(emailPattern.toRegex())) {
                 binding.emailEditTextLayout.error =
                     "Email tidak valid"
-            } else if (email == this.email){
+            } else if (email.equals(this.email, ignoreCase = true)){
                 binding.emailEditTextLayout.error =
                     "Alamat email sudah ada"
             } else if (status.isNullOrEmpty()) {
