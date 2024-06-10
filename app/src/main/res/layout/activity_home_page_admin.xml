@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#FDFDFD"
     tools:context=".view.main.HomePageAdmin">
 
     <LinearLayout
@@ -364,6 +364,7 @@
                 android:layout_marginTop="270dp"
                 android:background="@drawable/baseline_rectangle_white"
                 android:clipToPadding="false"
+                android:elevation="10dp"
                 android:gravity="left|center_vertical"
                 android:orientation="horizontal"
                 android:paddingLeft="16dp"
@@ -490,33 +491,6 @@
                         app:backgroundTint="@null" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="16dp">
-
-                    <Button
-                        android:id="@+id/TransaksiButton"
-                        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/ubuntu"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/rectangle_radius"
-                        android:text="@string/transaksi_event"
-                        android:drawableLeft="@drawable/transaksi_rill"
-                        android:drawableRight="@drawable/ic_arrow"
-                        android:textAlignment="viewStart"
-                        android:textColor="@color/black"
-                        app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large"
-                        app:iconTint= "@color/black"
-                        app:backgroundTint="@null" />
-                </LinearLayout>
 
                 <TextView
                     android:id="@+id/container_quran_dzikir"
