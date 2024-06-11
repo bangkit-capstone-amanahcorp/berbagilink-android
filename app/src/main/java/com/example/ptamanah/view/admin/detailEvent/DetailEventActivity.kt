@@ -11,8 +11,10 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.ptamanah.R
+import com.example.ptamanah.adapter.TiketDetailEventAdapter
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityDetailEventBinding
@@ -27,6 +29,7 @@ import com.example.ptamanah.viewModel.factory.EventViewModelFactory
 import kotlinx.coroutines.launch
 
 class DetailEventActivity : AppCompatActivity() {
+    private lateinit var linearLayoutManager: LinearLayoutManager
     private lateinit var binding: ActivityDetailEventBinding
     private var token: String? =""
     private var id: String? = ""
@@ -44,6 +47,7 @@ class DetailEventActivity : AppCompatActivity() {
         id = intent.getStringExtra(ID_EVENT)
 
         getDetailEvent()
+        showTiket()
     }
 
     private fun getDetailEvent() {
@@ -125,6 +129,28 @@ class DetailEventActivity : AppCompatActivity() {
                 }
                 result.onFailure {
                     showLoading(false)
+                    Toast.makeText(
+                        this@DetailEventActivity,
+                        "Silahkan periksa internet anda terlebih dahulu",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun showTiket() {
+        linearLayoutManager = LinearLayoutManager(this)
+        binding.rvTiketKegiatan.layoutManager = linearLayoutManager
+        val tikeAdapter = TiketDetailEventAdapter()
+        binding.rvTiketKegiatan.adapter = tikeAdapter
+
+        lifecycleScope.launch {
+            eventViewModel.getTiket(token.toString(), id.toString()).collect { result ->
+                result.onSuccess { response ->
+                    tikeAdapter.submitList(response.data?.tickets)
+                }
+                result.onFailure {
                     Toast.makeText(
                         this@DetailEventActivity,
                         "Silahkan periksa internet anda terlebih dahulu",

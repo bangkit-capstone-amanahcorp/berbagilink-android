@@ -359,6 +359,41 @@
                 app:layout_constraintStart_toStartOf="@+id/Deskripsi"
                 app:layout_constraintTop_toBottomOf="@+id/Deskripsi"
                 tools:text="Jalan Pamungkas" />
+
+            <View
+                android:id="@+id/line6"
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:background="@color/disable"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/TextDeskripsi"/>
+
+            <TextView
+                android:id="@+id/tiketKegiatanTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiket Kegiatan"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line6"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTiketKegiatan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:listitem="@layout/list_tiket_event_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tiketKegiatanTV"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

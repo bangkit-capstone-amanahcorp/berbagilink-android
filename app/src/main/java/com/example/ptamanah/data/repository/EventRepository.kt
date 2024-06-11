@@ -48,6 +48,16 @@ class EventRepository(
         }
     }
 
+    suspend fun getTiket(token: String, id: String): Flow<Result<ResponseDetailEvents>> = flow {
+        try {
+            val bearerToken = bearerToken(token)
+            val response = apiService.getTiketEventDetail(bearerToken, id)
+            emit(Result.success(response))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }
+
     private fun bearerToken(token: String): String {
         return "Bearer $token"
     }

@@ -106,4 +106,7 @@
     <string name="tipe_pengguna">Tipe Pengguna</string>
     <string name="Aksi">Aksi</string>
     <string name="Detail_transaksi">Detail Transaksi</string>
+    <string name="qty">Qty</string>
+    <string name="harga">Harga</string>
+    <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
 </resources>

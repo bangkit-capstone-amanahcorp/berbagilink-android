@@ -182,4 +182,10 @@ interface ApiService {
         @Query("search") search: String? = "",
         @Query("status") status: String?= ""
     ) : ResponseTransactionEvents
+
+    @GET("event-mobile/event/{eventId}")
+    suspend fun getTiketEventDetail(
+        @Header("Authorization") token: String,
+        @Path("eventId") eventId: String
+    ) : ResponseDetailEvents
 }

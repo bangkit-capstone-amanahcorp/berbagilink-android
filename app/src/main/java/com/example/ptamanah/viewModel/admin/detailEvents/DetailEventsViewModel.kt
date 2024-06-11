@@ -15,4 +15,8 @@ class DetailEventsViewModel(
     suspend fun getDetailEvent(token: String, id: String): Flow<Result<ResponseDetailEvents>> {
         return eventsRepository.eventDetail(token, id)
     }
+
+    suspend fun getTiket(token: String, id: String): Flow<Result<ResponseDetailEvents>> {
+        return eventsRepository.getTiket(token, id)
+    }
 }
