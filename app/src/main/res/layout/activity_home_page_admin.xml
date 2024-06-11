@@ -21,7 +21,7 @@
                 android:id="@+id/base_rectangle"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:background="@drawable/base_rectangle"
+                android:background="@drawable/mosque_homepage"
                 android:scaleType="centerInside" />
 
             <LinearLayout
@@ -59,7 +59,7 @@
                             android:layout_marginRight="8dp"
                             android:layout_marginBottom="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_compas" />
+                            android:src="@drawable/ic_kabah" />
                     </FrameLayout>
 
                     <TextView
