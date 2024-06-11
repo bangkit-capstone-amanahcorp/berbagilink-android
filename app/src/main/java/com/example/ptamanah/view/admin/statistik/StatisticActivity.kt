@@ -1,9 +1,13 @@
 package com.example.ptamanah.view.admin.statistik
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
@@ -32,11 +36,13 @@ class StatisticActivity : AppCompatActivity() {
         idEvent = intent.getStringExtra(ID_EVENT)
 
         getStatistic()
+        setupActionBar()
     }
 
     private fun getStatistic() {
+        showLoading(true)
         lifecycleScope.launch {
-            eventViewModel.getStatisticEvents(token.toString(), idEvent.toString()).collect{ result ->
+            eventViewModel.getStatisticEvents(token.toString(), idEvent.toString()).collect { result ->
                 result.onSuccess {
                     binding.apply {
                         ivCheck.text = it.ticket?.sudahCheckIn.toString()
@@ -48,13 +54,38 @@ class StatisticActivity : AppCompatActivity() {
                         ivGagalCheck2.text = it.manualTicket?.failedCheckIn.toString()
                         ivTotalTiketManual.text = it.manualTicket?.totalTiket.toString()
                     }
+                    showLoading(false)
+                }.onFailure {
+                    showLoading(false)
                 }
             }
         }
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setupActionBar() {
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setBackgroundDrawable(
+            ColorDrawable(
+                ContextCompat.getColor(
+                    this,
+                    androidx.cardview.R.color.cardview_light_background
+                )
+            )
+        )
+        supportActionBar?.title = "Lihat Statistic"
+    }
 
     private fun showLoading(state: Boolean) {
-
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     companion object {
