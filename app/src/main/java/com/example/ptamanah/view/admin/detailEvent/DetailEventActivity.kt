@@ -3,6 +3,7 @@ package com.example.ptamanah.view.admin.detailEvent
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
@@ -18,6 +19,7 @@ import com.example.ptamanah.databinding.ActivityDetailEventBinding
 import com.example.ptamanah.view.admin.logcheck.EventAdmin
 import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 import com.example.ptamanah.view.admin.statistik.StatisticActivity
+import com.example.ptamanah.view.admin.transaction.DaftarTransaksiActivity
 import com.example.ptamanah.view.camera.CameraActivity
 import com.example.ptamanah.view.myEventCashier.MyEventFragment
 import com.example.ptamanah.viewModel.admin.detailEvents.DetailEventsViewModel
@@ -42,7 +44,6 @@ class DetailEventActivity : AppCompatActivity() {
         id = intent.getStringExtra(ID_EVENT)
 
         getDetailEvent()
-
     }
 
     private fun getDetailEvent() {
@@ -51,6 +52,7 @@ class DetailEventActivity : AppCompatActivity() {
             eventViewModel.getDetailEvent(token.toString(), id.toString()).collect { result ->
                 result.onSuccess { response ->
                     response.data?.let {
+                        val namaEvent = it.namaEvent
                         Glide.with(this@DetailEventActivity)
                             .load(it.imageCoverUrlFull)
                             .into(binding.LogoEvent)
@@ -107,6 +109,16 @@ class DetailEventActivity : AppCompatActivity() {
                                     startActivity(it)
                                 }
                             }
+                            daftarTrans.setOnClickListener {
+                                Log.d("DetailEventActivity", "Sending eventId: $id and namaEvent: $namaEvent to DaftarTransaksiActivity")
+                                Intent(this@DetailEventActivity, DaftarTransaksiActivity::class.java).apply {
+                                    putExtra(DaftarTransaksiActivity.ID_EVENT, id)
+                                    putExtra(DaftarTransaksiActivity.TOKEN, token)
+                                    putExtra(DaftarTransaksiActivity.NAMA_EVENT, namaEvent)
+                                }.also {
+                                    startActivity(it)
+                                }
+                            }
                         }
                     }
                     showLoading(false)
@@ -153,5 +165,6 @@ class DetailEventActivity : AppCompatActivity() {
     companion object {
         const val ID_EVENT = "id"
         const val TOKENDETAIL = "token"
+        const val NAMA_EVENT = "nama_event"
     }
 }

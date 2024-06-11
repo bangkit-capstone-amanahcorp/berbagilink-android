@@ -17,6 +17,7 @@ import com.example.ptamanah.data.response.ResponseReportStatistic
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
+import com.example.ptamanah.data.response.ResponseTransactionEvents
 import com.example.ptamanah.data.response.ResponseUpdateCheckIn
 import com.example.ptamanah.data.response.ResponseUpdateUser
 import com.example.ptamanah.data.response.Responsedelete
@@ -173,4 +174,12 @@ interface ApiService {
         @Path("eventId") eventId: String
     ) : ResponseReportStatistic
 
+    @GET("event-mobile/transaction/{eventId}")
+    suspend fun getTransaction(
+        @Header("Authorization") token: String,
+        @Path("eventId") eventId: String,
+        @Query("page") page: Int,
+        @Query("search") search: String? = "",
+        @Query("status") status: String?= ""
+    ) : ResponseTransactionEvents
 }

@@ -101,4 +101,9 @@
     <string name="wajib_ic">*</string>
     <string name="text_info_pass">Harus terdiri dari huruf kapital, huruf kecil, dan angka</string>
     <string name="cari">Cari</string>
+    <string name="no_order">No Order</string>
+    <string name="tanggal_invoice">Tanggal</string>
+    <string name="tipe_pengguna">Tipe Pengguna</string>
+    <string name="Aksi">Aksi</string>
+    <string name="Detail_transaksi">Detail Transaksi</string>
 </resources>
