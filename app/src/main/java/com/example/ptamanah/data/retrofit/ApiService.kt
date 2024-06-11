@@ -13,6 +13,7 @@ import com.example.ptamanah.data.response.ResponseLoginEventTenant
 import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseManagementUser
 import com.example.ptamanah.data.response.ResponseManagementUserAdd
+import com.example.ptamanah.data.response.ResponseReportStatistic
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
@@ -165,4 +166,11 @@ interface ApiService {
         @Field("password") password: String,
         @Field("password_confirmation") password_confirmation: String
     ) : ResponseChangePassword
+
+    @GET("event-mobile/check-in/report/{eventId}")
+    suspend fun getReportStatistic(
+        @Header("Authorization") token: String,
+        @Path("eventId") eventId: String
+    ) : ResponseReportStatistic
+
 }

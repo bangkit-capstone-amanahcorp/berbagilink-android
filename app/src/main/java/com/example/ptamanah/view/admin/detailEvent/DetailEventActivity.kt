@@ -17,6 +17,7 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityDetailEventBinding
 import com.example.ptamanah.view.admin.logcheck.EventAdmin
 import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
+import com.example.ptamanah.view.admin.statistik.StatisticActivity
 import com.example.ptamanah.view.camera.CameraActivity
 import com.example.ptamanah.view.myEventCashier.MyEventFragment
 import com.example.ptamanah.viewModel.admin.detailEvents.DetailEventsViewModel
@@ -93,6 +94,15 @@ class DetailEventActivity : AppCompatActivity() {
                                 Intent(this@DetailEventActivity, EventAdmin::class.java).apply {
                                     putExtra(EventAdminFragment.EVENT_ID, id)
                                     putExtra(MyEventFragment.TOKEN, token)
+                                }.also {
+                                    startActivity(it)
+                                }
+                            }
+
+                            lihatStat.setOnClickListener {
+                                Intent(this@DetailEventActivity, StatisticActivity::class.java).apply {
+                                    putExtra(StatisticActivity.ID_EVENT, id)
+                                    putExtra(StatisticActivity.TOKEN_STATISTIC, token)
                                 }.also {
                                     startActivity(it)
                                 }
