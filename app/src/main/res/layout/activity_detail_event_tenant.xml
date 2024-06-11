@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:padding="16dp"
     tools:context=".view.eventTenant.DetailEventTenant">
 
     <TextView
@@ -14,8 +15,8 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:text="@string/detail_tenant"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:layout_marginTop="15dp"
         android:layout_marginStart="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_marginStart="12dp"
         android:text="@string/nama_tenant"
         android:layout_marginTop="10dp"
@@ -46,11 +47,11 @@
     <LinearLayout
         android:id="@+id/con_nama_tenant"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:orientation="horizontal"
-        android:background="@drawable/container_biru">
+        android:background="@drawable/container_abu">
 
     <TextView
         android:id="@+id/nama_tenant"
@@ -59,8 +60,8 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:textColor="#083444"
-        android:layout_marginTop="8dp"
-        android:textSize="15sp"
+        android:layout_marginTop="11dp"
+        android:textSize="18sp"
         tools:text="Fulan" />
     </LinearLayout>
 
@@ -69,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_marginStart="12dp"
         android:text="@string/kode_tenant"
         android:layout_marginTop="10dp"
@@ -79,11 +80,11 @@
     <LinearLayout
         android:id="@+id/con_kode_event"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:orientation="horizontal"
-        android:background="@drawable/container_biru">
+        android:background="@drawable/container_abu">
 
     <TextView
         android:id="@+id/kode_tenant"
@@ -92,8 +93,8 @@
         android:textColor="#083444"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:layout_marginTop="8dp"
-        android:textSize="15sp"
+        android:layout_marginTop="11dp"
+        android:textSize="18sp"
         tools:text="Fulan" />
     </LinearLayout>
 
@@ -105,7 +106,7 @@
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:text="@string/detail_event"
-        android:textSize="14sp"
+        android:textSize="15sp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="@+id/con_tenant"
         app:layout_constraintTop_toBottomOf="@+id/con_tenant"
@@ -125,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_marginStart="12dp"
         android:text="@string/nama_event"
         android:layout_marginTop="10dp" />
@@ -133,11 +134,11 @@
     <LinearLayout
         android:id="@+id/con_nama_event"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:orientation="horizontal"
-        android:background="@drawable/container_biru">
+        android:background="@drawable/container_abu">
 
     <TextView
         android:id="@+id/nama_event"
@@ -146,8 +147,8 @@
         android:textColor="@color/biru_tua_text"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:layout_marginTop="8dp"
-        android:textSize="15sp"
+        android:layout_marginTop="11dp"
+        android:textSize="18sp"
         tools:text="Fulan" />
     </LinearLayout>
 
@@ -156,7 +157,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:layout_marginStart="12dp"
         android:text="@string/nama_organizer"
         android:layout_marginTop="10dp"/>
@@ -164,11 +165,11 @@
     <LinearLayout
         android:id="@+id/con_nama_organi"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
         android:orientation="horizontal"
-        android:background="@drawable/container_biru">
+        android:background="@drawable/container_abu">
 
     <TextView
         android:id="@+id/nama_organi"
@@ -177,8 +178,8 @@
         android:textColor="#083444"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:layout_marginTop="8dp"
-        android:textSize="15sp"
+        android:layout_marginTop="11dp"
+        android:textSize="18sp"
         tools:text="Fulan" />
     </LinearLayout>
 
@@ -215,6 +216,7 @@
             android:layout_gravity="end"
             android:contentDescription="tombol refresh"
             app:iconSize ="26dp"
+            app:iconTint="@color/black"
             app:icon="@drawable/ic_refresh" />
 
     </LinearLayout>
@@ -249,6 +251,7 @@
             android:insetBottom="0dp"
             android:minWidth="0dp"
             android:minHeight="0dp"
+            android:textColor="@color/black"
             android:text="@string/btn_lihat_detail" />
 
 
