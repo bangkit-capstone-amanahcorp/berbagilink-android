@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.statistik.StatisticActivity">
+    tools:context=".view.admin.statistik.StatisticActivity">
 
     <TextView
         android:id="@+id/judulBayar"
