@@ -60,6 +60,11 @@ class TransactionEventsAdapter:
             binding.userIdTv.text = data.userId.toString()
             binding.namaEventTransactionTv.text = namaEvent
             binding.paymentExpiredDateTv.text = data.paymentExpiredDate
+            binding.namaPenggunaTv.text = data.nama
+            binding.emailTv.text = data.email
+            binding.NoHpTv.text = data.handphone
+            binding.totalTv.text = "Rp.  ${data.totalHargaTiket}"
+
 
             when (data.statusPembayaran) {
                 "UNPAID" -> {

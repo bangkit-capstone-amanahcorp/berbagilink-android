@@ -109,4 +109,5 @@
     <string name="qty">Qty</string>
     <string name="harga">Harga</string>
     <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
+    <string name="total">Total</string>
 </resources>

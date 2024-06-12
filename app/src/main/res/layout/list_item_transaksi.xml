@@ -35,7 +35,7 @@
                 card_view:layout_constraintBottom_toBottomOf="@+id/statusIV"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="@+id/statusIV"
-                android:text="Nama Event" />
+                tools:text="Nama Event" />
 
             <ImageView
                 android:id="@+id/statusIV"
@@ -133,24 +133,24 @@
                 card_view:layout_constraintTop_toBottomOf="@+id/id_tv" />
 
             <TextView
-                android:id="@+id/tppgna_tv"
+                android:id="@+id/txnamapengguna_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/tipe_pengguna"
+                android:text="@string/nama"
                 android:textColor="#9C9C9C"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/divider4" />
 
             <TextView
-                android:id="@+id/tipe_pengguna_tv"
+                android:id="@+id/nama_pengguna_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="-"
+                tools:text="-"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintStart_toEndOf="@+id/tppgna_tv"
+                card_view:layout_constraintStart_toEndOf="@+id/txnamapengguna_tv"
                 card_view:layout_constraintTop_toBottomOf="@+id/divider4" />
 
             <View
@@ -159,27 +159,27 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="#E4E4E4"
-                card_view:layout_constraintTop_toBottomOf="@+id/tipe_pengguna_tv" />
+                card_view:layout_constraintTop_toBottomOf="@+id/nama_pengguna_tv" />
 
             <TextView
-                android:id="@+id/aksitv"
+                android:id="@+id/mailtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/Aksi"
+                android:text="@string/email"
                 android:textColor="#9C9C9C"
                 card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toBottomOf="@+id/divider5" />
 
             <TextView
-                android:id="@+id/aksi_tv"
+                android:id="@+id/email_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="-"
+                tools:text="-"
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="1.0"
-                card_view:layout_constraintStart_toEndOf="@+id/aksitv"
+                card_view:layout_constraintStart_toEndOf="@+id/mailtv"
                 card_view:layout_constraintTop_toBottomOf="@+id/divider5" />
 
             <View
@@ -188,7 +188,66 @@
                 android:layout_height="2dp"
                 android:layout_marginTop="10dp"
                 android:background="#E4E4E4"
-                card_view:layout_constraintTop_toBottomOf="@+id/aksi_tv" />
+                card_view:layout_constraintTop_toBottomOf="@+id/email_tv" />
+
+            <TextView
+                android:id="@+id/nohptv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/No_telepon"
+                android:textColor="#9C9C9C"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/divider6" />
+
+            <TextView
+                android:id="@+id/No_hp_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:text="-"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintStart_toEndOf="@+id/nohptv"
+                card_view:layout_constraintTop_toBottomOf="@+id/divider6" />
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#E4E4E4"
+                card_view:layout_constraintTop_toBottomOf="@+id/nohptv" />
+
+            <TextView
+                android:id="@+id/txtotaltv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/total"
+                android:textColor="#9C9C9C"
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+            <TextView
+                android:id="@+id/total_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                tools:text="-"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="1.0"
+                card_view:layout_constraintStart_toEndOf="@+id/txtotaltv"
+                card_view:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#E4E4E4"
+                card_view:layout_constraintTop_toBottomOf="@+id/total_tv" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -218,7 +277,6 @@
                 card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="1.0"
                 card_view:layout_constraintStart_toEndOf="@+id/tanggal_invoice_tv"
-
                 card_view:layout_constraintTop_toTopOf="parent"
                 tools:text="29-01-2024 20:09:00" />
 
