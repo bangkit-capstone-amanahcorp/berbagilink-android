@@ -87,4 +87,7 @@ dependencies {
     //mlkit
     implementation("com.google.mlkit:barcode-scanning:17.2.0")
     implementation("androidx.camera:camera-mlkit-vision:1.4.0-alpha02")
+
+    //refresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
 }

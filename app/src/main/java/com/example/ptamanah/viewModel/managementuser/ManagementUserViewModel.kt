@@ -1,6 +1,6 @@
 package com.example.ptamanah.viewModel.managementuser
 
-import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,21 +11,26 @@ import com.example.ptamanah.data.response.ResponseChangePassword
 import com.example.ptamanah.data.response.ResponseManagementUser
 import com.example.ptamanah.data.response.ResponseUpdateUser
 import com.example.ptamanah.data.response.Responsedelete
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class ManagementUserViewModel (private val managementUserRepository: ManagementUserRepository) : ViewModel() {
     private val _managementUser = MutableLiveData<Result<ResponseManagementUser>>()
-    val managementUser: LiveData<Result<ResponseManagementUser>> = _managementUser
 
     private val _filteredData = MutableLiveData<List<DataItemManagementUser>>()
     val filteredData: LiveData<List<DataItemManagementUser>> = _filteredData
 
-    fun getAllUser(token: String) {
+    fun getAllUser(token: String, rootView: View) {
         viewModelScope.launch {
             managementUserRepository.getManagementUser(token).collect { result ->
-                _managementUser.value = result
-                _filteredData.value = result.getOrNull()?.datamanagement?: emptyList()
+                result.onSuccess {
+                    _managementUser.value = result
+                    _filteredData.value = result.getOrNull()?.datamanagement?: emptyList()
+                }
+                result.onFailure {
+                    Snackbar.make(rootView, "Silahkan perikan internet anda", Snackbar.LENGTH_SHORT).show()
+                }
             }
         }
     }

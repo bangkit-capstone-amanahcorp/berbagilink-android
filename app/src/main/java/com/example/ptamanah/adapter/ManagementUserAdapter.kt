@@ -1,6 +1,5 @@
 package com.example.ptamanah.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,10 +33,7 @@ class ManagementUserAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = getItem(position)
         if (data != null) {
-            Log.d("adaptertes", "Binding data at position $position: $data")
             holder.bind(data, onDeleteClickCallBack, onEditClickCallBack)
-        } else {
-            Log.d("kenapadah", "No data found at position $position")
         }
     }
 
@@ -52,7 +48,6 @@ class ManagementUserAdapter :
             binding.emailTv.text = data.email
             binding.tanggalTv.text = data.createdAtUnix
 
-            //pewarnaan roll user
             when (data.role) {
                 "cashier" -> {
                     binding.statusIV.setImageResource(R.drawable.roll_cashier_border)
@@ -79,7 +74,6 @@ class ManagementUserAdapter :
                 }
             }
 
-            //show up button
             itemView.setOnClickListener {
                 if (binding.showbutton.visibility == View.VISIBLE) {
                     binding.showbutton.visibility = View.GONE

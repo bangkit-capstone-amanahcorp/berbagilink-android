@@ -1,30 +1,22 @@
 package com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit
 
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.cardview.R
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.FragmentGeneralBinding
-import com.example.ptamanah.view.admin.logcheck.FilteringStatus
 import com.example.ptamanah.view.admin.manageuser.ManageUserAdminActivity
-import com.example.ptamanah.view.eventTenant.BottomLogin
 import com.example.ptamanah.viewModel.factory.ManagementUserViewModelFactory
 import com.example.ptamanah.viewModel.managementuser.ManagementUserViewModel
 import kotlinx.coroutines.launch
@@ -64,10 +56,7 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
             id = it.getInt(ID)
             email = requireActivity().intent.getStringExtra(EMAIL)
         }
-
-        Log.d("Emailnyo", email.toString())
         textChanged()
-
         binding.roleBtn.setOnClickListener {
             roleFragment = RoleFragment().apply {
                 setRoleSelected(this@GeneralFragment)

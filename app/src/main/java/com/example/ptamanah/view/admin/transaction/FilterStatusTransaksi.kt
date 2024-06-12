@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ptamanah.R
-import com.example.ptamanah.databinding.FragmentFilteringStatusBinding
 import com.example.ptamanah.databinding.FragmentFilteringStatusTransaksiBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

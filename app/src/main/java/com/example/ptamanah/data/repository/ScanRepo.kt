@@ -1,6 +1,5 @@
 package com.example.ptamanah.data.repository
 
-import android.util.Log
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.response.ResponseScan
 import com.example.ptamanah.data.response.ResponseScanTenant

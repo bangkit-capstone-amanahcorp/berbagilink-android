@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ptamanah.data.response.DataCheckEmail
 import com.example.ptamanah.databinding.ListEventTenantBinding
-import com.example.ptamanah.view.eventTenant.BottomLogin
+import com.example.ptamanah.view.tenant.BottomLogin
 
 class EventListTenantAdapter() : ListAdapter<DataCheckEmail, EventListTenantAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(

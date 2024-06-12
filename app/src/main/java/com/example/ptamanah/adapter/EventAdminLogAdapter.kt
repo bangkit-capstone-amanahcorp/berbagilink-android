@@ -1,6 +1,5 @@
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -107,10 +106,10 @@ class EventAdminLogAdapter(
             }
 
             if (data.status == "check-in") {
-                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.green_checkin)
-                binding.btnCheck.text = "Check-in"
+                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.biru_toska)
+                binding.btnCheck.text = "Check in"
             } else {
-                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.oren)
+                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.failed)
             }
             binding.btnCheck.setOnClickListener {
                 (itemView.context as? FragmentActivity)?.lifecycleScope?.launch {

@@ -1,6 +1,5 @@
 package com.example.ptamanah.data.repository
 
-import android.util.Log
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.response.ResponseCheckEmail
 import com.example.ptamanah.data.response.ResponseLogin
@@ -37,10 +36,8 @@ class AuthRepo(
     suspend fun loginEvent(user: String, password: String, eventId: String) : Flow<Result<ResponseLoginEventTenant>> = flow {
         try {
             val response = apiService.loginEvent(user, password, eventId)
-            Log.d("masukEvent", response.toString())
             emit(Result.success(response))
         } catch (e: Exception) {
-            Log.d("gagalEvent", "oi")
             emit(Result.failure(e))
         }
     }
@@ -76,7 +73,6 @@ class AuthRepo(
         try {
             val bearerToken = bearerToken(token)
             val response = apiService.tenantProfile(bearerToken)
-            Log.d("TokenCuy", response.toString())
             emit(Result.success(response))
         } catch (e: Exception) {
             emit(Result.failure(e))

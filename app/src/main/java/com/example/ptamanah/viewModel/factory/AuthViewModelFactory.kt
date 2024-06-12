@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
-import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.login.LoginViewModel
 import com.example.ptamanah.viewModel.main.MainViewModel
 import com.example.ptamanah.viewModel.admin.mainadmin.HomePageAdminViewModel

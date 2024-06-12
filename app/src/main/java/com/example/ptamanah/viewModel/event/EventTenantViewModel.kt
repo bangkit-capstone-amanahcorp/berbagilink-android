@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ptamanah.data.repository.AuthRepo
-import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.response.ResponseLogoutTenant
 import com.example.ptamanah.data.response.ResponseTenantProfile
 import kotlinx.coroutines.flow.Flow

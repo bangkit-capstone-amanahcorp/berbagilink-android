@@ -2,7 +2,6 @@ package com.example.ptamanah.view.admin.logcheck
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -10,10 +9,9 @@ import androidx.cardview.R
 import androidx.core.content.ContextCompat
 import androidx.core.util.Pair
 import androidx.viewpager2.widget.ViewPager2
-import com.example.ptamanah.adapter.EventPagerAdminAdapter
 import com.example.ptamanah.adapter.EventPagerAdminLogAdapter
 import com.example.ptamanah.databinding.ActivityEventAdminBinding
-import com.example.ptamanah.view.eventTenant.BottomLogin
+import com.example.ptamanah.view.tenant.BottomLogin
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

@@ -1,9 +1,8 @@
-package com.example.ptamanah.view.eventTenant
+package com.example.ptamanah.view.tenant
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -22,10 +21,11 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityDetailEventTenantBinding
 import com.example.ptamanah.view.camera.CameraTenant
 import com.example.ptamanah.view.camera.CameraTenant.Companion.ID_EVENT_TENANT
-import com.example.ptamanah.view.eventTenant.LogCheckinTenant.Companion.TOKEN_ID
+import com.example.ptamanah.view.tenant.LogCheckinTenant.Companion.TOKEN_ID
 import com.example.ptamanah.view.main.HomePageCashier
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class DetailEventTenant : AppCompatActivity() {
@@ -45,8 +45,6 @@ class DetailEventTenant : AppCompatActivity() {
         setupActionBar()
         viewModel.getSessionTenant().observe(this) {
             token = it.toString()
-            Log.d("IsisToken", token)
-
             getTenantProfile()
             refresh()
         }
@@ -57,7 +55,6 @@ class DetailEventTenant : AppCompatActivity() {
         val currentToken = token
         lifecycleScope.launch {
             viewModel.logoutTenant(currentToken).collect { result ->
-                Log.d("TokenLogout", currentToken)
                 result.onSuccess {
                     Toast.makeText(this@DetailEventTenant, "Berhasil logout", Toast.LENGTH_SHORT).show()
                 }
@@ -94,7 +91,8 @@ class DetailEventTenant : AppCompatActivity() {
 
                 }
                 result.onFailure {
-                    Log.e("erorGes", "hmm")
+                    Snackbar.make(binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
+
                 }
             }
         }

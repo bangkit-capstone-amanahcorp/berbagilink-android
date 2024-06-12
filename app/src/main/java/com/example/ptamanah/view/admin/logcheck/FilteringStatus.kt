@@ -1,20 +1,11 @@
 package com.example.ptamanah.view.admin.logcheck
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.Toast
-import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
-import com.example.ptamanah.data.repository.CheckinRepository
-import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.FragmentFilteringStatusBinding
-import com.example.ptamanah.viewModel.checkin.EventAdminViewModel
-import com.example.ptamanah.viewModel.factory.CheckinViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class FilteringStatus : BottomSheetDialogFragment() {

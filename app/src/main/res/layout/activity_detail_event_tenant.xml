@@ -6,287 +6,221 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="16dp"
-    tools:context=".view.eventTenant.DetailEventTenant">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/Jdetail_tenant"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         android:text="@string/detail_tenant"
-        android:textSize="15sp"
-        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-
-    <LinearLayout
-        android:id="@+id/con_tenant"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/Jdetail_tenant"
-        app:layout_constraintTop_toBottomOf="@+id/Jdetail_tenant">
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/Jnama_tenant"
-        android:layout_width="match_parent"
+        android:id="@+id/JNamaTenant"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="12dp"
-        android:text="@string/nama_tenant"
-        android:layout_marginTop="10dp"
+        android:text="Nama Tenant"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/Jdetail_tenant"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/Jdetail_tenant" />
 
-    <LinearLayout
-        android:id="@+id/con_nama_tenant"
+    <ImageView
+        android:id="@+id/namaTenantCon"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:orientation="horizontal"
-        android:background="@drawable/container_abu">
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/container_abu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/JNamaTenant"
+        app:layout_constraintTop_toBottomOf="@+id/JNamaTenant" />
 
     <TextView
         android:id="@+id/nama_tenant"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textColor="#083444"
-        android:layout_marginTop="11dp"
-        android:textSize="18sp"
-        tools:text="Fulan" />
-    </LinearLayout>
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/namaTenantCon"
+        app:layout_constraintStart_toStartOf="@+id/namaTenantCon"
+        app:layout_constraintTop_toTopOf="@+id/namaTenantCon"
+        tools:text="Nama Tenant" />
 
     <TextView
         android:id="@+id/Jkode_tenant"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="12dp"
-        android:text="@string/kode_tenant"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="@+id/nama_tenant"
-        app:layout_constraintTop_toBottomOf="@+id/nama_tenant" />
+        android:text="Kode Tenant"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/namaTenantCon"
+        app:layout_constraintTop_toBottomOf="@+id/namaTenantCon" />
 
-    <LinearLayout
-        android:id="@+id/con_kode_event"
+    <ImageView
+        android:id="@+id/kodeTenantLayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:orientation="horizontal"
-        android:background="@drawable/container_abu">
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/container_abu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Jkode_tenant"
+        app:layout_constraintTop_toBottomOf="@+id/Jkode_tenant" />
 
     <TextView
         android:id="@+id/kode_tenant"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#083444"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_marginTop="11dp"
-        android:textSize="18sp"
-        tools:text="Fulan" />
-    </LinearLayout>
-
-    </LinearLayout>
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/kodeTenantLayout"
+        app:layout_constraintStart_toStartOf="@+id/kodeTenantLayout"
+        app:layout_constraintTop_toTopOf="@+id/kodeTenantLayout"
+        tools:text="Nama Tenant" />
 
     <TextView
         android:id="@+id/Jdetail_event"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:text="@string/detail_event"
-        android:textSize="15sp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="@+id/con_tenant"
-        app:layout_constraintTop_toBottomOf="@+id/con_tenant"
-        tools:src="@tools:sample/avatars" />
-
-
-    <LinearLayout
-        android:id="@+id/con_event"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/Jdetail_event"
-        app:layout_constraintTop_toBottomOf="@+id/Jdetail_event">
+        android:text="Detail Event"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintStart_toStartOf="@+id/kodeTenantLayout"
+        app:layout_constraintTop_toBottomOf="@+id/kodeTenantLayout" />
 
     <TextView
         android:id="@+id/Jnama_event"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="12dp"
-        android:text="@string/nama_event"
-        android:layout_marginTop="10dp" />
+        android:text="Nama Event"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/Jdetail_event"
+        app:layout_constraintTop_toBottomOf="@+id/Jdetail_event" />
 
-    <LinearLayout
-        android:id="@+id/con_nama_event"
+    <ImageView
+        android:id="@+id/namaEventLayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:orientation="horizontal"
-        android:background="@drawable/container_abu">
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/container_abu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Jnama_event"
+        app:layout_constraintTop_toBottomOf="@+id/Jnama_event" />
 
     <TextView
         android:id="@+id/nama_event"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/biru_tua_text"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_marginTop="11dp"
-        android:textSize="18sp"
-        tools:text="Fulan" />
-    </LinearLayout>
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/namaEventLayout"
+        app:layout_constraintStart_toStartOf="@+id/namaEventLayout"
+        app:layout_constraintTop_toTopOf="@+id/namaEventLayout"
+        tools:text="Nama Tenant" />
 
     <TextView
         android:id="@+id/Jnama_organi"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="12dp"
-        android:text="@string/nama_organizer"
-        android:layout_marginTop="10dp"/>
+        android:text="Nama Organizer"
+        android:layout_marginTop="12dp"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/namaEventLayout"
+        app:layout_constraintTop_toBottomOf="@+id/namaEventLayout" />
 
-    <LinearLayout
-        android:id="@+id/con_nama_organi"
+    <ImageView
+        android:id="@+id/namaOrgaLayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:orientation="horizontal"
-        android:background="@drawable/container_abu">
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/container_abu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/Jnama_organi"
+        app:layout_constraintTop_toBottomOf="@+id/Jnama_organi" />
 
     <TextView
         android:id="@+id/nama_organi"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#083444"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/namaOrgaLayout"
+        app:layout_constraintStart_toStartOf="@+id/namaOrgaLayout"
+        app:layout_constraintTop_toTopOf="@+id/namaOrgaLayout"
+        tools:text="Nama Tenant" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_pengunjung"
+        android:textColor="@color/black"
         android:textSize="18sp"
-        tools:text="Fulan" />
-    </LinearLayout>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_refresh"
+        app:layout_constraintStart_toStartOf="@+id/namaOrgaLayout"
+        app:layout_constraintTop_toTopOf="@+id/btn_refresh" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/con_total_pengunjung"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_refresh"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="@+id/con_event"
-        app:layout_constraintTop_toBottomOf="@+id/con_event"
-        app:layout_goneMarginTop="10dp">
+        android:layout_gravity="end"
+        android:layout_marginTop="12dp"
+        android:contentDescription="tombol refresh"
+        app:icon="@drawable/ic_refresh"
+        app:iconSize="26dp"
+        app:iconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namaOrgaLayout" />
 
-        <TextView
-            android:id="@+id/total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="@string/total_pengunjung" />
-
-        <Button
-            style="?attr/materialIconButtonStyle"
-            android:id="@+id/btn_refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:layout_gravity="end"
-            android:contentDescription="tombol refresh"
-            app:iconSize ="26dp"
-            app:iconTint="@color/black"
-            app:icon="@drawable/ic_refresh" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/con_jumlah"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/jumlah_pengunjung"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="@+id/con_total_pengunjung"
-        app:layout_constraintTop_toBottomOf="@+id/con_total_pengunjung"
-        app:layout_goneMarginTop="10dp">
+        android:gravity="center"
+        android:text="@string/J_0"
+        android:textColor="#083444"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_refresh" />
 
-        <TextView
-            android:id="@+id/jumlah_pengunjung"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:textColor="#083444"
-            android:textSize="50sp"
-            android:text="@string/J_0" />
+    <Button
+        android:id="@+id/btn_lihatDetail"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_lihat_detail"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/jumlah_pengunjung"
+        app:layout_constraintStart_toStartOf="@+id/jumlah_pengunjung"
+        app:layout_constraintTop_toBottomOf="@+id/jumlah_pengunjung" />
 
-        <Button
-            android:id="@+id/btn_lihatDetail"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:textColor="@color/black"
-            android:text="@string/btn_lihat_detail" />
-
-
-    <LinearLayout
-        android:id="@+id/con_qr"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:layout_gravity="center"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_qr"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         android:background="@drawable/con_circle"
-        app:layout_constraintStart_toStartOf="@+id/con_qr"
-        app:layout_constraintTop_toBottomOf="@+id/con_qr"
-        app:layout_goneMarginTop="10dp">
-
-        <Button
-            android:id="@+id/btn_qr"
-            style="?attr/materialIconButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:contentDescription="tombol scan"
-            app:iconTint="@color/white"
-            app:icon="@drawable/ic_qr_code"
-            app:iconSize="70dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Scan QR Code"
-            android:layout_gravity="center"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
-
-    </LinearLayout>
-    </LinearLayout>
-
+        android:text="Scan Ticket"
+        app:backgroundTint="@null"
+        app:icon="@drawable/ic_qr_code"
+        app:iconGravity="textTop"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_lihatDetail"
+        app:layout_constraintStart_toStartOf="@+id/btn_lihatDetail"
+        app:layout_constraintTop_toBottomOf="@+id/btn_lihatDetail" />
 </androidx.constraintlayout.widget.ConstraintLayout>

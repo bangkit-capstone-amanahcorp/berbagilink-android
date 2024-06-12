@@ -1,6 +1,5 @@
 package com.example.ptamanah.viewModel.event
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.response.ResponseListEvent
@@ -11,8 +10,6 @@ class EventViewModel(
 ) : ViewModel() {
 
     suspend fun getAllEvent(token: String): Flow<Result<ResponseListEvent>> {
-
-        Log.d("ResponseCuy1", "hi")
         return eventRepository.getEvent(token)
     }
 }

@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
@@ -77,13 +76,10 @@ class CameraTenant : AppCompatActivity() {
 
         viewModel.getTokenTenant().observe(this) {
             token = it
-            Log.d("TOKENAWAL", token.toString())
             if (!isCameraStarted) {
                 startCamera()
             }
-
         }
-
 
         binding.backbtn.setOnClickListener {
             finish()

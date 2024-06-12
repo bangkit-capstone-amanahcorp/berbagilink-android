@@ -3,7 +3,6 @@ package com.example.ptamanah.view.main
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -21,8 +20,8 @@ import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityMainBinding
 import com.example.ptamanah.view.login.LoginActivity
-import com.example.ptamanah.view.myEventCashier.MyEvent
-import com.example.ptamanah.view.myEventCashier.MyEventFragment.Companion.TOKEN
+import com.example.ptamanah.view.cashier.MyEvent
+import com.example.ptamanah.view.cashier.MyEventFragment.Companion.TOKEN
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.main.MainViewModel
 
@@ -44,7 +43,6 @@ class HomePageCashier : AppCompatActivity() {
 
         viewModel.getSession().observe(this) { user ->
             if (user.isNullOrEmpty()) {
-                Log.d("isiUser", user.toString())
                 binding.elevatedButton.setOnClickListener {
                     startActivity(Intent(this, LoginActivity::class.java))
                 }

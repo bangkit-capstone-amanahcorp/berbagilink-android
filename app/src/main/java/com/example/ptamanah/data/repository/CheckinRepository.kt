@@ -12,7 +12,6 @@ import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.response.DataItemAdmin
 import com.example.ptamanah.data.response.DataItemCashier
 import com.example.ptamanah.data.response.DataItemtenant
-import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow
 

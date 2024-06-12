@@ -3,10 +3,8 @@ package com.example.ptamanah.view.admin.detailEvent
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -23,9 +21,10 @@ import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 import com.example.ptamanah.view.admin.statistik.StatisticActivity
 import com.example.ptamanah.view.admin.transaction.DaftarTransaksiActivity
 import com.example.ptamanah.view.camera.CameraActivity
-import com.example.ptamanah.view.myEventCashier.MyEventFragment
+import com.example.ptamanah.view.cashier.MyEventFragment
 import com.example.ptamanah.viewModel.admin.detailEvents.DetailEventsViewModel
 import com.example.ptamanah.viewModel.factory.EventViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class DetailEventActivity : AppCompatActivity() {
@@ -48,6 +47,20 @@ class DetailEventActivity : AppCompatActivity() {
 
         getDetailEvent()
         showTiket()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            getDetailEvent()
+            showTiket()
+            binding.swipeRefresh.isRefreshing = false
+        }
+
+        binding.scrollView.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+            if (scrollY == 0) {
+                binding.swipeRefresh.isEnabled = true
+            } else {
+                binding.swipeRefresh.isEnabled = false
+            }
+        }
     }
 
     private fun getDetailEvent() {
@@ -114,7 +127,6 @@ class DetailEventActivity : AppCompatActivity() {
                                 }
                             }
                             daftarTrans.setOnClickListener {
-                                Log.d("DetailEventActivity", "Sending eventId: $id and namaEvent: $namaEvent to DaftarTransaksiActivity")
                                 Intent(this@DetailEventActivity, DaftarTransaksiActivity::class.java).apply {
                                     putExtra(DaftarTransaksiActivity.ID_EVENT, id)
                                     putExtra(DaftarTransaksiActivity.TOKEN, token)
@@ -123,17 +135,75 @@ class DetailEventActivity : AppCompatActivity() {
                                     startActivity(it)
                                 }
                             }
+
+                            var isExpand = false
+                            btnExpand.setOnClickListener {
+                                isExpand = !isExpand
+                                if (isExpand) {
+                                    btnExpand.background = ContextCompat.getDrawable(this@DetailEventActivity, R.drawable.ic_arrow_down)
+                                    JenisEvent.visibility = View.GONE
+                                    LogoJenisEvent.visibility = View.GONE
+                                    TextJenisEvent.visibility = View.GONE
+                                    line2.visibility = View.GONE
+                                    TanggalAndWaktu.visibility = View.GONE
+                                    LogoTanggal.visibility = View.GONE
+                                    TextTanggal.visibility = View.GONE
+                                    LogoWaktu.visibility = View.GONE
+                                    TextWaktu.visibility = View.GONE
+                                    line3.visibility = View.GONE
+                                    Lokasi.visibility = View.GONE
+                                    LogoLokasi.visibility = View.GONE
+                                    TextLokasi.visibility = View.GONE
+                                    line4.visibility = View.GONE
+                                    Alamat.visibility = View.GONE
+                                    LogoAlamat.visibility = View.GONE
+                                    TextAlamat.visibility = View.GONE
+                                    line5.visibility = View.GONE
+                                    Deskripsi.visibility = View.GONE
+                                    TextDeskripsi.visibility = View.GONE
+                                } else {
+                                    btnExpand.background = ContextCompat.getDrawable(this@DetailEventActivity, R.drawable.ic_arrow_up)
+                                    JenisEvent.visibility = View.VISIBLE
+                                    LogoJenisEvent.visibility = View.VISIBLE
+                                    TextJenisEvent.visibility = View.VISIBLE
+                                    line2.visibility = View.VISIBLE
+                                    TanggalAndWaktu.visibility = View.VISIBLE
+                                    LogoTanggal.visibility = View.VISIBLE
+                                    TextTanggal.visibility = View.VISIBLE
+                                    LogoWaktu.visibility = View.VISIBLE
+                                    TextWaktu.visibility = View.VISIBLE
+                                    line3.visibility = View.VISIBLE
+                                    Lokasi.visibility = View.VISIBLE
+                                    LogoLokasi.visibility = View.VISIBLE
+                                    TextLokasi.visibility = View.VISIBLE
+                                    line4.visibility = View.VISIBLE
+                                    Alamat.visibility = View.VISIBLE
+                                    LogoAlamat.visibility = View.VISIBLE
+                                    TextAlamat.visibility = View.VISIBLE
+                                    line5.visibility = View.VISIBLE
+                                    Deskripsi.visibility = View.VISIBLE
+                                    TextDeskripsi.visibility = View.VISIBLE
+                                }
+                            }
+
+                            var isExpandTiket = false
+                            btnExpandTiket.setOnClickListener {
+                                isExpandTiket = !isExpandTiket
+                                if (isExpandTiket) {
+                                    btnExpandTiket.background = ContextCompat.getDrawable(this@DetailEventActivity, R.drawable.ic_arrow_down)
+                                    rvTiketKegiatan.visibility = View.GONE
+                                } else {
+                                    btnExpandTiket.background = ContextCompat.getDrawable(this@DetailEventActivity, R.drawable.ic_arrow_up)
+                                    rvTiketKegiatan.visibility = View.VISIBLE
+                                }
+                            }
                         }
                     }
                     showLoading(false)
                 }
                 result.onFailure {
                     showLoading(false)
-                    Toast.makeText(
-                        this@DetailEventActivity,
-                        "Silahkan periksa internet anda terlebih dahulu",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Snackbar.make(this@DetailEventActivity, binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                 }
             }
         }
@@ -149,13 +219,10 @@ class DetailEventActivity : AppCompatActivity() {
             eventViewModel.getTiket(token.toString(), id.toString()).collect { result ->
                 result.onSuccess { response ->
                     tikeAdapter.submitList(response.data?.tickets)
-                }
-                result.onFailure {
-                    Toast.makeText(
-                        this@DetailEventActivity,
-                        "Silahkan periksa internet anda terlebih dahulu",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
+                    if (response.data?.tickets.isNullOrEmpty()) {
+                        binding.tvNotFound.visibility = View.VISIBLE
+                    }
                 }
             }
         }
@@ -191,6 +258,5 @@ class DetailEventActivity : AppCompatActivity() {
     companion object {
         const val ID_EVENT = "id"
         const val TOKENDETAIL = "token"
-        const val NAMA_EVENT = "nama_event"
     }
 }

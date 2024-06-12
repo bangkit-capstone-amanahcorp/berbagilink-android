@@ -6,7 +6,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.getevent.adapter.EventAdapter
 import com.example.ptamanah.R
 import com.example.ptamanah.data.response.DataItem
 import com.example.ptamanah.databinding.ListEventsAdminBinding
@@ -14,13 +13,9 @@ import com.example.ptamanah.databinding.ListEventsAdminBinding
 class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     private lateinit var onItemClickCallBack: OnItemClickCallBack
-    private lateinit var onDaftarClickCallBack: OnDaftarClickCallBack
 
     fun setOnItemClickCallBack(onItemClickCallBack: OnItemClickCallBack) {
         this.onItemClickCallBack = onItemClickCallBack
-    }
-    fun setOnDaftarClickCallBack(onDaftarClickCallBack:OnDaftarClickCallBack) {
-        this.onDaftarClickCallBack = onDaftarClickCallBack
     }
 
     override fun onCreateViewHolder(
@@ -81,8 +76,5 @@ class EventAdminAdapter : ListAdapter<DataItem, EventAdminAdapter.ViewHolder>(DI
 
     interface OnItemClickCallBack {
         fun onItemClicked(user: DataItem)
-    }
-    interface OnDaftarClickCallBack {
-        fun onDaftarClicked(user: DataItem)
     }
 }

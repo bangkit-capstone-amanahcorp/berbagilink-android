@@ -1,6 +1,5 @@
 package com.example.ptamanah.data.pagingsource
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.ptamanah.data.response.DataItemAdmin
@@ -41,17 +40,13 @@ class EventAdminLogPagingSource(
                 status = status,
                 isManual = isManual,
             )
-            Log.d("Response22", response.toString())
             val data = response.data?.data?.filterNotNull() ?: emptyList()
-
-            Log.d("Data22", data.toString())
             LoadResult.Page(
                 data = data,
                 prevKey = if (page == INITIAL_PAGE_INDEX) null else page - 1,
                 nextKey = if (data.isEmpty()) null else page + 1
             )
         } catch (exception: Exception) {
-            Log.e("API Error", exception.toString())
             LoadResult.Error(exception)
         }
     }

@@ -3,10 +3,7 @@ package com.example.ptamanah.adapter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.ptamanah.view.admin.events.ListEventsAdminFragment
 import com.example.ptamanah.view.admin.logcheck.EventAdminFragment
 
 class EventPagerAdminLogAdapter(activity: AppCompatActivity) :

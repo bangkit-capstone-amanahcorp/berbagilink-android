@@ -1,14 +1,11 @@
 package com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.ptamanah.R
 import com.example.ptamanah.databinding.FragmentRoleBinding
-import com.example.ptamanah.view.admin.logcheck.FilteringStatus
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class RoleFragment : BottomSheetDialogFragment() {
@@ -40,13 +37,8 @@ class RoleFragment : BottomSheetDialogFragment() {
         }
 
         binding.okeBtn.setOnClickListener {
-            val hasil = getSelectedStatus()
-            Log.d("RoleFragment", "Selected status: $hasil")
-
-            Log.d("RoleFragment1", "Selected status: $selectedStatus")
             selectedStatus?.let {
                 listener?.RoleSelected(it)
-                Log.d("RoleFragment2", "Selected status: $selectedStatus")
             }
             dismiss()
         }

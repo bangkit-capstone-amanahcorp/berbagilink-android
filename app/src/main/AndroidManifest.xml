@@ -64,7 +64,7 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.myEventCashier.LogCheckinCashier"
+            android:name=".view.cashier.LogCheckinCashier"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarWhiteAC" />
@@ -73,16 +73,16 @@
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.eventTenant.LogCheckinTenant"
+            android:name=".view.tenant.LogCheckinTenant"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarWhiteAC" />
         <activity
-            android:name=".view.eventTenant.DetailEventTenant"
+            android:name=".view.tenant.DetailEventTenant"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.eventTenant.ListEventTenant"
+            android:name=".view.tenant.ListEventTenant"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarWhiteAC" />
@@ -104,7 +104,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.myEventCashier.MyEvent"
+            android:name=".view.cashier.MyEvent"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarWhiteAC" />

@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.myEventCashier
+package com.example.ptamanah.view.cashier
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle

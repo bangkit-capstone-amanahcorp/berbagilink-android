@@ -1,18 +1,14 @@
-package com.example.ptamanah.view.eventTenant
+package com.example.ptamanah.view.tenant
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
@@ -24,6 +20,7 @@ import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityListEventTenantBinding
 import com.example.ptamanah.viewModel.factory.AuthViewModelFactory
 import com.example.ptamanah.viewModel.login.LoginViewModel
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class ListEventTenant : AppCompatActivity() {
@@ -38,7 +35,6 @@ class ListEventTenant : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityListEventTenantBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setupActionBar()
         email = intent.getStringExtra(EMAIL).toString()
         getAllEvent()
@@ -68,11 +64,7 @@ class ListEventTenant : AppCompatActivity() {
                 }
                 result.onFailure {
                     showLoading(false)
-                    Toast.makeText(
-                        this@ListEventTenant,
-                        "Silahkan periksa internet anda terlebih dahulu",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Snackbar.make(binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                 }
             }
         }

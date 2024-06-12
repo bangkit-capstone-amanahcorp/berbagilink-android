@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.myEventCashier
+package com.example.ptamanah.view.cashier
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +18,7 @@ import com.example.ptamanah.view.camera.CameraActivity
 import com.example.ptamanah.view.camera.CameraActivity.Companion.ID_EVENT
 import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.factory.EventViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class MyEventFragment : Fragment() {
@@ -51,6 +51,17 @@ class MyEventFragment : Fragment() {
             } else {
                 showDoneEvent()
             }
+
+            binding.swipeRefresh.setOnRefreshListener {
+                if (position == 1) {
+                    showAllEvent()
+                } else if (position == 2) {
+                    showActiveEvent()
+                } else {
+                    showDoneEvent()
+                }
+                binding.swipeRefresh.isRefreshing = false
+            }
         }
     }
 
@@ -74,11 +85,7 @@ class MyEventFragment : Fragment() {
                 }
                 result.onFailure {
                     showLoading(false)
-                    Toast.makeText(
-                        context,
-                        "Silahkan periksa internet anda terlebih dahulu",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Snackbar.make(binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                 }
             }
         }
@@ -126,11 +133,7 @@ class MyEventFragment : Fragment() {
                 }
                 result.onFailure {
                     showLoading(false)
-                    Toast.makeText(
-                        context,
-                        "Silahkan periksa internet anda terlebih dahulu",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Snackbar.make(binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                 }
             }
         }
@@ -167,11 +170,7 @@ class MyEventFragment : Fragment() {
                 }
                 result.onFailure {
                     showLoading(false)
-                    Toast.makeText(
-                        context,
-                        "Silahkan periksa internet anda terlebih dahulu",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Snackbar.make(binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                 }
             }
         }

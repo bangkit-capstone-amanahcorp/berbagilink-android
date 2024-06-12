@@ -2,9 +2,7 @@ package com.example.ptamanah.viewModel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.ptamanah.data.repository.CheckinRepository
 import com.example.ptamanah.data.repository.ManagementUserRepository
-import com.example.ptamanah.viewModel.event.EventViewModel
 import com.example.ptamanah.viewModel.managementuser.ManagementUserAddViewModel
 import com.example.ptamanah.viewModel.managementuser.ManagementUserViewModel
 

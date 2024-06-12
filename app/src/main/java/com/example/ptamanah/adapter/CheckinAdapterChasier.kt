@@ -1,6 +1,5 @@
 package com.example.ptamanah.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -20,10 +19,7 @@ class CheckinAdapterChasier :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = getItem(position)
         if (data != null) {
-            Log.d("adapterkasir", "Binding data at position $position: $data")
             holder.bind(data)
-        }else{
-            Log.d("kenapakasiradapt", "No data found at position $position")
         }
     }
 

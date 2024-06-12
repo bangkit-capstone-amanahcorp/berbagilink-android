@@ -1,59 +1,63 @@
-package com.example.ptamanah.view.myEventCashier
+package com.example.ptamanah.view.tenant
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
+import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
-import com.example.ptamanah.adapter.CheckinAdapterChasier
+import com.example.ptamanah.adapter.CheckinAdapterTenant
 import com.example.ptamanah.adapter.LoadingStateAdapter
 import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.CheckinRepository
+import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.retrofit.ApiConfig
-import com.example.ptamanah.databinding.ActivityLogCheckinCashierBinding
-import com.example.ptamanah.viewModel.checkin.LogcheckinCashierViewModel
+import com.example.ptamanah.databinding.ActivityLogCheckinTenantBinding
+import com.example.ptamanah.viewModel.checkin.LogcheckinTenantViewModel
 import com.example.ptamanah.viewModel.factory.CheckinViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class LogCheckinCashier : AppCompatActivity() {
-    private lateinit var binding: ActivityLogCheckinCashierBinding
-    private val checkinViewModel: LogcheckinCashierViewModel by viewModels {
+class LogCheckinTenant : AppCompatActivity() {
+    private lateinit var binding: ActivityLogCheckinTenantBinding
+    private val checkinViewModel: LogcheckinTenantViewModel by viewModels {
         CheckinViewModelFactory(getCheckinRepo())
     }
-    private val checkinAdapter = CheckinAdapterChasier()
     private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
+    private val checkinAdapter = CheckinAdapterTenant()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLogCheckinCashierBinding.inflate(layoutInflater)
+        binding = ActivityLogCheckinTenantBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupActionBar()
         setupRecyclerView()
         setupSearchView()
 
-        val token = intent.getStringExtra(TOKEN).toString()
-        val eventId = intent.getStringExtra(ID_EVENT).toString()
+        val token = intent.getStringExtra(TOKEN_ID).toString()
+        val eventId = intent.getStringExtra(ID_EVENT_TENANT).toString()
 
-        lifecycleScope.launch {
-            checkinViewModel.getCheckinscashier(token, eventId).collectLatest { pagingData ->
-                observeLoadState()
-                checkinAdapter.submitData(pagingData)
+        checkinViewModel.getCheckins(token, eventId).observe(this) { pagingData ->
+            handleSearchResults(pagingData)
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            checkinViewModel.getCheckins(token, eventId).observe(this) { pagingData ->
+                handleSearchResults(pagingData)
             }
+            binding.swipeRefresh.isRefreshing = false
         }
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -78,32 +82,25 @@ class LogCheckinCashier : AppCompatActivity() {
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                checkinViewModel.searchUsercashier(query)
+                checkinViewModel.searchUser(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                checkinViewModel.searchUsercashier(newText)
+                checkinViewModel.searchUser(newText)
                 return false
             }
         })
     }
 
-
-    private fun observeLoadState() {
+    private fun handleSearchResults(pagingData: PagingData<DataItemtenant>) {
         lifecycleScope.launch {
-            checkinAdapter.loadStateFlow.collectLatest {
-                val isLoading = it.refresh is LoadState.Loading
-                showLoading(isLoading)
-
-                val isListEmpty = it.refresh is LoadState.NotLoading && checkinAdapter.itemCount == 0
-                binding.NotfoundTv.visibility = if (isListEmpty) View.VISIBLE else View.GONE
+            checkinAdapter.submitData(pagingData)
+            checkinAdapter.loadStateFlow.collectLatest { loadStates ->
+                val isListEmpty = checkinAdapter.itemCount == 0
+                binding.NotfoundTv.isVisible = isListEmpty
             }
         }
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun getCheckinRepo(): CheckinRepository {
@@ -132,7 +129,7 @@ class LogCheckinCashier : AppCompatActivity() {
     }
 
     companion object {
-        const val ID_EVENT = "id_event"
-        const val TOKEN = "token"
+        const val TOKEN_ID = "TOKEN"
+        const val ID_EVENT_TENANT = "idEvent"
     }
 }

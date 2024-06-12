@@ -2,7 +2,6 @@ package com.example.ptamanah.adapter
 
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,10 +40,7 @@ class TransactionEventsAdapter:
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val data = getItem(position)
         if (data != null) {
-            Log.d("adapterrrr", "Binding data at position $position: $data")
             holder.bind(data, onDetailClickCallBack, namaEvent, username)
-        } else {
-            Log.d("kenapakasiradapt", "No data found at position $position")
         }
     }
 

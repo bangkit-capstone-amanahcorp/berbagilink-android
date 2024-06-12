@@ -2,7 +2,6 @@ package com.example.ptamanah.view.admin.transaction
 
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -31,6 +30,9 @@ import kotlinx.coroutines.launch
 class DaftarTransaksiActivity : AppCompatActivity(), FilterStatusTransaksi.OnFilterSelectedListener {
     private lateinit var binding: ActivityDaftarTransaksiBinding
     private var username: String? = null
+    private var token: String? = null
+    private var eventId: String? = null
+    private var namaEvent: String? = null
 
     private val transactionEventsViewModel: TransactionEventsViewModel by viewModels {
         TransactionViewModelFactory(getTransactionRepo())
@@ -53,11 +55,21 @@ class DaftarTransaksiActivity : AppCompatActivity(), FilterStatusTransaksi.OnFil
         setupRecyclerView()
         setupSearchView()
 
-        val token = intent.getStringExtra(TOKEN).toString()
-        val eventId = intent.getStringExtra(ID_EVENT).toString()
-        val namaEvent = intent.getStringExtra(NAMA_EVENT).toString()
+        token = intent.getStringExtra(TOKEN).toString()
+        eventId = intent.getStringExtra(ID_EVENT).toString()
+        namaEvent = intent.getStringExtra(NAMA_EVENT).toString()
 
-        // Retrieve username
+
+        getTransaction()
+        observeLoadState()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            getTransaction()
+            binding.swipeRefresh.isRefreshing = false
+        }
+    }
+
+    private fun getTransaction() {
         lifecycleScope.launch {
             getTransactionRepo().getUsername().collect { retrievedUsername ->
                 username = retrievedUsername
@@ -70,21 +82,13 @@ class DaftarTransaksiActivity : AppCompatActivity(), FilterStatusTransaksi.OnFil
                 Toast.makeText(this@DaftarTransaksiActivity, "Detail Transaksi: ${user.nama}", Toast.LENGTH_SHORT).show()
             }
         })
-
-        Log.d("DaftarTransaksiActivity", "Received token: $token")
-        Log.d("DaftarTransaksiActivity", "Received eventId: $eventId")
-        Log.d("DaftarTransaksiActivity", "Received namaEvent: $namaEvent")
-        Log.d("DaftarTransaksiActivity", "Received namaEvent: $username")
-
         transactionAdapter.setNamaEvent(namaEvent)
 
         lifecycleScope.launch {
-            transactionEventsViewModel.getTransaksi(token, eventId).collectLatest { pagingData ->
+            transactionEventsViewModel.getTransaksi(token.toString(), eventId.toString()).collectLatest { pagingData ->
                 transactionAdapter.submitData(pagingData)
             }
         }
-
-        observeLoadState()
     }
 
     private fun setupRecyclerView() {

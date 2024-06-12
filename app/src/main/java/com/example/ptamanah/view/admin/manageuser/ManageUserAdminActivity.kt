@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -17,17 +16,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ptamanah.R
 import com.example.ptamanah.adapter.ManagementUserAdapter
-import com.example.ptamanah.data.preference.UserPreference
-import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.data.response.DataItemManagementUser
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityManageUserAdminBinding
-import com.example.ptamanah.view.admin.detailEvent.DetailEventActivity
 import com.example.ptamanah.view.admin.manageuser.editUser.EditUserActivity
 import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.GeneralFragment
 import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.GeneralFragment.Companion.EMAIL
-import com.example.ptamanah.view.main.HomePageAdmin
 import com.example.ptamanah.viewModel.factory.ManagementUserViewModelFactory
 import com.example.ptamanah.viewModel.managementuser.ManagementUserViewModel
 import kotlinx.coroutines.launch
@@ -39,7 +34,6 @@ class ManageUserAdminActivity : AppCompatActivity() {
         ManagementUserViewModelFactory(getManagementUserRepo())
     }
     private val managementUserAdapter = ManagementUserAdapter()
-    private val userPreference: UserPreference by lazy { UserPreference(this.dataStore) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +44,16 @@ class ManageUserAdminActivity : AppCompatActivity() {
         setupRecyclerView()
         setupSearchView()
 
+        getUser()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            getUser()
+            binding.swipeRefresh.isRefreshing = false
+        }
+
+    }
+
+    private fun getUser() {
         val token = intent.getStringExtra(TOKEN).toString()
 
         managementUserAdapter.setOnDeleteClickCallBack(object : ManagementUserAdapter.OnDeleteClickCallBack {
@@ -79,7 +83,7 @@ class ManageUserAdminActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             showLoading(true)
-            managementUserViewModel.getAllUser(token)
+            managementUserViewModel.getAllUser(token, binding.root)
             managementUserViewModel.filteredData.observe(this@ManageUserAdminActivity) { userList ->
                 showLoading(false)
                 managementUserAdapter.submitList(userList)
@@ -112,9 +116,8 @@ class ManageUserAdminActivity : AppCompatActivity() {
         managementUserViewModel.deleteUser(token, userId).collect { result ->
             result.onSuccess {
                 Toast.makeText(this, "User deleted successfully", Toast.LENGTH_SHORT).show()
-                // Refresh
                 showLoading(false)
-                managementUserViewModel.getAllUser(token)
+                managementUserViewModel.getAllUser(token, binding.root)
             }
             result.onFailure {
                 Toast.makeText(this, "Failed to delete user", Toast.LENGTH_SHORT).show()

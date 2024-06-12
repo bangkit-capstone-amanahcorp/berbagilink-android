@@ -1,6 +1,5 @@
 package com.example.ptamanah.viewModel.scan
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
@@ -13,7 +12,6 @@ class ScanViewModel(
     private val scan: ScanRepo
 ) : ViewModel() {
     suspend fun scanEvent(auth: String, id: String, token: String): Flow<Result<ResponseScan>> {
-        Log.d("why", "iiio")
         return scan.scanEvent(auth, id,  token)
     }
 

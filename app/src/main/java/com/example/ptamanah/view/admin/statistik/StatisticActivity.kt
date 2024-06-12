@@ -4,19 +4,16 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.ptamanah.R
 import com.example.ptamanah.data.repository.EventRepository
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityStatisticBinding
 import com.example.ptamanah.viewModel.admin.statistic.StatisticEventsViewModel
 import com.example.ptamanah.viewModel.factory.EventViewModelFactory
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
 class StatisticActivity : AppCompatActivity() {
@@ -37,6 +34,11 @@ class StatisticActivity : AppCompatActivity() {
 
         getStatistic()
         setupActionBar()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            getStatistic()
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun getStatistic() {
@@ -56,6 +58,7 @@ class StatisticActivity : AppCompatActivity() {
                     }
                     showLoading(false)
                 }.onFailure {
+                    Snackbar.make(binding.root, "Silahkan periksa internet anda terlebih dahulu", Snackbar.LENGTH_LONG).show()
                     showLoading(false)
                 }
             }

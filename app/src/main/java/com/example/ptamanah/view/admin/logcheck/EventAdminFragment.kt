@@ -2,7 +2,6 @@ package com.example.ptamanah.view.admin.logcheck
 
 import EventAdminLogAdapter
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -62,7 +61,6 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
                 position = it.getInt(ARG_POSITION)
                 token = requireActivity().intent.getStringExtra(TOKEN)
                 event_id = requireActivity().intent.getStringExtra(EVENT_ID)
-                Log.d(TAG, "onViewCreated: $position & $token & $event_id")
 
                 token?.let {
                     when (position) {
@@ -70,7 +68,18 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
                         2 -> showBerbayarEvent()
                         else -> showManualEvent()
                     }
-                } ?: Log.e(TAG, "Token is null")
+
+                    binding.swipeRefresh.setOnRefreshListener {
+                        if (position == 1) {
+                            showAllEvent()
+                        } else if (position == 2) {
+                            showBerbayarEvent()
+                        } else {
+                            showManualEvent()
+                        }
+                        binding.swipeRefresh.isRefreshing = false
+                    }
+                }
             }
         }
 
@@ -78,22 +87,16 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
 
     private fun showAllEvent() {
         setupRecyclerView()
-        Log.d(TAG, "dateStart: $dateStart")
-        Log.d(TAG, "dateEnd: $dateEnd")
         eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", null, dateStart, dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
-
-                Log.d(TAG, "dateStart2: $dateStart")
-                Log.d(TAG, "dateEnd2: $dateEnd")
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
             }
+
     }
 
     private fun showBerbayarEvent() {
         setupRecyclerView()
-        Log.d(TAG, "dateStart: $dateStart")
-        Log.d(TAG, "dateEnd: $dateEnd")
         setCurrentManual(1)
         eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
@@ -104,8 +107,6 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
 
     private fun showManualEvent() {
         setupRecyclerView()
-        Log.d(TAG, "dateStart: $dateStart")
-        Log.d(TAG, "dateEnd: $dateEnd")
         setCurrentManual(0)
         eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
@@ -137,7 +138,6 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     }
 
     fun filteringEventsByStatus(status: String) {
-        Log.d(TAG, "filteringEventsByStatus: $status")
         eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", status, null, dateStart, dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
@@ -148,7 +148,6 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     fun performSearch(query: String, startDate: String? = dateStart, endDate: String? = dateEnd) {
         val currentStatus = getCurrentStatusFilter()
         val isManual = getCurrentManualFilter()
-        Log.d(TAG, "performSearch: $query, status: $currentStatus, isManual: $isManual, startDate: $startDate, endDate: $endDate")
         eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), query, currentStatus,  isManual, startDate, endDate)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
@@ -195,7 +194,6 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     }
 
     companion object {
-        private const val TAG = "EventAdminFragment"
         const val ARG_POSITION = "position"
         const val TOKEN = "token"
         const val EVENT_ID = "event_id"

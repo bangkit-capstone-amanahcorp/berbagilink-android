@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ptamanah.R
@@ -12,7 +11,7 @@ import com.example.ptamanah.data.preference.UserPreference
 import com.example.ptamanah.data.preference.dataStore
 import com.example.ptamanah.data.repository.AuthRepo
 import com.example.ptamanah.data.retrofit.ApiConfig
-import com.example.ptamanah.view.eventTenant.DetailEventTenant
+import com.example.ptamanah.view.tenant.DetailEventTenant
 import com.example.ptamanah.view.main.HomePageAdmin
 import com.example.ptamanah.view.main.HomePageCashier
 import com.example.ptamanah.viewModel.event.EventTenantViewModel
@@ -43,7 +42,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
             viewModelTenant.getSessionTenant().observe(this) { tenantSession ->
                 if (tenantSession != null) {
-                    Log.d("tenantSes", tenantSession.toString())
                     startActivity(Intent(this, DetailEventTenant::class.java))
                     sessionHandled = true
                 }
@@ -51,7 +49,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
             viewModelCashier.getSession().observe(this) { cashierSession ->
                 if (cashierSession != null) {
-                    Log.d("casSes", cashierSession.toString())
                     if (!sessionHandled) {
                         startActivity(Intent(this, HomePageCashier::class.java))
                     }
@@ -61,7 +58,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
             viewModelAdmin.getSession().observe(this) { adminSession ->
                 if (adminSession != null) {
-                    Log.d("adminSes", adminSession.toString())
                     if (!sessionHandled) {
                         startActivity(Intent(this, HomePageAdmin::class.java))
                     }

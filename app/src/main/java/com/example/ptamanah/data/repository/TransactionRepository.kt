@@ -3,10 +3,8 @@ package com.example.ptamanah.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.ptamanah.data.pagingsource.CheckinChasierPagingSource
 import com.example.ptamanah.data.pagingsource.TransactionPagingSource
 import com.example.ptamanah.data.preference.UserPreference
-import com.example.ptamanah.data.response.DataItemCashier
 import com.example.ptamanah.data.response.DataItemTransaction
 import com.example.ptamanah.data.retrofit.ApiService
 import kotlinx.coroutines.flow.Flow

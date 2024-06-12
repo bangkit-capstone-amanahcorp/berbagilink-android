@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableString
@@ -14,26 +13,17 @@ import android.text.style.ImageSpan
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.ptamanah.R
 import com.example.ptamanah.data.repository.ManagementUserRepository
 import com.example.ptamanah.data.retrofit.ApiConfig
 import com.example.ptamanah.databinding.ActivityManageUserAdminAddBinding
-import com.example.ptamanah.view.admin.logcheck.FilteringStatus
 import com.example.ptamanah.view.admin.manageuser.editUser.fragmentEdit.RoleFragment
-import com.example.ptamanah.view.eventTenant.BottomLogin
 import com.example.ptamanah.viewModel.factory.ManagementUserViewModelFactory
 import com.example.ptamanah.viewModel.managementuser.ManagementUserAddViewModel
 import kotlinx.coroutines.launch
@@ -122,8 +112,8 @@ class ManageUserAdminAddActivity : AppCompatActivity(),RoleFragment.RoleSelected
                                 ManageUserAdminActivity::class.java
                             ).apply {
                                 putExtra(ManageUserAdminActivity.TOKEN, token)
+                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                             }
-                            Log.d("bbbbb", "Data berhasil terkirim: $name, $email, $password, $role")
                             startActivity(intent)
                             finish()
                         }
@@ -133,7 +123,6 @@ class ManageUserAdminAddActivity : AppCompatActivity(),RoleFragment.RoleSelected
                                 "Data gagal ditambah",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            Log.e("ManageUserAdminAdd", "Gagal mengirim data: ${it.message}")
                         }
                     }
                 }
