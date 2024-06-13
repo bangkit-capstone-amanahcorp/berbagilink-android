@@ -106,10 +106,14 @@ class EventAdminLogAdapter(
             }
 
             if (data.status == "check-in") {
+                binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.failed)
+                binding.btnCheck.text = "Uncheck"
+            } else if (data.status == "uncheck") {
                 binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.biru_toska)
                 binding.btnCheck.text = "Check in"
             } else {
                 binding.btnCheck.backgroundTintList = ContextCompat.getColorStateList(itemView.context, R.color.failed)
+                binding.btnCheck.text = "Uncheck"
             }
             binding.btnCheck.setOnClickListener {
                 (itemView.context as? FragmentActivity)?.lifecycleScope?.launch {
