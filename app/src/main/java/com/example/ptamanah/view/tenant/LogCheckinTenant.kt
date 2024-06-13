@@ -4,12 +4,14 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,6 +51,7 @@ class LogCheckinTenant : AppCompatActivity() {
 
         checkinViewModel.getCheckins(token, eventId).observe(this) { pagingData ->
             handleSearchResults(pagingData)
+            observeLoadState()
         }
 
         binding.swipeRefresh.setOnRefreshListener {
@@ -96,9 +99,17 @@ class LogCheckinTenant : AppCompatActivity() {
     private fun handleSearchResults(pagingData: PagingData<DataItemtenant>) {
         lifecycleScope.launch {
             checkinAdapter.submitData(pagingData)
+        }
+    }
+
+    private fun observeLoadState() {
+        lifecycleScope.launch {
             checkinAdapter.loadStateFlow.collectLatest {
-                val isListEmpty = checkinAdapter.itemCount == 0
-                binding.NotfoundTv.isVisible = isListEmpty
+                val isLoading = it.refresh is LoadState.Loading
+                showLoading(isLoading)
+
+                val isListEmpty = it.refresh is LoadState.NotLoading && checkinAdapter.itemCount == 0
+                binding.NotfoundTv.visibility = if (isListEmpty) View.VISIBLE else View.GONE
             }
         }
     }
@@ -126,6 +137,10 @@ class LogCheckinTenant : AppCompatActivity() {
         )
         supportActionBar?.setDisplayShowCustomEnabled(true)
         supportActionBar?.setCustomView(customActionBar, actionBarParams)
+    }
+
+    private fun showLoading(state: Boolean) {
+        binding.progressBar.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     companion object {

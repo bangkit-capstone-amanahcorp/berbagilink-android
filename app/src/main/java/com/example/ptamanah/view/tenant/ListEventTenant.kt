@@ -38,6 +38,11 @@ class ListEventTenant : AppCompatActivity() {
         setupActionBar()
         email = intent.getStringExtra(EMAIL).toString()
         getAllEvent()
+
+        binding.swipeRefresh.setOnRefreshListener {
+            getAllEvent()
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun getAllEvent() {
@@ -47,6 +52,7 @@ class ListEventTenant : AppCompatActivity() {
         binding.rvEvent.adapter = adapter
 
         lifecycleScope.launch {
+            showLoading(true)
             loginViewModel.checkEmail(email).collect{ result ->
                 result.onSuccess { response ->
                     binding.apply {
