@@ -72,6 +72,7 @@ class MyEventFragment : Fragment() {
         binding.rvEvent.adapter = eventAdapter
 
         lifecycleScope.launch {
+            showLoading(true)
             eventViewModel.getAllEvent(token.toString()).collect { result ->
                 result.onSuccess { response ->
                     binding.apply {
@@ -120,6 +121,7 @@ class MyEventFragment : Fragment() {
         binding.rvEvent.adapter = eventAdapter
 
         lifecycleScope.launch {
+            showLoading(true)
             eventViewModel.getAllEvent(token.toString()).collect { result ->
                 result.onSuccess { response ->
                     binding.apply {
@@ -157,6 +159,7 @@ class MyEventFragment : Fragment() {
         binding.rvEvent.adapter = eventAdapter
 
         lifecycleScope.launch {
+            showLoading(true)
             eventViewModel.getAllEvent(token.toString()).collect { result ->
                 result.onSuccess { response ->
                     binding.apply {

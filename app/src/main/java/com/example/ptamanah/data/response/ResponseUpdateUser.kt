@@ -8,7 +8,10 @@ data class ResponseUpdateUser(
 	val data: DataUpdate? = null,
 
 	@field:SerializedName("error")
-	val error: Boolean? = null
+	val error: Boolean? = null,
+
+	@field:SerializedName("info")
+	val info: String? = null
 )
 
 data class DataUpdate(

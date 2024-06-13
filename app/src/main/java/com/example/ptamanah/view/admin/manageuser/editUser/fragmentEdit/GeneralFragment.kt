@@ -100,20 +100,29 @@ class GeneralFragment : Fragment(), RoleFragment.RoleSelectedListener {
                         status.toString()
                     ).collect { result ->
                         result.onSuccess {
-                            Toast.makeText(
-                                requireContext(),
-                                "Data berhasil diupdate",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            val intent = Intent(
-                                requireContext(),
-                                ManageUserAdminActivity::class.java
-                            ).apply {
-                                putExtra(ManageUserAdminActivity.TOKEN, token)
-                                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            if (it.error == false) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Data berhasil diupdate",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intent = Intent(
+                                    requireContext(),
+                                    ManageUserAdminActivity::class.java
+                                ).apply {
+                                    putExtra(ManageUserAdminActivity.TOKEN, token)
+                                    flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                                }
+                                requireActivity().startActivity(intent)
+                                requireActivity().finish()
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    it.info.toString(),
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
-                            requireActivity().startActivity(intent)
-                            requireActivity().finish()
+
                         }
                         result.onFailure {
                             Toast.makeText(
