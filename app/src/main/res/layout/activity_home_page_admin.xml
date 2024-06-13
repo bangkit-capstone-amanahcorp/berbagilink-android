@@ -570,7 +570,7 @@
             android:id="@+id/container_frame10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="16dp"
             android:layout_gravity="bottom|center"
             android:gravity="center_horizontal|top"
             android:orientation="vertical">
@@ -580,15 +580,14 @@
                 android:layout_width="328dp"
                 android:layout_height="120dp">
 
-                <ImageView
-                    android:id="@+id/container_mask_group"
-                    android:layout_width="328dp"
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/image_slider"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="top|center_horizontal"
-                    android:layout_marginTop="0dp"
-                    android:gravity="left|top"
-                    android:orientation="vertical"
-                    android:src="@drawable/logo" />
+                    app:iss_auto_cycle="true"
+                    app:iss_period="2500"
+                    app:iss_delay="0"/>
+
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

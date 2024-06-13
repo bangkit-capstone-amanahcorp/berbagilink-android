@@ -96,7 +96,7 @@ class LogCheckinTenant : AppCompatActivity() {
     private fun handleSearchResults(pagingData: PagingData<DataItemtenant>) {
         lifecycleScope.launch {
             checkinAdapter.submitData(pagingData)
-            checkinAdapter.loadStateFlow.collectLatest { loadStates ->
+            checkinAdapter.loadStateFlow.collectLatest {
                 val isListEmpty = checkinAdapter.itemCount == 0
                 binding.NotfoundTv.isVisible = isListEmpty
             }

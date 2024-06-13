@@ -12,6 +12,8 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.ptamanah.R
 import com.example.ptamanah.R.id.imageTitle
 import com.example.ptamanah.data.preference.UserPreference
@@ -58,6 +60,14 @@ class HomePageCashier : AppCompatActivity() {
                 }
             }
         }
+
+        val imageList = ArrayList<SlideModel>()
+
+        imageList.add(SlideModel(R.drawable.carousle))
+        imageList.add(SlideModel(R.drawable.carousle))
+        imageList.add(SlideModel(R.drawable.carousle))
+
+        binding.imageSlider.setImageList(imageList, ScaleTypes.FIT)
 
     }
 

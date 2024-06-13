@@ -90,4 +90,7 @@ dependencies {
 
     //refresh
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01")
+
+    //slideShow
+    implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
 }
