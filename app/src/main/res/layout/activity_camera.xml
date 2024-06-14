@@ -39,8 +39,8 @@
 
     <ImageView
         android:id="@+id/camerashape"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,12 +50,14 @@
 
     <View
         android:id="@+id/barcode_line"
-        android:layout_width="250dp"
+        android:layout_width="0dp"
         android:layout_height="3dp"
-        android:visibility="gone"
         android:background="@color/biru_toska"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/camerashape"
         app:layout_constraintStart_toStartOf="@+id/camerashape"
-        app:layout_constraintTop_toTopOf="@+id/camerashape" />
+        app:layout_constraintTop_toTopOf="@+id/camerashape"
+        tools:visibility="visible" />
 
 
     <ImageView
@@ -91,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="gone"
         app:shapeAppearanceOverlay="@style/TopRoundedCorner"
-        tools:visibility="visible"
+        tools:visibility="gone"
         app:strokeColor="@color/biru_toska"
         app:strokeWidth="0.5dp">
 
@@ -267,7 +269,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="gone"
         app:shapeAppearanceOverlay="@style/TopRoundedCorner"
-        tools:visibility="visible"
+        tools:visibility="gone"
         app:strokeColor="@color/biru_toska"
         app:strokeWidth="0.5dp">
 

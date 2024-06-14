@@ -5,7 +5,16 @@
 
     <translate
         android:fromYDelta="1%p"
-        android:toYDelta="28%p"
+        android:toYDelta="22%p"
+        android:duration="1000"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+
+    <scale
+        android:fromXScale="1.0"
+        android:toXScale="1.0"
+        android:fromYScale="1.0"
+        android:toYScale="1.5"
         android:duration="1000"
         android:repeatCount="infinite"
         android:repeatMode="reverse" />
