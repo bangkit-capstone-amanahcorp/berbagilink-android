@@ -87,7 +87,8 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
 
     private fun showAllEvent() {
         setupRecyclerView()
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", null, dateStart, dateEnd)
+        val currentStatus = getCurrentStatusFilter()
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", currentStatus, null, dateStart, dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -98,7 +99,8 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     private fun showBerbayarEvent() {
         setupRecyclerView()
         setCurrentManual(1)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
+        val currentStatus = getCurrentStatusFilter()
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", currentStatus, getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
@@ -108,7 +110,8 @@ class EventAdminFragment : Fragment(), OnCheckInSuccessListener {
     private fun showManualEvent() {
         setupRecyclerView()
         setCurrentManual(0)
-        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", "", getCurrentManualFilter(),dateStart,dateEnd)
+        val currentStatus = getCurrentStatusFilter()
+        eventAdminViewModel.getCheckinLogAdmin(token.toString(), event_id.toString(), "", currentStatus, getCurrentManualFilter(),dateStart,dateEnd)
             .observe(viewLifecycleOwner) { pagingData ->
                 eventAdapter.submitData(lifecycle, pagingData)
                 observeLoadState()
