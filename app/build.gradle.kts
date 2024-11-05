@@ -52,7 +52,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
     //livedata
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
@@ -64,18 +63,18 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //dataStore
-    implementation ("androidx.datastore:datastore-preferences:1.0.0")
-    implementation ("androidx.datastore:datastore-preferences-core:1.0.0")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation("androidx.datastore:datastore-preferences-core:1.0.0")
 
     //image
     implementation("com.github.bumptech.glide:glide:4.16.0")
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
     //pagging 3
-    implementation ("androidx.paging:paging-runtime-ktx:3.1.1")
+    implementation("androidx.paging:paging-runtime-ktx:3.1.1")
 
     //tabLayout
-    implementation ("androidx.fragment:fragment-ktx:1.2.5")
+    implementation("androidx.fragment:fragment-ktx:1.2.5")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     //camerax
@@ -93,4 +92,7 @@ dependencies {
 
     //slideShow
     implementation("com.github.denzcoskun:ImageSlideshow:0.1.0")
+
+    //layout
+    implementation("androidx.drawerlayout:drawerlayout:1.2.0")
 }

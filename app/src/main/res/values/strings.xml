@@ -110,4 +110,30 @@
     <string name="harga">Harga</string>
     <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
     <string name="total">Total</string>
+    
+    <string name="link_toko_anda">Link toko anda:</string>
+    <string name="berbagi.link">berbagi.link/isabnumaryam/online…</string>
+    <string name="lihat_preview_halaman_toko">Lihat Preview Halaman Toko</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="halaman">Halaman</string>
+    <string name="toko">Toko</string>
+    <string name="medial_sosial_toko">Medial Sosial Toko</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="batal">Batal</string>
+    <string name="simpan">Simpan</string>
+
+    // sidebar menu
+    <string name="beranda">Beranda</string>
+    <string name="ubah_tampilan">Ubah Tampilan</string>
+    <string name="statistik">Statistik</string>
+    <string name="bagi_to">Bagi.to</string>
+    <string name="tagihan">Tagihan</string>
+    <string name="tracking_pixels">Tracking Pixels</string>
+    <string name="toko_online">Toko Online</string>
+<!--    <string name="event">Event</string>-->
+    <string name="payment">Payment</string>
+    <string name="wallet">Wallet</string>
+    <string name="support">Support</string>
+    <string name="donasi">Donasi</string>
+    <string name="landing_page">Landing Page</string>
 </resources>
