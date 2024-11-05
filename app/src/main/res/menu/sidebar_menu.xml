@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/main_item"
+        android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/action_beranda"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/beranda"
+                app:showAsAction="never"
+                />
+
+            <item
+                android:id="@+id/action_ubah_tampilan"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/ubah_tampilan"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_statistik"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/statistik"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_bagi_to"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/bagi_to"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_tagihan"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/tagihan"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_tracking_pixels"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/tracking_pixels"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_toko_online"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/toko_online"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_event"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/event"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_payment"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/payment"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_wallet"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/wallet"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_support"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/support"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_donasi"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/donasi"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_landing_page"
+                android:icon="@drawable/ic_beranda"
+                android:title="@string/landing_page"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/labels_item"
+        android:title="test">
+        <menu>
+            <item
+                android:id="@+id/label_one"
+                android:icon="@drawable/ic_menu"
+                android:title="test"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
+            <item
+                android:id="@+id/label_two"
+                android:icon="@drawable/ic_menu"
+                android:title="test"
+                android:checkable="true"
+                app:showAsAction="ifRoom"/>
+        </menu>
+    </item>
+</menu>

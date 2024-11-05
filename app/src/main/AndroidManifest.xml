@@ -22,12 +22,12 @@
             android:name=".view.admin.transaction.DaftarTransaksiActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/StatusBarWhiteAC"/>
+            android:theme="@style/StatusBarWhiteAC" />
         <activity
             android:name=".view.admin.statistik.StatisticActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/StatusBarWhiteAC"/>
+            android:theme="@style/StatusBarWhiteAC" />
         <activity
             android:name=".view.admin.manageuser.ManageUserAdminAddActivity"
             android:exported="false"
@@ -93,7 +93,7 @@
             android:theme="@style/StatusBarWhite"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".view.splashScreen.SplashScreenActivity"
+            android:name=".view.settings.PageActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarCremAC">
@@ -115,7 +115,7 @@
             android:theme="@style/StatusBarWhite" />
         <activity
             android:name=".view.main.HomePageCashier"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.camera.CameraActivity"
