@@ -110,7 +110,7 @@
     <string name="harga">Harga</string>
     <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
     <string name="total">Total</string>
-    
+
     <string name="link_toko_anda">Link toko anda:</string>
     <string name="berbagi.link">berbagi.link/isabnumaryam/online…</string>
     <string name="lihat_preview_halaman_toko">Lihat Preview Halaman Toko</string>
@@ -130,7 +130,7 @@
     <string name="tagihan">Tagihan</string>
     <string name="tracking_pixels">Tracking Pixels</string>
     <string name="toko_online">Toko Online</string>
-<!--    <string name="event">Event</string>-->
+    <!--    <string name="event">Event</string>-->
     <string name="payment">Payment</string>
     <string name="wallet">Wallet</string>
     <string name="support">Support</string>

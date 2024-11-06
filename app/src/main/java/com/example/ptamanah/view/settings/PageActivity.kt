@@ -1,9 +1,11 @@
 package com.example.ptamanah.view.settings
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -18,9 +20,12 @@ import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.example.ptamanah.R
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
+import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.google.android.material.appbar.MaterialToolbar
 
 class PageActivity : AppCompatActivity() {
@@ -56,13 +61,126 @@ class PageActivity : AppCompatActivity() {
 
     private fun setupExpandableList() {
         val expandableListView: ExpandableListView = findViewById(R.id.expandableListView)
-        val listData = HashMap<String, List<String>>()
-        listData["Menu 1"] = listOf("Sub Menu 1", "Sub Menu 2")
-        listData["Menu 2"] = listOf("Sub Menu 1", "Sub Menu 2")
-        val listTitle = ArrayList(listData.keys)
 
-        val adapter = ExpandableListAdapter(this, listTitle, listData)
+        // Buat struktur menu tree
+        val menuItems = listOf(
+            NavMenuItem(
+                id = "menu",
+                title = "Menu",
+            ),
+            NavMenuItem(id = "beranda", title = "Beranda", icon = R.drawable.ic_home),
+            NavMenuItem(id = "ubah_tampilan", title = "Ubah Tampilan", icon = R.drawable.ic_home),
+            NavMenuItem(id = "statistik", title = "Statistik", icon = R.drawable.ic_home),
+            NavMenuItem(id = "bagi_to", title = "Bagi.to", icon = R.drawable.ic_home),
+            NavMenuItem(id = "tagihan", title = "Tagihan", icon = R.drawable.ic_home),
+            NavMenuItem(id = "tracking_pixels", title = "Tracking Pixels", icon = R.drawable.ic_home),
+            NavMenuItem(id = "toko_online", title = "Toko Online", icon = R.drawable.ic_home,
+                children = listOf(
+                    NavMenuItem(
+                        id = "pengaturan",
+                        title = "Pengaturan",
+                        icon = R.drawable.ic_home,
+                        children = listOf(
+                            NavMenuItem(id = "halaman", title = "Halaman", icon = R.drawable.ic_home),
+                            NavMenuItem(id = "banner", title = "Banner", icon = R.drawable.ic_home),
+                            NavMenuItem(id = "rekening", title = "Rekening", icon = R.drawable.ic_home)
+                        )
+                    ),
+                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
+                    NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
+                    NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
+                )
+            ),
+            NavMenuItem(id = "event", title = "Event", icon = R.drawable.ic_home),
+            NavMenuItem(id = "payment", title = "Payment", icon = R.drawable.ic_home),
+            NavMenuItem(id = "wallet", title = "Wallet", icon = R.drawable.ic_home),
+            NavMenuItem(
+                id = "support",
+                title = "Support",
+                badge = "MULTIPAGES",
+                icon = R.drawable.ic_home
+            ),
+            NavMenuItem(
+                id = "donasi",
+                title = "Donasi",
+                badge = "MULTIPAGES",
+                icon = R.drawable.ic_home
+            ),
+            NavMenuItem(
+                id = "landing_page",
+                title = "Landing Page",
+                badge = "MULTIPAGES",
+                icon = R.drawable.ic_home
+            )
+        )
+
+        val adapter = ExpandableListAdapter(this, menuItems) { menuItem ->
+            onMenuItemClick(menuItem)
+        }
         expandableListView.setAdapter(adapter)
+
+        // Handle click events
+        expandableListView.setOnGroupClickListener { _, _, groupPosition, _ ->
+            adapter.toggleItem(groupPosition)
+            true
+        }
+
+        // Optional: Hapus divider
+        expandableListView.setGroupIndicator(null)
+        expandableListView.divider = ColorDrawable(ContextCompat.getColor(this, R.color.divider_color))
+        expandableListView.dividerHeight = 1.dp(this)
+    }
+
+    private fun onMenuItemClick(menuItem: NavMenuItem) {
+//        val fragment: Fragment = when (menuItem.id) {
+//            "beranda" -> throw IllegalArgumentException("Unknown menu item")
+//            "ubah_tampilan" -> throw IllegalArgumentException("Unknown menu item")
+//            "statistik" -> throw IllegalArgumentException("Unknown menu item")
+//            "halaman" -> HalamanFragment()
+//            "event" -> throw IllegalArgumentException("Unknown menu item")
+//            else -> throw IllegalArgumentException("Unknown menu item")
+//        }
+
+        // Ganti fragment di FragmentContainerView
+//        replaceFragment(fragment)
+        when (menuItem.id) {
+            "beranda" -> {
+                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+            }
+            "ubah_tampilan" -> {
+                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+            }
+            "statistik" -> {
+                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+            }
+            // Add other menu items as needed
+            "halaman" -> {
+                replaceFragment(HalamanFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+            }
+            "event" -> {
+                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+            }
+//            else -> {
+//                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+//            }
+        }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.containerToko, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    fun Int.dp(context: Context): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            this.toFloat(),
+            context.resources.displayMetrics
+        ).toInt()
     }
 
     private fun setupActionBar() {

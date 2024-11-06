@@ -19,4 +19,10 @@
     <color name="ungu">#A559BF</color>
     <color name="hijau_muda">#52B57C</color>
     <color name="abu_terang">#CCCCCC</color>
+
+
+    <color name="icon_color">#9E9E9E</color>
+    <color name="text_color">#424242</color>
+    <color name="arrow_color">#BDBDBD</color>
+    <color name="divider_color">#E0E0E0</color>
 </resources>
