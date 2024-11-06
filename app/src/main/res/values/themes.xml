@@ -22,6 +22,7 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="fontFamily">@font/ubuntu</item>
         <item name="android:statusBarColor">@color/white</item>
+
     </style>
 
     <style name="StatusBarCremAC" parent="Theme.Material3.Light">
@@ -29,6 +30,8 @@
         <item name="colorOnPrimary">@color/white</item>
         <item name="fontFamily">@font/ubuntu</item>
         <item name="android:statusBarColor">#FBF5FC</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <style name="TopRoundedCorner" parent="">

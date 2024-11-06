@@ -93,6 +93,17 @@
             android:theme="@style/StatusBarWhite"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
+            android:name=".view.splashScreen.SplashScreenActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/StatusBarCremAC">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity
             android:name=".view.settings.PageActivity"
             android:exported="true"
             android:screenOrientation="portrait"

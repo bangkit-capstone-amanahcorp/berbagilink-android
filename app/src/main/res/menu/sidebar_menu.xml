@@ -43,11 +43,42 @@
                 android:title="@string/tracking_pixels"
                 app:showAsAction="never" />
 
-            <item
-                android:id="@+id/action_toko_online"
-                android:icon="@drawable/ic_beranda"
-                android:title="@string/toko_online"
-                app:showAsAction="never" />
+            <group android:id="@+id/group_toko_online">
+                <item
+                    android:id="@+id/action_toko_online"
+                    android:icon="@drawable/ic_beranda"
+                    android:title="@string/toko_online">
+                    <menu>
+                        <!-- Sub menu untuk Toko Online -->
+                        <item
+                            android:id="@+id/action_pengaturan"
+                            android:icon="@drawable/ic_beranda"
+                            android:title="Pengaturan" />
+
+                        <group android:id="@+id/group_pengaturan">
+                            <item
+                                android:id="@+id/action_halaman"
+                                android:icon="@drawable/ic_beranda"
+                                android:title="Halaman" />
+
+                            <item
+                                android:id="@+id/action_banner"
+                                android:icon="@drawable/ic_beranda"
+                                android:title="Banner" />
+
+                            <item
+                                android:id="@+id/action_rekening"
+                                android:icon="@drawable/ic_beranda"
+                                android:title="Rekening" />
+                        </group>
+
+                        <item
+                            android:id="@+id/action_produk"
+                            android:icon="@drawable/ic_beranda"
+                            android:title="Produk" />
+                    </menu>
+                </item>
+            </group>
 
             <item
                 android:id="@+id/action_event"
