@@ -1,7 +1,6 @@
 package com.example.ptamanah.view.settings
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
@@ -11,22 +10,19 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ExpandableListView
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.ptamanah.view.settings.halaman.MediaSosialTokoFragment
 import com.example.ptamanah.R
+import com.example.ptamanah.view.settings.halaman.TokoFragment
+import com.example.ptamanah.view.settings.halaman.TransaksiFragment
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
-import com.google.android.material.appbar.MaterialToolbar
 
 class PageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPageBinding
@@ -62,7 +58,6 @@ class PageActivity : AppCompatActivity() {
     private fun setupExpandableList() {
         val expandableListView: ExpandableListView = findViewById(R.id.expandableListView)
 
-        // Buat struktur menu tree
         val menuItems = listOf(
             NavMenuItem(
                 id = "menu",
@@ -145,12 +140,18 @@ class PageActivity : AppCompatActivity() {
 //        replaceFragment(fragment)
         when (menuItem.id) {
             "beranda" -> {
+                replaceFragment(TokoFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
             "ubah_tampilan" -> {
+                replaceFragment(MediaSosialTokoFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
             "statistik" -> {
+                replaceFragment(TransaksiFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
             // Add other menu items as needed

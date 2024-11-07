@@ -136,4 +136,68 @@
     <string name="support">Support</string>
     <string name="donasi">Donasi</string>
     <string name="landing_page">Landing Page</string>
+    <string name="status_toko_aktif">Status Toko (Aktif)</string>
+    <string name="aktifkan_atau_non_aktifkan_toko">Aktifkan atau non aktifkan toko </string>
+    <string name="foto_profil_toko">Foto Profil Toko</string>
+    <string name="tambahkan_foto_profil">Tambahkan Foto Profil</string>
+    <string name="nama_toko">Nama Toko</string>
+    <string name="masukkan_nama_toko">Masukkan nama toko</string>
+    <string name="bio">Bio</string>
+    <string name="lorem_ipsum">Lorem ipsum</string>
+    <string name="lokasi_toko">Lokasi Toko</string>
+    <string name="provinsi">Povinsi</string>
+    <string name="pilih_provinsi">Pilih Provinsi</string>
+    <string-array name="list_provinsi">
+        <item name="dki_jakarta">DKI Jakarta</item>
+        <item name="jawa_barat">Jawa Barat</item>
+        <item name="jawa_tengah">Jawa Tengah</item>
+    </string-array>
+    <string name="kabupaten">Kabupaten</string>
+    <string name="pilih_kabupaten">Pilih Kabupaten</string>
+    <string-array name="list_kabupaten">
+        <item name="dki_jakarta">DKI Jakarta</item>
+        <item name="jawa_barat">Jawa Barat</item>
+        <item name="jawa_tengah">Jawa Tengah</item>
+    </string-array>
+    <string name="kecamatan">Kecamatan</string>
+    <string-array name="list_kecamatan">
+        <item name="dki_jakarta">DKI Jakarta</item>
+        <item name="jawa_barat">Jawa Barat</item>
+        <item name="jawa_tengah">Jawa Tengah</item>
+    </string-array>
+    <string name="pilih_kecamatan">Pilih Kecamatan</string>
+    <string name="alamat_detail_toko">Alamat Detail Toko</string>
+    <string name="deskripsi_footer">Deskripsi / pesan di footer halaman (bagian paling bawah)</string>
+
+    // Media Sosial Toko
+    <string name="deskripsi_media_sosial_toko">Akan menjadi icon di footer yang menuju  ke halaman-halaman media sosial toko anda</string>
+    <string name="whatsapp">Whatsapp</string>
+    <string name="number_example">08XXXXXXXX</string>
+    <string name="disclaimer_phone">Costumer akan menghubungi anda melalui nomor ini jika ingin bertanya tentang barang atau toko</string>
+    <string name="isi_chat_otomatis_whatsapp">Isi Chat Otomatis Whatsapp</string>
+    <string name="placeholder_chat_otomatis_whatsapp">contoh: Halo, kak. Saya mau tanya produk dong</string>
+    <string name="username_instagram">Username Instagram</string>
+    <string name="placeholder_username_instagram">contoh: muhammad_12</string>
+    <string name="link_facebook">Link Facebook</string>
+    <string name="placeholder_link_facebook">Masukkan link facebook</string>
+    <string name="link_youtube">Link Youtube</string>
+    <string name="placeholder_link_youtube">Masukkan link youtube</string>
+    <string name="link_tiktok">Link Tiktok</string>
+    <string name="placeholder_link_tiktok">Masukkan link tiktok</string>
+    <string name="link_tokopedia">Link Tokopedia</string>
+    <string name="placeholder_link_tokopedia">Masukkan link tokopedia</string>
+    <string name="link_shoope">Link Shoope</string>
+    <string name="placeholder_link_shoope">Masukkan link shoope</string>
+
+    // Transaksi
+    <string name="aktifkan_kode_unik">Aktifkan Kode Unik</string>
+    <string name="deskripsi_kode_unik">Untuk mempermudah pengecakan jumlah transfer pelanggan </string>
+    <string name="aktifkan_pembayaran_otomatis">Aktifkan Pembayaran Automatis melalui Virtual Account</string>
+    <string name="deskripsi_pembayaran_otomatis">Konfirmasi pembayaran yaitu secara otomatis dengan Virtual Account Bank</string>
+    <string name="aktifkan_mutasi_bank">Aktifkan Mutasi Bank untuk Pembayaran Otomatis</string>
+    <string name="deskripsi_mutasi_bank">Untuk menggunakan fitur ini, anda harus mengaktifkan mutasi bank pada menu profil. Fitur ini mempermudah konfirmasi pembayaran secara otomatis dengan kode unik. </string>
+
+    <string name="required">*</string>
+
+
 </resources>

@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="biru_toska">#07AFC7</color>
     <color name="biru_toska_muda">#E6F7F9</color>
+    <color name="biru_toska_muda_text">#557578</color>
     <color name="disable">#c6c6c6</color>
     <color name="green_berhasil">#4DB85A</color>
     <color name="blue_border">#75A8D5</color>
@@ -19,7 +20,13 @@
     <color name="ungu">#A559BF</color>
     <color name="hijau_muda">#52B57C</color>
     <color name="abu_terang">#CCCCCC</color>
+    <color name="red">#FF3434</color>
 
+    <color name="neutral_200">#8AA0A2</color>
+    <color name="white_500">#F2F3F8</color>
+    <color name="neutral_300">#557578</color>
+    <color name="blue_50">#E6F7F9</color>
+    <color name="white_50">#FEFEFE</color>
 
     <color name="icon_color">#9E9E9E</color>
     <color name="text_color">#424242</color>
