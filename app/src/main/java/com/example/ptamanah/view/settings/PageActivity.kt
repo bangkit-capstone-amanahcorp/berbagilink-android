@@ -23,6 +23,7 @@ import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
+import com.example.ptamanah.view.settings.halaman.PreviewFragment
 
 class PageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPageBinding
@@ -142,30 +143,27 @@ class PageActivity : AppCompatActivity() {
             "beranda" -> {
                 replaceFragment(TokoFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
-                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
             "ubah_tampilan" -> {
                 replaceFragment(MediaSosialTokoFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
-                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
             "statistik" -> {
                 replaceFragment(TransaksiFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
-                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
             // Add other menu items as needed
             "halaman" -> {
                 replaceFragment(HalamanFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+            "bagi_to" -> {
+                replaceFragment(PreviewFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+            else -> {
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
-            "event" -> {
-                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
-            }
-//            else -> {
-//                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
-//            }
         }
     }
 

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/preview_halaman_toko_online"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="640dp"
+        android:layout_marginVertical="4dp"
+        android:layout_marginHorizontal="32dp"
+        android:background="@drawable/frame_phone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <!-- Profile Image -->
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="top|center_horizontal"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/avatars" />
+
+            <!-- Store Name -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="12dp"
+                android:text="@string/nama_toko"
+                android:textColor="#333333"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Bio Text -->
+
+
+            <!-- Location -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:background="@drawable/border_location">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_location" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="@string/jakarta_indonesia"
+                        android:textColor="@color/neutral_500"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/deskripsi_preview"
+                android:textColor="@color/neutral_500"
+                android:textSize="14sp" />
+
+            <!-- Tab Buttons -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                android:layout_width="match_parent"
+                android:backgroundTint="@color/blue_50"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="104.31dp"
+                android:layout_height="21.22dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/logo" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:text="@string/kunjungi_halaman_web" />
+
+</LinearLayout>

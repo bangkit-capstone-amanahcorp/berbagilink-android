@@ -197,6 +197,14 @@
     <string name="aktifkan_mutasi_bank">Aktifkan Mutasi Bank untuk Pembayaran Otomatis</string>
     <string name="deskripsi_mutasi_bank">Untuk menggunakan fitur ini, anda harus mengaktifkan mutasi bank pada menu profil. Fitur ini mempermudah konfirmasi pembayaran secara otomatis dengan kode unik. </string>
 
+    // Preview
+    <string name="link">Link</string>
+    <string name="jakarta_indonesia">Jakarta, Indonesia</string>
+    <string name="deskripsi_preview">Your bio is here. Explain about you</string>
+    <string name="preview_halaman_toko_online">Preview Halaman Toko Online</string>
+    <string name="kunjungi_halaman_web">Kunjungi Halaman Web</string>
+    <string name="cari_produk">Cari Produk</string>
+
     <string name="required">*</string>
 
 

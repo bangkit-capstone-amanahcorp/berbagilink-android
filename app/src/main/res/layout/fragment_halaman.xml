@@ -166,56 +166,68 @@
 
 
             <!-- Accordion Sections -->
-            <androidx.cardview.widget.CardView
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginVertical="8dp"-->
+<!--                app:cardCornerRadius="16dp"-->
+<!--                app:cardElevation="0dp">-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="16dp">-->
+
+<!--                    &lt;!&ndash; Toko &ndash;&gt;-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvToko"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Toko"-->
+<!--                        android:textColor="#333333"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    &lt;!&ndash; Media Sosial Toko &ndash;&gt;-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvMediaSosialToko"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:text="Media Sosial Toko"-->
+<!--                        android:textColor="#333333"-->
+<!--                        android:textStyle="bold" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="4dp"-->
+<!--                        android:text="Akan menjadi icon di footer yang menuju ke halaman-halaman media sosial toko anda"-->
+<!--                        android:textColor="#666666" />-->
+
+<!--                    &lt;!&ndash; Transaksi &ndash;&gt;-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvTransaksi"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:text="Transaksi"-->
+<!--                        android:textColor="#333333"-->
+<!--                        android:textStyle="bold" />-->
+<!--                </LinearLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
+
+            <ExpandableListView
+                android:id="@+id/expandableListView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="0dp">
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <!-- Toko -->
-                    <TextView
-                        android:id="@+id/tvToko"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Toko"
-                        android:textColor="#333333"
-                        android:textStyle="bold" />
-
-                    <!-- Media Sosial Toko -->
-                    <TextView
-                        android:id="@+id/tvMediaSosialToko"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Media Sosial Toko"
-                        android:textColor="#333333"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Akan menjadi icon di footer yang menuju ke halaman-halaman media sosial toko anda"
-                        android:textColor="#666666" />
-
-                    <!-- Transaksi -->
-                    <TextView
-                        android:id="@+id/tvTransaksi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:text="Transaksi"
-                        android:textColor="#333333"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <FrameLayout
+                android:id="@+id/fragmentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <!-- Button Section -->
             <LinearLayout
