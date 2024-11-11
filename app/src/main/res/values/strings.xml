@@ -231,8 +231,19 @@
     <string name="tambah_rekening">Tambah Rekening</string>
     <string name="edit_rekening">Edit Rekening</string>
     <string name="hapus_rekening">Hapus Rekening</string>
-    
-    
+
+    // Daftar Produk
+    <string name="daftar_produk">Daftar Produk</string>
+    <string name="produk">Produk</string>
+    <string name="info_produk">Info Produk</string>
+    <string name="jenis">Jenis</string>
+    <string name="kategori">Kategori</string>
+    <string name="lihat_varian_produk">Lihat Varian Produk</string>
+    <string name="stok">Stok</string>
+    <string name="aktifkan">Aktifkan?</string>
+    <string name="rp">Rp</string>
+    <string name="atur">Atur</string>
+
     <string name="required">*</string>
 
 

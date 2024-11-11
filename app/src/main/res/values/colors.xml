@@ -22,6 +22,7 @@
     <color name="abu_terang">#CCCCCC</color>
     <color name="red">#FF3434</color>
 
+    <color name="neutral_50">#E6EAEB</color>
     <color name="neutral_200">#8AA0A2</color>
     <string name="neutral_300">#557578</string>
     <color name="neutral_500">#013135</color>
