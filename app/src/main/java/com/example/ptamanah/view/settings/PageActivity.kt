@@ -24,6 +24,9 @@ import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.halaman.PreviewFragment
+import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
+import com.example.ptamanah.view.settings.rekening.RekeningFragment
+import com.example.ptamanah.view.settings.rekening.TambahRekeningFragment
 
 class PageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPageBinding
@@ -69,17 +72,67 @@ class PageActivity : AppCompatActivity() {
             NavMenuItem(id = "statistik", title = "Statistik", icon = R.drawable.ic_home),
             NavMenuItem(id = "bagi_to", title = "Bagi.to", icon = R.drawable.ic_home),
             NavMenuItem(id = "tagihan", title = "Tagihan", icon = R.drawable.ic_home),
-            NavMenuItem(id = "tracking_pixels", title = "Tracking Pixels", icon = R.drawable.ic_home),
-            NavMenuItem(id = "toko_online", title = "Toko Online", icon = R.drawable.ic_home,
+            NavMenuItem(
+                id = "tracking_pixels",
+                title = "Tracking Pixels",
+                icon = R.drawable.ic_home
+            ),
+            NavMenuItem(
+                id = "toko_online", title = "Toko Online", icon = R.drawable.ic_home,
                 children = listOf(
                     NavMenuItem(
                         id = "pengaturan",
                         title = "Pengaturan",
                         icon = R.drawable.ic_home,
                         children = listOf(
-                            NavMenuItem(id = "halaman", title = "Halaman", icon = R.drawable.ic_home),
+                            NavMenuItem(
+                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home,
+                                children = listOf(
+                                    NavMenuItem(
+                                        id = "toko_fragment",
+                                        title = "Toko Fragment",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "media_sosial_toko_fragment",
+                                        title = "Media Sosial Toko Fragment",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "transaksi_fragment",
+                                        title = "Transaksi Fragment",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "preview_fragment",
+                                        title = "Preview Fragment",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                )
+                            ),
                             NavMenuItem(id = "banner", title = "Banner", icon = R.drawable.ic_home),
-                            NavMenuItem(id = "rekening", title = "Rekening", icon = R.drawable.ic_home)
+                            NavMenuItem(
+                                id = "rekening",
+                                title = "Rekening",
+                                icon = R.drawable.ic_home,
+                                children = listOf(
+                                    NavMenuItem(
+                                        id = "rekening_fragment",
+                                        title = "Rekening",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "tambah_rekening_fragment",
+                                        title = "Tambah Rekening",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "edit_rekening_fragment",
+                                        title = "Edit Rekening",
+                                        icon = R.drawable.ic_home,
+                                    )
+                                )
+                            )
                         )
                     ),
                     NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
@@ -93,19 +146,19 @@ class PageActivity : AppCompatActivity() {
             NavMenuItem(
                 id = "support",
                 title = "Support",
-                badge = "MULTIPAGES",
+                badge = "BUSINESS",
                 icon = R.drawable.ic_home
             ),
             NavMenuItem(
                 id = "donasi",
                 title = "Donasi",
-                badge = "MULTIPAGES",
+                badge = "BUSINESS",
                 icon = R.drawable.ic_home
             ),
             NavMenuItem(
                 id = "landing_page",
                 title = "Landing Page",
-                badge = "MULTIPAGES",
+                badge = "BUSINESS",
                 icon = R.drawable.ic_home
             )
         )
@@ -123,7 +176,8 @@ class PageActivity : AppCompatActivity() {
 
         // Optional: Hapus divider
         expandableListView.setGroupIndicator(null)
-        expandableListView.divider = ColorDrawable(ContextCompat.getColor(this, R.color.divider_color))
+        expandableListView.divider =
+            ColorDrawable(ContextCompat.getColor(this, R.color.divider_color))
         expandableListView.dividerHeight = 1.dp(this)
     }
 
@@ -144,23 +198,47 @@ class PageActivity : AppCompatActivity() {
                 replaceFragment(TokoFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
-            "ubah_tampilan" -> {
+
+            "toko_fragment" -> {
+                replaceFragment(TokoFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "media_sosial_toko_fragment" -> {
                 replaceFragment(MediaSosialTokoFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
+
             "statistik" -> {
                 replaceFragment(TransaksiFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
             // Add other menu items as needed
-            "halaman" -> {
-                replaceFragment(HalamanFragment())
+            "transaksi_fragment" -> {
+                replaceFragment(TransaksiFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
-            "bagi_to" -> {
+
+            "preview_fragment" -> {
                 replaceFragment(PreviewFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
+
+            "rekening_fragment" -> {
+                replaceFragment(RekeningFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "tambah_rekening_fragment" -> {
+                replaceFragment(TambahRekeningFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "edit_rekening_fragment" -> {
+                replaceFragment(EditRekeningFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
             else -> {
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }

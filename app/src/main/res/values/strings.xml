@@ -205,6 +205,34 @@
     <string name="kunjungi_halaman_web">Kunjungi Halaman Web</string>
     <string name="cari_produk">Cari Produk</string>
 
+    // Rekening
+    <string name="rekening">Rekening</string>
+    <string name="daftar_rekening_transaksi">Daftar Rekening Transaksi</string>
+    <string name="no">No</string>
+    <string name="nama_pemilik_rekening">Nama Pemilik Rekening</string>
+    <string name="nomor_rekening">Nomor Rekening</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="nama_bank">Nama Bank</string>
+    <string name="pengecekan">Pengecekan</string>
+    <string name="aktif">Aktif?</string>
+    <string name="action">Action</string>
+    <string name="jenis_pengecekan_pembayaran">Jenis Pengecekan Pembayaran</string>
+    <string name="deskripsi_jenis_pengecekan_pembayaran">
+        Untuk pengecekan pembayaran otomatis, dana tidak akan langsung diterima oleh pemilik akun.
+    </string>
+    <string name="otomatis">Otomatis (seperti: Virtual Account dan QRIS)</string>
+    <string name="manual">Manual (Transfer Bank dan E-Wallet)</string>
+    <string name="jenis_bank">Jenis Bank</string>
+    <string name="bank">Bank</string>
+    <string name="e_wallet">E-Wallet</string>
+    <string name="placeholder_nama_pemilik">Masukkan nama pemilik</string>
+    <string name="placeholder_rekening">Masukkan nomor rekening</string>
+    <string name="placeholder_jenis_bank">Pilih bank</string>
+    <string name="tambah_rekening">Tambah Rekening</string>
+    <string name="edit_rekening">Edit Rekening</string>
+    <string name="hapus_rekening">Hapus Rekening</string>
+    
+    
     <string name="required">*</string>
 
 
