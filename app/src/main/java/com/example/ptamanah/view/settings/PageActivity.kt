@@ -22,6 +22,10 @@ import com.example.ptamanah.view.settings.halaman.TransaksiFragment
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.settings.banner.DaftarBanner
+import com.example.ptamanah.view.settings.banner.EditBanner
+import com.example.ptamanah.view.settings.banner.NyobaFragment
+import com.example.ptamanah.view.settings.banner.TambahBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.halaman.PreviewFragment
 import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
@@ -110,7 +114,27 @@ class PageActivity : AppCompatActivity() {
                                     ),
                                 )
                             ),
-                            NavMenuItem(id = "banner", title = "Banner", icon = R.drawable.ic_home),
+                            NavMenuItem(
+                                id = "banner",
+                                title = "Banner",
+                                icon = R.drawable.ic_home,
+                                children = listOf(
+                                    NavMenuItem(
+                                        id = "daftar_banner",
+                                        title = "Daftar Banner",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "edit_banner",
+                                        title = "Edit Banner",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "tambah_banner",
+                                        title = "Tambah Banner",
+                                        icon = R.drawable.ic_home,
+                                    )
+                                )),
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
@@ -221,6 +245,21 @@ class PageActivity : AppCompatActivity() {
 
             "preview_fragment" -> {
                 replaceFragment(PreviewFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "daftar_banner" -> {
+                replaceFragment(DaftarBanner())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "edit_banner" -> {
+                replaceFragment(EditBanner())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "tambah_banner" -> {
+                replaceFragment(TambahBanner())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
