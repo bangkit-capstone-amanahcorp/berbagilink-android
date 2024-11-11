@@ -93,7 +93,7 @@
             android:theme="@style/StatusBarWhite"
             android:windowSoftInputMode="adjustPan|adjustResize" />
         <activity
-            android:name=".view.settings.PageActivity"
+            android:name=".view.settings.NyobaFragment"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/StatusBarCremAC">

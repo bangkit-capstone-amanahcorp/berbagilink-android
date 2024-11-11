@@ -110,7 +110,7 @@
     <string name="harga">Harga</string>
     <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
     <string name="total">Total</string>
-    
+
     <string name="link_toko_anda">Link toko anda:</string>
     <string name="berbagi.link">berbagi.link/isabnumaryam/online…</string>
     <string name="lihat_preview_halaman_toko">Lihat Preview Halaman Toko</string>
@@ -130,10 +130,34 @@
     <string name="tagihan">Tagihan</string>
     <string name="tracking_pixels">Tracking Pixels</string>
     <string name="toko_online">Toko Online</string>
-<!--    <string name="event">Event</string>-->
+    <!--    <string name="event">Event</string>-->
     <string name="payment">Payment</string>
     <string name="wallet">Wallet</string>
     <string name="support">Support</string>
     <string name="donasi">Donasi</string>
     <string name="landing_page">Landing Page</string>
+
+    // desainby Firzandi
+    // daftar banner
+    <string name="banner">Banner</string>
+    <string name="plus_tambah_banner">+ Tambah Banner</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam placerat arcu metus, a pharetra sapien pharetra et. Donec placerat, arcu id consequat malesuada, urna risus auctor nisi, ut sagittis justo felis nec dolor. Etiam lorem massa, facilisis at lorem in, fringilla scelerisque metus. Proin at tempus neque.</string>
+
+
+    // tambah banner
+    <string name="tambah_banner">Tambah Banner</string>
+    <string name="upload_banner">Upload Banner</string>
+    <string name="judul_banner">Judul Artikel Banner</string>
+    <string name="isi_banner">Isi Artikel</string>
+
+    <string name="edit_banner">Edit Banner</string>
+    <string name="hapus_banner">Hapus Banner</string>
+
+
+    // popup
+    <string name="ya_hapus">Ya, Hapus</string>
+    <string name="nonaktifkan">Non-aktifkan</string>
+    <string name="ya_aktifkan">Ya, Aktifkan</string>
+
+
 </resources>

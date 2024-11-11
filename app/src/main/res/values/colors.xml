@@ -2,6 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="primer">#F2F3F8</color>
+    <color name="sekunder">#FEFEFE</color>
     <color name="biru_toska">#07AFC7</color>
     <color name="biru_toska_muda">#E6F7F9</color>
     <color name="disable">#c6c6c6</color>
@@ -16,7 +18,10 @@
     <color name="border_returned">#29303030</color>
     <color name="failed">#C7071E</color>
     <color name="border_failed">#29C7071E</color>
-    <color name="ungu">#A559BF</color>
+    <color name="ungu">#A559BF</color>abu_terang
     <color name="hijau_muda">#52B57C</color>
     <color name="abu_terang">#CCCCCC</color>
+
+    <color name="abu_rte">#F7F8FA</color>
+    <color name="merah_cancel">#EF6060</color>
 </resources>
