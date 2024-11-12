@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -15,6 +16,8 @@ import androidx.core.view.GravityCompat
 import com.example.ptamanah.view.settings.banner.popup.AktifkanBanner
 import com.example.ptamanah.view.settings.banner.popup.HapusBanner
 import com.example.ptamanah.view.settings.banner.popup.NonaktifBanner
+import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
+import com.example.ptamanah.view.settings.rekening.TambahRekeningFragment
 
 class DaftarBanner : Fragment() {
 
@@ -74,7 +77,31 @@ class DaftarBanner : Fragment() {
 //            }
 //        }
 
+        val tambahBannerButton = view.findViewById<Button>(R.id.btnTmbhBanner)
+        tambahBannerButton.setOnClickListener {
+            navigateToTambahBannerFragment()
+        }
+
+        val editButton = view.findViewById<ImageView>(R.id.iv_edit)
+        editButton.setOnClickListener {
+            navigateToEditBannerFragment()
+        }
+
         return view
+    }
+
+    private fun navigateToEditBannerFragment() {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.containerToko, EditBanner())
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    private fun navigateToTambahBannerFragment() {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.containerToko, TambahBanner())
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 
     // Define click handlers outside of onCreate
