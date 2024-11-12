@@ -110,7 +110,7 @@
     <string name="harga">Harga</string>
     <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
     <string name="total">Total</string>
-    
+
     <string name="link_toko_anda">Link toko anda:</string>
     <string name="berbagi.link">berbagi.link/isabnumaryam/online…</string>
     <string name="lihat_preview_halaman_toko">Lihat Preview Halaman Toko</string>
@@ -130,7 +130,7 @@
     <string name="tagihan">Tagihan</string>
     <string name="tracking_pixels">Tracking Pixels</string>
     <string name="toko_online">Toko Online</string>
-<!--    <string name="event">Event</string>-->
+    <!--    <string name="event">Event</string>-->
     <string name="payment">Payment</string>
     <string name="wallet">Wallet</string>
     <string name="support">Support</string>
@@ -232,9 +232,19 @@
     <string name="edit_rekening">Edit Rekening</string>
     <string name="hapus_rekening">Hapus Rekening</string>
 
+    <string name="daftar_produk">Daftar Produk</string>
+    <string name="produk">Produk</string>
+    <string name="info_produk">Info Produk</string>
+    <string name="jenis">Jenis</string>
+    <string name="kategori">Kategori</string>
+    <string name="stok">Stok</string>
+    <string name="aktifkan">Aktifkan?</string>
+    <string name="rp">Rp</string>
+    <string name="atur">Atur</string>
+    <string name="lihat_varian_produk">Lihat Varian Produk</string>
+
 
     <string name="required">*</string>
-
 
 
     // desainby Firzandi

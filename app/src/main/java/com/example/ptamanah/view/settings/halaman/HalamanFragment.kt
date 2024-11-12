@@ -16,16 +16,16 @@ class HalamanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_halaman, container, false)
+        val view = inflater.inflate(R.layout.fragment_halaman, container, false)
 
-        val expandableListView = view.findViewById<ExpandableListView>(R.id.expandableListView)
-        val groupList = listOf("Toko", "Media Sosial Toko", "Transaksi")
-        val childList = mapOf(
-            "Toko" to TokoFragment(),
-            "Medial Sosial Toko" to MediaSosialTokoFragment(),
-            "Transaksi" to TransaksiFragment()
-        )
-
+//        val expandableListView = view.findViewById<ExpandableListView>(R.id.expandableListView)
+//        val groupList = listOf("Toko", "Media Sosial Toko", "Transaksi")
+//        val childList = mapOf(
+//            "Toko" to TokoFragment(),
+//            "Medial Sosial Toko" to MediaSosialTokoFragment(),
+//            "Transaksi" to TransaksiFragment()
+//        )
+//
 //        val adapter = DropdownAdapter(requireContext(), groupList, childList, childFragmentManager)
 //        expandableListView.setAdapter(adapter)
 

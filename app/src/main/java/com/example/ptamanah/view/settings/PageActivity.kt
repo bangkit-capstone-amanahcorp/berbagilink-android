@@ -94,6 +94,16 @@ class PageActivity : AppCompatActivity() {
                                 id = "halaman", title = "Halaman", icon = R.drawable.ic_home,
                                 children = listOf(
                                     NavMenuItem(
+                                        id = "test_fragment",
+                                        title = "Test Fragment",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "halaman_fragment",
+                                        title = "Halaman Fragment",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
                                         id = "toko_fragment",
                                         title = "Toko Fragment",
                                         icon = R.drawable.ic_home,
@@ -115,7 +125,28 @@ class PageActivity : AppCompatActivity() {
                                     ),
                                 )
                             ),
-                            NavMenuItem(id = "banner", title = "Banner", icon = R.drawable.ic_home),
+                            NavMenuItem(
+                                id = "banner",
+                                title = "Banner",
+                                icon = R.drawable.ic_home,
+                                children = listOf(
+                                    NavMenuItem(
+                                        id = "daftar_banner",
+                                        title = "Daftar Banner",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "edit_banner",
+                                        title = "Edit Banner",
+                                        icon = R.drawable.ic_home,
+                                    ),
+                                    NavMenuItem(
+                                        id = "tambah_banner",
+                                        title = "Tambah Banner",
+                                        icon = R.drawable.ic_home,
+                                    )
+                                )
+                            ),
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
@@ -146,10 +177,10 @@ class PageActivity : AppCompatActivity() {
                         icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
-                                id = "daftar_produk_fragment",
-                                title = "Daftar Produk Fragment",
+                                id = "varian_produk_fragment",
+                                title = "Varian Produk",
                                 icon = R.drawable.ic_home,
-                                )
+                            ),
                         )
                     ),
                     NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
@@ -210,6 +241,7 @@ class PageActivity : AppCompatActivity() {
         // Ganti fragment di FragmentContainerView
 //        replaceFragment(fragment)
         when (menuItem.id) {
+
             "beranda" -> {
                 replaceFragment(TokoFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -229,6 +261,11 @@ class PageActivity : AppCompatActivity() {
                 replaceFragment(TransaksiFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
+
+            "halaman_fragment" -> {
+                replaceFragment(HalamanFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
             // Add other menu items as needed
             "transaksi_fragment" -> {
                 replaceFragment(TransaksiFragment())
@@ -237,6 +274,21 @@ class PageActivity : AppCompatActivity() {
 
             "preview_fragment" -> {
                 replaceFragment(PreviewFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "daftar_banner" -> {
+                replaceFragment(DaftarBanner())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "edit_banner" -> {
+                replaceFragment(EditBanner())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "tambah_banner" -> {
+                replaceFragment(TambahBanner())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
@@ -255,7 +307,7 @@ class PageActivity : AppCompatActivity() {
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
-            "daftar_produk_fragment" -> {
+            "varian_produk_fragment" -> {
                 replaceFragment(DaftarProdukFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
