@@ -23,6 +23,10 @@ import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.produk.DaftarProdukFragment
+import com.example.ptamanah.view.settings.banner.DaftarBanner
+import com.example.ptamanah.view.settings.banner.EditBanner
+import com.example.ptamanah.view.settings.banner.NyobaFragment
+import com.example.ptamanah.view.settings.banner.TambahBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.halaman.PreviewFragment
 import com.example.ptamanah.view.settings.rekening.EditRekeningFragment

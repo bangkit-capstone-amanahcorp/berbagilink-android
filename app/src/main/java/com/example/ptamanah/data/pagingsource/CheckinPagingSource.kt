@@ -2,7 +2,6 @@ package com.example.ptamanah.data.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.response.DataItemtenant
 import com.example.ptamanah.data.retrofit.ApiService
 
