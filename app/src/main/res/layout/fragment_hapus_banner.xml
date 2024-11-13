@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="328dp"
-    android:layout_height="172dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/border_popup"
-    tools:context=".view.settings.banner.popup.HapusBanner"
     android:padding="16dp">
 
     <ImageButton
@@ -16,7 +13,8 @@
         android:src="@drawable/ic_close"
         android:background="@android:color/transparent"
         android:layout_gravity="end"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="140dp"
+        />
 
     <TextView
         android:layout_width="match_parent"
@@ -60,5 +58,4 @@
             android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
-
 </FrameLayout>
