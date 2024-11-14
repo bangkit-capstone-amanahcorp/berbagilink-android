@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ExpandableListView
 import com.example.ptamanah.R
 
@@ -29,6 +30,36 @@ class HalamanFragment : Fragment() {
 //        val adapter = DropdownAdapter(requireContext(), groupList, childList, childFragmentManager)
 //        expandableListView.setAdapter(adapter)
 
+        val previewButton = view.findViewById<Button>(R.id.previewBtn)
+        previewButton.setOnClickListener {
+            navigateToPreviewFragment()
+        }
+
+
         return view
     }
+
+    private fun navigateToPreviewFragment() {
+        val transaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.containerToko, PreviewFragment()) // Ganti R.id.fragmentContainer dengan ID container di activity
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        addFragment(TokoFragment(), R.id.containerTokoFragment)
+
+        addFragment(MediaSosialTokoFragment(), R.id.containerMediaSosialFragment)
+
+        addFragment(TransaksiFragment(), R.id.containerTransaksiFragment)
+    }
+
+    private fun addFragment(fragment: Fragment, containerId: Int) {
+        childFragmentManager.beginTransaction()
+            .replace(containerId, fragment)
+            .commit()
+    }
+
 }

@@ -182,6 +182,7 @@
                     android:textSize="12sp" />
 
                 <Button
+                    android:id="@+id/btnTambahProduk"
                     style="@style/Widget.Material3.Button.OutlinedButton.Icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -207,22 +208,23 @@
                 android:scrollbars="horizontal">
 
                 <TableLayout
+                    android:id="@+id/tableLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:stretchColumns="0, 1, 2, 3, 4, 5, 6, 7">
 
                     <!-- Table Header Row -->
                     <TableRow
+                        android:id="@+id/tableRowHeader"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white_500"
-                        android:padding="12dp">
+                        android:background="@color/white_500">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="@string/no"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -230,9 +232,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
+                            android:padding="12dp"
                             android:text="@string/info_produk"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -240,8 +240,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
+                            android:padding="12dp"
                             android:text="@string/jenis"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -249,9 +248,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
                             android:layout_weight="1"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="@string/kategori"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -259,9 +258,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="@string/harga"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -269,9 +267,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="@string/stok"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -280,9 +277,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="@string/aktifkan"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -290,8 +286,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
+                            android:padding="12dp"
                             android:text="@string/action"
                             android:textColor="#333333"
                             android:textStyle="bold" />
@@ -305,45 +300,50 @@
                         android:background="#DDDDDD" />
 
                     <TableRow
+                        android:id="@+id/tableRowData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingVertical="8dp">
 
                         <TextView
+                            android:id="@+id/tvNo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="1" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:padding="12dp">
 
                             <ImageView
+                                android:id="@+id/imageProduct"
                                 android:layout_width="32dp"
                                 android:layout_height="32dp"
                                 android:layout_marginEnd="8dp"
-                                tools:src="@tools:sample/avatars" />
+                                tools:src="@drawable/produk" />
 
                             <LinearLayout
-                                android:layout_width="80dp"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/tvName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:text="Samase Official - Badr Kemko"
                                     android:textStyle="bold" />
 
                                 <LinearLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_marginTop="4dp"
                                     android:orientation="horizontal">
 
@@ -364,28 +364,29 @@
 
 
                         <TextView
+                            android:id="@+id/tvType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:gravity="center"
+                            android:padding="12dp"
                             android:text="Barang" />
 
                         <TextView
+                            android:id="@+id/tvCategory"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:ellipsize="end"
                             android:gravity="center"
                             android:maxLines="1"
+                            android:padding="12dp"
                             android:text="Fashion Pria" />
 
 
                         <LinearLayout
+                            android:id="@+id/rowPrice"
                             android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
                             android:background="@drawable/border_row"
                             android:orientation="horizontal">
 
@@ -399,6 +400,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/tvPrice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
@@ -412,12 +414,11 @@
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
                             android:background="@drawable/border_row"
                             android:orientation="horizontal">
 
                             <TextView
+                                android:id="@+id/tvStcck"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
@@ -426,130 +427,162 @@
 
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switchActive"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1" />
+                            android:layout_gravity="center"
+                            android:padding="12dp" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/textFieldProvinsi"
                             style="@style/DropdownTextInputLayout"
-                            android:layout_marginStart="12dp"
-                            android:layout_weight="1"
-                            android:hint="@string/atur">
+                            android:padding="12dp">
 
                             <AutoCompleteTextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="none" />
+                                android:hint="@string/atur"
+                                android:inputType="none"
+                                android:labelFor="@string/atur" />
                         </com.google.android.material.textfield.TextInputLayout>
-
                     </TableRow>
 
-                    <LinearLayout
+                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="wrap_content">
 
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_bold"
-                            android:text="@string/lihat_varian_produk"
-                            android:textSize="10sp" />
+                            android:layout_height="match_parent"
+                            android:text="" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_arrow_up_toska" />
+                        <androidx.cardview.widget.CardView
+                            android:layout_weight="7"
+                            android:backgroundTint="@color/white_500"
+                            app:cardCornerRadius="8dp">
 
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="4dp"
-                            android:layout_weight="1"
-                            android:text="Hitam, 24"
-                            android:textStyle="bold" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/field_row_shape"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <LinearLayout
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="@string/rp"
-                                android:textStyle="bold" />
+                                android:orientation="vertical"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="8dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:ellipsize="end"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="289.000" />
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/field_row_shape"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:ellipsize="end"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="50" />
-                        </LinearLayout>
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:text="@string/lihat_varian_produk"
+                                        android:textSize="10sp" />
 
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_arrow_up_toska" />
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/field_row_shape"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                                </LinearLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:ellipsize="end"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="Set Utama"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="2dp"
+                                    android:background="@color/neutral_50" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:text="Hitam, 24"
+                                        android:textStyle="bold" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="8dp"
+                                        android:background="@drawable/field_row_shape"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:ellipsize="end"
+                                            android:gravity="center"
+                                            android:maxLines="1"
+                                            android:text="@string/rp"
+                                            android:textStyle="bold" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="4dp"
+                                            android:ellipsize="end"
+                                            android:gravity="center"
+                                            android:maxLines="1"
+                                            android:text="289.000" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="8dp"
+                                        android:background="@drawable/field_row_shape"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="4dp"
+                                            android:ellipsize="end"
+                                            android:gravity="center"
+                                            android:maxLines="1"
+                                            android:text="50" />
+                                    </LinearLayout>
+
+                                    <com.google.android.material.switchmaterial.SwitchMaterial
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="8dp"
+                                        android:background="@drawable/field_row_shape"
+                                        android:gravity="center"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="4dp"
+                                            android:ellipsize="end"
+                                            android:gravity="center"
+                                            android:maxLines="1"
+                                            android:text="Set Utama"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                    </TableRow>
 
 
                 </TableLayout>

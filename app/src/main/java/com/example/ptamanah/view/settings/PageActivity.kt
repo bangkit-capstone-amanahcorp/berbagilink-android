@@ -61,6 +61,11 @@ class PageActivity : AppCompatActivity() {
         headerView.findViewById<ImageButton>(R.id.close).setOnClickListener {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.containerToko, HalamanFragment())
+            .commit()
+
     }
 
 
@@ -91,98 +96,18 @@ class PageActivity : AppCompatActivity() {
                         icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
-                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home,
-                                children = listOf(
-                                    NavMenuItem(
-                                        id = "test_fragment",
-                                        title = "Test Fragment",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "halaman_fragment",
-                                        title = "Halaman Fragment",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "toko_fragment",
-                                        title = "Toko Fragment",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "media_sosial_toko_fragment",
-                                        title = "Media Sosial Toko Fragment",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "transaksi_fragment",
-                                        title = "Transaksi Fragment",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "preview_fragment",
-                                        title = "Preview Fragment",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                )
-                            ),
+                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home),
                             NavMenuItem(
                                 id = "banner",
                                 title = "Banner",
-                                icon = R.drawable.ic_home,
-                                children = listOf(
-                                    NavMenuItem(
-                                        id = "daftar_banner",
-                                        title = "Daftar Banner",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "edit_banner",
-                                        title = "Edit Banner",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "tambah_banner",
-                                        title = "Tambah Banner",
-                                        icon = R.drawable.ic_home,
-                                    )
-                                )
-                            ),
+                                icon = R.drawable.ic_home),
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
-                                icon = R.drawable.ic_home,
-                                children = listOf(
-                                    NavMenuItem(
-                                        id = "rekening_fragment",
-                                        title = "Rekening",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "tambah_rekening_fragment",
-                                        title = "Tambah Rekening",
-                                        icon = R.drawable.ic_home,
-                                    ),
-                                    NavMenuItem(
-                                        id = "edit_rekening_fragment",
-                                        title = "Edit Rekening",
-                                        icon = R.drawable.ic_home,
-                                    )
-                                )
-                            )
+                                icon = R.drawable.ic_home,)
                         )
                     ),
-                    NavMenuItem(
-                        id = "produk",
-                        title = "Produk",
-                        icon = R.drawable.ic_home,
-                        children = listOf(
-                            NavMenuItem(
-                                id = "varian_produk_fragment",
-                                title = "Varian Produk",
-                                icon = R.drawable.ic_home,
-                            ),
-                        )
-                    ),
+                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
                     NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
                     NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
                 )
@@ -241,73 +166,22 @@ class PageActivity : AppCompatActivity() {
         // Ganti fragment di FragmentContainerView
 //        replaceFragment(fragment)
         when (menuItem.id) {
-
-            "beranda" -> {
-                replaceFragment(TokoFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "toko_fragment" -> {
-                replaceFragment(TokoFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "media_sosial_toko_fragment" -> {
-                replaceFragment(MediaSosialTokoFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "statistik" -> {
-                replaceFragment(TransaksiFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "halaman_fragment" -> {
+            "halaman" -> {
                 replaceFragment(HalamanFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
-            // Add other menu items as needed
-            "transaksi_fragment" -> {
-                replaceFragment(TransaksiFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
 
-            "preview_fragment" -> {
-                replaceFragment(PreviewFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "daftar_banner" -> {
+            "banner" -> {
                 replaceFragment(DaftarBanner())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
-            "edit_banner" -> {
-                replaceFragment(EditBanner())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "tambah_banner" -> {
-                replaceFragment(TambahBanner())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "rekening_fragment" -> {
+            "rekening" -> {
                 replaceFragment(RekeningFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
-            "tambah_rekening_fragment" -> {
-                replaceFragment(TambahRekeningFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "edit_rekening_fragment" -> {
-                replaceFragment(EditRekeningFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
-            }
-
-            "varian_produk_fragment" -> {
+            "produk" -> {
                 replaceFragment(DaftarProdukFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
