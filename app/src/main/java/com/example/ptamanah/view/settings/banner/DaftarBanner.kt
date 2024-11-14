@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -44,18 +45,18 @@ class DaftarBanner : Fragment() {
         // Listener for the first switch
         binding.materialSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                // Switch 1 is ON
+                showActiveDialog("Banner 11.11")
             } else {
-                // Switch 1 is OFF
+                showNonActiveDialog("Banner 11.11")
             }
         }
 
         // Listener for the second switch
         binding.materialSwitch2.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                // Switch 2 is ON
+                showActiveDialog("Banner 11.11")
             } else {
-                // Switch 2 is OFF
+                showNonActiveDialog("Banner 11.11")
             }
         }
 
@@ -82,20 +83,19 @@ class DaftarBanner : Fragment() {
         }
     }
 
-    private fun showDeleteDialog(itemName: String) {
+    private fun showNonActiveDialog(itemName: String) {
         val dialogBuilder = AlertDialog.Builder(requireContext())
 
         val inflater = layoutInflater
-        val dialogView = inflater.inflate(R.layout.dialog_delete_confirmation, null)
+        val dialogView = inflater.inflate(R.layout.dialog_non_active_confirmation, null)
         dialogBuilder.setView(dialogView)
 
-        // Referensi elemen UI pada dialog
         val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessage)
         val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
-        val btnDelete = dialogView.findViewById<Button>(R.id.btnDelete)
+        val btnCancel1 = dialogView.findViewById<ImageButton>(R.id.btnClose)
+        val btnDelete = dialogView.findViewById<Button>(R.id.btnNonaktif)
 
-        // Set pesan konfirmasi
-        tvMessage.text = "Anda yakin akan menghapus \"$itemName\" ?"
+        tvMessage.text = "Anda yakin akan me-nonaktifkan \"$itemName\" ?"
 
         val alertDialog = dialogBuilder.create()
         alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -104,7 +104,69 @@ class DaftarBanner : Fragment() {
         btnCancel.setOnClickListener {
             alertDialog.dismiss()
         }
+        btnCancel1.setOnClickListener {
+            alertDialog.dismiss()
+        }
 
+        btnDelete.setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    private fun showActiveDialog(itemName: String) {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_active_confimation, null)
+        dialogBuilder.setView(dialogView)
+
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessage)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+        val btnCancel1 = dialogView.findViewById<ImageButton>(R.id.btnClose)
+        val btnActive = dialogView.findViewById<Button>(R.id.btnActive)
+
+        tvMessage.text = "Anda yakin akan mengaktifkan \"$itemName\" ?"
+
+        val alertDialog = dialogBuilder.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        btnCancel1.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        btnActive.setOnClickListener {
+            alertDialog.dismiss()
+        }
+    }
+
+    private fun showDeleteDialog(itemName: String) {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_delete_confirmation, null)
+        dialogBuilder.setView(dialogView)
+
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessage)
+        val btnCancel1 = dialogView.findViewById<ImageButton>(R.id.btnClose)
+        val btnCancel2 = dialogView.findViewById<Button>(R.id.btnCancel)
+        val btnDelete = dialogView.findViewById<Button>(R.id.btnDelete)
+
+        tvMessage.text = "Anda yakin akan menghapus \"$itemName\" ?"
+
+        val alertDialog = dialogBuilder.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+
+        btnCancel1.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        btnCancel2.setOnClickListener {
+            alertDialog.dismiss()
+        }
         btnDelete.setOnClickListener {
             alertDialog.dismiss()
         }
