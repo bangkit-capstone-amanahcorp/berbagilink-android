@@ -1,12 +1,16 @@
 package com.example.ptamanah.view.settings.banner
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.ptamanah.R
 import com.google.android.material.materialswitch.MaterialSwitch
@@ -40,7 +44,9 @@ class DaftarBanner : Fragment() {
 
         binding.ivMove.setOnClickListener { onMoveIconClick() }
         binding.ivEdit.setOnClickListener { onEditIconClick() }
-        binding.ivDelete.setOnClickListener { onDeleteIconClick() }
+        binding.ivDelete.setOnClickListener {
+            showDeleteDialog("Banner 11.11")
+        }
 
         // Listener for the first switch
         binding.materialSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -80,6 +86,34 @@ class DaftarBanner : Fragment() {
 
         binding.ivEdit.setOnClickListener {
             navigateToEditBannerFragment()
+        }
+    }
+
+    private fun showDeleteDialog(itemName: String) {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+
+        val inflater = layoutInflater
+        val dialogView = inflater.inflate(R.layout.dialog_delete_confirmation, null)
+        dialogBuilder.setView(dialogView)
+
+        // Referensi elemen UI pada dialog
+        val tvMessage = dialogView.findViewById<TextView>(R.id.tvMessage)
+        val btnCancel = dialogView.findViewById<Button>(R.id.btnCancel)
+        val btnDelete = dialogView.findViewById<Button>(R.id.btnDelete)
+
+        // Set pesan konfirmasi
+        tvMessage.text = "Anda yakin akan menghapus \"$itemName\" ?"
+
+        val alertDialog = dialogBuilder.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog.show()
+
+        btnCancel.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        btnDelete.setOnClickListener {
+            alertDialog.dismiss()
         }
     }
 
