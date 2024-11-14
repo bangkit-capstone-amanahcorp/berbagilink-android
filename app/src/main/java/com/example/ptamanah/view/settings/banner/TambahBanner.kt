@@ -9,33 +9,31 @@ import androidx.core.view.GravityCompat
 import com.example.ptamanah.R
 import com.google.android.material.appbar.MaterialToolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import com.example.ptamanah.databinding.FragmentTambahBannerBinding
 
 class TambahBanner : Fragment() {
+
+    private var _binding: FragmentTambahBannerBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_tambah_banner, container, false)
-
-//        // Initialize the Toolbar
-//        val toolbar = view.findViewById<MaterialToolbar>(R.id.topAppBarBanner)
-//
-//        // Initialize the DrawerLayout
-//        val drawerLayout = activity?.findViewById<DrawerLayout>(R.id.drawer_layout)
-//
-//        // Set navigation click listener to open/close the drawer
-//        toolbar.setNavigationOnClickListener {
-//            if (drawerLayout?.isDrawerOpen(GravityCompat.START) == true) {
-//                drawerLayout.closeDrawer(GravityCompat.START)
-//            } else {
-//                drawerLayout?.openDrawer(GravityCompat.START)
-//            }
-//        }
-
-        // Inflate the layout for this fragment
-        return view
+        _binding = FragmentTambahBannerBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        binding.backTambahBanner.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

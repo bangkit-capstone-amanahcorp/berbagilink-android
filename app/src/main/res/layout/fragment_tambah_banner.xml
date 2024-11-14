@@ -8,30 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <com.google.android.material.appbar.AppBarLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/sekunder">-->
-
-<!--            <com.google.android.material.appbar.MaterialToolbar-->
-<!--                android:id="@+id/topAppBarBanner"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:navigationIcon="@drawable/ic_menu"-->
-<!--                android:title="Settings">-->
-
-<!--                <ImageView-->
-<!--                    android:id="@+id/sidebar_menu"-->
-<!--                    android:layout_width="98.33dp"-->
-<!--                    android:layout_height="20dp"-->
-<!--                    android:layout_gravity="start"-->
-<!--                    android:src="@drawable/logo"-->
-<!--                    android:layout_weight="1"/>-->
-
-
-<!--            </com.google.android.material.appbar.MaterialToolbar>-->
-<!--        </com.google.android.material.appbar.AppBarLayout>-->
-
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,14 +24,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
+                    android:gravity="center_vertical"
                     android:layout_marginBottom="12dp">
 
                     <ImageButton
                         android:id="@+id/backTambahBanner"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_back"
-                        android:background="@color/primer"
+                        android:backgroundTint="@color/primer"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:layout_marginEnd="12dp"/>
 
                     <TextView

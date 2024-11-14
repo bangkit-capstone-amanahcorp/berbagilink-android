@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="328dp"
-    android:layout_height="172dp"
-    android:background="@drawable/border_popup"
-    tools:context=".view.settings.banner.popup.NonaktifBanner"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_dialog_background">
 
     <ImageButton
         android:id="@+id/btnClose"
@@ -19,6 +17,7 @@
         android:layout_marginBottom="12dp"/>
 
     <TextView
+        android:id="@+id/tvMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Anda yakin akan me-nonaktifkan\n”Banner 11.11” ?"
@@ -49,7 +48,7 @@
             app:strokeColor="@color/biru_toska" />
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnNonaktif"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -61,4 +60,4 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>
