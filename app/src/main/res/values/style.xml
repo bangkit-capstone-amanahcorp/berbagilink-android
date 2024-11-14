@@ -35,6 +35,15 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="InfoCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:background">@drawable/info_shape</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">9sp</item>
+    </style>
+
     <style name="CustomTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox.Dense">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
