@@ -15,22 +15,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.example.ptamanah.view.settings.halaman.MediaSosialTokoFragment
 import com.example.ptamanah.R
-import com.example.ptamanah.view.settings.halaman.TokoFragment
-import com.example.ptamanah.view.settings.halaman.TransaksiFragment
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.settings.banner.DaftarBanner
-import com.example.ptamanah.view.settings.banner.EditBanner
-import com.example.ptamanah.view.settings.banner.NyobaFragment
-import com.example.ptamanah.view.settings.banner.TambahBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.halaman.PreviewFragment
 import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
 import com.example.ptamanah.view.settings.rekening.RekeningFragment
-import com.example.ptamanah.view.settings.rekening.TambahRekeningFragment
 
 class PageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPageBinding
