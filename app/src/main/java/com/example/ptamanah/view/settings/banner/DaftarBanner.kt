@@ -13,16 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.ptamanah.R
-import com.google.android.material.materialswitch.MaterialSwitch
-import com.google.android.material.appbar.MaterialToolbar
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.core.view.GravityCompat
 import com.example.ptamanah.databinding.FragmentDaftarBannerBinding
 import com.example.ptamanah.view.settings.banner.popup.AktifkanBanner
-import com.example.ptamanah.view.settings.banner.popup.HapusBanner
 import com.example.ptamanah.view.settings.banner.popup.NonaktifBanner
-import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
-import com.example.ptamanah.view.settings.rekening.TambahRekeningFragment
 
 class DaftarBanner : Fragment() {
     private var _binding: FragmentDaftarBannerBinding? = null
@@ -141,12 +134,6 @@ class DaftarBanner : Fragment() {
         val nonaktifBannerDialog = NonaktifBanner.newInstance("param1_value", "param2_value")
         nonaktifBannerDialog.show(parentFragmentManager, "NonaktifBannerDialog")
         Toast.makeText(context, "Icon Edit diklik!", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun onDeleteIconClick() {
-        val hapusBannerDialog = HapusBanner.newInstance("param1_value", "param2_value")
-        hapusBannerDialog.show(parentFragmentManager, "HapusBannerDialog")
-        Toast.makeText(context, "Icon Delete diklik!", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
