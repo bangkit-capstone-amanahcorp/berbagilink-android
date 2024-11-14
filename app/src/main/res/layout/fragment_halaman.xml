@@ -199,8 +199,8 @@
                                 android:id="@+id/titleTextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Toko"
-                                android:textSize="18sp"
+                                android:text="@string/txt_halaman_toko"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <ImageView
@@ -504,8 +504,8 @@
                                 android:id="@+id/title_media_sosial"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Media Sosial Toko"
-                                android:textSize="18sp"
+                                android:text="@string/txt_halaman_media_sosial_toko"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <ImageView
@@ -767,8 +767,8 @@
                                 android:id="@+id/title_transaksi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Transaksi"
-                                android:textSize="18sp"
+                                android:text="@string/txt_halaman_transaksi"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <ImageView

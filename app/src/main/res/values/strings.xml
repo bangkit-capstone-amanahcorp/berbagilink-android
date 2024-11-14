@@ -258,6 +258,9 @@
     <string name="ya_hapus">Ya, Hapus</string>
     <string name="nonaktifkan">Non-aktifkan</string>
     <string name="ya_aktifkan">Ya, Aktifkan</string>
+    <string name="txt_halaman_transaksi">Transaksi</string>
+    <string name="txt_halaman_media_sosial_toko">Media Sosial Toko</string>
+    <string name="txt_halaman_toko">Toko</string>
 
 
 </resources>
