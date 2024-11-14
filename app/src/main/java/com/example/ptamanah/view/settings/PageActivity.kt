@@ -54,9 +54,9 @@ class PageActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.containerToko, HalamanFragment())
-            .commit()
+        if (savedInstanceState == null) {
+            replaceFragment(HalamanFragment())
+        }
 
     }
 
@@ -146,44 +146,51 @@ class PageActivity : AppCompatActivity() {
     }
 
     private fun onMenuItemClick(menuItem: NavMenuItem) {
-//        val fragment: Fragment = when (menuItem.id) {
-//            "beranda" -> throw IllegalArgumentException("Unknown menu item")
-//            "ubah_tampilan" -> throw IllegalArgumentException("Unknown menu item")
-//            "statistik" -> throw IllegalArgumentException("Unknown menu item")
-//            "halaman" -> HalamanFragment()
-//            "event" -> throw IllegalArgumentException("Unknown menu item")
-//            else -> throw IllegalArgumentException("Unknown menu item")
-//        }
-
-        // Ganti fragment di FragmentContainerView
-//        replaceFragment(fragment)
         when (menuItem.id) {
             "halaman" -> {
                 replaceFragment(HalamanFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "banner" -> {
                 replaceFragment(DaftarBanner())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "rekening" -> {
                 replaceFragment(RekeningFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             else -> {
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.containerToko, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.containerToko)
+        if (currentFragment?.javaClass != fragment.javaClass) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.setReorderingAllowed(true)
+            transaction.setCustomAnimations(
+                R.anim.enter_from_right,
+                R.anim.exit_to_left,
+                R.anim.enter_from_left,
+                R.anim.exit_to_right
+            )
+            transaction.replace(R.id.containerToko, fragment)
+            transaction.addToBackStack(null)
+            transaction.commitAllowingStateLoss()
+        }
     }
 
     fun Int.dp(context: Context): Int {

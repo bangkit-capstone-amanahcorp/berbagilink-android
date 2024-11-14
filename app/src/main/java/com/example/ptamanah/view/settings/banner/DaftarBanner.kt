@@ -15,8 +15,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.ptamanah.R
 import com.example.ptamanah.databinding.FragmentDaftarBannerBinding
-import com.example.ptamanah.view.settings.banner.popup.AktifkanBanner
-import com.example.ptamanah.view.settings.banner.popup.NonaktifBanner
 
 class DaftarBanner : Fragment() {
     private var _binding: FragmentDaftarBannerBinding? = null
@@ -36,8 +34,7 @@ class DaftarBanner : Fragment() {
         binding.materialSwitch.isChecked = true
         binding.materialSwitch2.isChecked = false
 
-        binding.ivMove.setOnClickListener { onMoveIconClick() }
-        binding.ivEdit.setOnClickListener { onEditIconClick() }
+        binding.ivMove.setOnClickListener {  }
         binding.ivDelete.setOnClickListener {
             showDeleteDialog("Banner 11.11")
         }
@@ -184,18 +181,6 @@ class DaftarBanner : Fragment() {
         transaction.replace(R.id.containerToko, TambahBanner())
         transaction.addToBackStack(null)
         transaction.commit()
-    }
-
-    private fun onMoveIconClick() {
-        val aktifkanBannerDialog = AktifkanBanner.newInstance("param1_value", "param2_value")
-        aktifkanBannerDialog.show(parentFragmentManager, "AktifkanBannerDialog")
-        Toast.makeText(context, "Icon Move diklik!", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun onEditIconClick() {
-        val nonaktifBannerDialog = NonaktifBanner.newInstance("param1_value", "param2_value")
-        nonaktifBannerDialog.show(parentFragmentManager, "NonaktifBannerDialog")
-        Toast.makeText(context, "Icon Edit diklik!", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
