@@ -267,6 +267,40 @@
     <string name="placeholder_kode_produk">Contoh: sepatu-eiden</string>
     <string name="info_kode_produk">Akan masuk pada link produk, contoh: berbagi.link/username/onlinestore/detail/<b>sepatu-eiden</b></string>
 
+    // Marketing
+    <string name="marketing">Marketing</string>
+    <string name="anggota">Anggota</string>
+    <string name="daftar_anggota">Daftar Anggota</string>
+    <string name="voucher">Voucher</string>
+<!--    <string name="email">Email</string>-->
+    <string name="alamant">Alamat</string>
+<!--    <string name="bank">Bank</string>-->
+    <string name="nama_rekening">Nama Rekening</string>
+    <string name="no_rekening">No. Rekening</string>
+    <string name="aksi">Aksi</string>
+    <string name="placeholder_cari">Cari</string>
+    <string name="tambah_anggota">Tambah Anggota</string>
+    <string name="nama_anggota">Nama Anggota</string>
+    <string name="no_hp">No. HP</string>
+<!--    <string name="metode_pembayaran">Metode Pembayaran</string>-->
+<!--    <string name="bank">Bank</string>-->
+<!--    <string name="e_wallet">E-Wallet</string>-->
+<!--    <string name="jenis_bank">Jenis Bank</string>-->
+<!--    <string name="nomor_rekening">Nomor Rekening</string>-->
+    <string name="A_n_rekening">A.n Rekening</string>
+    <string name="aktifkan_voucher">Aktifkan Voucher?</string>
+    <string name="pilih_voucher">Pilih Voucher?</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="alamat_anggota">Alamat Anggota</string>
+    <string name="voucher_diskon_11.11">DISKON 11.11</string>
+    <string name="placeholder_nama_anggota">Masukkan nama anggota</string>
+    <string name="placeholder_email">contoh: example@gmail.com</string>
+    <string name="placeholder_metode_pembayaran">contoh: example@gmail.com</string>
+    <string name="placeholder_nomor_rekening">Masukkan nama rekening</string>
+    <string name="placeholder_nama_rekening">Masukkan nama rekening</string>
+    <string name="placeholder_nama_pemilik_rekening">Masukkan nama pemilik rekening</string>
+    <string name="placeholder_alamat_anggota">contoh: Jalan Fatmawati 24, Kota Lorem Ipsum</string>
 
     <string name="required">*</string>
 

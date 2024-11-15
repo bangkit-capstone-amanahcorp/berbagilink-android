@@ -22,6 +22,7 @@ import com.example.ptamanah.view.settings.halaman.TransaksiFragment
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.marketing.AnggotaFragment
 import com.example.ptamanah.view.produk.DaftarProdukFragment
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.banner.EditBanner
@@ -104,7 +105,12 @@ class PageActivity : AppCompatActivity() {
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
+                                icon = R.drawable.ic_home,),
+                            NavMenuItem(
+                                id = "marketing",
+                                title = "Marketing",
                                 icon = R.drawable.ic_home,)
+
                         )
                     ),
                     NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
@@ -183,6 +189,11 @@ class PageActivity : AppCompatActivity() {
 
             "produk" -> {
                 replaceFragment(DaftarProdukFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "marketing" -> {
+                replaceFragment(AnggotaFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
