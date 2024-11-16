@@ -282,6 +282,15 @@
     <string name="status_pengiriman">Status \nPengiriman</string>
     <string name="tanggal_transaksi">Tanggal \nTransaksi</string>
 
+    <string name="log_transaksi">Log Transaksi</string>
+    <string name="daftar_log_transaksi">Daftar Log Transaksi</string>
+    <string name="id">ID</string>
+    <string name="tipe_user">Tipe User</string>
+    <string name="aksi_user">Aksi User</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="show">Show</string>
+    <string name="entries">10 Entries</string>
+
     // penjualan - voucher
     <string name="voucher">Voucher</string>
     <string name="daftar_voucher">Daftar Voucher</string>
