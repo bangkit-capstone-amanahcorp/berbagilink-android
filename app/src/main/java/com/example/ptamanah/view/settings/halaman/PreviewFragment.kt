@@ -12,17 +12,28 @@ import androidx.annotation.StringRes
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ptamanah.R
 import com.example.ptamanah.adapter.PreviewPagerAdapter
+import com.example.ptamanah.databinding.FragmentPreviewBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class PreviewFragment : Fragment() {
-
+    private var _binding: FragmentPreviewBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view =  inflater.inflate(R.layout.fragment_preview, container, false)
+        _binding = FragmentPreviewBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.backPreview.setOnClickListener {
+            requireActivity().supportFragmentManager.popBackStack()
+        }
 
         val sectionsPagerAdapter = PreviewPagerAdapter(this)
         val viewPager: ViewPager2 = view.findViewById(R.id.view_pager)
@@ -54,11 +65,12 @@ class PreviewFragment : Fragment() {
             override fun onTabReselected(tab: TabLayout.Tab) {}
         })
 
-
-
-        return view
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
 
     companion object {

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.ptamanah.R
 import com.example.ptamanah.databinding.FragmentAnggotaBinding
-import com.example.ptamanah.view.produk.InformasiProdukFragment
 
 class AnggotaFragment : Fragment() {
 

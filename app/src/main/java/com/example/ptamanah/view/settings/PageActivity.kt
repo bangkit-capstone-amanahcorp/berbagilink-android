@@ -15,24 +15,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.example.ptamanah.view.settings.halaman.MediaSosialTokoFragment
 import com.example.ptamanah.R
-import com.example.ptamanah.view.settings.halaman.TokoFragment
-import com.example.ptamanah.view.settings.halaman.TransaksiFragment
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.marketing.AnalisisFragment
 import com.example.ptamanah.view.marketing.AnggotaFragment
+import com.example.ptamanah.view.marketing.TransaksiFragment
 import com.example.ptamanah.view.produk.DaftarProdukFragment
 import com.example.ptamanah.view.settings.banner.DaftarBanner
-import com.example.ptamanah.view.settings.banner.EditBanner
-import com.example.ptamanah.view.settings.banner.NyobaFragment
-import com.example.ptamanah.view.settings.banner.TambahBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
-import com.example.ptamanah.view.settings.halaman.PreviewFragment
-import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
 import com.example.ptamanah.view.settings.rekening.RekeningFragment
-import com.example.ptamanah.view.settings.rekening.TambahRekeningFragment
 
 class PageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPageBinding
@@ -63,9 +56,9 @@ class PageActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         }
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.containerToko, HalamanFragment())
-            .commit()
+        if (savedInstanceState == null) {
+            replaceFragment(HalamanFragment())
+        }
 
     }
 
@@ -97,25 +90,42 @@ class PageActivity : AppCompatActivity() {
                         icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
-                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home),
+                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home
+                            ),
                             NavMenuItem(
                                 id = "banner",
                                 title = "Banner",
-                                icon = R.drawable.ic_home),
+                                icon = R.drawable.ic_home
+                            ),
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
-                                icon = R.drawable.ic_home,),
-                            NavMenuItem(
-                                id = "marketing",
-                                title = "Marketing",
-                                icon = R.drawable.ic_home,)
-
+                                icon = R.drawable.ic_home,
+                            ),
                         )
                     ),
                     NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
                     NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
-                    NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
+                    NavMenuItem(
+                        id = "marketing",
+                        title = "Marketing",
+                        icon = R.drawable.ic_home, children = listOf(
+                            NavMenuItem(
+                                id = "anggota",
+                                title = "Anggota",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "transaksi",
+                                title = "Transaksi",
+                                icon = R.drawable.ic_home,
+                            ), NavMenuItem(
+                                id = "analisis",
+                                title = "Analisis",
+                                icon = R.drawable.ic_home,
+                            ),
+                        )
+                    )
                 )
             ),
             NavMenuItem(id = "event", title = "Event", icon = R.drawable.ic_home),
@@ -160,31 +170,26 @@ class PageActivity : AppCompatActivity() {
     }
 
     private fun onMenuItemClick(menuItem: NavMenuItem) {
-//        val fragment: Fragment = when (menuItem.id) {
-//            "beranda" -> throw IllegalArgumentException("Unknown menu item")
-//            "ubah_tampilan" -> throw IllegalArgumentException("Unknown menu item")
-//            "statistik" -> throw IllegalArgumentException("Unknown menu item")
-//            "halaman" -> HalamanFragment()
-//            "event" -> throw IllegalArgumentException("Unknown menu item")
-//            else -> throw IllegalArgumentException("Unknown menu item")
-//        }
-
-        // Ganti fragment di FragmentContainerView
-//        replaceFragment(fragment)
         when (menuItem.id) {
             "halaman" -> {
                 replaceFragment(HalamanFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "banner" -> {
                 replaceFragment(DaftarBanner())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "rekening" -> {
                 replaceFragment(RekeningFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "produk" -> {
@@ -192,8 +197,18 @@ class PageActivity : AppCompatActivity() {
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
-            "marketing" -> {
+            "anggota" -> {
                 replaceFragment(AnggotaFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "transaksi" -> {
+                replaceFragment(TransaksiFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "analisis" -> {
+                replaceFragment(AnalisisFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
@@ -201,13 +216,25 @@ class PageActivity : AppCompatActivity() {
                 Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.containerToko, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.containerToko)
+        if (currentFragment?.javaClass != fragment.javaClass) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.setReorderingAllowed(true)
+            transaction.setCustomAnimations(
+                R.anim.enter_from_right,
+                R.anim.exit_to_left,
+                R.anim.enter_from_left,
+                R.anim.exit_to_right
+            )
+            transaction.replace(R.id.containerToko, fragment)
+            transaction.addToBackStack(null)
+            transaction.commitAllowingStateLoss()
+        }
     }
 
     fun Int.dp(context: Context): Int {

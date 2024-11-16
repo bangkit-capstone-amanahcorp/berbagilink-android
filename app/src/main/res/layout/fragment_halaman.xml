@@ -1,29 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F8FB"
     tools:context=".view.settings.halaman.HalamanFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F5F8FB"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="10dp">
 
             <!-- Toko Online Section -->
             <TextView
                 android:id="@+id/tvTokoOnline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
+                android:layout_margin="6dp"
                 android:text="@string/toko_online"
                 android:textColor="#333333"
                 android:textSize="18sp"
@@ -33,7 +32,8 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="8dp">
+                android:layout_margin="6dp"
+                app:cardCornerRadius="12dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,11 +134,13 @@
 
             <!-- Pengaturan Section -->
             <LinearLayout
-                android:layout_marginTop="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="6dp">
 
                 <TextView
                     android:id="@+id/tvPengaturan"
@@ -149,8 +151,8 @@
                     android:textSize="12sp" />
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@drawable/ic_arrow" />
 
                 <TextView
@@ -164,130 +166,837 @@
             </LinearLayout>
 
 
-            <!-- Accordion Sections -->
-            <!--            <androidx.cardview.widget.CardView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_marginVertical="8dp"-->
-            <!--                app:cardCornerRadius="16dp"-->
-            <!--                app:cardElevation="0dp">-->
-
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:orientation="vertical"-->
-            <!--                    android:padding="16dp">-->
-
-            <!--                    &lt;!&ndash; Toko &ndash;&gt;-->
-            <!--                    <TextView-->
-            <!--                        android:id="@+id/tvToko"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="Toko"-->
-            <!--                        android:textColor="#333333"-->
-            <!--                        android:textStyle="bold" />-->
-
-            <!--                    &lt;!&ndash; Media Sosial Toko &ndash;&gt;-->
-            <!--                    <TextView-->
-            <!--                        android:id="@+id/tvMediaSosialToko"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="16dp"-->
-            <!--                        android:text="Media Sosial Toko"-->
-            <!--                        android:textColor="#333333"-->
-            <!--                        android:textStyle="bold" />-->
-
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="4dp"-->
-            <!--                        android:text="Akan menjadi icon di footer yang menuju ke halaman-halaman media sosial toko anda"-->
-            <!--                        android:textColor="#666666" />-->
-
-            <!--                    &lt;!&ndash; Transaksi &ndash;&gt;-->
-            <!--                    <TextView-->
-            <!--                        android:id="@+id/tvTransaksi"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:layout_marginTop="16dp"-->
-            <!--                        android:text="Transaksi"-->
-            <!--                        android:textColor="#333333"-->
-            <!--                        android:textStyle="bold" />-->
-            <!--                </LinearLayout>-->
-            <!--            </androidx.cardview.widget.CardView>-->
-
-            <!--            <ExpandableListView-->
-            <!--                android:id="@+id/expandableListView"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="0dp"-->
-            <!--                android:layout_weight="1"/>-->
-
-            <!--            <FrameLayout-->
-            <!--                android:id="@+id/fragmentContainer"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="0dp"-->
-            <!--                android:layout_weight="1"/>-->
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
-                <!-- Container untuk TokoFragment -->
-                <FrameLayout
-                    android:id="@+id/containerTokoFragment"
+                <!-- Toko Section -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_toko"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp" />
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginRight="6dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
 
-                <!-- Container untuk MediaSosialFragment -->
-                <FrameLayout
-                    android:id="@+id/containerMediaSosialFragment"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:id="@+id/container_toko"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/titleTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/txt_halaman_toko"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/arrowToko"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/baseline_keyboard_arrow_down_24" />
+                        </RelativeLayout>
+
+                        <!-- Expandable Content -->
+                        <LinearLayout
+                            android:id="@+id/content_toko"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="8dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/containerTokoContent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="5dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/biru_toska_muda"
+                                    app:cardCornerRadius="12dp"
+                                    android:layout_margin="1dp"
+                                    app:contentPadding="10dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/textView2"
+                                                style="@style/TextFieldTitle"
+                                                android:text="@string/status_toko_aktif" />
+
+                                            <TextView
+                                                android:id="@+id/textView3"
+                                                style="@style/TextDescription"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/aktifkan_atau_non_aktifkan_toko"
+                                                android:textColor="@color/biru_toska_muda_text" />
+                                        </LinearLayout>
+
+                                        <com.google.android.material.switchmaterial.SwitchMaterial
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+
+                                    android:text="@string/foto_profil_toko" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:id="@+id/imageView3"
+                                        android:layout_width="100dp"
+                                        android:layout_height="100dp"
+                                        android:layout_gravity="center"
+                                        android:scaleType="centerCrop"
+                                        tools:src="@tools:sample/avatars" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="16dp"
+                                        android:text="@string/tambahkan_foto_profil"
+                                        android:textColor="@color/biru_toska"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+
+                                <!-- Nama Toko -->
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:text="@string/nama_toko" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldNamaToko"
+                                    style="@style/CustomTextInputLayout"
+                                    android:hint="@string/masukkan_nama_toko">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!-- Bio -->
+                                <TextView
+                                    style="@style/TextFieldTitle"
+
+                                    android:text="@string/bio" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldBio"
+                                    style="@style/CustomTextInputLayout"
+                                    android:hint="@string/lorem_ipsum">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!-- Lokasi Toko -->
+                                <TextView
+                                    style="@style/TextFieldTitle"
+
+                                    android:text="@string/lokasi_toko" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/TextDropdownTitle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/provinsi" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/required"
+                                        android:textColor="@color/red" />
+                                </LinearLayout>
+
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldProvinsi"
+                                    style="@style/DropdownTextInputLayout"
+                                    android:hint="@string/pilih_provinsi">
+
+                                    <AutoCompleteTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="none"
+                                        app:simpleItems="@array/list_provinsi" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/TextDropdownTitle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/kabupaten" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/required"
+                                        android:textColor="@color/red" />
+                                </LinearLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldKabupaten"
+                                    style="@style/DropdownTextInputLayout"
+                                    android:hint="@string/pilih_kabupaten">
+
+                                    <AutoCompleteTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="none"
+                                        app:simpleItems="@array/list_kecamatan" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        style="@style/TextDropdownTitle"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/kecamatan" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:layout_marginTop="8dp"
+                                        android:text="@string/required"
+                                        android:textColor="@color/red" />
+                                </LinearLayout>
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldKecamatan"
+                                    style="@style/DropdownTextInputLayout"
+                                    android:hint="@string/pilih_kecamatan">
+
+                                    <AutoCompleteTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="none"
+                                        app:simpleItems="@array/list_kecamatan" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+
+                                    android:text="@string/alamat_detail_toko" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldAlamatDetailToko"
+                                    style="@style/CustomTextInputLayout"
+                                    android:hint="@string/lorem_ipsum">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+
+                                    android:text="@string/deskripsi_footer" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldDekripsiFooter"
+                                    style="@style/CustomTextInputLayout"
+                                    android:hint="@string/lorem_ipsum">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </com.google.android.material.textfield.TextInputLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Divider -->
+                <View
+                    android:id="@+id/divider_toko"
+                    android:layout_width="match_parent"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_below="@id/card_toko"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_media_sosial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp" />
+                    android:layout_below="@id/divider_toko"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
 
-                <!-- Container untuk TransaksiFragment -->
-                <FrameLayout
-                    android:id="@+id/containerTransaksiFragment"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <RelativeLayout
+                            android:id="@+id/container_media_sosial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/title_media_sosial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/txt_halaman_media_sosial_toko"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/arrowMediaSosial"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/baseline_keyboard_arrow_down_24" />
+                        </RelativeLayout>
+
+                        <!-- Expandable Content -->
+                        <LinearLayout
+                            android:id="@+id/content_media_sosial"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="8dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/containerMediaSosial"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="8dp"
+                                android:visibility="visible">
+
+                                <TextView
+                                    style="@style/TextDescription"
+                                    android:layout_width="231dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/deskripsi_media_sosial_toko"
+                                    android:textColor="@color/neutral_300" />
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/whatsapp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldWhatsapp"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/number_example">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    app:cardBackgroundColor="@color/white_500"
+                                    app:cardCornerRadius="16dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="8dp"
+                                        android:paddingVertical="6dp">
+
+                                        <ImageView
+                                            android:layout_width="15dp"
+                                            android:layout_height="15dp"
+                                            android:src="@drawable/ic_info"
+                                            app:tint="@color/neutral_200" />
+
+                                        <TextView
+                                            style="@style/TextDescription"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="6dp"
+                                            android:text="@string/disclaimer_phone"
+                                            android:textColor="@color/neutral_300" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/isi_chat_otomatis_whatsapp" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldChatWhatsapp"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_chat_otomatis_whatsapp">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/username_instagram" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldNamaInstagram"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_username_instagram">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/link_facebook" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldLinkFacebook"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_link_facebook">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/link_youtube" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldLinkYoutube"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_link_youtube">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/link_tiktok" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldLinkTiktok"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_link_tiktok">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/link_tokopedia" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldLinkTokopedia"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_link_tokopedia">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <TextView
+                                    style="@style/TextFieldTitle"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/link_shoope" />
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/textFieldLinkShoope"
+                                    style="@style/CustomTextInputLayout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/placeholder_link_shoope">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+
+                                </com.google.android.material.textfield.TextInputLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Divider -->
+                <View
+                    android:layout_below="@id/card_media_sosial"
+                    android:id="@+id/divider_media_sosial"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_transaksi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp" />
-            </LinearLayout>
+                    android:layout_below="@id/divider_media_sosial"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
 
-            <!-- Button Section -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                <Button
-                    android:id="@+id/btnCancel"
-                    style="@style/Widget.Material3.Button.OutlinedButton"
-                    android:layout_width="0dp"
+                        <RelativeLayout
+                            android:id="@+id/container_transaksi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true">
+
+                            <TextView
+                                android:id="@+id/title_transaksi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/txt_halaman_transaksi"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/arrowTransaksi"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:src="@drawable/baseline_keyboard_arrow_down_24" />
+                        </RelativeLayout>
+
+                        <!-- Expandable Content -->
+                        <LinearLayout
+                            android:id="@+id/content_transaksi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="8dp"
+                            android:visibility="gone">
+
+                            <LinearLayout
+                                android:id="@+id/containerTransaksiContent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                >
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:cardBackgroundColor="@color/blue_50"
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="12dp">
+
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="12dp"
+                                        android:paddingVertical="10dp">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="64dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/titleKodeUnik"
+                                                style="@style/TextTitleCard"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/aktifkan_kode_unik" />
+
+                                            <TextView
+                                                android:id="@+id/decriptionKodeUnik"
+                                                style="@style/TextDescription"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/deskripsi_kode_unik"
+                                                android:textColor="@color/neutral_300" />
+                                        </LinearLayout>
+
+                                        <com.google.android.material.switchmaterial.SwitchMaterial
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    app:cardBackgroundColor="@color/blue_50"
+                                    app:cardCornerRadius="12dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="12dp"
+                                        android:paddingVertical="10dp">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="64dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/titlePembayaran"
+                                                style="@style/TextTitleCard"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/aktifkan_pembayaran_otomatis" />
+
+                                            <TextView
+                                                android:id="@+id/deskripsiPembayaran"
+                                                style="@style/TextDescription"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/deskripsi_pembayaran_otomatis"
+                                                android:textColor="@color/neutral_300" />
+                                        </LinearLayout>
+
+                                        <com.google.android.material.switchmaterial.SwitchMaterial
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12dp"
+                                    android:layout_marginLeft="6dp"
+                                    android:layout_marginRight="6dp"
+                                    android:layout_marginBottom="6dp"
+                                    app:cardBackgroundColor="@color/blue_50"
+                                    app:cardCornerRadius="12dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:paddingHorizontal="12dp"
+                                        android:paddingVertical="10dp">
+
+                                        <LinearLayout
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="64dp"
+                                            android:layout_weight="1"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:id="@+id/titleMutasiBank"
+                                                style="@style/TextTitleCard"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/aktifkan_mutasi_bank" />
+
+                                            <TextView
+                                                android:id="@+id/deskripsiMutasiBank"
+                                                style="@style/TextDescription"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="@string/deskripsi_mutasi_bank"
+                                                android:textColor="@color/neutral_300" />
+                                        </LinearLayout>
+
+                                        <com.google.android.material.switchmaterial.SwitchMaterial
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Divider -->
+                <View
+                    android:layout_below="@id/card_transaksi"
+                    android:id="@+id/divider_transaksi"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider_color" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_button"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="1"
-                    android:text="@string/batal"
-                    android:textAllCaps="false"
-                    android:textColor="@color/biru_toska"
-                    android:textStyle="bold"
-                    app:strokeColor="@color/biru_toska" />
+                    android:layout_below="@id/divider_transaksi"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
 
-                <Button
-                    android:id="@+id/btnSave"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/disable"
-                    android:text="@string/simpan"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnCancel"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/batal"
+                            android:textAllCaps="false"
+                            android:textColor="@color/biru_toska"
+                            android:textStyle="bold"
+                            app:strokeColor="@color/biru_toska" />
+
+                        <Button
+                            android:id="@+id/btnSave"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/disable"
+                            android:text="@string/simpan"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </RelativeLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

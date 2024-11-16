@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.ptamanah.R
 import com.example.ptamanah.databinding.FragmentInformasiProdukBinding
-import com.example.ptamanah.databinding.FragmentTokoBinding
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 
 class InformasiProdukFragment : Fragment() {

@@ -272,9 +272,9 @@
     <string name="anggota">Anggota</string>
     <string name="daftar_anggota">Daftar Anggota</string>
     <string name="voucher">Voucher</string>
-<!--    <string name="email">Email</string>-->
+    <!--    <string name="email">Email</string>-->
     <string name="alamant">Alamat</string>
-<!--    <string name="bank">Bank</string>-->
+    <!--    <string name="bank">Bank</string>-->
     <string name="nama_rekening">Nama Rekening</string>
     <string name="no_rekening">No. Rekening</string>
     <string name="aksi">Aksi</string>
@@ -282,11 +282,11 @@
     <string name="tambah_anggota">Tambah Anggota</string>
     <string name="nama_anggota">Nama Anggota</string>
     <string name="no_hp">No. HP</string>
-<!--    <string name="metode_pembayaran">Metode Pembayaran</string>-->
-<!--    <string name="bank">Bank</string>-->
-<!--    <string name="e_wallet">E-Wallet</string>-->
-<!--    <string name="jenis_bank">Jenis Bank</string>-->
-<!--    <string name="nomor_rekening">Nomor Rekening</string>-->
+    <!--    <string name="metode_pembayaran">Metode Pembayaran</string>-->
+    <!--    <string name="bank">Bank</string>-->
+    <!--    <string name="e_wallet">E-Wallet</string>-->
+    <!--    <string name="jenis_bank">Jenis Bank</string>-->
+    <!--    <string name="nomor_rekening">Nomor Rekening</string>-->
     <string name="A_n_rekening">A.n Rekening</string>
     <string name="aktifkan_voucher">Aktifkan Voucher?</string>
     <string name="pilih_voucher">Pilih Voucher?</string>
@@ -301,6 +301,61 @@
     <string name="placeholder_nama_rekening">Masukkan nama rekening</string>
     <string name="placeholder_nama_pemilik_rekening">Masukkan nama pemilik rekening</string>
     <string name="placeholder_alamat_anggota">contoh: Jalan Fatmawati 24, Kota Lorem Ipsum</string>
+
+    <!--    <string name="transaksi">Transaksi</string>-->
+    <string name="transaksi_manual">Transaksi Manual</string>
+    <string name="deskripsi_transaksi_manual">Transaksi dengan pembayaran manual (Transfer Bank, Minimarket)</string>
+    <string name="total_transaksi">Total Transaksi</string>
+    <string name="transaksi_gagal">Transaksi Gagal</string>
+    <string name="transaksi_sukses">Transaksi Sukses</string>
+    <string name="transaksi_instant_payment">Transaksi Instant Payment</string>
+    <string name="deskripsi_transaksi_instant_payment">Transaksi dengan pembayaran instan dan sudah dipotong biaya admin</string>
+    <string name="daftar_transaksi_anggota">Daftar Transaksi Anggota</string>
+    <string name="semua_status">Semua Status</string>
+    <string name="semua_produk">Semua Produk</string>
+    <string name="semua_pengiriman">Semua Pengiriman</string>
+    <string name="dengan_tanpa_reseller">Dengan &amp; tanpa Reseller</string>
+
+    <string name="hp">HP</string>
+    <string name="email_reseller">Email Reseller</string>
+    <string name="dropshipper">Dropshipper</string>
+    <string name="status_pengiriman">Status Pengiriman</string>
+    <string name="tanggal_transaksi">Tanggal Transaksi</string>
+    <string name="export">Export</string>
+    <string name="status">Status</string>
+
+    // Analisis
+<!--    <string name="marketing">Marketing</string>-->
+    <string name="analisis">Analisis</string>
+    <string name="periode_data">Periode Data</string>
+    <string name="status_pesanan">Status Pesanan</string>
+    <string name="download_data">Download Data</string>
+    <string name="status_penjualan">Status Penjualan</string>
+    <string name="penjualan">Penjualan</string>
+    <string name="tingkat_konversi">Tingkat Konversi</string>
+    <string name="penjualan_per_pesanan">Penjualan per Pesanan</string>
+    <string name="pesanan">Pesanan</string>
+<!--    <string name="total_pengunjung">Total Pengunjung</string>-->
+    <string name="produk_dilihat">Produk Dilihat</string>
+    <string name="mines_persentase_penurunan">–10% dari Kemarin (8.00 – 00.00)</string>
+    <string name="persentase_penurunan"><b>10%</b> dari Kemarin (8.00 – 00.00)</string>
+    <string name="grafik">Grafik</string>
+    <string name="pembeli">Pembeli</string>
+    <string name="pembeli_baru">Pembeli Baru</string>
+    <string name="pembeli_reguler">Pembeli Reguler</string>
+    <string name="total_pembeli">Total Pembeli</string>
+    <string name="persentase_pembelian_berulang">% Pembelian Berulang</string>
+    <string name="potensi_penjualan">Potensi Penjualan</string>
+    <string name="peringkat_produk">Peringkat Produk</string>
+    <string name="semua_kategori">Semua Kategori</string>
+    <string name="berdasarkan">Berdasarkan :</string>
+    <string name="peringkat">Peringkat</string>
+<!--    <string name="informasi_produk">Informasi Produk</string>-->
+    <string name="berdasarkan_penjulanan">Berdasarkan Penjualan</string>
+    <string name="urutan_kategori">Urutan Kategori</string>
+
+    <string name="hari_ini">Hari Ini (Real Time 11 Sep)</string>
+    <string name="pesanan_dibuat">Pesanan Dibuat</string>
 
     <string name="required">*</string>
 
@@ -326,6 +381,9 @@
     <string name="ya_hapus">Ya, Hapus</string>
     <string name="nonaktifkan">Non-aktifkan</string>
     <string name="ya_aktifkan">Ya, Aktifkan</string>
+    <string name="txt_halaman_transaksi">Transaksi</string>
+    <string name="txt_halaman_media_sosial_toko">Media Sosial Toko</string>
+    <string name="txt_halaman_toko">Toko</string>
 
 
 </resources>
