@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.sales.voucher
+package com.example.ptamanah.view.penjualan.voucher
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

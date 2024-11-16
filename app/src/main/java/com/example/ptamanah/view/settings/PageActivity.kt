@@ -19,13 +19,11 @@ import com.example.ptamanah.R
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
-import com.example.ptamanah.view.sales.logTransaksi.PenjualanLogTransaksi
-import com.example.ptamanah.view.sales.transaksi.PenjualanTransaksi
-import com.example.ptamanah.view.sales.voucher.PenjualanVoucher
+import com.example.ptamanah.view.penjualan.logTransaksi.PenjualanLogTransaksi
+import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
+import com.example.ptamanah.view.penjualan.voucher.PenjualanVoucher
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
-import com.example.ptamanah.view.settings.halaman.PreviewFragment
-import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
 import com.example.ptamanah.view.settings.rekening.RekeningFragment
 
 class PageActivity : AppCompatActivity() {

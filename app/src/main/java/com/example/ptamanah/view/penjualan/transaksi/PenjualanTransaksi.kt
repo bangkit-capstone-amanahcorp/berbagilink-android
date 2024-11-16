@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.sales.transaksi
+package com.example.ptamanah.view.penjualan.transaksi
 
 import android.os.Bundle
 import android.view.LayoutInflater
