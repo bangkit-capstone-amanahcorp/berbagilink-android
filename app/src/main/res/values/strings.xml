@@ -101,7 +101,7 @@
     <string name="wajib_ic">*</string>
     <string name="text_info_pass">Harus terdiri dari huruf kapital, huruf kecil, dan angka</string>
     <string name="cari">Cari</string>
-    <string name="no_order">No Order</string>
+    <string name="no_order">No. Order</string>
     <string name="tanggal_invoice">Tanggal</string>
     <string name="tipe_pengguna">Tipe Pengguna</string>
     <string name="Aksi">Aksi</string>
@@ -110,7 +110,7 @@
     <string name="harga">Harga</string>
     <string name="tanggal_mulai_penjualan">Tanggal Mulai Penjualan</string>
     <string name="total">Total</string>
-    
+
     <string name="link_toko_anda">Link toko anda:</string>
     <string name="berbagi.link">berbagi.link/isabnumaryam/online…</string>
     <string name="lihat_preview_halaman_toko">Lihat Preview Halaman Toko</string>
@@ -130,7 +130,7 @@
     <string name="tagihan">Tagihan</string>
     <string name="tracking_pixels">Tracking Pixels</string>
     <string name="toko_online">Toko Online</string>
-<!--    <string name="event">Event</string>-->
+    <!--    <string name="event">Event</string>-->
     <string name="payment">Payment</string>
     <string name="wallet">Wallet</string>
     <string name="support">Support</string>
@@ -236,15 +236,13 @@
     <string name="required">*</string>
 
 
-
     // desainby Firzandi
-    // daftar banner
+    // banner - daftar banner
     <string name="banner">Banner</string>
     <string name="plus_tambah_banner">+ Tambah Banner</string>
     <string name="lorem_ipsum_frznd">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam placerat arcu metus, a pharetra sapien pharetra et. Donec placerat, arcu id consequat malesuada, urna risus auctor nisi, ut sagittis justo felis nec dolor. Etiam lorem massa, facilisis at lorem in, fringilla scelerisque metus. Proin at tempus neque.</string>
 
-
-    // tambah banner
+    // banner - tambah banner
     <string name="tambah_banner">Tambah Banner</string>
     <string name="upload_banner">Upload Banner</string>
     <string name="judul_banner">Judul Artikel Banner</string>
@@ -253,14 +251,36 @@
     <string name="edit_banner">Edit Banner</string>
     <string name="hapus_banner">Hapus Banner</string>
 
-
-    // popup
+    // banner - popup
     <string name="ya_hapus">Ya, Hapus</string>
     <string name="nonaktifkan">Non-aktifkan</string>
     <string name="ya_aktifkan">Ya, Aktifkan</string>
     <string name="txt_halaman_transaksi">Transaksi</string>
     <string name="txt_halaman_media_sosial_toko">Media Sosial Toko</string>
     <string name="txt_halaman_toko">Toko</string>
+
+    // penjualan - transaksi
+    <string name="penjualan">Penjualan</string>
+    <string name="transaksi_manual">Transaksi Manual</string>
+    <string name="transaksi_manual_cap">Transaksi dengan pembayaran manual (Transfer Bank, Minimarket)</string>
+    <string name="total_transaksi">Total Transaksi</string>
+    <string name="transaksi_gagal">Transaksi Gagal</string>
+    <string name="transaksi_sukses">Transaksi Sukses</string>
+    <string name="transaksi_instan">Transaksi Instant Payment</string>
+    <string name="transaksi_instan_cap">Transaksi dengan pembayaran instan dan sudah dipotong biaya admin</string>
+    <string name="daftar_transaksi">Daftar Transaksi</string>
+    <string name="export">Export</string>
+    <string name="atur">Atur</string>
+    <string name="semua_status">Semua Status</string>
+    <string name="semua_pengiriman">Semua Pengiriman</string>
+    <string name="semua_produk">Semua Produk</string>
+    <string name="dengantanpa_reseller">Dengan &amp; tanpa Reseller</string>
+    <string name="hp">HP</string>
+    <string name="email_reseller">Email Reseller</string>
+    <string name="dropshipper">Dropshipper</string>
+    <string name="status">Status</string>
+    <string name="status_pengiriman">Status \nPengiriman</string>
+    <string name="tanggal_transaksi">Tanggal \nTransaksi</string>
 
 
 </resources>

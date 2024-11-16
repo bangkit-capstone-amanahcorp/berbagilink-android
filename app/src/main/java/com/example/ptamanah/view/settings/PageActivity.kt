@@ -19,6 +19,7 @@ import com.example.ptamanah.R
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.sales.transaksi.PenjualanTransaksi
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.halaman.PreviewFragment
@@ -100,7 +101,14 @@ class PageActivity : AppCompatActivity() {
                         )
                     ),
                     NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
-                    NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
+                    NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home,
+                        children = listOf(
+                            NavMenuItem(
+                                id = "transaksi",
+                                title = "Transaksi",
+                                icon = R.drawable.ic_home,
+                            )
+                        )),
                     NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
                 )
             ),
@@ -163,6 +171,13 @@ class PageActivity : AppCompatActivity() {
 
             "rekening" -> {
                 replaceFragment(RekeningFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "transaksi" -> {
+                replaceFragment(PenjualanTransaksi())
                 binding.drawerLayout.postDelayed({
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                 }, 150)
