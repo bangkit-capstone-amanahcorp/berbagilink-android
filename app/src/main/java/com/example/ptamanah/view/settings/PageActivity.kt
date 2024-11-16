@@ -19,7 +19,9 @@ import com.example.ptamanah.R
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.sales.logTransaksi.PenjualanLogTransaksi
 import com.example.ptamanah.view.sales.transaksi.PenjualanTransaksi
+import com.example.ptamanah.view.sales.voucher.PenjualanVoucher
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.halaman.PreviewFragment
@@ -107,6 +109,16 @@ class PageActivity : AppCompatActivity() {
                                 id = "transaksi",
                                 title = "Transaksi",
                                 icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "voucher",
+                                title = "Voucher",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "log_transaksi",
+                                title = "Log Transaksi",
+                                icon = R.drawable.ic_home,
                             )
                         )),
                     NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
@@ -176,8 +188,23 @@ class PageActivity : AppCompatActivity() {
                 }, 150)
             }
 
+            //Penjualan(sales)
             "transaksi" -> {
                 replaceFragment(PenjualanTransaksi())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "voucher" -> {
+                replaceFragment(PenjualanVoucher())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "log_transaksi" -> {
+                replaceFragment(PenjualanLogTransaksi())
                 binding.drawerLayout.postDelayed({
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                 }, 150)

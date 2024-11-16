@@ -1,60 +1,69 @@
 package com.example.ptamanah.view.sales.transaksi
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
+import androidx.fragment.app.Fragment
 import com.example.ptamanah.R
+import com.google.android.material.checkbox.MaterialCheckBox
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PenjualanTransaksi.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PenjualanTransaksi : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var parentCheckBox: MaterialCheckBox
+    private lateinit var childCheckBoxes: List<CheckBox>
+    private var isUpdating = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_penjualan_transaksi, container, false)
+        val view = inflater.inflate(R.layout.fragment_penjualan_transaksi, container, false)
+
+        parentCheckBox = view.findViewById(R.id.cbox_alltransaksi)
+        childCheckBoxes = listOf(
+            view.findViewById(R.id.cbox_transaksi),
+            view.findViewById(R.id.cbox_transaksi2),
+            view.findViewById(R.id.cbox_transaksi3),
+            view.findViewById(R.id.cbox_transaksi4)
+        )
+
+        setupListeners()
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PenjualanTransaksi.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PenjualanTransaksi().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun setupListeners() {
+        parentCheckBox.addOnCheckedStateChangedListener { _, state ->
+            if (!isUpdating) {
+                isUpdating = true
+                val isChecked = state == MaterialCheckBox.STATE_CHECKED
+                childCheckBoxes.forEach { it.isChecked = isChecked }
+                isUpdating = false
+            }
+        }
+
+        childCheckBoxes.forEach { childCheckBox ->
+            childCheckBox.setOnCheckedChangeListener { _, _ ->
+                if (!isUpdating) {
+                    updateParentCheckBoxState()
                 }
             }
+        }
+    }
+
+    private fun updateParentCheckBoxState() {
+        val checkedCount = childCheckBoxes.count { it.isChecked }
+        val allChecked = checkedCount == childCheckBoxes.size
+        val noneChecked = checkedCount == 0
+
+        isUpdating = true
+        when {
+            allChecked -> parentCheckBox.checkedState = MaterialCheckBox.STATE_CHECKED
+            noneChecked -> parentCheckBox.checkedState = MaterialCheckBox.STATE_UNCHECKED
+            else -> parentCheckBox.checkedState = MaterialCheckBox.STATE_INDETERMINATE
+        }
+        isUpdating = false
     }
 }

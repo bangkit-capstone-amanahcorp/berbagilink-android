@@ -282,5 +282,16 @@
     <string name="status_pengiriman">Status \nPengiriman</string>
     <string name="tanggal_transaksi">Tanggal \nTransaksi</string>
 
+    // penjualan - voucher
+    <string name="voucher">Voucher</string>
+    <string name="daftar_voucher">Daftar Voucher</string>
+    <string name="nama_voucher">Nama Voucher</string>
+    <string name="kode">Kode</string>
+    <string name="tipe">Tipe</string>
+    <string name="nilai_voucher">Nilai Voucher</string>
+    <string name="kuota">Kuota</string>
+    <string name="tanggal_mulai">Tanggal Mulai</string>
+    <string name="tanggal_berakhir">Tanggal Berakhir</string>
+    <string name="aksi">Aksi</string>
 
 </resources>

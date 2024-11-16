@@ -18,6 +18,7 @@
     <color name="border_oren">#29FDAC28</color>
     <color name="returned">#303030</color>
     <color name="border_returned">#29303030</color>
+    <color name="processed">#F7AB1B</color>
     <color name="failed">#C7071E</color>
     <color name="border_failed">#29C7071E</color>
     <color name="ungu">#A559BF</color>
@@ -42,4 +43,6 @@
     <color name="abu_rte">#F7F8FA</color>
     <color name="merah_cancel">#EF6060</color>
     <color name="merah_muda">#FE98AB</color>
+
+
 </resources>
