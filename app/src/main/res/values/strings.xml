@@ -293,5 +293,12 @@
     <string name="tanggal_mulai">Tanggal Mulai</string>
     <string name="tanggal_berakhir">Tanggal Berakhir</string>
     <string name="aksi">Aksi</string>
+    <string name="tambah_voucher">Tambah Voucher</string>
+    <string name="kode_voucher">Kode Voucher</string>
+    <string name="tipe_voucher">Tipe Voucher</string>
+    <string name="jumlah_kuota_voucher">Jumlah Kuota Voucher</string>
+    <string name="kode_voucher_info">Akan digunakan costumer saat menginput “Kode Voucher” saat transaksi</string>
+    <string name="persentase">Persentase</string>
+
 
 </resources>
