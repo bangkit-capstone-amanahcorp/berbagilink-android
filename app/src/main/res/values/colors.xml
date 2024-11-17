@@ -9,28 +9,41 @@
     <color name="biru_toska_muda">#E6F7F9</color>
     <color name="biru_toska_muda_text">#557578</color>
     <color name="disable">#c6c6c6</color>
-    <color name="green_berhasil">#4DB85A</color>
     <color name="blue_border">#75A8D5</color>
     <color name="biru_tua_text">#083444</color>
     <color name="oren">#FDAC28</color>
+
+    <!-- Orange -->
+    <color name="oren_50">#FEF7E8</color>
+    <!-- Green -->
+    <color name="green_berhasil">#4DB85A</color>
+    <color name="green_500">#25B984</color>
+    <color name="green_50">#E9F8F3</color>
+
     <color name="green_checkin">#52B57C</color>
     <color name="border_checkin">#2952B57C</color>
     <color name="border_oren">#29FDAC28</color>
     <color name="returned">#303030</color>
     <color name="border_returned">#29303030</color>
     <color name="processed">#F7AB1B</color>
+
+    <!-- Red -->
     <color name="failed">#C7071E</color>
+    <color name="red">#FF3434</color>
+    <color name="red_600">#E78A9C</color>
+    <color name="red_50">#FFF5F7</color>
+
+
     <color name="border_failed">#29C7071E</color>
     <color name="ungu">#A559BF</color>
     <color name="hijau_muda">#52B57C</color>
     <color name="abu_terang">#CCCCCC</color>
-    <color name="red">#FF3434</color>
 
-    <color name="neutral_50">#E6EAEB</color>
     <color name="neutral_100">#B0BFC0</color>
     <color name="neutral_200">#8AA0A2</color>
     <string name="neutral_300">#557578</string>
     <color name="neutral_500">#013135</color>
+    <color name="neutral_50">#E6EAEB</color>
     <color name="white_500">#F2F3F8</color>
     <color name="neutral_300">#557578</color>
     <color name="blue_50">#E6F7F9</color>
@@ -38,9 +51,6 @@
     <color name="blue_300">#59C9D9</color>
     <color name="blue_500">#07AFC7</color>
     <color name="white_50">#FEFEFE</color>
-    <color name="green_50">#E9F8F3</color>
-    <color name="green_500">#25B984</color>
-    <color name="red_50">#FFF5F7</color>
     <color name="red_500">#FE98AB</color>
     <color name="orange_50">#FEF7E8</color>
     <color name="orange_500">#F7AB1B</color>

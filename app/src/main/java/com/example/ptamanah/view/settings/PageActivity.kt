@@ -22,6 +22,7 @@ import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.marketing.AnalisisFragment
 import com.example.ptamanah.view.marketing.AnggotaFragment
 import com.example.ptamanah.view.marketing.TransaksiFragment
+import com.example.ptamanah.view.penjualan.analisis.PenjualanAnalisis
 import com.example.ptamanah.view.produk.daftarProduk.DaftarProdukFragment
 import com.example.ptamanah.view.penjualan.logTransaksi.PenjualanLogTransaksi
 import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
@@ -134,6 +135,11 @@ class PageActivity : AppCompatActivity() {
                                 icon = R.drawable.ic_home,
                             ),
                             NavMenuItem(
+                                id = "analisis_penjualan",
+                                title = "Analisis",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
                                 id = "log_transaksi",
                                 title = "Log Transaksi",
                                 icon = R.drawable.ic_home,
@@ -240,6 +246,13 @@ class PageActivity : AppCompatActivity() {
                 }, 150)
             }
 
+            "analisis_penjualan" -> {
+                replaceFragment(PenjualanAnalisis())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
             "log_transaksi" -> {
                 replaceFragment(PenjualanLogTransaksi())
                 binding.drawerLayout.postDelayed({
@@ -249,27 +262,37 @@ class PageActivity : AppCompatActivity() {
 
             "daftar_produk" -> {
                 replaceFragment(DaftarProdukFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "kategori" -> {
                 replaceFragment(KategoriFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "anggota" -> {
                 replaceFragment(AnggotaFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "transaksi" -> {
                 replaceFragment(TransaksiFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             "analisis" -> {
                 replaceFragment(AnalisisFragment())
-                binding.drawerLayout.closeDrawer(GravityCompat.START)
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
             }
 
             else -> {

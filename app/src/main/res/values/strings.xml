@@ -412,6 +412,15 @@
     <string name="status_pengiriman">Status \nPengiriman</string>
     <string name="tanggal_transaksi">Tanggal \nTransaksi</string>
 
+    <string name="txt_analisis_penjualan">Analisis</string>
+    <string name="txt_periode_data">Periode Data</string>
+    <string name="txt_status_pesanan">Status Pesanan</string>
+    <string name="txt_download_data">Download Data</string>
+    <string name="txt_status_penjualan">Status Penjualan</string>
+    <string name="txt_pembeli">Pembeli</string>
+    <string name="txt_peringkat_produk">Peringkat Produk</string>
+    <string name="txt_urutan_kategori">Urutan Kategori</string>
+
     <string name="log_transaksi">Log Transaksi</string>
     <string name="daftar_log_transaksi">Daftar Log Transaksi</string>
     <string name="id">ID</string>
