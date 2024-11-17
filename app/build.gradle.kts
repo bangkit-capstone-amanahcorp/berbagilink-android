@@ -97,4 +97,10 @@ dependencies {
     //layout
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
     implementation("androidx.viewpager2:viewpager2:1.1.0")
+
+    //RingChart
+    implementation("com.github.Taosif7:RingChartLib:1.0.0")
+
+    //LineChart
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
 }
