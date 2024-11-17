@@ -19,6 +19,10 @@ import com.example.ptamanah.R
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
+import com.example.ptamanah.view.marketing.AnalisisFragment
+import com.example.ptamanah.view.marketing.AnggotaFragment
+import com.example.ptamanah.view.marketing.TransaksiFragment
+import com.example.ptamanah.view.produk.DaftarProdukFragment
 import com.example.ptamanah.view.penjualan.logTransaksi.PenjualanLogTransaksi
 import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
 import com.example.ptamanah.view.penjualan.voucher.PenjualanVoucher
@@ -89,15 +93,18 @@ class PageActivity : AppCompatActivity() {
                         icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
-                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home),
+                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home
+                            ),
                             NavMenuItem(
                                 id = "banner",
                                 title = "Banner",
-                                icon = R.drawable.ic_home),
+                                icon = R.drawable.ic_home
+                            ),
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
-                                icon = R.drawable.ic_home,)
+                                icon = R.drawable.ic_home,
+                            ),
                         )
                     ),
                     NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
@@ -120,6 +127,27 @@ class PageActivity : AppCompatActivity() {
                             )
                         )),
                     NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
+                    NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
+                    NavMenuItem(
+                        id = "marketing",
+                        title = "Marketing",
+                        icon = R.drawable.ic_home, children = listOf(
+                            NavMenuItem(
+                                id = "anggota",
+                                title = "Anggota",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "transaksi",
+                                title = "Transaksi",
+                                icon = R.drawable.ic_home,
+                            ), NavMenuItem(
+                                id = "analisis",
+                                title = "Analisis",
+                                icon = R.drawable.ic_home,
+                            ),
+                        )
+                    )
                 )
             ),
             NavMenuItem(id = "event", title = "Event", icon = R.drawable.ic_home),
@@ -206,6 +234,26 @@ class PageActivity : AppCompatActivity() {
                 binding.drawerLayout.postDelayed({
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                 }, 150)
+            }
+
+            "produk" -> {
+                replaceFragment(DaftarProdukFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "anggota" -> {
+                replaceFragment(AnggotaFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "transaksi" -> {
+                replaceFragment(TransaksiFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "analisis" -> {
+                replaceFragment(AnalisisFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
             else -> {

@@ -97,4 +97,7 @@ dependencies {
     //layout
     implementation("androidx.drawerlayout:drawerlayout:1.2.0")
     implementation("androidx.viewpager2:viewpager2:1.1.0")
+
+    // Card View
+    implementation("androidx.cardview:cardview:1.0.0")
 }
