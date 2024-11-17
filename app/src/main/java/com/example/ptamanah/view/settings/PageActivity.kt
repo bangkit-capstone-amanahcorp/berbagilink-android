@@ -19,11 +19,17 @@ import com.example.ptamanah.R
 import com.example.ptamanah.adapter.navigation.ExpandableListAdapter
 import com.example.ptamanah.adapter.navigation.NavMenuItem
 import com.example.ptamanah.databinding.ActivityPageBinding
-import com.example.ptamanah.view.sales.transaksi.PenjualanTransaksi
+import com.example.ptamanah.view.marketing.AnalisisFragment
+import com.example.ptamanah.view.marketing.AnggotaFragment
+import com.example.ptamanah.view.marketing.TransaksiFragment
+import com.example.ptamanah.view.penjualan.analisis.PenjualanAnalisis
+import com.example.ptamanah.view.produk.daftarProduk.DaftarProdukFragment
+import com.example.ptamanah.view.penjualan.logTransaksi.PenjualanLogTransaksi
+import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
+import com.example.ptamanah.view.penjualan.voucher.PenjualanVoucher
+import com.example.ptamanah.view.produk.kategori.KategoriFragment
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
-import com.example.ptamanah.view.settings.halaman.PreviewFragment
-import com.example.ptamanah.view.settings.rekening.EditRekeningFragment
 import com.example.ptamanah.view.settings.rekening.RekeningFragment
 
 class PageActivity : AppCompatActivity() {
@@ -89,27 +95,76 @@ class PageActivity : AppCompatActivity() {
                         icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
-                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home),
+                                id = "halaman", title = "Halaman", icon = R.drawable.ic_home
+                            ),
                             NavMenuItem(
                                 id = "banner",
                                 title = "Banner",
-                                icon = R.drawable.ic_home),
+                                icon = R.drawable.ic_home
+                            ),
                             NavMenuItem(
                                 id = "rekening",
                                 title = "Rekening",
-                                icon = R.drawable.ic_home,)
+                                icon = R.drawable.ic_home,
+                            ),
                         )
                     ),
-                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
+                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home,
+                        children = listOf(
+                            NavMenuItem(
+                                id = "daftar_produk",
+                                title = "Daftar Produk",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "kategori",
+                                title = "Kategori",
+                                icon = R.drawable.ic_home,
+                            ),
+                        )),
                     NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
                                 id = "transaksi",
                                 title = "Transaksi",
                                 icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "voucher",
+                                title = "Voucher",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "analisis_penjualan",
+                                title = "Analisis",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "log_transaksi",
+                                title = "Log Transaksi",
+                                icon = R.drawable.ic_home,
                             )
                         )),
-                    NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
+                    NavMenuItem(
+                        id = "marketing",
+                        title = "Marketing",
+                        icon = R.drawable.ic_home, children = listOf(
+                            NavMenuItem(
+                                id = "anggota",
+                                title = "Anggota",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "transaksi",
+                                title = "Transaksi",
+                                icon = R.drawable.ic_home,
+                            ), NavMenuItem(
+                                id = "analisis",
+                                title = "Analisis",
+                                icon = R.drawable.ic_home,
+                            ),
+                        )
+                    )
                 )
             ),
             NavMenuItem(id = "event", title = "Event", icon = R.drawable.ic_home),
@@ -176,8 +231,65 @@ class PageActivity : AppCompatActivity() {
                 }, 150)
             }
 
+            //Penjualan(sales)
             "transaksi" -> {
                 replaceFragment(PenjualanTransaksi())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "voucher" -> {
+                replaceFragment(PenjualanVoucher())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "analisis_penjualan" -> {
+                replaceFragment(PenjualanAnalisis())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "log_transaksi" -> {
+                replaceFragment(PenjualanLogTransaksi())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "daftar_produk" -> {
+                replaceFragment(DaftarProdukFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "kategori" -> {
+                replaceFragment(KategoriFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "anggota" -> {
+                replaceFragment(AnggotaFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "transaksi" -> {
+                replaceFragment(TransaksiFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+            "analisis" -> {
+                replaceFragment(AnalisisFragment())
                 binding.drawerLayout.postDelayed({
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                 }, 150)

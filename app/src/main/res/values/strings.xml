@@ -232,6 +232,136 @@
     <string name="edit_rekening">Edit Rekening</string>
     <string name="hapus_rekening">Hapus Rekening</string>
 
+    <string name="daftar_produk">Daftar Produk</string>
+    <string name="produk">Produk</string>
+    <string name="info_produk">Info Produk</string>
+    <string name="jenis">Jenis</string>
+    <string name="kategori">Kategori</string>
+    <string name="daftar_kategori">Daftar Kategori</string>
+    <string name="stok">Stok</string>
+    <string name="aktifkan">Aktifkan?</string>
+    <string name="rp">Rp</string>
+    <string name="atur">Atur</string>
+    <string name="lihat_varian_produk">Lihat Varian Produk</string>
+
+    // Dropdown Tambah Produk
+    <string name="informasi_produk">Informasi Produk</string>
+    <string name="detail_produk">Detail Produk</string>
+    <string name="varian">Varian</string>
+    <string name="harga_stok">Harga &amp; Stok</string>
+    <string name="diskon">Diskon &amp; Grosir</string>
+    <string name="berat">Berat</string>
+    <string name="rekening_transaksi">Rekening Transaksi</string>
+
+    // Informasi Produk
+    <string name="nama_produk">Nama Produk</string>
+    <string name="placeholder_nama_produk">Contoh: Sepatu Sekolah (Jenis Produk) + Eiden (Merek) + Hitam (Keterangan lain)</string>
+    <string name="info_nama_produk">Nama tidak bisa diubah lagi setelah produk pernah terjual</string>
+    <string name="barang_fisik">Barang Fisik</string>
+    <string name="jasa">Jasa</string>
+    <string name="contoh_jasa">(contoh: Pembuatan logo, edit video, dll)</string>
+    <string name="contoh_produk_digital">(contoh: Aset Design, Rekaman Video Kursus, E-book)</string>
+    <string name="produk_digital">Produk Digital</string>
+    <string name="placeholder_pilih_kategori">Pilih Kategori</string>
+    <string name="info_kategori">Kamu dapat <i>menambah kategori baru</i> atau memilih dari daftar kategori  yang sudah kamu buat</string>
+    <string name="kode_produk">Kode Produk (Opsional)</string>
+    <string name="placeholder_kode_produk">Contoh: sepatu-eiden</string>
+    <string name="info_kode_produk">Akan masuk pada link produk, contoh: berbagi.link/username/onlinestore/detail/<b>sepatu-eiden</b></string>
+
+    // kategori produk
+    <string name="nama_kategori">Nama Kategori</string>"
+    <string name="tambah_kategori">Tambah Kategori</string>"
+    <string name="placeholder_kategori_tambah">contoh : Makanan/Minuman/Pakaian Pria</string>"
+
+    // Marketing
+    <string name="marketing">Marketing</string>
+    <string name="anggota">Anggota</string>
+    <string name="daftar_anggota">Daftar Anggota</string>
+    <string name="voucher">Voucher</string>
+    <!--    <string name="email">Email</string>-->
+    <string name="alamant">Alamat</string>
+    <!--    <string name="bank">Bank</string>-->
+    <string name="nama_rekening">Nama Rekening</string>
+    <string name="no_rekening">No. Rekening</string>
+    <!--    <string name="aksi">Aksi</string>-->
+    <string name="placeholder_cari">Cari</string>
+    <string name="tambah_anggota">Tambah Anggota</string>
+    <string name="nama_anggota">Nama Anggota</string>
+    <string name="no_hp">No. HP</string>
+    <!--    <string name="metode_pembayaran">Metode Pembayaran</string>-->
+    <!--    <string name="bank">Bank</string>-->
+    <!--    <string name="e_wallet">E-Wallet</string>-->
+    <!--    <string name="jenis_bank">Jenis Bank</string>-->
+    <!--    <string name="nomor_rekening">Nomor Rekening</string>-->
+    <string name="A_n_rekening">A.n Rekening</string>
+    <string name="aktifkan_voucher">Aktifkan Voucher?</string>
+    <string name="pilih_voucher">Pilih Voucher?</string>
+    <string name="ya">Ya</string>
+    <string name="tidak">Tidak</string>
+    <string name="alamat_anggota">Alamat Anggota</string>
+    <string name="voucher_diskon_11.11">DISKON 11.11</string>
+    <string name="placeholder_nama_anggota">Masukkan nama anggota</string>
+    <string name="placeholder_email">contoh: example@gmail.com</string>
+    <string name="placeholder_metode_pembayaran">contoh: example@gmail.com</string>
+    <string name="placeholder_nomor_rekening">Masukkan nama rekening</string>
+    <string name="placeholder_nama_rekening">Masukkan nama rekening</string>
+    <string name="placeholder_nama_pemilik_rekening">Masukkan nama pemilik rekening</string>
+    <string name="placeholder_alamat_anggota">contoh: Jalan Fatmawati 24, Kota Lorem Ipsum</string>
+
+    <!--    <string name="transaksi">Transaksi</string>-->
+    <!--    <string name="transaksi_manual">Transaksi Manual</string>-->
+    <string name="deskripsi_transaksi_manual">Transaksi dengan pembayaran manual (Transfer Bank, Minimarket)</string>
+    <!--    <string name="total_transaksi">Total Transaksi</string>-->
+    <!--    <string name="transaksi_gagal">Transaksi Gagal</string>-->
+    <!--    <string name="transaksi_sukses">Transaksi Sukses</string>-->
+    <string name="transaksi_instant_payment">Transaksi Instant Payment</string>
+    <string name="deskripsi_transaksi_instant_payment">Transaksi dengan pembayaran instan dan sudah dipotong biaya admin</string>
+    <string name="daftar_transaksi_anggota">Daftar Transaksi Anggota</string>
+    <!--    <string name="semua_status">Semua Status</string>-->
+    <!--    <string name="semua_produk">Semua Produk</string>-->
+    <!--    <string name="semua_pengiriman">Semua Pengiriman</string>-->
+    <string name="dengan_tanpa_reseller">Dengan &amp; tanpa Reseller</string>
+
+    <!--    <string name="hp">HP</string>-->
+    <!--    <string name="email_reseller">Email Reseller</string>-->
+    <!--    <string name="dropshipper">Dropshipper</string>-->
+    <!--    <string name="status_pengiriman">Status Pengiriman</string>-->
+    <!--    <string name="tanggal_transaksi">Tanggal Transaksi</string>-->
+    <!--    <string name="export">Export</string>-->
+    <!--    <string name="status">Status</string>-->
+
+    // Analisis
+    <!--    <string name="marketing">Marketing</string>-->
+    <string name="analisis">Analisis</string>
+    <string name="periode_data">Periode Data</string>
+    <string name="status_pesanan">Status Pesanan</string>
+    <string name="download_data">Download Data</string>
+    <string name="status_penjualan">Status Penjualan</string>
+    <!--    <string name="penjualan">Penjualan</string>-->
+    <string name="tingkat_konversi">Tingkat Konversi</string>
+    <string name="penjualan_per_pesanan">Penjualan per Pesanan</string>
+    <string name="pesanan">Pesanan</string>
+    <!--    <string name="total_pengunjung">Total Pengunjung</string>-->
+    <string name="produk_dilihat">Produk Dilihat</string>
+    <string name="mines_persentase_penurunan">–10% dari Kemarin (8.00 – 00.00)</string>
+    <string name="persentase_penurunan"><b>10%</b> dari Kemarin (8.00 – 00.00)</string>
+    <string name="grafik">Grafik</string>
+    <string name="pembeli">Pembeli</string>
+    <string name="pembeli_baru">Pembeli Baru</string>
+    <string name="pembeli_reguler">Pembeli Reguler</string>
+    <string name="total_pembeli">Total Pembeli</string>
+    <string name="persentase_pembelian_berulang">% Pembelian Berulang</string>
+    <string name="potensi_penjualan">Potensi Penjualan</string>
+    <string name="peringkat_produk">Peringkat Produk</string>
+    <string name="semua_kategori">Semua Kategori</string>
+    <string name="berdasarkan">Berdasarkan :</string>
+    <string name="peringkat">Peringkat</string>
+    <!--    <string name="informasi_produk">Informasi Produk</string>-->
+    <string name="berdasarkan_penjulanan">Berdasarkan Penjualan</string>
+    <string name="urutan_kategori">Urutan Kategori</string>
+
+    <string name="hari_ini">Hari Ini (Real Time 11 Sep)</string>
+    <string name="pesanan_dibuat">Pesanan Dibuat</string>
 
     <string name="required">*</string>
 
@@ -270,7 +400,7 @@
     <string name="transaksi_instan_cap">Transaksi dengan pembayaran instan dan sudah dipotong biaya admin</string>
     <string name="daftar_transaksi">Daftar Transaksi</string>
     <string name="export">Export</string>
-    <string name="atur">Atur</string>
+    <!--    <string name="atur">Atur</string>-->
     <string name="semua_status">Semua Status</string>
     <string name="semua_pengiriman">Semua Pengiriman</string>
     <string name="semua_produk">Semua Produk</string>
@@ -281,6 +411,42 @@
     <string name="status">Status</string>
     <string name="status_pengiriman">Status \nPengiriman</string>
     <string name="tanggal_transaksi">Tanggal \nTransaksi</string>
+
+    <string name="txt_analisis_penjualan">Analisis</string>
+    <string name="txt_periode_data">Periode Data</string>
+    <string name="txt_status_pesanan">Status Pesanan</string>
+    <string name="txt_download_data">Download Data</string>
+    <string name="txt_status_penjualan">Status Penjualan</string>
+    <string name="txt_pembeli">Pembeli</string>
+    <string name="txt_peringkat_produk">Peringkat Produk</string>
+    <string name="txt_urutan_kategori">Urutan Kategori</string>
+
+    <string name="log_transaksi">Log Transaksi</string>
+    <string name="daftar_log_transaksi">Daftar Log Transaksi</string>
+    <string name="id">ID</string>
+    <string name="tipe_user">Tipe User</string>
+    <string name="aksi_user">Aksi User</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="show">Show</string>
+    <string name="entries">10 Entries</string>
+
+    // penjualan - voucher
+    <!--    <string name="voucher">Voucher</string>-->
+    <string name="daftar_voucher">Daftar Voucher</string>
+    <string name="nama_voucher">Nama Voucher</string>
+    <string name="kode">Kode</string>
+    <string name="tipe">Tipe</string>
+    <string name="nilai_voucher">Nilai Voucher</string>
+    <string name="kuota">Kuota</string>
+    <string name="tanggal_mulai">Tanggal Mulai</string>
+    <string name="tanggal_berakhir">Tanggal Berakhir</string>
+    <string name="aksi">Aksi</string>
+    <string name="tambah_voucher">Tambah Voucher</string>
+    <string name="kode_voucher">Kode Voucher</string>
+    <string name="tipe_voucher">Tipe Voucher</string>
+    <string name="jumlah_kuota_voucher">Jumlah Kuota Voucher</string>
+    <string name="kode_voucher_info">Akan digunakan costumer saat menginput “Kode Voucher” saat transaksi</string>
+    <string name="persentase">Persentase</string>
 
 
 </resources>
