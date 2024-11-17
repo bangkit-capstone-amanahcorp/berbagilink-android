@@ -188,8 +188,8 @@
                                 android:layout_weight="1" />
 
                             <Button
+                                android:id="@+id/tambah_voucher"
                                 style="@style/Widget.Material3.Button.Icon"
-                                android:id="@+id/add_voucher"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/white"
