@@ -22,10 +22,11 @@ import com.example.ptamanah.databinding.ActivityPageBinding
 import com.example.ptamanah.view.marketing.AnalisisFragment
 import com.example.ptamanah.view.marketing.AnggotaFragment
 import com.example.ptamanah.view.marketing.TransaksiFragment
-import com.example.ptamanah.view.produk.DaftarProdukFragment
+import com.example.ptamanah.view.produk.daftarProduk.DaftarProdukFragment
 import com.example.ptamanah.view.penjualan.logTransaksi.PenjualanLogTransaksi
 import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
 import com.example.ptamanah.view.penjualan.voucher.PenjualanVoucher
+import com.example.ptamanah.view.produk.kategori.KategoriFragment
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
 import com.example.ptamanah.view.settings.rekening.RekeningFragment
@@ -107,7 +108,19 @@ class PageActivity : AppCompatActivity() {
                             ),
                         )
                     ),
-                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home),
+                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home,
+                        children = listOf(
+                            NavMenuItem(
+                                id = "daftar_produk",
+                                title = "Daftar Produk",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "kategori",
+                                title = "Kategori",
+                                icon = R.drawable.ic_home,
+                            ),
+                        )),
                     NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
@@ -126,8 +139,6 @@ class PageActivity : AppCompatActivity() {
                                 icon = R.drawable.ic_home,
                             )
                         )),
-                    NavMenuItem(id = "marketing", title = "Marketing", icon = R.drawable.ic_home),
-                    NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home),
                     NavMenuItem(
                         id = "marketing",
                         title = "Marketing",
@@ -236,8 +247,13 @@ class PageActivity : AppCompatActivity() {
                 }, 150)
             }
 
-            "produk" -> {
+            "daftar_produk" -> {
                 replaceFragment(DaftarProdukFragment())
+                binding.drawerLayout.closeDrawer(GravityCompat.START)
+            }
+
+            "kategori" -> {
+                replaceFragment(KategoriFragment())
                 binding.drawerLayout.closeDrawer(GravityCompat.START)
             }
 
