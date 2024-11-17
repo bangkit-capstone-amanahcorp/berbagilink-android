@@ -1,21 +1,12 @@
-package com.example.ptamanah.view.produk
+package com.example.ptamanah.view.produk.daftarProduk
 
 import android.os.Bundle
-import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TableLayout
-import android.widget.TableRow
-import android.widget.TextView
 import com.example.ptamanah.R
-import com.example.ptamanah.data.response.Product
 import com.example.ptamanah.databinding.FragmentDaftarProdukBinding
-import com.example.ptamanah.view.settings.halaman.PreviewFragment
-import com.google.android.material.switchmaterial.SwitchMaterial
 
 class DaftarProdukFragment : Fragment() {
 

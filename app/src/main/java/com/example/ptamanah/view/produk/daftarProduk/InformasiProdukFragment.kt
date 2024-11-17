@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.produk
+package com.example.ptamanah.view.produk.daftarProduk
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.example.ptamanah.R
 import com.example.ptamanah.databinding.FragmentInformasiProdukBinding
-import com.google.android.material.textfield.MaterialAutoCompleteTextView
 
 class InformasiProdukFragment : Fragment() {
 

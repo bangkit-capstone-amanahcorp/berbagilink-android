@@ -1,4 +1,4 @@
-package com.example.ptamanah.view.produk
+package com.example.ptamanah.view.produk.daftarProduk
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
