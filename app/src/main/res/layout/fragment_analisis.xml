@@ -47,7 +47,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardBackgroundColor="@color/biru_toska_muda"
-                    app:cardCornerRadius="56dp">
+                    app:cardCornerRadius="56dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -75,6 +77,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
                             android:src="@drawable/ic_copy" />
 
                         <FrameLayout
@@ -111,16 +114,14 @@
                     android:backgroundTint="@color/white"
                     android:drawableLeft="@drawable/ic_preview"
                     android:drawableRight="@drawable/ic_arrow_right_outline"
-                    android:fontFamily="@font/ubuntu"
+                    android:fontFamily="@font/montserrat_bold"
                     android:paddingVertical="12dp"
                     android:text="@string/lihat_preview_halaman_toko"
                     android:textAlignment="viewStart"
                     android:textColor="@color/biru_toska"
                     android:textStyle="bold"
-                    app:backgroundTint="@null"
-                    app:iconTint="@color/black"
                     app:strokeColor="@color/biru_toska"
-                    app:strokeWidth="2dp" />
+                    app:strokeWidth="1dp" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -175,41 +176,57 @@
                     android:layout_height="wrap_content"
                     android:text="@string/periode_data"
                     android:textColor="#333333"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/DropdownTextInputLayout"
-                    android:hint="@string/hari_ini">
+                    android:hint="@string/hari_ini"
+                    app:endIconDrawable="@drawable/ic_arrow_down_toska"
+                    app:endIconTint="@color/blue_500">
 
                     <AutoCompleteTextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:layout_height="40dp"
+                        android:inputType="none"
+                        android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
                     android:text="@string/status_pesanan"
                     android:textColor="#333333"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/DropdownTextInputLayout"
-                    android:hint="@string/pesanan_dibuat">
+                    android:hint="@string/pesanan_dibuat"
+                    app:endIconDrawable="@drawable/ic_arrow_down_toska"
+                    app:endIconTint="@color/blue_500">
 
                     <AutoCompleteTextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text" />
+                        android:layout_height="40dp"
+                        android:inputType="none"
+                        android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     style="@style/Widget.Material3.Button.IconButton.Filled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="12dp"
-                    android:text="@string/download_data" />
+                    android:drawableStart="@drawable/ic_download"
+                    android:drawableLeft="@drawable/ic_download"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="@string/download_data"
+                    android:textStyle="bold"
+                    app:icon="@drawable/ic_download"
+                    app:iconGravity="textStart"
+                    app:iconPadding="8dp" />
 
 
             </LinearLayout>
@@ -235,29 +252,30 @@
                     android:layout_height="wrap_content"
                     android:text="@string/status_penjualan"
                     android:textColor="@color/neutral_500"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_marginVertical="12dp"
                     android:layout_height="2dp"
+                    android:layout_marginVertical="12dp"
                     android:background="@color/neutral_50" />
 
-                <LinearLayout
+                <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:columnCount="2"
+                    android:rowCount="3">
 
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -266,20 +284,29 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/circle_toska"
                                 android:src="@drawable/ic_penjualan" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <Space
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/penjualan"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -291,19 +318,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="Rp30.000.000"
                             android:textColor="@color/blue_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
@@ -312,11 +339,11 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -325,20 +352,29 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_percent" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <Space
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/tingkat_konversi"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="12sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -350,40 +386,32 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="23%"
                             android:textColor="@color/neutral_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/mines_persentase_penurunan"
+                            android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -392,20 +420,29 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/circle_gray"
                                 android:src="@drawable/ic_order" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <Space
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/penjualan_per_pesanan"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="10sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -417,19 +454,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="Rp420.000"
                             android:textColor="@color/neutral_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
@@ -438,12 +475,11 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -452,20 +488,29 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/circle_orange"
                                 android:src="@drawable/ic_transaction" />
 
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
                                 android:layout_weight="1"
                                 android:text="@string/pesanan"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -477,40 +522,32 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="453"
                             android:textColor="@color/orange_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -519,20 +556,29 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/circle_green"
                                 android:src="@drawable/ic_total_user" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <Space
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/total_pengunjung"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="12sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -544,19 +590,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="2.987"
                             android:textColor="@color/green_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
@@ -565,12 +611,11 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -579,20 +624,29 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_gravity="center"
                                 android:background="@drawable/circle_red"
                                 android:src="@drawable/ic_eye" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
+                            <Space
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:layout_width="60dp"
+                                android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/produk_dilihat"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="12sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -604,22 +658,43 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="24"
                             android:textColor="@color/red_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
+
+
+                </GridLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="12dp"
+                    android:text="@string/grafik"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/lineChart"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
 
                 </LinearLayout>
 
@@ -635,6 +710,7 @@
             app:cardElevation="0dp"
             app:cardUseCompatPadding="false">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -645,14 +721,17 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="@string/pembeli"
                     android:textColor="@color/neutral_500"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
+
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
+                    android:layout_marginVertical="12dp"
                     android:background="@color/neutral_50" />
 
                 <LinearLayout
@@ -660,16 +739,105 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
+                    <com.taosif7.android.ringchartlib.RingChart
+                        android:id="@+id/ringChart"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="1"
+                        app:RingChartSecondaryColor="@color/blue_500" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="@drawable/rounded_view"
+                                android:backgroundTint="@color/blue_500" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="Pembeli Baru"
+                                android:textColor="#666666"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="@drawable/rounded_view"
+                                android:backgroundTint="#FFA500" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="Pembeli Reguler"
+                                android:textColor="#666666"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
+                                android:background="@drawable/rounded_view"
+                                android:backgroundTint="#4CAF50" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="Total Pembeli"
+                                android:textColor="#666666"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:rowCount="3">
+
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -678,12 +846,19 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="50dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:lines="2"
                                 android:text="@string/pembeli_baru"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -695,19 +870,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="321"
                             android:textColor="@color/blue_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
@@ -716,12 +891,11 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -729,14 +903,18 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/pembeli_reguler"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -748,40 +926,32 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="24"
                             android:textColor="@color/orange_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/mines_persentase_penurunan"
+                            android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -789,14 +959,19 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:lines="2"
                                 android:text="@string/total_pembeli"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -808,19 +983,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="500"
                             android:textColor="@color/green_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
@@ -829,12 +1004,11 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -844,12 +1018,17 @@
 
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="70dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="@string/persentase_pembelian_berulang"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -861,40 +1040,32 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="24%"
                             android:textColor="@color/neutral_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
 
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
                         android:background="@drawable/card_border"
                         android:orientation="vertical"
-                        android:padding="12dp">
+                        android:padding="16dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -902,13 +1073,19 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
+
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="60dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/potensi_penjualan"
+                                android:text="@string/total_pengunjung"
                                 android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
+                                android:textSize="14sp" />
+
+                            <Space
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -920,85 +1097,23 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="8dp"
                             android:text="751"
                             android:textColor="@color/neutral_500"
-                            android:textSize="20sp"
+                            android:textSize="18sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="@string/persentase_penurunan"
                             android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
 
                     </LinearLayout>
-
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/card_border"
-                        android:orientation="vertical"
-                        android:padding="12dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@drawable/circle_red"
-                                android:src="@drawable/ic_eye" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="8dp"
-                                android:layout_weight="1"
-                                android:text="@string/produk_dilihat"
-                                android:textColor="@color/neutral_500"
-                                android:textSize="16sp" /> <!-- Menambahkan layout_weight -->
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:scaleType="centerInside"
-                                android:src="@drawable/ic_info" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="24"
-                            android:textColor="@color/red_500"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/persentase_penurunan"
-                            android:textColor="@color/neutral_300"
-                            android:textSize="12sp" />
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
+                </GridLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -1006,10 +1121,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="false"
             android:layout_marginTop="16dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="false">
 
 
             <LinearLayout
@@ -1022,6 +1137,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <TextView
@@ -1031,19 +1147,23 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:text="@string/peringkat_produk"
                         android:textColor="@color/neutral_500"
-                        android:textSize="12sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/DropdownTextInputLayout"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_weight="1"
-                        android:hint="@string/semua_kategori">
+                        android:hint="@string/semua_kategori"
+                        app:endIconDrawable="@drawable/ic_arrow_down_toska"
+                        app:endIconTint="@color/blue_500">
 
                         <AutoCompleteTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="none" />
+                            android:inputType="none"
+                            android:textSize="14sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -1088,6 +1208,7 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
                                 android:scaleType="centerInside"
                                 android:src="@drawable/ic_info" />
                         </LinearLayout>
@@ -1240,7 +1361,8 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:text="@string/urutan_kategori"
                     android:textColor="@color/neutral_500"
-                    android:textSize="12sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
 
                 <View
