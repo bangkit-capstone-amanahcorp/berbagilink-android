@@ -1,8 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -114,11 +112,4 @@ dependencies {
     //LineChart
     implementation("com.github.PhilJay:MPAndroidChart:v3.1.1")
 
-    //Dagger Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
-}
-
-kapt {
-    correctErrorTypes = true
 }
