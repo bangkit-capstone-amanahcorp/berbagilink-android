@@ -23,19 +23,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp"
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="12dp">
+                    android:orientation="horizontal">
 
                     <ImageButton
                         android:id="@+id/backBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_back"
+                        android:layout_marginEnd="12dp"
                         android:backgroundTint="@color/primer"
                         android:clickable="true"
                         android:focusable="true"
-                        android:layout_marginEnd="12dp"/>
+                        android:src="@drawable/ic_back" />
 
                     <TextView
                         android:id="@+id/tvTokoOnline"
@@ -44,15 +44,15 @@
                         android:text="@string/tambah_voucher"
                         android:textColor="#333333"
                         android:textSize="18sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
-
 
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
                     app:cardCornerRadius="8dp">
 
                     <LinearLayout
@@ -67,20 +67,19 @@
                             android:layout_marginBottom="8dp"
                             android:text="@string/nama_voucher"
                             android:textColor="@color/black"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/etNamaVoucher"
                             android:layout_width="match_parent"
-                            android:layout_height="36dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginBottom="16dp"
-                            android:paddingStart="12dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:background="@drawable/border_input_banner"
                             android:hint="contoh: Diskon 11.11"
-                            android:textSize="12sp"
-                            android:layout_gravity="center"/>
+                            android:padding="16dp"
+                            android:paddingBottom="10dp"
+                            android:textSize="12sp" />
 
 
                         <TextView
@@ -89,26 +88,26 @@
                             android:layout_marginBottom="8dp"
                             android:text="@string/kode_voucher"
                             android:textColor="@color/black"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/etKodeVoucher"
                             android:layout_width="match_parent"
-                            android:layout_height="36dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginBottom="8dp"
-                            android:paddingStart="12dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:background="@drawable/border_input_banner"
                             android:hint="contoh: DISKONCERIA"
-                            android:textSize="12sp"
-                            android:layout_gravity="center"/>
+                            android:padding="16dp"
+                            android:textSize="12sp" />
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:cardBackgroundColor="@color/white_500"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
                             android:layout_marginBottom="16dp"
+                            app:cardBackgroundColor="@color/white_500"
                             app:cardCornerRadius="8dp">
 
                             <LinearLayout
@@ -140,63 +139,64 @@
                             android:layout_marginBottom="8dp"
                             android:text="@string/tipe_voucher"
                             android:textColor="@color/black"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:orientation="horizontal"
-                            android:layout_marginBottom="16dp">
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
-                            <Button
-                                android:id="@+id/presentaseBtn"
-                                style="@style/Widget.Material3.Button.Icon"
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/ed_tipe_voucher"
+                                style="@style/DropdownTextInputLayout"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0.7"
-                                android:background="@drawable/border_input_banner"
-                                android:drawableRight="@drawable/ic_arrow_down"
-                                android:drawableTint="@color/biru_toska"
-                                android:text="@string/persentase"
-                                android:textColor="@color/black_text"
-                                android:textSize="12sp"
-                                android:paddingHorizontal="12dp"
-                                app:backgroundTint="@null"
-                                android:ellipsize="end"
-                                android:singleLine="true"
                                 android:layout_marginEnd="12dp"
-                                android:gravity="start|center_vertical"/>
+                                android:layout_weight="0.7"
+                                app:hintEnabled="false"
+                                app:boxStrokeWidth="1dp"
+                                android:hint="Persentase">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/autoCompleteTipeVoucher"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="none"
+                                    android:text="Pilih Tipe"
+                                    android:textSize="12sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
 
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:background="@drawable/border_input_banner">
+                                android:background="@drawable/border_input_banner"
+                                android:orientation="horizontal">
 
                                 <EditText
                                     android:id="@+id/etInputDiskon"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.9"
-                                    android:paddingStart="12dp"
-                                    android:paddingVertical="10dp"
-                                    android:hint="0"
-                                    android:textSize="12sp"
                                     android:layout_gravity="center"
-                                    android:background="@null"/>
+                                    android:layout_weight="0.9"
+                                    android:background="@null"
+                                    android:hint="0"
+                                    android:padding="16dp"
+                                    android:textSize="12sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0.1"
-                                    android:text="% OFF"
-                                    android:textStyle="bold"
-                                    android:textSize="14sp"
                                     android:layout_gravity="center"
+                                    android:layout_weight="0.1"
                                     android:gravity="end"
                                     android:paddingEnd="10dp"
-                                    />
+                                    android:text="% OFF"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
 
                             </LinearLayout>
 
@@ -209,20 +209,18 @@
                             android:layout_marginBottom="8dp"
                             android:text="@string/jumlah_kuota_voucher"
                             android:textColor="@color/black"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/etInputKuota"
                             android:layout_width="match_parent"
-                            android:layout_height="36dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:layout_marginBottom="16dp"
-                            android:paddingStart="12dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:background="@drawable/border_input_banner"
                             android:hint="contoh: 200"
-                            android:textSize="12sp"
-                            android:layout_gravity="center"/>
+                            android:padding="16dp"
+                            android:textSize="12sp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -232,9 +230,9 @@
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_marginEnd="12dp"
                                 android:layout_weight="1"
-                                android:orientation="vertical"
-                                android:layout_marginEnd="12dp">
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -242,19 +240,18 @@
                                     android:layout_marginBottom="8dp"
                                     android:text="@string/tanggal_mulai"
                                     android:textColor="@color/black"
-                                    android:textStyle="bold"/>
+                                    android:textStyle="bold" />
 
                                 <EditText
                                     android:id="@+id/etTglMulai"
                                     android:layout_width="match_parent"
-                                    android:layout_height="36dp"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
                                     android:background="@drawable/border_input_banner"
                                     android:hint="DD/MM/YYYY"
-                                    android:textSize="12sp"
-                                    android:layout_gravity="center"
-                                    android:inputType="date"/>
+                                    android:inputType="date"
+                                    android:padding="16dp"
+                                    android:textSize="12sp" />
 
                             </LinearLayout>
 
@@ -270,19 +267,18 @@
                                     android:layout_marginBottom="8dp"
                                     android:text="@string/tanggal_berakhir"
                                     android:textColor="@color/black"
-                                    android:textStyle="bold"/>
+                                    android:textStyle="bold" />
 
                                 <EditText
                                     android:id="@+id/etTglAkhir"
                                     android:layout_width="match_parent"
-                                    android:layout_height="36dp"
-                                    android:paddingHorizontal="12dp"
-                                    android:paddingVertical="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
                                     android:background="@drawable/border_input_banner"
                                     android:hint="DD/MM/YYYY"
-                                    android:textSize="12sp"
-                                    android:layout_gravity="center"
-                                    android:inputType="date"/>
+                                    android:inputType="date"
+                                    android:padding="16dp"
+                                    android:textSize="12sp" />
 
                             </LinearLayout>
 
@@ -334,11 +330,4 @@
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/sidebar_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>

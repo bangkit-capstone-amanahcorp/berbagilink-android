@@ -447,6 +447,10 @@
     <string name="jumlah_kuota_voucher">Jumlah Kuota Voucher</string>
     <string name="kode_voucher_info">Akan digunakan costumer saat menginput “Kode Voucher” saat transaksi</string>
     <string name="persentase">Persentase</string>
+    <string-array name="jenis_voucher">
+        <item name="persentase">Persentase</item>
+        <item name="nominal">Nominal</item>
+    </string-array>
 
 
 </resources>

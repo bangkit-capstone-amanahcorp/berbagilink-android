@@ -7,6 +7,7 @@ import com.example.ptamanah.data.response.ResponseDataVisitorTenant
 import com.example.ptamanah.data.response.ResponseDetailEvents
 import com.example.ptamanah.data.response.ResponseEventAdminLog
 import com.example.ptamanah.data.response.ResponseListEvent
+import com.example.ptamanah.data.response.voucher.ResponseListVoucher
 import com.example.ptamanah.data.response.ResponseLogin
 import com.example.ptamanah.data.response.ResponseLoginEventTenant
 import com.example.ptamanah.data.response.ResponseLogoutTenant
@@ -20,6 +21,7 @@ import com.example.ptamanah.data.response.ResponseTransactionEvents
 import com.example.ptamanah.data.response.ResponseUpdateCheckIn
 import com.example.ptamanah.data.response.ResponseUpdateUser
 import com.example.ptamanah.data.response.Responsedelete
+import com.example.ptamanah.data.response.voucher.ResponseVoucher
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -186,4 +188,28 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("eventId") eventId: String
     ) : ResponseDetailEvents
+
+
+    @GET("marketplace/voucher")
+    suspend fun getVoucher(
+        @Header("Authorization") token: String
+    ): ResponseListVoucher
+
+    @FormUrlEncoded
+    @POST("marketplace/voucher")
+    suspend fun addVoucher(
+        @Header("Authorization") token: String,
+        @Field("voucher_name") name: String,
+        @Field("voucher_code") code: String,
+        @Field("voucher_type") type: String,
+        @Field("feature_type") feature: String,
+        @Field("usage_type") usage: String,
+        @Field("voucher_value") value: Float,
+        @Field("min_value") minValue: Int,
+        @Field("max_value") maxValue: Int,
+        @Field("quota") quota: Int,
+        @Field("used") used: Int,
+        @Field("description") description: String,
+        @Field("is_active") isActive: Boolean
+    ): ResponseVoucher
 }

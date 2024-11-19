@@ -17,6 +17,7 @@
         android:roundIcon="@drawable/icon_berbagi"
         android:supportsRtl="true"
         android:theme="@style/HomePage"
+        android:enableOnBackInvokedCallback="true"
         tools:targetApi="31">
         <activity
             android:name=".view.admin.transaction.DaftarTransaksiActivity"
