@@ -2,22 +2,21 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <style name="TextFieldTitle">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/neutral_500</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginTop">12dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
     </style>
 
     <style name="TextDropdownTitle">
-        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">@font/montserrat_bold</item>
-        <item name="android:textSize">11sp</item>
-        <item name="android:layout_marginTop">12dp</item>
-        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextDescription">
@@ -67,9 +66,6 @@
     <style name="DropdownTextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="shapeAppearance">
-            ?attr/shapeAppearanceCornerMedium
-        </item>
     </style>
 
     <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">

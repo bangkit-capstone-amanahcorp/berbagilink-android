@@ -27,6 +27,7 @@ import com.example.ptamanah.view.produk.daftarProduk.DaftarProdukFragment
 import com.example.ptamanah.view.penjualan.logTransaksi.PenjualanLogTransaksi
 import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
 import com.example.ptamanah.view.penjualan.voucher.PenjualanVoucher
+import com.example.ptamanah.view.produk.daftarProduk.BarangTanpaVarianFragment
 import com.example.ptamanah.view.produk.kategori.KategoriFragment
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
@@ -109,7 +110,8 @@ class PageActivity : AppCompatActivity() {
                             ),
                         )
                     ),
-                    NavMenuItem(id = "produk", title = "Produk", icon = R.drawable.ic_home,
+                    NavMenuItem(
+                        id = "produk", title = "Produk", icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
                                 id = "daftar_produk",
@@ -121,8 +123,15 @@ class PageActivity : AppCompatActivity() {
                                 title = "Kategori",
                                 icon = R.drawable.ic_home,
                             ),
-                        )),
-                    NavMenuItem(id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home,
+                            NavMenuItem(
+                                id = "barang_tanpa_varian",
+                                title = "Barang Tanpa Varian",
+                                icon = R.drawable.ic_home,
+                            ),
+                        )
+                    ),
+                    NavMenuItem(
+                        id = "penjualan", title = "Penjualan", icon = R.drawable.ic_home,
                         children = listOf(
                             NavMenuItem(
                                 id = "transaksi",
@@ -144,7 +153,8 @@ class PageActivity : AppCompatActivity() {
                                 title = "Log Transaksi",
                                 icon = R.drawable.ic_home,
                             )
-                        )),
+                        )
+                    ),
                     NavMenuItem(
                         id = "marketing",
                         title = "Marketing",
@@ -158,7 +168,8 @@ class PageActivity : AppCompatActivity() {
                                 id = "transaksi",
                                 title = "Transaksi",
                                 icon = R.drawable.ic_home,
-                            ), NavMenuItem(
+                            ),
+                            NavMenuItem(
                                 id = "analisis",
                                 title = "Analisis",
                                 icon = R.drawable.ic_home,
@@ -290,6 +301,14 @@ class PageActivity : AppCompatActivity() {
 
             "analisis" -> {
                 replaceFragment(AnalisisFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
+//            Test
+            "barang_tanpa_varian" -> {
+                replaceFragment(BarangTanpaVarianFragment())
                 binding.drawerLayout.postDelayed({
                     binding.drawerLayout.closeDrawer(GravityCompat.START)
                 }, 150)
