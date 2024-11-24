@@ -1,0 +1,1807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_500"
+    android:padding="16dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!--            Menu Informasi Produk-->
+            <LinearLayout
+                android:id="@+id/containerInformasiProduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    style="@style/TextDropdownTitle"
+                    android:text="Informasi Produk" />
+
+                <ImageView
+                    android:id="@+id/arrowInformasiProduk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down_toska" />
+
+            </LinearLayout>
+
+            <!--Informasi Produk-->
+            <LinearLayout
+                android:id="@+id/contentInformasiProduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextFieldTitle"
+                        android:text="@string/nama_produk" />
+
+                    <Space
+                        android:layout_width="4dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="@color/red" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/field_filled"
+                    android:hint="E-book for Designers"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:text="Nama tidak bisa diubah lagi setelah produk pernah terjual"
+                        android:textColor="@color/neutral_300"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextFieldTitle"
+                        android:text="Jenis" />
+
+                    <Space
+                        android:layout_width="4dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="@color/red" />
+
+                </LinearLayout>
+
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@+id/enabled_selected">
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="horizontal">-->
+
+                    <!--                        <RadioButton-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:enabled="true" />-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="0dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_marginStart="8dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:gravity="center_vertical"-->
+                    <!--                            android:orientation="vertical">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:text="Jasa"-->
+                    <!--                                android:textSize="14dp"-->
+                    <!--                                android:textColor="@color/neutral_500" />-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="wrap_content"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:text="(contoh: Pembuatan logo, edit video, dll)"-->
+                    <!--                                android:textColor="@color/neutral_100"-->
+                    <!--                                android:textSize="14sp" />-->
+                    <!--                        </LinearLayout>-->
+                    <!--                    </LinearLayout>-->
+
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:checked="false"
+                        android:enabled="true"
+                        android:text="@string/barang_fisik" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:checked="false"
+                        android:enabled="true"
+                        android:text="@string/jasa" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:checked="true"
+                        android:enabled="true"
+                        android:text="@string/produk_digital" />
+                </RadioGroup>
+
+                <TextView
+                    style="@style/TextFieldTitle"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/kategori" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/DropdownTextInputLayout"
+                    android:hint="Books"
+                    app:endIconDrawable="@drawable/ic_arrow_down_toska"
+                    app:endIconTint="@color/blue_500">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/field_unfilled"
+                        android:inputType="none"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:text="@string/info_kategori"
+                        android:textColor="@color/neutral_300"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextFieldTitle"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/kode_produk" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/field_filled"
+                    android:hint="e-book-design-icon"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:text="Akan masuk pada link produk, contoh: berbagi.link/username/onlinestore/detail/e-book-design-icon"
+                        android:textColor="@color/neutral_300" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/neutral_50" />
+
+            <!--Menu Detail Produk-->
+            <LinearLayout
+                android:id="@+id/containerDetailProduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    style="@style/TextDropdownTitle"
+                    android:text="Detail Produk" />
+
+                <ImageView
+                    android:id="@+id/arrowDetailProduk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down_toska" />
+
+            </LinearLayout>
+
+            <!--Detail Produk-->
+            <LinearLayout
+                android:id="@+id/contentDetailProduk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/TextFieldTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto Produk" />
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextDescription"
+                            android:layout_marginStart="6dp"
+                            android:text="format wajib .jpg / .jpeg / .png dan ukuran min. 500 x 500 px (disarankan 1.200 x 1.200 px)"
+                            android:textColor="@color/neutral_300"
+                            android:textSize="9sp" />
+
+                        <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="12dp" />
+
+                        <TextView
+                            style="@style/TextDescription"
+                            android:layout_marginStart="6dp"
+                            android:text="Tips: Upload min. 5 foto yang menarik dan berbeda satu sama lain untuk menarik perhatian pembeli."
+                            android:textColor="@color/neutral_300"
+                            android:textSize="9sp"
+                            android:textStyle="italic" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:columnCount="3"
+                    android:rowCount="3">
+
+                    <!-- ImageView 1 -->
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto Utama"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 2"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 3"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 4"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 5"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 6"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 7"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_rowWeight="1"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/border_foto">
+
+                        <!-- ImageView Ikon di Tengah -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_photo" />
+
+                            <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="8dp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Foto 8"
+                                android:textAlignment="center"
+                                android:textColor="@color/neutral_200" />
+                        </LinearLayout>
+
+                    </FrameLayout>
+
+                </GridLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextFieldTitle"
+                        android:text="Deskripsi Produk" />
+
+                    <Space
+                        android:layout_width="4dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="@color/red" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:text="Pastikan deskripsi produk memuat penjelasan detail terkait produkmu agar pembeli mudah mengerti"
+                        android:textColor="@color/neutral_300"
+                        android:textSize="9sp" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/field_unfilled"
+                    android:hint="E-Book untuk para designer\n\n3000+ icon tentang marketing\n1000+ icon bisnis\ndst"
+                    android:textSize="16dp" />
+
+                <TextView
+                    style="@style/TextFieldTitle"
+                    android:layout_marginTop="16dp"
+                    android:text="Link Produk" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/field_unfilled"
+                    android:hint="http://drive.google.com/....."
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:text="Masukkan link produk digital anda"
+                        android:textColor="@color/neutral_300"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/TextFieldTitle"
+                    android:layout_marginTop="16dp"
+                    android:text="URL Youtube" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/field_unfilled"
+                    android:hint="http://youtu.be..."
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:text="Masukkan link video youtube tentang produk anda"
+                        android:textColor="@color/neutral_300"
+                        android:textSize="9sp" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/neutral_50" />
+
+            <!--Menu Varian-->
+            <LinearLayout
+                android:id="@+id/containerVarian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    style="@style/TextDropdownTitle"
+                    android:text="Varian" />
+
+                <ImageView
+                    android:id="@+id/arrowVarian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down_toska" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/neutral_50" />
+
+            <!--Menu Harga & Stok-->
+            <LinearLayout
+                android:id="@+id/containerHargaStok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    style="@style/TextDropdownTitle"
+                    android:text="Harga &amp; Stok" />
+
+                <ImageView
+                    android:id="@+id/arrowHargaStok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down_toska" />
+
+            </LinearLayout>
+
+
+            <!--Harga & Stok-->
+            <LinearLayout
+                android:id="@+id/contentHargaStok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextFieldTitle"
+                            android:text="Status Produk" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:paddingEnd="4dp" />
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Aktif"
+                            android:textColor="@color/neutral_500" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextFieldTitle"
+
+                            android:text="Harga Satuan" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/border_input_banner"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp">
+
+                        <!-- TextView untuk label "Rp" -->
+                        <TextView
+                            style="@style/TextFieldTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/montserrat_bold"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextFieldTitle"
+
+                            android:text="Stok Produk" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/border_input_banner"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:hint="200"
+                        android:inputType="numberDecimal"
+                        android:padding="8dp"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <TextView
+                            style="@style/TextFieldTitle"
+                            android:layout_marginEnd="12dp"
+                            android:layout_weight="1"
+                            android:text="Jumlah Minimal Pembelian" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.5"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_input_banner"
+                            android:hint="1"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingEnd="4dp" />
+
+                            <Space
+                                android:layout_width="4dp"
+                                android:layout_height="match_parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat"
+                                android:text="Atur jumlah maksimal pembelian" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/neutral_50" />
+
+            <!--Menu Diskon & Grosir-->
+            <LinearLayout
+                android:id="@+id/containerDiskonGrosir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    style="@style/TextDropdownTitle"
+                    android:text="Diskon &amp; Grosir" />
+
+                <ImageView
+                    android:id="@+id/arrowDiskonGrosir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down_toska" />
+
+            </LinearLayout>
+
+
+            <!--Diskon & Grosir-->
+            <LinearLayout
+                android:id="@+id/contentDiskonGrosir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aktifkan Harga Diskon?" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:paddingEnd="4dp" />
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aktif" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Periode Diskon" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_input_banner"
+                            android:gravity="center"
+                            android:hint="DD/MM/YYYY"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="8dp"
+                            android:text="Sampai" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_input_banner"
+                            android:gravity="center"
+                            android:hint="DD/MM/YYYY"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Presentase Diskon" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_input_banner"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp">
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="% OFF"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingStart="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Harga Diskon (Otomatis)" />
+
+                        <Space
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/required"
+                            android:textColor="@color/red" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/border_input_banner"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rp."
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:hint="0"
+                            android:inputType="numberDecimal"
+                            android:padding="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/containerHargaGrosir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="24dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Min. Pembelian" />
+
+                            <Space
+                                android:layout_width="4dp"
+                                android:layout_height="match_parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/required"
+                                android:textColor="@color/red" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_input_banner"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="12dp">
+
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="0"
+                                android:inputType="numberDecimal"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="pcs"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="24dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Maks. Pembelian" />
+
+                            <Space
+                                android:layout_width="4dp"
+                                android:layout_height="match_parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/required"
+                                android:textColor="@color/red" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_input_banner"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="12dp">
+
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="1"
+                                android:inputType="numberDecimal"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="pcs"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="24dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Harga Grosir" />
+
+                            <Space
+                                android:layout_width="4dp"
+                                android:layout_height="match_parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/required"
+                                android:textColor="@color/red" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/border_input_banner"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp."
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@android:color/transparent"
+                                android:hint="0"
+                                android:inputType="numberDecimal"
+                                android:padding="8dp"
+                                android:textColor="@color/black"
+                                android:textSize="16sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/neutral_50" />
+
+            <!--Menu Rekening Transaksi-->
+            <LinearLayout
+                android:id="@+id/containerRekeningTransaksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    style="@style/TextDropdownTitle"
+                    android:text="Rekening Transaksi" />
+
+                <ImageView
+                    android:id="@+id/arrowRekeningTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down_toska" />
+
+            </LinearLayout>
+
+
+            <!--Rekening Transaksi-->
+            <LinearLayout
+                android:id="@+id/contentRekeningTransaksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <TextView
+                    style="@style/TextFieldTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Batas Waktu Pembayaran" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/DropdownTextInputLayout"
+                    android:hint="5 Jam"
+                    app:endIconDrawable="@drawable/ic_arrow_down_toska"
+                    app:endIconTint="@color/blue_500">
+
+                    <AutoCompleteTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/field_unfilled"
+                        android:inputType="none"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <LinearLayout
+                    style="@style/InfoCard"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_info"
+                        app:tint="@color/neutral_200" />
+
+                    <TextView
+                        style="@style/TextDescription"
+                        android:layout_marginStart="6dp"
+                        android:paddingEnd="50dp"
+                        android:text="Saat pelanggan belum membayar melebihi batas waktu, maka transaksi akan otomatis dibatalkan."
+                        android:textColor="@color/neutral_300"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextFieldTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Rekening Bank yang Ditampilkan" />
+
+                    <Space
+                        android:layout_width="4dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/required"
+                        android:textColor="@color/red" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:paddingEnd="4dp" />
+
+                    <Space
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Semua" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bank_bsi" />
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Transfer - Bank Syariah Indonesia" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bank_mandiri" />
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Transfer - Bank Mandiri" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/qris" />
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="QRIS" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bank_bsi" />
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Virtual Account - Bank Syariah Indonesia" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bank_mandiri" />
+
+                        <Space
+                            android:layout_width="12dp"
+                            android:layout_height="match_parent" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Virtual Account - Bank Mandiri" />
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginVertical="12dp"
+                android:background="@color/neutral_50" />
+
+            <!--Buttons-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/batal"
+                    android:textAllCaps="false"
+                    android:textColor="@color/biru_toska"
+                    android:textStyle="bold"
+                    app:strokeColor="@color/biru_toska" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/blue_500"
+                    android:text="@string/simpan"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.core.widget.NestedScrollView>
