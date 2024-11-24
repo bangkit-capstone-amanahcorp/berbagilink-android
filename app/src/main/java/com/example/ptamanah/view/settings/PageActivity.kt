@@ -29,6 +29,7 @@ import com.example.ptamanah.view.penjualan.transaksi.PenjualanTransaksi
 import com.example.ptamanah.view.penjualan.voucher.PenjualanVoucher
 import com.example.ptamanah.view.produk.daftarProduk.BarangTanpaVarianFragment
 import com.example.ptamanah.view.produk.daftarProduk.ProdukDigitalTanpaVarianFragment
+import com.example.ptamanah.view.produk.daftarProduk.JasaTanpaVarianFragment
 import com.example.ptamanah.view.produk.kategori.KategoriFragment
 import com.example.ptamanah.view.settings.banner.DaftarBanner
 import com.example.ptamanah.view.settings.halaman.HalamanFragment
@@ -127,6 +128,11 @@ class PageActivity : AppCompatActivity() {
                             NavMenuItem(
                                 id = "barang_tanpa_varian",
                                 title = "Barang Tanpa Varian",
+                                icon = R.drawable.ic_home,
+                            ),
+                            NavMenuItem(
+                                id = "jasa_tanpa_varian",
+                                title = "Jasa Tanpa Varian",
                                 icon = R.drawable.ic_home,
                             ),
                             NavMenuItem(
@@ -327,8 +333,16 @@ class PageActivity : AppCompatActivity() {
                 }, 150)
             }
 
+            "jasa_tanpa_varian" -> {
+                replaceFragment(JasaTanpaVarianFragment())
+                binding.drawerLayout.postDelayed({
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }, 150)
+            }
+
             else -> {
-                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Item ${menuItem.title} clicked", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
